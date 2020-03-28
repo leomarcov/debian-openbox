@@ -9,7 +9,7 @@ icon_default="Numix-Paper"
 # INSTALL NUMIX & PAPER ICON PACAKGES
 find /var/cache/apt/pkgcache.bin -mtime 0 &>/dev/null ||  apt-get update  
 apt-get install -y numix-icon-theme
-(dd if="$base_dir"/paper-icon-theme*.aa" bs=1M; dd if="$base_dir"/paper-icon-theme*.bb" bs=1M) > /tmp/paper-icon-theme.deb
+(dd if="$base_dir"/paper-icon-theme*.aa bs=1M; dd if="$base_dir"/paper-icon-theme*.bb bs=1M) > /tmp/paper-icon-theme.deb
 dpkg -i /tmp/paper-icon-theme.deb
 dpkg -i "$base_dir"/bunsen-paper-icon-theme*.deb
 
