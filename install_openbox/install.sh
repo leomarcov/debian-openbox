@@ -18,7 +18,7 @@ apt-get install -y openbox obconf obmenu xinit
 tar -xzvf "$base_dir"/openbox_theme.tgz -C /usr/share/themes/
 
 
-# COPY OPENBOX CONFIG FILE# COPY OPENBOX CONFIG FILESS
+# COPY OPENBOX CONFIG FILES
 for d in /etc/skel /home/*/; do
     # Skip dirs in /home that not are user home
     [ "$(dirname "$d")" = "/home" ] && ! id "$(basename "$d")" &>/dev/null && continue
