@@ -1,0 +1,82 @@
+## Openbox autostart
+## ====================
+## When you login to your BunsenLabs Openbox session, this autostart script
+## will be executed to set-up your environment and launch any applications
+## you want to run at startup.
+##
+## Note: some programs, such as 'nm-applet' are run via XDG autostart.
+## Run
+## /usr/lib/x86_64-linux-gnu/openbox-xdg-autostart --list
+## or
+## /usr/lib/i386-linux-gnu/openbox-xdg-autostart --list
+## to list any XDG autostarted programs.
+##
+## More information about this can be found at:
+## http://openbox.org/wiki/Help:Autostart
+##
+## If you do something cool with your autostart script and you think others
+## could benefit from your hack, please consider sharing it at:
+## http://forums.bunsenlabs.org (registration required)
+##
+
+### SETTINGS START
+
+## Set keyboard settings - 250 ms delay and 25 cps (characters per second) repeat rate.
+## Adjust the values according to your preferances.
+xset r rate 250 25
+
+## Add keyboard mapping.
+#xmodmap -e "keysym Insert = Multi_key"
+
+## Disable CapsLock
+#setxkbmap -option ctrl:nocaps
+# alternative: use as compose key
+#setxkbmap -option compose:caps
+
+# Alias Super key to Super+Space for single-key menu.
+# See 'man xcape' for other possibilities.
+###xcape -e 'Super_L=Super_L|space'
+
+### TOUCHPAD: comment out the next two entries if you don't have one
+
+## Configure touchpad. See 'man synaptics' for more info.
+## (Now might be using libinput instead of synaptics.)
+synclient VertEdgeScroll=1 HorizEdgeScroll=1 TapButton1=1 2>/dev/null
+
+## Disable touchpad while typing
+syndaemon -i .5 -K -t -R -d &
+
+### TOUCHPAD END
+
+### SETTINGS END
+
+## GNOME PolicyKit authentication
+/usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 &
+
+## Set a wallpaper
+nitrogen --restore
+
+## Compton
+compton &
+
+# Tint2
+tint2 -c ~/.config/tint2/taskbar.tint &
+tint2 -c ~/.config/tint2/menu.tint &
+
+## Volume control for systray
+pnmixer &
+
+## Start Clipboard manager
+xfce4-clipman &
+
+## bl-welcome - post-installation script, will not run in a live session and
+## only runs once. Safe to remove.
+#(sleep 10; bl-welcome --firstrun) &
+
+## bl-fortune - have the system come up with a little adage (not yet enabled)
+#(sleep 120; bl-fortune) &
+xcape -e "Super_L=Control_L|Tab"  #bl-postinstall.sh
+
+xmodmap ~/.Xmodmap &
+xbindkeys &
+xcape -e "Super_L=Control_L|Tab"  #BL-POSTINSTALL-rofi
