@@ -15,7 +15,7 @@ apt-get install -y openbox obconf obmenu xinit
 
 
 # COPY OPENBOX THEME
-unzip -o "$base_dir"/openbox_theme.zip -d /usr/share/themes/
+tar -xzvf "$base_dir"/openbox_theme.tgz -C /usr/share/themes/
 
 
 # COPY OPENBOX CONFIG FILE# COPY OPENBOX CONFIG FILESS
