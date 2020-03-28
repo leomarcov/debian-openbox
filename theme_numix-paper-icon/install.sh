@@ -6,6 +6,7 @@
 base_dir="$(dirname "$(readlink -f "$0")")"
 icon_default="Numix-Paper"
 
+# INSTALL NUMIX & PAPER ICON PACAKGES
 find /var/cache/apt/pkgcache.bin -mtime 0 &>/dev/null ||  apt-get update  
 apt-get install -y numix-icon-theme
 (dd if="$base_dir"/paper-icon-theme*.aa" bs=1M; dd if="$base_dir"/paper-iscon-theme*.bb" bs=1M) > /tmp/paper-icon-theme.deb
@@ -17,7 +18,7 @@ if [ ! -d /usr/share/icons/Numix/ ]; then
 	exit 1
 fi
 
-unzip -o "$base_dir"/numix-paper-icon-theme.zip -d /usr/share/icons/	
+tar -xzvf "$base_dir"/numix-paper-icon-theme.tgz -C /usr/share/icons/	
 
 	
 for d in  /etc/skel/  /home/*/ ; do
