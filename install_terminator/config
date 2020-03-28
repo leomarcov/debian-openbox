@@ -1,0 +1,59 @@
+[global_config]
+  dbus = False
+  title_font = Monospace 10
+  title_use_system_font = False
+[keybindings]
+  hide_window = <Shift><Control>a
+[layouts]
+  [[default]]
+    [[[child1]]]
+      parent = window0
+      type = Terminal
+    [[[window0]]]
+      parent = ""
+      size = 680, 535
+      type = Window
+[plugins]
+[profiles]
+  [[default]]
+    background_color = "#212121"
+    background_darkness = 0.95
+    background_type = transparent
+    cursor_color = "#6ab3b3"
+    cursor_color_fg = False
+    font = Monospace 10
+    foreground_color = "#ecfefe"
+    palette = "#555753:#b44444:#5ecb8c:#d9c964:#3d6aac:#9a64d9:#64d9d5:#d3d7cf:#babdb6:#ef2929:#73d216:#d9cf8f:#729fcf:#b08fd9:#61e3e3:#eeeeec"
+    scrollback_infinite = True
+    scrollback_lines = 5000
+    scrollbar_position = hidden
+    show_titlebar = False
+    use_system_font = False
+  [[Helium]]
+    background_color = "#082b4a"
+    background_darkness = 0.9
+    background_type = transparent
+    cursor_color = "#6ab3b3"
+    cursor_color_fg = False
+    font = Monospace 10
+    foreground_color = "#add8e6"
+    palette = "#555753:#b44444:#5ecb8c:#d9c964:#3d6aac:#9a64d9:#64d9d5:#d3d7cf:#babdb6:#d98f93:#13b9b9:#d9cf8f:#8f99d9:#b08fd9:#8fd9d5:#c5c5c5"
+    scrollback_infinite = True
+    scrollback_lines = 5000
+    scrollbar_position = hidden
+    show_titlebar = False
+    use_system_font = False
+  [[Hydrogen]]
+    background_color = "#2e3436"
+    background_darkness = 0.83
+    background_type = transparent
+    color_scheme = custom
+    cursor_color = "#d8d8d8"
+    font = Monospace 10
+    foreground_color = "#d8d8d8"
+    palette = "#000000:#cc0000:#4e9a06:#c4a000:#3465a4:#75507b:#06989a:#d3d7cf:#555753:#ef2929:#8ae234:#fce94f:#729fcf:#ad7fa8:#34e2e2:#eeeeec"
+    scrollback_infinite = True
+    scrollback_lines = 5000
+    scrollbar_position = hidden
+    show_titlebar = False
+    use_system_font = False
