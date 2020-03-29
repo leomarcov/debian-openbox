@@ -60,8 +60,7 @@ nitrogen --restore
 compton &
 
 # Tint2
-tint2 -c ~/.config/tint2/taskbar.tint &
-tint2 -c ~/.config/tint2/menu.tint &
+while read t; do tint2 -c "$t" & done < ~/.config/tint2/tint2-sessionfile &
 
 ## Volume control for systray
 pnmixer &
