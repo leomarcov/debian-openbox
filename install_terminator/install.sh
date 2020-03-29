@@ -15,8 +15,8 @@ apt-get install -y terminator
 # INSTALL CONFIG
 for d in /etc/skel/  /home/*/; do
 	# Create config folders if no exists
-	d="$d/.config/"; [ ! -d "$d" ] && { mkdir -v "$d"; chown -R $(stat "$(dirname "$d")" -c %u:%g) "$d"; }
-	d="$d/terminator/"; [ ! -d "$d" ] && { mkdir -v "$d"; chown -R $(stat "$(dirname "$d")" -c %u:%g) "$d"; }
+	d="$d/.config/"; [ ! -d "$d" ] && mkdir -v "$d" && chown -R $(stat "$(dirname "$d")" -c %u:%g) "$d"
+	d="$d/terminator/"; [ ! -d "$d" ] && mkdir -v "$d" && chown -R $(stat "$(dirname "$d")" -c %u:%g) "$d"
 	
-	cp -v "$base_dir"/config "$d/"; chown -R $(stat "$(dirname "$d")" -c %u:%g) "$d/config";
+	cp -v "$base_dir"/config "$d/" && chown -R $(stat "$(dirname "$d")" -c %u:%g) "$d/config"
 done
