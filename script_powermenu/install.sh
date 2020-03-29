@@ -6,3 +6,5 @@
 
 base_dir="$(dirname "$(readlink -f "$0")")"
 
+cp -v "$base_dir/powermenu" /usr/bin
+chmod +x /usr/bin/powermenu
