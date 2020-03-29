@@ -31,6 +31,30 @@ Usage: install [-l] [-a <actions>] [-y] [-d] [-h]
 
 # List all actions:
 $ ./install -l
+[1] Config useful aliases (y)
+[2] Config new bash prompt (y)
+[3] Config system for show messages during boot (y)
+[4] Config CTRL+ALT+BACKSPACE shortcut for kill X server (y)
+[5] Config vim with custom configs (y)
+[6] Install Atom text editor (n)
+[7] Install Brave browser, add to repositories and set has default browser (y)
+[8] Install Google Chrome, add to repositories and set has default browser (n)
+[9] Install Openbox and tools for full environment (y)
+[10] Install script ps_mem.py (y)
+[11] Install rofi and config as default (y)
+[12] Install some useful packages (y)
+[13] Install Sublime Text, add repositories and set as default editor  (y)
+[14] Install sudo and add user 1000 to sudo (y)
+[15] Install Termiantor terminal and config theme (y)
+[16] Install and config Thunar (show toolbar and double-click for active items) (y)
+[17] Install tint2 bar and themes (y)
+[18] Install mixer and volume control (y)
+[19] Install script autosnap for autosnap windows with double click in titlebar (y)
+[20] Config text mode login using tty instead of lightdm display manager (y)
+[21] Install theme Arc GTK and set as default (y)
+[22] Install pack of popular fonts (y)
+[23] Install icon theme Numix-Paper and set as default (y)
+[24] Install nitrogen and copy wallpapers pack and set Aptenodytes wallpaper as default (y)
 
 
 
