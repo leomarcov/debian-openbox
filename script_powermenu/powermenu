@@ -1,0 +1,23 @@
+#!/bin/bash
+
+options=$'Logout\nShutdown\nReboot'
+
+if [ $# -eq 0 ]; then
+	echo "$options"
+
+elif [ "$1" = "show" ]; then
+	rofi -hide-scrollbar -show "Power menu" -modi "Power menu":"$(readlink -f "$0")"
+
+else
+	case $@ in
+	*Logout)
+		i3-msg exit
+		;;
+	*Shutdown)
+		shutdown now
+		;;
+	*Reboot)
+		reboot
+		;;
+	esac
+fi
