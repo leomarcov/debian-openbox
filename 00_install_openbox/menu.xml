@@ -92,7 +92,6 @@
                     <action name="Restart"/>
                 </item>
             </menu>
-            <menu execute="compton" id="CompositingPipeMenu" label="Compositor"/>
             <item label="Appearance">
                 <action name="Execute">
                     <command>
@@ -179,7 +178,7 @@
         <item label="Exit">
             <action name="Execute">
                 <command>
-                    powermenu
+                    powermenu show
                 </command>
             </action>
         </item>
