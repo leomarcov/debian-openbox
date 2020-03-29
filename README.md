@@ -6,8 +6,9 @@
   * Install Openbox and dependences.
   * Install and config essential Openbox tools: Tint2, Rofi, Terminator, Thunar, volume control, etc.
   * Config a basic themes and styles for Openbox, Gtk, fonts, icon pack, wallpapers.
-  * Install some user tools: Brave/Chrome browser, SublimeText, Atom, VirtualBox and Extensión Pack,
+  * Install some user tools: Brave/Chrome browser, SublimeText, Atom, VirtualBox and Extensión Pack, sudo,, etc.
   * Config prompt and aliases.
+  * Config Grub for skip, protect by password and show messages during boot.
   * Install [**`Numix-Paper icon theme`**](https://github.com/leomarcov/debian-openbox/tree/master/theme_numix-paper-icon), a theme based on Numix and Paper icon packs.
   * Install [**`autosnap Windows for Openbox`**](https://github.com/leomarcov/debian-openbox/tree/master/script_autosnap-openbox), a script for autosnap active windows (half-maximice). 
   * Install [**`tty login neofetch`**](https://github.com/leomarcov/debian-openbox/tree/master/script_tty-login-neofetch), a tty login based on neofetch info and config tty lock screen with physlock.
