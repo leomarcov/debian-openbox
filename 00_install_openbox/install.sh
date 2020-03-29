@@ -10,7 +10,7 @@ base_dir="$(dirname "$(readlink -f "$0")")"
 
 # INSTALL OPENBOX AND DEPENDENCES
 find /var/cache/apt/pkgcache.bin -mtime 0 &>/dev/null ||  apt-get update
-apt-get install -y openbox obconf obmenu xinit lxappearance compton xfce4-clipman arandr
+apt-get install -y openbox obconf obmenu xinit lxappearance compton xfce4-clipman xfce4-power-manager arandr
 
 
 # COPY OPENBOX THEME
@@ -27,9 +27,11 @@ for d in /etc/skel /home/*/; do
 	d="$d/openbox/";  [ ! -d "$d" ] && mkdir -v "$d" && chown -R $(stat "$(dirname "$d")" -c %u:%g) "$d"
 
 	# Copy openbox config file
-	cp -v "$base_dir/rc.xml" "$d" && chown -R $(stat "$(dirname "$d")" -c %u:%g) "$d/rc.xml"
+	f="rc.xml"
+	cp -v "$base_dir/$f" "$d" && chown -R $(stat "$d" -c %u:%g) "$d/$f"
 	# Copy openbox autostart file
-	cp -v "$base_dir/autostart" "$d" && chown -R $(stat "$(dirname "$d")" -c %u:%g) "$d/autostart"
+	f="autostart"
+	cp -v "$base_dir/$f" "$d" && chown -R $(stat "$d" -c %u:%g) "$d/$f"
 done
 
 
