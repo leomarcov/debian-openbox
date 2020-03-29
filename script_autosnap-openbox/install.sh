@@ -16,12 +16,12 @@ apt-get -y install xdotool
 cp -v "$base_dir/autosnap" /usr/bin/
 chmod +x /usr/bin/autosnap
 
-for d in /etc/skel/.config/openbox/rc.xml  /home/*/.config/openbox/rc.xml; do
+for d in /etc/skel/  /home/*/; do
     # Skip dirs in /home that not are user home
     [ "$(dirname "$d")" = "/home" ] && ! id "$(basename "$d")" &>/dev/null && continue
 	
 	f="$d/.config/openbox/rc.xml"
-	# Skip if Openbox not installed
+	# Skip if Openbox no rc.xml found
 	[ ! -f "$f" ] && continue
 	
 	# Delete all previous lines added
