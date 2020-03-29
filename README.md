@@ -21,7 +21,7 @@
 ```
 $ ./install -h
 Exec scripts actions
-Usage: install [-h] [-l] [-a <actions>] [-y] [-d]
+Usage: install [-l] [-a <actions>] [-y] [-d] [-h]
    -l		Only list actions 
    -a <actions>	Only do selected actions (e.g: -a 5,6,10-15)
    -y		Auto-answer yes to all actions
