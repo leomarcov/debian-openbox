@@ -61,6 +61,24 @@ function ask_action() {
 }
 
 
+#=== FUNCTION ======================================================================
+# NAME: stderr_color
+# DESCRIPTION: shows stderr messages in red color
+#===================================================================================
+function stderr_color() {
+	exec 9>&2
+	exec 8> >(
+		while IFS='' read -r line || [ -n "$line" ]; do
+		   echo -e "\e[1m\e[31m${line}\e[0m"
+		done
+	)
+	function undirect(){ exec 2>&9; }
+	function redirect(){ exec 2>&8; }
+	trap "redirect;" DEBUG
+	PROMPT_COMMAND='undirect;'
+}
+
+
 
 #=== PARAMS ========================================================================
 while getopts ":hlyda:" o; do
@@ -92,6 +110,7 @@ fi
 #=== EXEC-ACTIONS ==================================================================
 base_dir="$(dirname "$(readlink -f "$0")")"
 n=0
+stderr_color
 
 # For each .sh file
 IFS=$'\n\t'
