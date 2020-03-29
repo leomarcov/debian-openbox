@@ -20,15 +20,15 @@ for d in  /etc/skel/  /home/*/; do
 	[ "$(dirname "$d")" = "/home" ] && ! id "$(basename "$d")" &>/dev/null && continue
 	
 	# Create config folders if no exists
-	d="$d/.config/"; [ ! -d "$d" ] && { mkdir -v "$d"; chown -R $(stat "$(dirname "$d")" -c %u:%g) "$d"; }
-	d="$d/nitrogen/"; [ ! -d "$d" ] && { mkdir -v "$d"; chown -R $(stat "$(dirname "$d")" -c %u:%g) "$d"; }
+	d="$d/.config/"; [ ! -d "$d" ] && mkdir -v "$d" && chown -R $(stat "$(dirname "$d")" -c %u:%g) "$d"
+	d="$d/nitrogen/"; [ ! -d "$d" ] && mkdir -v "$d" && chown -R $(stat "$(dirname "$d")" -c %u:%g) "$d"
 
 	f="bg-saved.cfg"
-	[ ! -f "$d/$f" ] && cp "$base_dir/$f" "$d"
+	[ ! -f "$d/$f" ] && cp "$base_dir/$f" "$d" && chown -R $(stat "$(dirname "$d")" -c %u:%g) "$d/$f"
 	sed -i 's/^file *= *.*/file='$(echo "$wp_dir/$wp_default" | sed 's/\//\\\//g' )'/' "$d/$f"
  	
 	f="nitrogen.cfg"
-	[ ! -f "$d/$f" ] && cp "$base_dir/$f" "$d"
+	[ ! -f "$d/$f" ] && cp "$base_dir/$f" "$d" && chown -R $(stat "$(dirname "$d")" -c %u:%g) "$d/$f"
 	sed -i 's/^dirs *= *.*/dirs='$(echo "$wp_dir" | sed 's/\//\\\//g')';/' "$d/$f"
 done
 
