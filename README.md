@@ -16,6 +16,7 @@
 ## Install
   * Install Debian 10 netinstall without desktop environment.
   * Clone or download project.
+  * Exec `install` script and select actions you want to install.
   
   
 &nbsp; 
