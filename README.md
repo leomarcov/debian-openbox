@@ -19,14 +19,26 @@
   
   
 &nbsp; 
-## Customize
+### Customize
+The script can be easily customized. Each action script `.sh` placed in a subdirectory are automatillacy recognized by `install`.
+  * For remove action simply delete the action directory.
+  * For add action simply add new folder and place the install script `.sh` and dependences. The script must have this header:
+  ```
+  #!/bin/bash
+  # ACTION: Description of the action
+  # INFO: Optional aditional info
+  # DEFAULT: y
+  
+  commands to do
+  
+  ```
 
 
 &nbsp;  
-# Lincense
+## Lincense
 [GPLv3](LICENSE)
 
-# Contact
+## Contact
 My name is Leonardo Marco. I'm sysadmin teacher in [CIFP Carlos III](https://cifpcarlos3.es/), Cartagena, Murcia (Spain).
 
 You can email me for suggestions, contributions, labadmin help or share your feelings: labadmin@leonardomarco.com
