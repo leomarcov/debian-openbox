@@ -11,11 +11,10 @@ base_dir="$(dirname "$(readlink -f "$0")")"
 
 # Config runlevel 3
 systemctl set-default multi-user.target
-#apt-get -y remove lightdm
 
 # Install physlock
 find /var/cache/apt/pkgcache.bin -mtime 0 &>/dev/null ||  apt-get update  
-apt-get -y install physlock
+apt-get -y install physlock neofetch
 	
 # Config physlock for start after suspend
 cp "$base_dir"/physlock.service /etc/systemd/system/
@@ -25,22 +24,17 @@ systemctl enable physlock.service
 sed -i "/$comment_mark/Id" /etc/profile
 echo '[ "$(tty)" = "/dev/tty1" ] && startx && exit   '"$comment_mark" >> /etc/profile
 
-# Show neofetch info at login
-which neofetch &>/dev/null || apt-get install -y neofetch
-if which neofetch &>/dev/null; then
-	# Copy script and config files:
-	cp -v /etc/issue /etc/issue.old
-	[ ! -d "/etc/systemd/system/getty@.service.d/" ] && mkdir -vp "/etc/systemd/system/getty@.service.d/"
-	[ ! -d "/usr/share/neofetch/" ] && mkdir -vp "/usr/share/neofetch/"
-	cp -v "$base_dir/config_tty" /usr/share/neofetch/
-	cp -v "$base_dir/neofetch_issue.sh" /usr/bin/
-	chmod -v a+x /usr/bin/neofetch_issue.sh
+# Copy script and config files:
+cp -v /etc/issue /etc/issue.old
+[ ! -d "/etc/systemd/system/getty@.service.d/" ] && mkdir -vp "/etc/systemd/system/getty@.service.d/"
+[ ! -d "/usr/share/neofetch/" ] && mkdir -vp "/usr/share/neofetch/"
+cp -v "$base_dir/config_tty" /usr/share/neofetch/
+cp -v "$base_dir/neofetch_issue.sh" /usr/bin/
+chmod -v a+x /usr/bin/neofetch_issue.sh
 	
-	# Config getty to run neofetch_issue.sh every time tty start:
-	echo '[Service]
+# Config getty to run neofetch_issue.sh every time tty start:
+echo '[Service]
 ExecStartPre=-/bin/bash -c "/usr/bin/neofetch_issue.sh"' | tee "/etc/systemd/system/getty@.service.d/override.conf"
 fi
 
-# Remove light-locker
-apt-get -y remove light-locker
 
