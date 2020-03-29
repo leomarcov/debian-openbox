@@ -20,7 +20,7 @@
   
 ```
 $ ./install -h
-Install configs and themes scripts in BunsenLabs 
+Exec scripts actions
 Usage: install [-h] [-l] [-a <actions>] [-y] [-d]
    -l		Only list actions 
    -a <actions>	Only do selected actions (e.g: -a 5,6,10-15)
