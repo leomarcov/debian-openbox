@@ -9,4 +9,4 @@
 base_dir="$(dirname "$(readlink -f "$0")")"
 
 [ ! -d /usr/share/fonts/extra ] && mkdir /usr/share/fonts/extra/
-unzip -o "$base_dir"/fonts.zip -d /usr/share/fonts/extra/
+tar -xzvf "$base_dir"/fonts.tgz -C /usr/share/fonts/extra/
