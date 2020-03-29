@@ -68,14 +68,7 @@ pnmixer &
 ## Start Clipboard manager
 xfce4-clipman &
 
-## bl-welcome - post-installation script, will not run in a live session and
-## only runs once. Safe to remove.
-#(sleep 10; bl-welcome --firstrun) &
-
-## bl-fortune - have the system come up with a little adage (not yet enabled)
-#(sleep 120; bl-fortune) &
-xcape -e "Super_L=Control_L|Tab"  #bl-postinstall.sh
 
 xmodmap ~/.Xmodmap &
 xbindkeys &
-xcape -e "Super_L=Control_L|Tab"  #BL-POSTINSTALL-rofi
+xcape -e "Super_L=Control_L|Tab" 
