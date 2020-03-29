@@ -25,9 +25,7 @@ iface=$(ip route get 8.8.8.8 | awk '{print $5}')
 issue="$(echo -e "$issue" | sed "/Local IP/ s/$/($iface)/")"
 
 # Show users:
-issue="${issue}
-
-\e[1mUsers\e[0m: "
+issue="${issue}\n\n\e[1mUsers\e[0m: "
 for u in $(awk -F: '$3 >= 1000 && $1 != "nobody" {print $1}' /etc/passwd | tac); do 
 	# Red if lock user:
 	[ "$(passwd -S $u | cut -f2 -d" ")" = "L" ] && issue="${issue}\e[91m"
