@@ -25,17 +25,4 @@ for d in /etc/skel/  /home/*/.config/; do
 	d="$d/rofi/";  [ ! -d "$d" ] && { mkdir -v "$d"; chown -R $(stat "$(dirname "$d")" -c %u:%g) "$d"; }
 
 	cp -v "$base_dir/config.rasi" "$d/" && chown -R $(stat "$(dirname "$d")" -c %u:%g) "$d/config.rasi"
-
-	# Edit rc.xml config
-	sed -i "/${comment_mark}/d" "$d/openbox/rc.xml"		# Delete lines added previously
-	sed -i "s/<command>gmrun<\/command>/<command>${rofi_command}<\/command>/g" "$d/openbox/rc.xml"	# Change alt+f2 shortkey for rofi
-	sed -i "/<keyboard>/a<keybind key=\"C-Tab\"><action name=\"Execute\"><command>${rofi_command}<\/command><\/action><\/keybind>     <\!-- #${comment_mark} -->" "$d/openbox/rc.xml"	# Add ctrl+tab shortkey
-	
-	# Set as runas in menu:
-	sed -i "/<item label=\"Run Program\">/,/<\/item>/d" "$d/openbox/menu.xml"	# Delte current Run program entry
-	sed -i "/<menu id=\"root-menu\"/a<item label=\"Run Program\"><action name=\"Execute\"><command>${rofi_command}<\/command><\/action><\/item>    <\!-- #${comment_mark} -->" "$d/openbox/menu.xml"	# Add Run Program entry
-
-	# Config super key as runas
-	sed -i '/xcape.*Super_L.*space/s/^/#/g' "$d/openbox/autostart"  
-	echo 'xcape -e "Super_L=Control_L|Tab"  '"$comment_mark" | tee -a  "$d/openbox/autostart"
 done
