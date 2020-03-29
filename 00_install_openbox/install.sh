@@ -10,7 +10,7 @@ base_dir="$(dirname "$(readlink -f "$0")")"
 
 # INSTALL OPENBOX AND DEPENDENCES
 find /var/cache/apt/pkgcache.bin -mtime 0 &>/dev/null ||  apt-get update
-apt-get install -y openbox obconf obmenu xinit lxappearance compton xfce4-clipman 
+apt-get install -y openbox obconf obmenu xinit lxappearance compton xfce4-clipman arandr
 
 
 # COPY OPENBOX THEME
