@@ -1,0 +1,100 @@
+    <keybind key="C-KP_0">						      <!-- #BL-POSTINSTALL-autosnap -->
+      <action name="ToggleAlwaysOnTop"/>		<!-- #BL-POSTINSTALL-autosnap -->
+    </keybind>									            <!-- #BL-POSTINSTALL-autosnap -->
+    <keybind key="C-KP_Add">					      <!-- #BL-POSTINSTALL-autosnap -->
+      <action name="Maximize"/>					    <!-- #BL-POSTINSTALL-autosnap -->
+    </keybind>									            <!-- #BL-POSTINSTALL-autosnap -->
+    <keybind key="C-KP_Subtract">				    <!-- #BL-POSTINSTALL-autosnap -->
+      <action name="UnmaximizeFull"/>			  <!-- #BL-POSTINSTALL-autosnap -->
+    </keybind>									            <!-- #BL-POSTINSTALL-autosnap -->
+    <keybind key="C-KP_Home">					      <!-- #BL-POSTINSTALL-autosnap -->
+      <action name="UnmaximizeFull"/>			  <!-- #BL-POSTINSTALL-autosnap -->
+      <action name="MoveResizeTo">				  <!-- #BL-POSTINSTALL-autosnap -->
+        <x>0</x>								            <!-- #BL-POSTINSTALL-autosnap -->
+        <y>0</y>								            <!-- #BL-POSTINSTALL-autosnap -->
+        <width>50%</width>						      <!-- #BL-POSTINSTALL-autosnap -->
+        <height>50%</height>					      <!-- #BL-POSTINSTALL-autosnap -->
+      </action>									            <!-- #BL-POSTINSTALL-autosnap -->
+    </keybind>									            <!-- #BL-POSTINSTALL-autosnap -->
+    <keybind key="C-KP_Up">						      <!-- #BL-POSTINSTALL-autosnap -->
+      <action name="UnmaximizeFull"/>			  <!-- #BL-POSTINSTALL-autosnap -->
+      <action name="MoveResizeTo">				  <!-- #BL-POSTINSTALL-autosnap -->
+        <x>0</x>								            <!-- #BL-POSTINSTALL-autosnap -->
+        <y>0</y>								            <!-- #BL-POSTINSTALL-autosnap -->
+        <width>100%</width>						      <!-- #BL-POSTINSTALL-autosnap -->
+        <height>50%</height>					      <!-- #BL-POSTINSTALL-autosnap -->
+      </action>									            <!-- #BL-POSTINSTALL-autosnap -->
+    </keybind>									            <!-- #BL-POSTINSTALL-autosnap -->
+    <keybind key="C-KP_Prior">					    <!-- #BL-POSTINSTALL-autosnap -->
+      <action name="UnmaximizeFull"/>			  <!-- #BL-POSTINSTALL-autosnap -->
+      <action name="MoveResizeTo">				  <!-- #BL-POSTINSTALL-autosnap -->
+        <x>-0</x>								            <!-- #BL-POSTINSTALL-autosnap -->
+        <y>0</y>								            <!-- #BL-POSTINSTALL-autosnap -->
+        <width>50%</width>						      <!-- #BL-POSTINSTALL-autosnap -->
+        <height>50%</height>					      <!-- #BL-POSTINSTALL-autosnap -->
+      </action>								             	<!-- #BL-POSTINSTALL-autosnap -->
+    </keybind>									            <!-- #BL-POSTINSTALL-autosnap -->
+    <keybind key="C-KP_Begin">					    <!-- #BL-POSTINSTALL-autosnap -->
+      <action name="ToggleMaximize"/>			  <!-- #BL-POSTINSTALL-autosnap -->
+    </keybind>									            <!-- #BL-POSTINSTALL-autosnap -->
+    <keybind key="C-KP_Left">					      <!-- #BL-POSTINSTALL-autosnap -->
+      <action name="UnmaximizeFull"/>			  <!-- #BL-POSTINSTALL-autosnap -->
+      <action name="MoveResizeTo">				  <!-- #BL-POSTINSTALL-autosnap -->
+        <x>0</x>								            <!-- #BL-POSTINSTALL-autosnap -->
+        <y>0</y>								            <!-- #BL-POSTINSTALL-autosnap -->
+        <width>50%</width>						      <!-- #BL-POSTINSTALL-autosnap -->
+        <height>100%</height>					      <!-- #BL-POSTINSTALL-autosnap -->
+      </action>									            <!-- #BL-POSTINSTALL-autosnap -->
+    </keybind>									            <!-- #BL-POSTINSTALL-autosnap -->
+    <keybind key="C-KP_Right">					    <!-- #BL-POSTINSTALL-autosnap -->
+      <action name="UnmaximizeFull"/>			  <!-- #BL-POSTINSTALL-autosnap -->
+      <action name="MoveResizeTo">				  <!-- #BL-POSTINSTALL-autosnap -->
+        <x>-0</x>								            <!-- #BL-POSTINSTALL-autosnap -->
+        <y>0</y>								            <!-- #BL-POSTINSTALL-autosnap -->
+        <width>50%</width>						      <!-- #BL-POSTINSTALL-autosnap -->
+        <height>100%</height>					      <!-- #BL-POSTINSTALL-autosnap -->
+      </action>									            <!-- #BL-POSTINSTALL-autosnap -->
+    </keybind>									            <!-- #BL-POSTINSTALL-autosnap -->
+    <keybind key="C-KP_End">					      <!-- #BL-POSTINSTALL-autosnap -->
+      <action name="UnmaximizeFull"/>			  <!-- #BL-POSTINSTALL-autosnap -->
+      <action name="MoveResizeTo">				  <!-- #BL-POSTINSTALL-autosnap -->
+        <x>0</x>								            <!-- #BL-POSTINSTALL-autosnap -->
+        <y>-0</y>								            <!-- #BL-POSTINSTALL-autosnap -->
+        <width>50%</width>						      <!-- #BL-POSTINSTALL-autosnap -->
+        <height>50%</height>					      <!-- #BL-POSTINSTALL-autosnap -->
+      </action>									            <!-- #BL-POSTINSTALL-autosnap -->
+    </keybind>									            <!-- #BL-POSTINSTALL-autosnap -->
+    <keybind key="C-KP_Down">					      <!-- #BL-POSTINSTALL-autosnap -->
+      <action name="UnmaximizeFull"/>			  <!-- #BL-POSTINSTALL-autosnap -->
+      <action name="MoveResizeTo">				  <!-- #BL-POSTINSTALL-autosnap -->
+        <x>-0</x>								            <!-- #BL-POSTINSTALL-autosnap -->
+        <y>-0</y>								            <!-- #BL-POSTINSTALL-autosnap -->
+        <width>100%</width>						      <!-- #BL-POSTINSTALL-autosnap -->
+        <height>50%</height>					      <!-- #BL-POSTINSTALL-autosnap -->
+      </action>									            <!-- #BL-POSTINSTALL-autosnap -->
+    </keybind>									            <!-- #BL-POSTINSTALL-autosnap -->
+    <keybind key="C-KP_Next">7					    <!-- #BL-POSTINSTALL-autosnap -->
+      <action name="UnmaximizeFull"/>			  <!-- #BL-POSTINSTALL-autosnap -->
+      <action name="MoveResizeTo">				  <!-- #BL-POSTINSTALL-autosnap -->
+      	<x>-0</x>								            <!-- #BL-POSTINSTALL-autosnap -->
+      	<y>-0</y>								            <!-- #BL-POSTINSTALL-autosnap -->
+      	<width>50%</width>						      <!-- #BL-POSTINSTALL-autosnap -->
+      	<height>50%</height>					      <!-- #BL-POSTINSTALL-autosnap -->
+      </action>									            <!-- #BL-POSTINSTALL-autosnap -->
+    </keybind>									            <!-- #BL-POSTINSTALL-autosnap -->
+    <keybind key="C-A-Left">					      <!-- #BL-POSTINSTALL-autosnap -->
+      <action name="GoToDesktop">				    <!-- #BL-POSTINSTALL-autosnap -->
+        <to>left</to>							          <!-- #BL-POSTINSTALL-autosnap -->
+        <wrap>no</wrap>							        <!-- #BL-POSTINSTALL-autosnap -->
+      </action>									            <!-- #BL-POSTINSTALL-autosnap -->
+     </keybind>									            <!-- #BL-POSTINSTALL-autosnap -->
+    <keybind key="C-A-Right">					      <!-- #BL-POSTINSTALL-autosnap -->
+      <action name="GoToDesktop">				    <!-- #BL-POSTINSTALL-autosnap -->
+        <to>right</to>							        <!-- #BL-POSTINSTALL-autosnap -->
+        <wrap>no</wrap>							        <!-- #BL-POSTINSTALL-autosnap -->
+      </action>									            <!-- #BL-POSTINSTALL-autosnap -->
+    </keybind>									            <!-- #BL-POSTINSTALL-autosnap -->
+    <keybind key="C-A-Up">						      <!-- #BL-POSTINSTALL-autosnap -->
+      <action name="ToggleAlwaysOnTop"/>		<!-- #BL-POSTINSTALL-autosnap -->
+    </keybind>									            <!-- #BL-POSTINSTALL-autosnap -->
+
