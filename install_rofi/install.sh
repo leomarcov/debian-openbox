@@ -20,8 +20,30 @@ for d in /etc/skel/  /home/*/; do
     [ "$(dirname "$d")" = "/home" ] && ! id "$(basename "$d")" &>/dev/null && continue
 
 	# Create config folders if no exists
+	d2="$d"
 	d="$d/.config/"; [ ! -d "$d" ] && mkdir -v "$d" && chown -R $(stat "$(dirname "$d")" -c %u:%g) "$d"
 	d="$d/rofi/";  [ ! -d "$d" ] && mkdir -v "$d" && chown -R $(stat "$(dirname "$d")" -c %u:%g) "$d"
 
-	cp -v "$base_dir/config.rasi" "$d/" && chown -R $(stat "$(dirname "$d")" -c %u:%g) "$d/config.rasi"
+	# Copy theme
+	f="config.rasi"
+	cp -v "$base_dir/$f" "$d/" && chown -R $(stat "$(dirname "$d")" -c %u:%g) "$d/$f"
+	
+	d="$d2/.config/openbox/"
+	f="$d/rc.xml"
+	
+	# Edit rc.xml config
+	sed -i "/${comment_mark}/d" "$f"		# Delete lines added previously
+	sed -i "s/<command>gmrun<\/command>/<command>${rofi_command}<\/command>/g" "$f"	# Change alt+f2 shortkey for rofi
+	sed -i "/<keyboard>/a<keybind key=\"C-Tab\"><action name=\"Execute\"><command>${rofi_command}<\/command><\/action><\/keybind>     <\!-- #${comment_mark} -->" "$f"	# Add ctrl+tab shortkey
+	
+	# Set as runas in menu:
+	f="$d/menu.xml"
+	sed -i "/<item label=\"Run Program\">/,/<\/item>/d" "$f"	# Delte current Run program entry
+	sed -i "/<menu id=\"root-menu\"/a<item label=\"Run Program\"><action name=\"Execute\"><command>${rofi_command}<\/command><\/action><\/item>    <\!-- #${comment_mark} -->" "$f"	# Add Run Program entry
+
+	# Config super key as runas
+	f="$d/autostart"
+	sed -i '/xcape.*Super_L.*space/s/^/#/g' "$f"  
+	echo 'xcape -e "Super_L=Control_L|Tab"  '"$comment_mark" | tee -a  "$f"
+	
 done
