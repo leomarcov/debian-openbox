@@ -1,5 +1,5 @@
 #!/bin/bash
-# ACTION: Install Termiantor term and themes
+# ACTION: Install Termiantor terminal and themes
 # DEFAULT: y
 
 # Check root
