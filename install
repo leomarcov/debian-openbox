@@ -13,7 +13,7 @@
 # DESCRIPTION: Show command help
 #===================================================================================
 function help() {
-	echo -e 'Exec install actions  '"$bunsen_ver"'
+	echo -e 'Exec install scripts actions'
 Usage: '$(basename $0)' [-h] [-l] [-a <actions>] [-y] [-d]
    \e[1m-l\e[0m\t\tOnly list actions 
    \e[1m-a <actions>\e[0m\tOnly do selected actions (e.g: -a 5,6,10-15)
