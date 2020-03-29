@@ -28,9 +28,9 @@ for d in /etc/skel /home/*/; do
 	d="$d/openbox/";  [ ! -d "$d" ] && { mkdir -v "$d"; chown -R $(stat "$(dirname "$d")" -c %u:%g) "$d"; }
 
 	# Copy openbox config file
-	cp -v "$base_dir/rc.xml" "$d" 
+	cp -v "$base_dir/rc.xml" "$d" && chown -R $(stat "$(dirname "$d")" -c %u:%g) "$d/rc.xml"
 	# Copy openbox autostart file
-	cp -v "$base_dir/autostart" "$d"
+	cp -v "$base_dir/autostart" "$d" && chown -R $(stat "$(dirname "$d")" -c %u:%g) "$d/autostart"
 done
 
 
