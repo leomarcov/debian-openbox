@@ -19,7 +19,7 @@
   
   
 &nbsp; 
-### Customize
+## Customize
 The script can be easily customized. Each action script `.sh` placed in a subdirectory are automatillacy recognized by `install`.
   * For remove action simply delete the action directory.
   * For add action simply add new folder and place the install script `.sh` and dependences. The script must have this header:
