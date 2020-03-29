@@ -9,7 +9,7 @@ Script must be exec over **Debian 10** installation (best on netinstall without 
   * Config a basic themes and styles for Openbox, Gtk, fonts, icon pack, wallpapers.
   * Install some user tools: Brave/Chrome browser, SublimeText, Atom, VirtualBox and Extensión Pack,
   * Config prompt and aliases.
-  * Install [**`Numix-Paper icon theme`**](https://github.com/leomarcov/debian-openbox/tree/master/theme_numix-paper-icon).
+  * Install [**`Numix-Paper icon theme`**](https://github.com/leomarcov/debian-openbox/tree/master/theme_numix-paper-icon), a theme based on Numix and Paper icon packs.
   
 
 
