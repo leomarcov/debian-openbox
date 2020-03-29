@@ -26,7 +26,7 @@ sed -i "/$comment_mark/Id" /etc/profile
 echo '[ "$(tty)" = "/dev/tty1" ] && startx && exit   '"$comment_mark" >> /etc/profile
 
 # Show neofetch info at login
-which neofetch &>/dev/null || apt-get install neofetch
+which neofetch &>/dev/null || apt-get install -y neofetch
 if which neofetch &>/dev/null; then
 	# Copy script and config files:
 	cp -v /etc/issue /etc/issue.old
