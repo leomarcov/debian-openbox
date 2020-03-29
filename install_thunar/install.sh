@@ -23,3 +23,4 @@ for d in /etc/skel/  /home/*/ ; do
 	cp -v "$base_dir/thunar.xml" "$d" && chown -R $(stat "$(dirname "$d")" -c %u:%g) "$d/thunar.xml"
 done
 
+update-alternatives --install /usr/bin/x-file-manager x-file-manager /usr/bin/thunar 90
