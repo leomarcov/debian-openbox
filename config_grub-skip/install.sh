@@ -1,7 +1,7 @@
 #!/bin/bash
 # ACTION: Config GRUB for skip menu (timeout=0)
 # INFO: If you are using only one OS in the computer you con skip GRUB menu for faster boot.
-# DEFAULT: y
+# DEFAULT: n
 
 # Check root
 [ "$(id -u)" -ne 0 ] && { echo "Must run as root" 1>&2; exit 1; }
