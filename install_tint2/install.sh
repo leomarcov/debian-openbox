@@ -22,10 +22,10 @@ for d in /etc/skel/  /home/*/; do
     [ "$(dirname "$d")" = "/home" ] && ! id "$(basename "$d")" &>/dev/null && continue
 	
 	# Create config folders if no exists
-	d="$d/.config/"; [ ! -d "$d" ] && { mkdir -v "$d"; chown -R $(stat "$(dirname "$d")" -c %u:%g) "$d"; }
-	d="$d/tint2/";  [ ! -d "$d" ] && { mkdir -v "$d"; chown -R $(stat "$(dirname "$d")" -c %u:%g) "$d"; }
+	d="$d/.config/"; [ ! -d "$d" ] && mkdir -v "$d" && chown -R $(stat "$(dirname "$d")" -c %u:%g) "$d"
+	d="$d/tint2/";  [ ! -d "$d" ] && mkdir -v "$d" && chown -R $(stat "$(dirname "$d")" -c %u:%g) "$d"
 	
-	cp -v "$base_dir/"*tint* "$d" && chown $(stat "$(dirname "$d")" -c %u:%g) "$d"/*tint*;
+	cp -v "$base_dir/"*tint* "$d" && chown $(stat "$(dirname "$d")" -c %u:%g) "$d"/*tint*
 	
 	[ "$laptop" ] && [ ! "$virtualmachine" ] && tint_version="_laptop"
 	
