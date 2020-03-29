@@ -7,6 +7,11 @@
 
 base_dir="$(dirname "$(readlink -f "$0")")"
 
+# INSTALL TINT
+find /var/cache/apt/pkgcache.bin -mtime 0 &>/dev/null ||  apt-get update
+apt-get install -y tint2
+
+
 # Check if laptop:
 [ -f /sys/module/battery/initstate ] || [ -d /proc/acpi/battery/BAT0 ] && laptop="true"
 # Check if virtualmachine:
