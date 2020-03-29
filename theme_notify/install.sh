@@ -15,7 +15,18 @@ apt-get install -y libnotify-bin xfce4-notifyd
 mkdir -p "/usr/share/themes/clear-notify/xfce-notify-4.0/"
 cp -v "$base_dir/clear_xfce-notify-4.0_gtk.css" "/usr/share/themes/clear-notify/xfce-notify-4.0/gtk.css"
 
-for f in  /etc/skel/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-notifyd.xml  /home/*/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-notifyd.xml ; do
-  sed -i '/name="theme"/s/value=".*"/value="clear-notify"/' "$f"
+for f in  /etc/skel/  /home/*/ ; do
+    # Skip dirs in /home that not are user home
+    [ "$(dirname "$d")" = "/home" ] && ! id "$(basename "$d")" &>/dev/null && continue
+	
+	# Create config folders if no exists
+	d="$d/.config/"; [ ! -d "$d" ] && mkdir -v "$d" && chown -R $(stat "$(dirname "$d")" -c %u:%g) "$d"
+	d="$d/xfce4/";  [ ! -d "$d" ] && mkdir -v "$d" && chown -R $(stat "$(dirname "$d")" -c %u:%g) "$d"	
+	d="$d/xfconf/";  [ ! -d "$d" ] && mkdir -v "$d" && chown -R $(stat "$(dirname "$d")" -c %u:%g) "$d"	
+	d="$d/xfce-perchannel-xml/";  [ ! -d "$d" ] && mkdir -v "$d" && chown -R $(stat "$(dirname "$d")" -c %u:%g) "$d"	
+	f="$d/xfce4-notifyd.xml"
+	
+	[ ! -f "$f" ] && cp -v "$base_dir/xfce4-notifyd.xml" "$d" && chown -R $(stat "$(dirname "$d")" -c %u:%g) "$f"
+	sed -i '/name="theme"/s/value=".*"/value="clear-notify"/' "$f"
 done
 
