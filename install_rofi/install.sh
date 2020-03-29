@@ -8,10 +8,9 @@
 
 comment_mark="#DEBIAN-OPENBOX-rofi"
 rofi_command="rofi -show drun -display-drun Search"
-
-
-# Install compiled package rofi with icons
 base_dir="$(dirname "$(readlink -f "$0")")"
+
+# Install rofi package
 find /var/cache/apt/pkgcache.bin -mtime 0 &>/dev/null ||  apt-get update  
 apt-get install -y rofi
 
