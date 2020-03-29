@@ -9,7 +9,7 @@ atom_url="https://atom.io/download/deb"
 t=$(mktemp -d)
 wget -P "$t" "$atom_url"  
 if [ $? -eq 0 ]; then
-  apt-get install -y gvfs-bin
   yes | dpkg -i "$t/"*
+  apt-get install -f -y 
 fi 
 rm -rf "$t"
