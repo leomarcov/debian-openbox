@@ -16,7 +16,7 @@ for d in /etc/skel/  /home/*/ ; do
 
     # Create config folders if no exists
 	d="$d/.config/"; [ ! -d "$d" ] && mkdir -v "$d" && chown -R $(stat "$(dirname "$d")" -c %u:%g) "$d"
-	d="$d/xfce4/"; [ ! -d "$d" ] && {kdir -v "$d" && chown -R $(stat "$(dirname "$d")" -c %u:%g) "$d"
+	d="$d/xfce4/"; [ ! -d "$d" ] && mkdir -v "$d" && chown -R $(stat "$(dirname "$d")" -c %u:%g) "$d"
 	d="$d/xfconf/"; [ ! -d "$d" ] && mkdir -v "$d" && chown -R $(stat "$(dirname "$d")" -c %u:%g) "$d"
 	d="$d/xfce-perchannel-xml/"; [ ! -d "$d" ] && mkdir -v "$d" && chown -R $(stat "$(dirname "$d")" -c %u:%g) "$d"
 	
