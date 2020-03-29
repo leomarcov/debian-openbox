@@ -7,7 +7,11 @@
 
 base_dir="$(dirname "$(readlink -f "$0")")"
 
-# Create theme:
+# Install packages
+find /var/cache/apt/pkgcache.bin -mtime 0 &>/dev/null ||  apt-get update
+apt-get install -y libnotify-bin xfce4-notifyd
+
+# Create theme
 mkdir -p "/usr/share/themes/clear-notify/xfce-notify-4.0/"
 cp -v "$base_dir/clear_xfce-notify-4.0_gtk.css" "/usr/share/themes/clear-notify/xfce-notify-4.0/gtk.css"
 
