@@ -558,12 +558,12 @@
         <action name="Move"/>
       </mousebind>
 
-
-	<!-- #DEBIAN-OPENBOX-mouse-wheel-title    	
-      <mousebind button="Left" action="DoubleClick">
-        <action name="ToggleMaximize"/>
-      </mousebind>
-      
+  	
+    <mousebind button="Left" action="DoubleClick">
+       <action name="ToggleMaximize"/>
+    </mousebind>
+		
+	<!-- #DEBIAN-OPENBOX-mouse-wheel-title        
     <mousebind button="Up" action="Click">
       <action name="if">
         <shaded>no</shaded>
