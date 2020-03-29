@@ -33,7 +33,6 @@ The script can be easily customized. Each action script `.sh` placed in a subdir
   
   ```
 
-
 &nbsp;  
 ## Lincense
 [GPLv3](LICENSE)
