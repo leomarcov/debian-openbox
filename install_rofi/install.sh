@@ -40,10 +40,4 @@ for d in /etc/skel/  /home/*/; do
 	f="$d/menu.xml"
 	sed -i "/<item label=\"Run Program\">/,/<\/item>/d" "$f"	# Delte current Run program entry
 	sed -i "/<menu id=\"root-menu\"/a<item label=\"Run Program\"><action name=\"Execute\"><command>${rofi_command}<\/command><\/action><\/item>    <\!-- #${comment_mark} -->" "$f"	# Add Run Program entry
-
-	# Config super key as runas
-	f="$d/autostart"
-	sed -i '/xcape.*Super_L.*space/s/^/#/g' "$f"  
-	echo 'xcape -e "Super_L=Control_L|Tab"  '"$comment_mark" | tee -a  "$f"
-	
 done
