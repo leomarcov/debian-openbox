@@ -5,8 +5,7 @@ Lock session
 Power off
 Reboot
 Suspend
-Hibernate
-"
+Hibernate"
 
 if [ $# -eq 0 ]; then
 	echo "$options"
