@@ -9,7 +9,7 @@
 find /var/cache/apt/pkgcache.bin -mtime 0 &>/dev/null ||  apt-get update  
 
 # Install free packages
-apt-get install -y vim vlc fonts-freefont-ttf fonts-droid-fallback zip unzip gmtp mtp-tools mailutils traceroute acl gnupg2 synaptic galternatives
+apt-get install -y vim vlc fonts-freefont-ttf fonts-droid-fallback zip unzip gmtp mtp-tools mailutils traceroute acl gnupg2 synaptic galternatives yad
 
 # Install non-free packages
 apt-get install ttf-mscorefonts-installer rar
