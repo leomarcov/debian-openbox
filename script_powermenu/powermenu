@@ -1,6 +1,6 @@
 #!/bin/bash
 
-options=$'Logout\nShutdown\nReboot'
+options=$'Logout\nPower off\nReboot'
 
 if [ $# -eq 0 ]; then
 	echo "$options"
@@ -10,14 +10,23 @@ elif [ "$1" = "show" ]; then
 
 else
 	case $@ in
-	*Logout)
-		i3-msg exit
+	Logout)
+		openbox --exit
 		;;
-	*Shutdown)
-		shutdown now
+	Lock session)
+		physlock
 		;;
-	*Reboot)
-		reboot
+	Power off)
+		systemctl poweroff
+		;;
+	Reboot)
+		systemctl reboot
+		;;
+	Suspend) 
+		systemctl suspend
+		;;
+	Hibernate)
+		systemctl hibernate
 		;;
 	esac
 fi
