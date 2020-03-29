@@ -17,6 +17,6 @@ fi
 apt-get install sublime-text || exit 1
 
 # Set as default
-#update-alternatives --install /usr/bin/bl-text-editor bl-text-editor /usr/bin/subl 90 && \
-#update-alternatives --set bl-text-editor /usr/bin/subl
+update-alternatives --install /usr/bin/x-text-editor x-text-editor /usr/bin/subl 90 && \
+update-alternatives --set x-text-editor /usr/bin/subl
 
