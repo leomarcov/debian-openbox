@@ -1,6 +1,12 @@
 #!/bin/bash
 
-options=$'Logout\nPower off\nReboot'
+options="Logout
+Lock session
+Power off
+Reboot
+Suspend
+Hibernate
+"
 
 if [ $# -eq 0 ]; then
 	echo "$options"
