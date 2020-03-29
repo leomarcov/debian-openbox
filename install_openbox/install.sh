@@ -1,6 +1,5 @@
 #!/bin/bash
 # ACTION: Install Openbox and tools for full environment
-# INFO: GoHome modified is a clear and cool Openbox theme.
 # DEFAULT: y
 
 # Check root
