@@ -1,8 +1,8 @@
-      <mousebind button="Left" action="DoubleClick">                      <!-- #BL-POSTINSTALL-autosnap -->
-        <action name="Execute">                                           <!-- #BL-POSTINSTALL-autosnap -->
-          <command>autosnap</command>                                     <!-- #BL-POSTINSTALL-autosnap -->
-        </action>                                                         <!-- #BL-POSTINSTALL-autosnap -->
-      </mousebind>                                                        <!-- #BL-POSTINSTALL-autosnap -->
+      <mousebind button="Left" action="DoubleClick">                      <!-- #DEBIAN-OPENBOX-autosnap -->
+        <action name="Execute">                                           <!-- #DEBIAN-OPENBOX-autosnap -->
+          <command>autosnap</command>                                     <!-- #DEBIAN-OPENBOX-autosnap -->
+        </action>                                                         <!-- #DEBIAN-OPENBOX-autosnap -->
+      </mousebind>                                                        <!-- #DEBIAN-OPENBOX-autosnap -->
 
       <mousebind button="Left" action="Press">
         <action name="Focus"/>
