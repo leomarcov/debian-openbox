@@ -14,7 +14,7 @@ apt-get -y install arc-theme
 # Change accent color blue (#5294e2) for grey:
 find /usr/share/themes/Arc -type f -exec sed -i 's/#5294e2/#b3bcc6/g' {} \;   
 	
-for f in  /etc/skel/.gtkrc-2.0  /home/*/.gtkrc-2.0 ; do
+for f in  /etc/skel/ /home/*/ ; do
     # Skip dirs in /home that not are user home
     [ "$(dirname "$d")" = "/home" ] && ! id "$(basename "$d")" &>/dev/null && continue
 	
