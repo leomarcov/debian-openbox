@@ -31,7 +31,7 @@ for d in  /etc/skel/  /home/*/ ; do
 
 	# Create config folders if no exists
 	d="$d/.config/"; [ ! -d "$d" ] && { mkdir -v "$d"; chown -R $(stat "$(dirname "$d")" -c %u:%g) "$d"; }
-	d="$d/.gtk-3.0/"; [ ! -d "$d" ] && { mkdir -v "$d"; chown -R $(stat "$(dirname "$d")" -c %u:%g) "$d"; }
+	d="$d/gtk-3.0/"; [ ! -d "$d" ] && { mkdir -v "$d"; chown -R $(stat "$(dirname "$d")" -c %u:%g) "$d"; }
 
 	f="$d/settings.ini"
 	[ ! -f "$f" ] && { cp -v "$base_dir/settings.ini" "$d"; chown -R $(stat "$(dirname "$d")" -c %u:%g) "$f"; }
