@@ -20,6 +20,6 @@ for d in /etc/skel/  /home/*/ ; do
 	d="$d/xfconf/"; [ ! -d "$d" ] && { mkdir -v "$d"; chown -R $(stat "$(dirname "$d")" -c %u:%g) "$d"; }
 	d="$d/xfce-perchannel-xml/"; [ ! -d "$d" ] && { mkdir -v "$d"; chown -R $(stat "$(dirname "$d")" -c %u:%g) "$d"; }
 	
-	cp -v "$base_dir/thunar.xml" "$d"
+	cp -v "$base_dir/thunar.xml" "$d" && chown -R $(stat "$(dirname "$d")" -c %u:%g) "$d/thunar.xml"
 done
 
