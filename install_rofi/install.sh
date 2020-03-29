@@ -6,21 +6,25 @@
 # Check root
 [ "$(id -u)" -ne 0 ] && { echo "Must run as root" 1>&2; exit 1; }
 
-comment_mark="#BL-POSTINSTALL-rofi"
+comment_mark="#DEBIAN-OPENBOX-rofi"
 rofi_command="rofi -show drun -display-drun Search"
 
 
 # Install compiled package rofi with icons
 base_dir="$(dirname "$(readlink -f "$0")")"
-dpkg -i "$base_dir/"*.deb
 find /var/cache/apt/pkgcache.bin -mtime 0 &>/dev/null ||  apt-get update  
-apt-get install -f
+apt-get install -y rofi
 
 # Config rofi theme and run mode for all users
-for d in /usr/share/bunsen/skel/.config/  /home/*/.config/; do
-	# Copy theme
-	[ ! -d "$d/rofi/" ] && mkdir -p "$d/rofi/"
-	cp -v "$base_dir/android_notification2.rasi" "$d/rofi/config.rasi"
+for d in /etc/skel/  /home/*/.config/; do
+    # Skip dirs in /home that not are user home
+    [ "$(dirname "$d")" = "/home" ] && ! id "$(basename "$d")" &>/dev/null && continue
+
+	# Create config folders if no exists
+	d="$d/.config/"; [ ! -d "$d" ] && { mkdir -v "$d"; chown -R $(stat "$(dirname "$d")" -c %u:%g) "$d"; }
+	d="$d/rofi/";  [ ! -d "$d" ] && { mkdir -v "$d"; chown -R $(stat "$(dirname "$d")" -c %u:%g) "$d"; }
+
+	cp -v "$base_dir/config.rasi" "$d/" && chown -R $(stat "$(dirname "$d")" -c %u:%g) "$d/config.rasi"
 
 	# Edit rc.xml config
 	sed -i "/${comment_mark}/d" "$d/openbox/rc.xml"		# Delete lines added previously
