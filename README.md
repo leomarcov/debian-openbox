@@ -14,3 +14,19 @@
 
 &nbsp; 
 ## Install
+  * Install Debian 10 netinstall without desktop environment.
+  * Clone or download project.
+  
+  
+&nbsp; 
+## Customize
+
+
+&nbsp;  
+# Lincense
+Labadmin license is [GPLv3](LICENSE)
+
+# Contact
+My name is Leonardo Marco. I'm sysadmin teacher in [CIFP Carlos III](https://cifpcarlos3.es/), Cartagena, Murcia (Spain).
+
+You can email me for suggestions, contributions, labadmin help or share your feelings: labadmin@leonardomarco.com
