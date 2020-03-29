@@ -15,10 +15,10 @@ elif [ "$1" = "show" ]; then
 
 else
 	case $@ in
-	"Logout")
+	Logout)
 		openbox --exit
 		;;
-	"Lock session")
+	Lock\ session)
 		physlock
 		;;
 	"Power off")
