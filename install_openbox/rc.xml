@@ -601,14 +601,6 @@
       <action name="Unshade"/>
     </mousebind>
 
-	<!-- #BL-POSTINSTALL-autosnap  
-    <mousebind button="Middle" action="Press">
-      <action name="Lower"/>
-      <action name="FocusToBottom"/>
-      <action name="Unfocus"/>
-    </mousebind>
-	-->
-
     <mousebind button="Right" action="Press">
       <action name="Focus"/>
       <action name="Raise"/>
