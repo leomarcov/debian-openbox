@@ -13,7 +13,7 @@ for d in  /home/*/  /etc/skel/  /root; do
 	[ "$(dirname "$d")" = "/home" ] && ! id "$(basename "$d")" &>/dev/null && continue
     
 	sed -i "/$comment_mark/Id" "$d/.bash_aliases" 2> /dev/null
-	cat "$base_dir/bash_aliases" >> "$d/.bash_aliases"
+	cp -v "$base_dir/bash_aliases" "$d/.bash_aliases"
 done
 
 grep -q ".bash_aliases" /root/.bashrc || echo '
