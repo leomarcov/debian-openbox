@@ -1,0 +1,149 @@
+#!/bin/bash
+#===================================================================================
+# UPDATE NOTIFICATION
+# FILE: update_notification
+#
+# DESCRIPTION: Checks apt updates and show it to user in tint2 taskbar
+#
+# AUTHOR: Leonardo Marco
+# VERSION: 1.0
+# CREATED: 15.10.2017 
+# LAST-UPDATE: 15.10.2017
+#===================================================================================
+
+# CONFIG
+updates_file="/var/cache/update-notification"
+install_file="/usr/bin/$(basename $0)" 
+cron_when="weekly"	# weekly | monthly | daily | hourly
+
+
+
+#=== FUNCTION ==================================================================
+# NAME: update
+# DESCRIPTION: make apt update and and check new packages updates and save the list in $updates_file
+#===============================================================================
+function update () {
+	# CHECK INTERNET CONNECTION
+	echo "Checking Internet connection..."
+	ping -c 1 8.8.8.8 &>/dev/null || exit 1
+
+	# REPOSITORY UPDATE-NOTIFICATION
+	echo "Updating package repositoriy..."
+	aptitude update &> /dev/null
+	echo "Checking updates and saving in $updates_file..."
+	sudo bash -c 'aptitude search "~U" &> '"$updates_file"
+	[ ! -s "$updates_file" ] && rm "$updates_file" &> /dev/null
+	exit 0
+}
+
+
+#=== FUNCTION ==================================================================
+# NAME: update
+# DESCRIPTION: make apt upgrade interactive
+#===============================================================================
+function interactive_upgrade() {
+	echo -e "\e[1mPENDING UPDATES\e[0m"
+	cat "$updates_file"
+	echo
+	read -p "Press to continue upgrade..."
+
+	sudo aptitude full-upgrade
+	if ! [ $? -eq 0 ]; then 
+		read; 
+		exit 1; 
+	fi
+
+	sudo rm "$updates_file"
+	(which bl-tint2restart &> /dev/null && bl-tint2restart &>/dev/null) &
+	
+	echo
+	read -p "Update complete..."
+	exit
+}
+
+#=== FUNCTION ==================================================================
+# NAME: tint2_executor_msg
+# DESCRIPTION: shot text for display in systray
+#===============================================================================
+function tint2_executor_msg {
+	[ -r "$updates_file" ] && echo $(wc "$updates_file" -l | cut -f 1 -d " ")" UPDATES  //"
+	exit 0
+}
+
+
+#=== FUNCTION ==================================================================
+# NAME: install
+# DESCRIPTION: install the script
+#===============================================================================
+function install {
+	echo "Copying $(basename $0) to $install_file"
+	[ "$install_file" = "$(readlink -f $0)" ] || sudo cp "$0" "$install_file" 
+	chmod +x "$install_file"
+
+	echo "Creating symblink in /etc/cron.$cron_when" 
+	sudo rm "/etc/cron.$cron_when/$(basename $install_file)" &> /dev/null
+	sudo ln -s "$install_file" "/etc/cron.$cron_when"  || exit 1
+	
+	echo '
+Manual config needed for tint2:
+execp = new
+execp_command = '"$(basename $install_file)"' -m
+execp_lclick_command = x-terminal-emulator -b -e '"$(basename $install_file)"' -i
+execp_tooltip = Pending updates...
+execp_interval = 0
+execp_background_id = 4
+execp_font = Droid Sans 10
+execp_font_color = #FFFFFF 100
+execp_centered = 1
+execp_padding = 8 0 0
+'
+	exit 
+}
+
+#=== FUNCTION ==================================================================
+# NAME: update
+# DESCRIPTION: uninstall the script
+#===============================================================================
+function uninstall {
+	echo "Deleting $install_file..."
+	sudo rm "$install_file"
+	echo "Deleting symblink /etc/cron.$cron_when/$(basename $install_file)..."
+	sudo rm "/etc/cron.$cron_when/$(basename $install_file)"
+	echo "Deleting $updates_file..."
+	sudo rm "$updates_file"
+	exit 
+}
+
+
+
+#=== FUNCTION ==================================================================
+# NAME: help
+# DESCRIPTION: Show command help
+#===============================================================================
+function help() {
+	echo -e 'Checks apt updates and show it to user in tint2 taskbar
+Usage: '$(basename $0)' -[huc]
+   \e[1m-h\e[0m\tShow command help
+   \e[1m-i\e[0m\tStart interactive upgrade
+   \e[1m-m\e[0m\tOutput message for exector tint2
+   \e[1m-u\e[0m\tMake apt update and check for new packages updates
+   \e[1m-I\e[0m\tInstall the script (copy and link to cron.$cron_when)
+   \e[1m-U\e[0m\tUninstall
+	'
+	exit 0
+}
+
+
+
+while getopts ":himuIU" o
+do
+	case $o in
+		h) help ;;
+		i) interactive_upgrade ;;
+		m) tint2_executor_msg ;;
+		I) install ;;
+		U) uninstall ;;
+		u) ;; # UPDATE DEFAULT
+	esac
+done
+update 		# DEFAULT
