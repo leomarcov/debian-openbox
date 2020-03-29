@@ -32,6 +32,9 @@ for d in /etc/skel /home/*/; do
 	# Copy openbox autostart file
 	f="autostart"
 	cp -v "$base_dir/$f" "$d" && chown -R $(stat "$d" -c %u:%g) "$d/$f"
+	# Copy openbox menu file
+	f="menu.xml"
+	cp -v "$base_dir/$f" "$d" && chown -R $(stat "$d" -c %u:%g) "$d/$f"	
 done
 
 
