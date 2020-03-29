@@ -1,5 +1,5 @@
 #!/bin/bash
-# ACTION: Config GRUB for skip menu
+# ACTION: Config GRUB for skip menu (timeout=0)
 # INFO: If you are using only one OS in the computer you con skip GRUB menu for faster boot.
 # DEFAULT: y
 
