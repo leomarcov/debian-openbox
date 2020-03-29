@@ -1,0 +1,10 @@
+syntax on
+set mouse=r
+set hlsearch
+set ignorecase
+set smartcase
+set incsearch
+set showmatch
+set tabstop=4
+"set autoindent
+"colorscheme torte
