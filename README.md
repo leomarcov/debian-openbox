@@ -1,2 +1,2 @@
 # debian-openbox
-Script to install minimal Openbox enviroment in Debian 10 Buster.
+Script to install minimal Openbox enviroment from Debian 10 Netinstall.
