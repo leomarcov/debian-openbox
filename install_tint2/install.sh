@@ -1,5 +1,5 @@
 #!/bin/bash
-# ACTION: Install new tint2 theme
+# ACTION: Install tint2 bar and themes
 # DEFAULT: y
 
 # Check root
