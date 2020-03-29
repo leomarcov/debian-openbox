@@ -14,11 +14,11 @@ elif [ "$1" = "show" ]; then
 	rofi -theme box -show "Power menu" -modi "Power menu":"$(readlink -f "$0")"
 
 else
-	case $@ in
-	Logout)
+	case "$@" in
+	"Logout")
 		openbox --exit
 		;;
-	Lock\ session)
+	"Lock session")
 		physlock
 		;;
 	"Power off")
