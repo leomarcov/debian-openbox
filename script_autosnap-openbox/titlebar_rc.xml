@@ -1,4 +1,4 @@
-      <mousebind button="Center" action="Click">                          <!-- #DEBIAN-OPENBOX-autosnap -->
+      <mousebind button="Middle" action="Click">                          <!-- #DEBIAN-OPENBOX-autosnap -->
         <action name="Execute">                                           <!-- #DEBIAN-OPENBOX-autosnap -->
           <command>autosnap</command>                                     <!-- #DEBIAN-OPENBOX-autosnap -->
         </action>                                                         <!-- #DEBIAN-OPENBOX-autosnap -->
@@ -12,17 +12,17 @@
         <action name="Move"/>
       </mousebind>
 
+      <mousebind button="Left" action="DoubleClick">
+        <action name="ToggleMaximize"/>
+      </mousebind>
+
+<!-- #BL-POSTINSTALL-autosnap
       <mousebind button="Middle" action="Press">
         <action name="Lower"/>
         <action name="FocusToBottom"/>
         <action name="Unfocus"/>
       </mousebind>
 
-      <mousebind button="Left" action="DoubleClick">
-        <action name="ToggleMaximize"/>
-      </mousebind>
-
-<!-- #BL-POSTINSTALL-autosnap
     <mousebind button="Up" action="Click">
       <action name="if">
         <shaded>no</shaded>
