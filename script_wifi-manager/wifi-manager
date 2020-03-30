@@ -63,6 +63,8 @@ function connect {
 	if [ "$ssid_current" = "$ssid" ] ; then
 		dhclient -v -r "$iface"
 		ip link set dev $iface down
+		killall wpa_supplicant
+		exit
 	fi
 	
 	echo -en "\e[1m$ssid\e[0m password: "
