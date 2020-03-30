@@ -16,7 +16,7 @@
         <action name="ToggleMaximize"/>
       </mousebind>
 
-<!-- #BL-POSTINSTALL-autosnap
+<!-- #DEBIAN-OPENBOX-autosnap
       <mousebind button="Middle" action="Press">
         <action name="Lower"/>
         <action name="FocusToBottom"/>
@@ -38,12 +38,12 @@
       <action name="if">
         <shaded>yes</shaded>
         <then>
-          <action name="Unshade"/>
+          <action name="Unshade"/>	
           <action name="Raise"/>
         </then>
       </action>
     </mousebind>
-#BL-POSTINSTALL-autosnap -->
+#DEBIAN-OPENBOX-autosnap -->
 
       <mousebind button="Right" action="Press">
         <action name="Focus"/>
