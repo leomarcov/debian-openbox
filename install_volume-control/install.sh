@@ -23,7 +23,7 @@ for d in /etc/skel /home/*/; do
 	# Set theme icon
 	f="$d/config"
 	if [ ! -f "$f" ]; then
-		echo -e "[PNMixer]\nSystemTheme=true" > "$f" && chown -R $(stat "$(dirname "$d")" -c %u:%g) "$f"
+		echo -e "[PNMixer]\nSystemTheme=true\nVolumeControlCommand=pavucontrol" > "$f" && chown -R $(stat "$(dirname "$d")" -c %u:%g) "$f"
 	else
 		sed -i 's/SystemTheme=.*/SystemTheme=true/' "$f"
 	fi
