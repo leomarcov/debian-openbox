@@ -1,4 +1,4 @@
-# ACTION: Install exit menu script based in rofi
+# ACTION: Install exit menu script based on rofi
 # DEFAULT: y
 
 # Check root
