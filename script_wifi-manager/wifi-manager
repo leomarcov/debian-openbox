@@ -125,7 +125,31 @@ function connect {
 }
 
 
+#=== FUNCTION ==================================================================
+# NAME: check_dependences
+# DESCRIPTION: checks for script dependences and exit if not found any
+#===============================================================================
+function check_dependences {
+	deps="iwgetid wpa_supplicant dhclient ip sudo"
+	deps_err=""
+	for d in $deps; do
+		! which "$d" &>/dev/null && deps_err="$deps_err${deps_err:+" "}$d"
+	done
+	
+	if [ "$deps_err" ]; then
+		echo "Not found dependences: $deps_err" 1>&2
+		exit 1
+	fi
+	
+	return 0
+}
 
+
+
+#=== FUNCTION ==================================================================
+# NAME: main
+# DESCRIPTION: start function
+#===============================================================================
 function main {
 	# Select network
     unset n
@@ -143,7 +167,6 @@ function main {
 	
 	connect "${essids[$((n-1))]}" "$iface"
 }
-
 
 main
 
