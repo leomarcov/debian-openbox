@@ -53,7 +53,7 @@ function list {
 function connect {
 	local ssid="$1"
 	local pass
-	read -P "$ssid passowrd: " pass
+	read -p "$ssid passowrd: " pass
 	wpa_supplicant -B -i "$iface" -c <(wpa_passphrase "$ssid" "$pass")
 }
 
