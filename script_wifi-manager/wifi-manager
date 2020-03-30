@@ -61,9 +61,9 @@ function connect {
 	local pass
 	
 	if [ "$ssid_current" = "$ssid" ] ; then
+		killall wpa_supplicant
 		dhclient -v -r "$iface"
 		ip link set dev $iface down
-		killall wpa_supplicant
 		exit
 	fi
 	
