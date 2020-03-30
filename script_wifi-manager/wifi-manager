@@ -62,6 +62,7 @@ function connect {
 	
 	if [ "$ssid_current" = "$ssid" ] ; then
 		dhclient -v -r "$iface"
+		ip link set dev $iface down
 		exit
 	fi
 	
