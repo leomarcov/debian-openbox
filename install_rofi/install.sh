@@ -1,5 +1,5 @@
 #!/bin/bash
-# ACTION: Install rofi and config as default
+# ACTION: Install rofi and config as default launcher
 # INFO: Rofi is a simple text switcher and launcher
 # DEFAULT: y
 
