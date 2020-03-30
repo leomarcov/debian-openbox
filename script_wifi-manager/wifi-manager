@@ -52,15 +52,16 @@ function list {
 
 function main {
 	# Select network
-    n=0
+    unset n
     while [ ! "$n" ]; do
         clear
         scan
         [ ${#addresses[*]} -eq 0 ] && { sleep 1; continue; }
         list
         echo
-		while [ "$n" ] && ! ([ "$n" -le ${#addresses[*]} ]&>/dev/null && [ "$n" -ge 1 ]&>/dev/null); do
-        read -p "Select connection: " n
+		while ! ([ "$n" -le ${#addresses[*]} ]&>/dev/null && [ "$n" -ge 1 ]&>/dev/null); do
+        	read -p "Select connection: " n
+			[ ! "$n" ] && break
 		done
     done
 }
