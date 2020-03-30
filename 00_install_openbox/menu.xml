@@ -92,6 +92,13 @@
                     <action name="Restart"/>
                 </item>
             </menu>
+			<item label="Toogle composition">
+				<action name="Execute">
+					<command>
+						bash -c "pgrep compton &amp;>/dev/null &amp;&amp; killall compton || compton&amp;"
+					</command>
+				</action>
+			</item>			
             <item label="Appearance">
                 <action name="Execute">
                     <command>
