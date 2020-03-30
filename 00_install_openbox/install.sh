@@ -24,6 +24,12 @@ for d in /etc/skel /home/*/; do
 
 	# Create config folders if no exists
 	d="$d/.config/"; [ ! -d "$d" ] && mkdir -v "$d" && chown -R $(stat "$(dirname "$d")" -c %u:%g) "$d"
+	
+	#Copy compton file
+	f="compton.conf"
+	cp -v "$base_dir/$f" "$d" && chown -R $(stat "$d" -c %u:%g) "$d/$f"	
+	
+	# Create config folders if no exists
 	d="$d/openbox/";  [ ! -d "$d" ] && mkdir -v "$d" && chown -R $(stat "$(dirname "$d")" -c %u:%g) "$d"
 
 	# Copy openbox config file
