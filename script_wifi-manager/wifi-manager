@@ -58,7 +58,8 @@ function connect {
 	local ssid="$1"
 	local iface="$2"
 	local pass
-	read -p "$ssid password: " pass
+	echo -n "$ddid password: "
+	read pass
 	echo
 	wpa_supplicant -B -i "$iface" -c <(wpa_passphrase "$ssid" "$pass")
 	echo
