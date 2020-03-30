@@ -409,7 +409,7 @@
           <enabled>false</enabled>
           <name>Logout</name>
         </startupnotify>
-        <command>powermenu</command>
+        <command>obexit</command>
       </action>
     </keybind>
     <keybind key="W-Escape">
