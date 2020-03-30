@@ -65,7 +65,7 @@ function connect {
 		ip link set dev $iface down
 	fi
 	
-	echo -n "$ssid password: "
+	echo -en "\e[1m$ssid\e[0m password: "
 	read pass
 	echo
 	[ "$ssid_current" ] && dhclient -v -r "$iface"
