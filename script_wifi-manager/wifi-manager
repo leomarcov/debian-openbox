@@ -1,16 +1,69 @@
 #!/bin/bash
 
-ifaces="$(iw dev | awk '$1=="Interface"{print $2}')"
 
-for i in $ifaces; do
-    echo -e "\e[1mInterface $i\e[0m"
- 
-    scan="$(iwlist wlp5s0 scan | egrep "Address|ESSID|Quality|Channel|Encryption key")"
+function print_signal_bar {
+    a=$(echo "$1" | cut -f1 -d "/")
+    b=$(echo "$1" | cut -f2 -d "/")
+    s=$(((a*100/b)/25+1)); [ $a -eq 0 ] && s=0
+
+    case $s in
+    0) echo "____" ;;
+    1) echo "▂___" ;;
+    2) echo "▂▄__" ;;
+    3) echo "▂▄▆_" ;;
+    [4-9]) echo "▂▄▆█" ;;
+    esac
+}
+
+
+function scan {
+    iface="$(iw dev | awk '$1=="Interface"{print $2}' | head -1)"
+    
+    echo -e "\e[1mScaning interface $iface...\e[0m"
+    scan="$(iwlist "$iface" scan | egrep "Address|ESSID|Quality|Channel|Encryption key")"
+    
     IFS=$'\n'
-    address=($(echo "$scan" | grep Address: | egrep -o "([0-9A-F]{2}:)+[0-9A-F]{2}"))
+    addresses=($(echo "$scan" | grep Address: | egrep -o "([0-9A-F]{2}:)+[0-9A-F]{2}"))
     channels=($(echo "$scan" | grep Channel: | cut -f2 -d:))
     qualities=($(echo "$scan" | grep Quality | egrep -o "[0-9]+/[0-9]+"))
     keys=($(echo "$scan" | grep "Encryption key" | cut -f 2 -d:))
     essids=($(echo "$scan" | grep ESSID | cut -f2 -d: | cut -f2 -d\"))
-    ifaces=(for a in $(seq 1 ${#address[*]}); do echo $i; done)
-done
+}
+
+function list {
+    (
+    echo -e "\e[1mNUM␟SIGNAL␟SSID␟CHANNEL␟ENCRYPT\e[0m"
+    for n in $(seq 1 ${#addresses[*]}); do
+        n=$((n-1))
+        ssid="${essids[$n]}"
+        addr="${addresses[$n]}"
+        channel="${channels[$n]}"
+        quality="${qualities[$n]}"
+        quality="$(print_signal_bar $quality)"
+        key="${keys[$n]}"
+    
+        echo -e "[$((n+1))]␟$quality␟$ssid␟$channel␟$key"
+    
+    done
+    ) | column -t -s "␟"
+}
+
+function main {
+    unset n
+    while [ ! "$n" ]; do
+        clear
+        scan
+        [ ${#addresses[*]} -eq 0 ] && { sleep 1; continue; }
+        list
+        echo
+        read -p "Select connection: " n
+    done
+}
+
+
+function connect {
+	echo test
+}
+
+main
+
