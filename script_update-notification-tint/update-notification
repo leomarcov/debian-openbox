@@ -54,7 +54,6 @@ function interactive_upgrade() {
 	fi
 
 	sudo rm "$updates_file"
-	(which bl-tint2restart &> /dev/null && bl-tint2restart &>/dev/null) &
 	
 	echo
 	read -p "Update complete..."
