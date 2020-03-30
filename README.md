@@ -1,8 +1,6 @@
 # debian-openbox
 <img align="left"  src="https://user-images.githubusercontent.com/32820131/77852132-2de64c00-71dd-11ea-8a66-e4cd3de916f8.png" width="90"> Openbox is a beautifull and lightweight desktop manager, but tediuos to install and config a full usable environment. This script collection automatize **Openbox** installation and essentials tools and apply configurations, styles and themes. Script must be exec over **Debian 10** installation (better on netinstall without desktop environment installed). Each action can be selected interactively in order to install only desired packages and configs.
 
-<img src="https://user-images.githubusercontent.com/32820131/77943761-103ce380-72be-11ea-8944-438ef13452d2.png">
-
 &nbsp; 
 ## Main features
   * Install Openbox and dependences.
@@ -16,6 +14,9 @@
   * Install [**`tty login neofetch`**](https://github.com/leomarcov/debian-openbox/tree/master/script_tty-login-neofetch), a tty login based on neofetch info and config tty lock screen with physlock.
   * Install [**`update-notification script`**](https://github.com/leomarcov/debian-openbox/tree/master/script_update-notification-tint) for check and manage repositories updates.
   * Install [**`brightness control script`**](https://github.com/leomarcov/debian-openbox/tree/master/script_brightness-control) for increase/decrease birghtness screen.
+
+<img src="https://user-images.githubusercontent.com/32820131/77943761-103ce380-72be-11ea-8944-438ef13452d2.png">
+
 
 &nbsp; 
 ## Install
