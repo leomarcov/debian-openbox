@@ -22,6 +22,8 @@ systemctl enable physlock.service
 	
 # Config tty1 to autoexec startx
 sed -i "/$comment_mark/Id" /etc/profile
+echo '[ ! "$DISPLAY" ] && [ "$(fgconsole)" -eq 1 ] && PROMPT_COMMAND="startx; exit;" '"$comment_mamrk" >> /etc/profile
+
 echo '[ "$(tty)" = "/dev/tty1" ] && startx && exit   '"$comment_mark" >> /etc/profile
 
 # Copy script and config files:
