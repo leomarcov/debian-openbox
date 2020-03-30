@@ -147,7 +147,7 @@ function check_dependences {
 
 
 #=== FUNCTION ==================================================================
-# NAME: main
+# NAME: main function
 # DESCRIPTION: start function
 #===============================================================================
 function main {
