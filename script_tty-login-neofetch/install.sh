@@ -37,4 +37,6 @@ echo '[Service]
 ExecStartPre=-/bin/bash -c "/usr/bin/neofetch_issue.sh"' | tee "/etc/systemd/system/getty@.service.d/override.conf"
 fi
 
+# Add physlock as x-lock alternative
+update-alternatives --install /usr/bin/x-locker x-locker $(which physlock) 90
 
