@@ -1,11 +1,11 @@
 #!/bin/bash
 
-options="Logout
-Lock session
-Power off
+options="Power off
 Reboot
 Suspend
-Hibernate"
+Hibernate
+Logout
+Lock session"
 
 if [ $# -eq 0 ]; then
 	echo "$options"
