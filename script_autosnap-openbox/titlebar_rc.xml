@@ -18,11 +18,11 @@
         <action name="Unfocus"/>
       </mousebind>
 
-<!-- #BL-POSTINSTALL-autosnap
       <mousebind button="Left" action="DoubleClick">
         <action name="ToggleMaximize"/>
       </mousebind>
 
+<!-- #BL-POSTINSTALL-autosnap
     <mousebind button="Up" action="Click">
       <action name="if">
         <shaded>no</shaded>
