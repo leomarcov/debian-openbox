@@ -76,6 +76,8 @@ function tint2_executor_msg {
 # DESCRIPTION: install the script
 #===============================================================================
 function install {
+	which aptitude &>/dev/null || apt-get install -y aptitude
+	
 	echo "Copying $(basename $0) to $install_file"
 	[ "$install_file" = "$(readlink -f $0)" ] || sudo cp "$0" "$install_file" 
 	chmod +x "$install_file"
