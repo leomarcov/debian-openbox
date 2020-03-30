@@ -33,9 +33,11 @@ function scan {
 
 function list {
     (
+	# Get current connected SSID
+	ssid_current="$(iwgetid $iface | cut -f2 -d: | cut -f2 -d\")"
+	
     echo -e "\e[1mNUM␟SIGNAL␟SSID␟CHANNEL␟ENCRYPT\e[0m"
-    for n in $(seq 1 ${#addresses[*]}); do
-        n=$((n-1))
+    for n in $(seq 0 $((${#addresses[*]}-1))); do
 		addr="${addresses[$n]}"
         ssid="${essids[$n]}"
 		[ ! "$ssid" ] && ssid="$addr"
@@ -44,7 +46,9 @@ function list {
         quality="$(print_signal_bar $quality)"
         key="${keys[$n]}"
     
+		[ "$ssid" = "$ssid_current" ] && echo -en "\e[32m\e[1m"
         echo -e "[$((n+1))]␟$quality␟$ssid␟$channel␟$key"
+		[ "$ssid" = "$ssid_current" ] && echo -en "\e[0m"
     
     done
     ) | column -t -s "␟"
@@ -54,7 +58,7 @@ function connect {
 	local ssid="$1"
 	local iface="$2"
 	local pass
-	read -p "$ssid passowrd: " pass
+	read -p "$ssid password: " pass
 	echo
 	wpa_supplicant -B -i "$iface" -c <(wpa_passphrase "$ssid" "$pass")
 	echo
