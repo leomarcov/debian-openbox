@@ -48,7 +48,7 @@ function list {
     
 		[ "$ssid" = "$ssid_current" ] && echo -en "\e[32m\e[1m"
         echo -e "[$((n+1))]␟$quality␟$ssid␟$channel␟$key"
-		[ "$ssid" = "$ssid_current" ] && echo -en "\e[0m "
+		[ "$ssid" = "$ssid_current" ] && echo -en "\e[0m"
     
     done
     ) | column -t -s "␟"
@@ -61,14 +61,14 @@ function connect {
 	local pass
 	
 	if [ "$ssid_current" = "$ssid" ] ; then
-		dhclient -rv "$iface"
+		dhclient -v -r "$iface"
 		exit
 	fi
 	
 	echo -n "$ssid password: "
 	read pass
 	echo
-	[ "$ssid_current" ] && dhclient -rv "$iface"
+	[ "$ssid_current" ] && dhclient -v -r "$iface"
 	echo
 	wpa_supplicant -B -i "$iface" -c <(wpa_passphrase "$ssid" "$pass")
 	echo
