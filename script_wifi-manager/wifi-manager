@@ -158,7 +158,6 @@ function main {
 	# GET GLOBAL VARIABLES VALUES
     iface="$(iw dev | awk '$1=="Interface"{print $2}' | head -1)"
 	ssid_current="$(iwgetid $iface | cut -f2 -d: | cut -f2 -d\")"
-	
 
 	# SELECT NETWORK
     unset n
