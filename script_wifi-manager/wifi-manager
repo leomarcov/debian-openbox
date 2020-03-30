@@ -1,0 +1,16 @@
+#!/bin/bash
+
+ifaces="$(iw dev | awk '$1=="Interface"{print $2}')"
+
+for i in $ifaces; do
+    echo -e "\e[1mInterface $i\e[0m"
+ 
+    scan="$(iwlist wlp5s0 scan | egrep "Address|ESSID|Quality|Channel|Encryption key")"
+    IFS=$'\n'
+    address=($(echo "$scan" | grep Address: | egrep -o "([0-9A-F]{2}:)+[0-9A-F]{2}"))
+    channels=($(echo "$scan" | grep Channel: | cut -f2 -d:))
+    qualities=($(echo "$scan" | grep Quality | egrep -o "[0-9]+/[0-9]+"))
+    keys=($(echo "$scan" | grep "Encryption key" | cut -f 2 -d:))
+    essids=($(echo "$scan" | grep ESSID | cut -f2 -d: | cut -f2 -d\"))
+    ifaces=(for a in $(seq 1 ${#address[*]}); do echo $i; done)
+done
