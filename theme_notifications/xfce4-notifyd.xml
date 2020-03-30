@@ -5,4 +5,3 @@
   <property name="theme" type="string" value="clear-notify"/>
   <property name="initial-opacity" type="double" value="0.850000"/>
 </channel>
-
