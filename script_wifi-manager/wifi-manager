@@ -52,7 +52,7 @@ function list {
 
 function main {
 	# Select network
-    unset n
+    n=0
     while [ ! "$n" ]; do
         clear
         scan
