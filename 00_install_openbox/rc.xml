@@ -189,7 +189,6 @@
   </dock>
 
   <keyboard>
-<keybind key="C-Tab"><action name="Execute"><command>rofi -show drun -display-drun Search</command></action></keybind>     <!-- ##BL-POSTINSTALL-rofi -->
     <chainQuitKey>C-g</chainQuitKey>
     <!-- Keybindings for desktop switching -->
     <keybind key="C-A-Left">
@@ -259,7 +258,7 @@
     </keybind>
     <keybind key="A-Print">
       <action name="Execute">
-        <command>scrot '%Y-%m-%d--%s_$wx$h_scrot.png' -e 'mv $f ~/Pictures/screenshots/ ; bl-image-viewer ~/Pictures/screenshots/$f'</command>
+        <command>scrot '%Y-%m-%d--%s_$wx$h_scrot.png' -e 'mv $f ~/Pictures/screenshots/ ; x-image-viewer ~/Pictures/screenshots/$f'</command>
       </action>
     </keybind>
 
@@ -340,7 +339,7 @@
           <enabled>false</enabled>
           <name>File Manager</name>
         </startupnotify>
-        <command>bl-file-manager</command>
+        <command>x-file-manager</command>
       </action>
     </keybind>
     <keybind key="W-t">
@@ -367,7 +366,7 @@
           <enabled>false</enabled>
           <name>Lock screen</name>
         </startupnotify>
-        <command>bl-lock</command>
+        <command>x-lock</command>
       </action>
     </keybind>
     <keybind key="W-e">
@@ -376,16 +375,7 @@
           <enabled>false</enabled>
           <name>Editor</name>
         </startupnotify>
-        <command>bl-text-editor</command>
-      </action>
-    </keybind>
-    <keybind key="W-m">
-      <action name="Execute">
-        <startupnotify>
-          <enabled>false</enabled>
-          <name>Mediaplayer</name>
-        </startupnotify>
-        <command>bl-media-player</command>
+        <command>x-text-editor</command>
       </action>
     </keybind>
     <keybind key="W-h">
@@ -419,7 +409,7 @@
           <enabled>false</enabled>
           <name>Logout</name>
         </startupnotify>
-        <command>bl-exit</command>
+        <command>powermenu</command>
       </action>
     </keybind>
     <keybind key="W-Escape">
@@ -789,14 +779,6 @@
     </context>
 
     <context name="Desktop">
-	<!-- #BL-POSTINSTALL-mouse-wheel-desktop    	
-    <mousebind button="Up" action="Click">
-      <action name="GoToDesktop"><to>previous</to></action>
-    </mousebind>
-    <mousebind button="Down" action="Click">
-      <action name="GoToDesktop"><to>next</to></action>
-    </mousebind>
-    -->
     <mousebind button="A-Up" action="Click">
       <action name="GoToDesktop"><to>previous</to></action>
     </mousebind>
