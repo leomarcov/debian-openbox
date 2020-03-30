@@ -178,7 +178,7 @@
         <item label="Lock Screen">
             <action name="Execute">
                 <command>
-                    physlock
+					x-lock
                 </command>
             </action>
         </item>
