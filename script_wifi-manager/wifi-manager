@@ -10,6 +10,10 @@
 # CREATED: 2020.03.29
 #===================================================================================
 
+#=== GLOBAL VARIABLES DEFINITION ===============================================
+unset iface				# iface to use
+unset ssid_current		# Current ssid connected
+
 
 #=== FUNCTION ==================================================================
 # NAME: print_signal_bar
@@ -34,10 +38,8 @@ function print_signal_bar {
 #=== FUNCTION ==================================================================
 # NAME: scan
 # DESCRIPTION: scan visible wifi networks ssid and fill arrays: address, channels, qualities, keys and essids
-# PARAM1: iface
 #===============================================================================
 function scan {
-	local iface="$1"
     [ ! "$(ip link show $iface up)" ] && sudo ip link set dev $iface up
 	
     echo -e "\e[1mScaning interface $iface...\e[0m"
@@ -54,7 +56,7 @@ function scan {
 
 #=== FUNCTION ==================================================================
 # NAME: list
-# DESCRIPTION: print a list of ssids scanned in columns
+# DESCRIPTION: print the list of scanned SSIDS and show in columns
 #===============================================================================
 function list {
     (
@@ -83,11 +85,8 @@ function list {
 #=== FUNCTION ==================================================================
 # NAME: disconnect
 # DESCRIPTION: disconnect current wifi connection and down wlan iface
-# PARAM1: iface to disconnect
 #===============================================================================
 function disconnect {
-	local iface="$1"
-	local ssid_current="$(iwgetid $iface | cut -f2 -d: | cut -f2 -d\")"
 	echo -e "\n\e[1mDisconnecting from $ssid_current\e[0m"
 	killall wpa_supplicant
 	dhclient -v -r "$iface"
@@ -97,9 +96,8 @@ function disconnect {
 
 #=== FUNCTION ==================================================================
 # NAME: connect
-# DESCRIPTION: connect to ssid asking for password
+# DESCRIPTION: connect to ssid and ask for password
 # PARAM1: ssid to connect
-# PARAM2: iface
 #===============================================================================
 function connect {
 	local ssid="$1"
@@ -126,13 +124,15 @@ function connect {
 }
 
 
+
 #=== FUNCTION ==================================================================
 # NAME: check_dependences
 # DESCRIPTION: checks for script dependences and exit if not found any
 #===============================================================================
 function check_dependences {
-	deps="iwgetid wpa_supplicant dhclient ip sudo"
+	deps="iwgetid iwlist wpa_supplicant dhclient ip sudo"
 	deps_err=""
+	
 	for d in $deps; do
 		! which "$d" &>/dev/null && deps_err="$deps_err${deps_err:+" "}$d"
 	done
@@ -152,14 +152,15 @@ function check_dependences {
 # DESCRIPTION: start function
 #===============================================================================
 function main {
+	# CHECK DEPENDENCES
 	chech_dependences
 	
-	# Get global varialbes values
+	# GET GLOBAL VARIABLES VALUES
     iface="$(iw dev | awk '$1=="Interface"{print $2}' | head -1)"
 	ssid_current="$(iwgetid $iface | cut -f2 -d: | cut -f2 -d\")"
 	
 
-	# Select network
+	# SELECT NETWORK
     unset n
     while [ ! "$n" ]; do
         clear
@@ -173,6 +174,7 @@ function main {
 		done
     done
 	
+	# CONNECT NETWORK
 	connect "${essids[$((n-1))]}" "$iface"
 }
 
