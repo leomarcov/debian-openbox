@@ -178,7 +178,7 @@
         <item label="Lock Screen">
             <action name="Execute">
                 <command>
-					x-lock
+					x-locker
                 </command>
             </action>
         </item>
