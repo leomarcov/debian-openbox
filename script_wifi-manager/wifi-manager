@@ -35,8 +35,9 @@ function list {
     echo -e "\e[1mNUM␟SIGNAL␟SSID␟CHANNEL␟ENCRYPT\e[0m"
     for n in $(seq 1 ${#addresses[*]}); do
         n=$((n-1))
+		addr="${addresses[$n]}"
         ssid="${essids[$n]}"
-        addr="${addresses[$n]}"
+		[ ! "$ssid" ] && ssid="$addr"
         channel="${channels[$n]}"
         quality="${qualities[$n]}"
         quality="$(print_signal_bar $quality)"
