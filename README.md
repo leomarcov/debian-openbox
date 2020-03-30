@@ -94,7 +94,7 @@ The script can be easily customized. Each action script `.sh` placed in a subdir
   # INFO: Optional aditional info
   # DEFAULT: y
   
-  commands to do
+  scripts commands
   
   ```
 
