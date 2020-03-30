@@ -54,6 +54,13 @@ function list {
     ) | column -t -s "␟"
 }
 
+function disconnect {
+	local iface="$1"
+	killall wpa_supplicant
+	dhclient -v -r "$iface"
+	ip link set dev $iface down	
+}
+
 function connect {
 	local ssid="$1"
 	local ssid_current="$(iwgetid $iface | cut -f2 -d: | cut -f2 -d\")"
@@ -61,10 +68,10 @@ function connect {
 	local pass
 	
 	if [ "$ssid_current" ]; then
-		killall wpa_supplicant
-		dhclient -v -r "$iface"
-		ip link set dev $iface down
+		disconnect "$iface"
+		[ "$ssid_current" = "$ssid" ] && exit
 	fi
+
 	
 	echo -en "\e[1m$ssid\e[0m password: "
 	read pass
