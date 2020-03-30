@@ -1,4 +1,4 @@
-      <mousebind button="Left" action="DoubleClick">                      <!-- #DEBIAN-OPENBOX-autosnap -->
+      <mousebind button="Center" action="Click">                          <!-- #DEBIAN-OPENBOX-autosnap -->
         <action name="Execute">                                           <!-- #DEBIAN-OPENBOX-autosnap -->
           <command>autosnap</command>                                     <!-- #DEBIAN-OPENBOX-autosnap -->
         </action>                                                         <!-- #DEBIAN-OPENBOX-autosnap -->
