@@ -20,7 +20,8 @@ for d in /etc/skel/  /home/*/ ; do
 	d="$d/xfconf/"; [ ! -d "$d" ] && mkdir -v "$d" && chown -R $(stat "$(dirname "$d")" -c %u:%g) "$d"
 	d="$d/xfce-perchannel-xml/"; [ ! -d "$d" ] && mkdir -v "$d" && chown -R $(stat "$(dirname "$d")" -c %u:%g) "$d"
 	
-	cp -v "$base_dir/thunar.xml" "$d" && chown -R $(stat "$(dirname "$d")" -c %u:%g) "$d/thunar.xml"
+	f="thunar.xml"
+	cp -v "$base_dir/$f" "$d" && chown -R $(stat "$(dirname "$d")" -c %u:%g) "$d/$f"
 done
 
 update-alternatives --install /usr/bin/x-file-manager x-file-manager /usr/bin/thunar 90
