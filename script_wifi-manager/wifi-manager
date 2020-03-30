@@ -50,6 +50,15 @@ function list {
     ) | column -t -s "␟"
 }
 
+function connect {
+	local ssid="$1"
+	local pass
+	read -P "$ssid passowrd: " pass
+	wpa_supplicant -B -i "$iface" -c <(wpa_passphrase "$ssid" "$pass")
+}
+
+
+
 function main {
 	# Select network
     unset n
@@ -64,12 +73,11 @@ function main {
 			[ ! "$n" ] && break
 		done
     done
+	
+	connect "${essids[$((n-1))]}" 
 }
 
 
-function connect {
-	echo test
-}
 
 main
 
