@@ -152,7 +152,7 @@ launcher_tooltip = 1
 
 #launcher_item_app = /usr/share/applications/rofi.desktop
 #launcher_item_app = /usr/share/applications/google-chrome.desktop
-#launcher_item_app = /usr/share/applications/bl-file-manager.desktop
+#launcher_item_app = /usr/share/applications/x-file-manager.desktop
 #launcher_item_app = /usr/share/applications/poweroff.desktop
 
 
