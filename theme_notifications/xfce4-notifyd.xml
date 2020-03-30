@@ -13,3 +13,4 @@
   <property name="log-level-apps" type="uint" value="0"/>
   <property name="theme" type="string" value="clear-notify"/>
 </channel>
+
