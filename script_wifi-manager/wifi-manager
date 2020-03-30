@@ -56,6 +56,8 @@ function list {
 
 function disconnect {
 	local iface="$1"
+	local ssid_current="$(iwgetid $iface | cut -f2 -d: | cut -f2 -d\")"
+	echo -e "\n\e[1mDisconnecting from $ssid_current\e[0m	
 	killall wpa_supplicant
 	dhclient -v -r "$iface"
 	ip link set dev $iface down	
@@ -71,15 +73,17 @@ function connect {
 		disconnect "$iface"
 		[ "$ssid_current" = "$ssid" ] && exit
 	fi
-
 	
+	# Read pass
 	echo -en "\e[1m$ssid\e[0m password: "
 	read pass
-	echo
+	
+	echo -e "\n\e[1mConnecting to $ssid_current\e[0m
 	[ "$ssid_current" ] && dhclient -v -r "$iface"
 	echo
 	wpa_supplicant -B -i "$iface" -c <(wpa_passphrase "$ssid" "$pass")
-	echo
+	
+	echo -e "\n\e[1mGetting DHCP address\e[0m
 	dhclient -v $iface
 }
 
