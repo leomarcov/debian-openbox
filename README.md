@@ -32,35 +32,6 @@ Usage: install [-l] [-a <actions>] [-y] [-d] [-h]
    -h		Show this help
 
 
-# List all actions:
-$ ./install -l
-[1] Config useful aliases (y)
-[2] Config new bash prompt (y)
-[3] Config system for show messages during boot (y)
-[4] Config CTRL+ALT+BACKSPACE shortcut for kill X server (y)
-[5] Config vim with custom configs (y)
-[6] Install Atom text editor (n)
-[7] Install Brave browser, add to repositories and set has default browser (y)
-[8] Install Google Chrome, add to repositories and set has default browser (n)
-[9] Install Openbox and tools for full environment (y)
-[10] Install script ps_mem.py (y)
-[11] Install rofi and config as default (y)
-[12] Install some useful packages (y)
-[13] Install Sublime Text, add repositories and set as default editor  (y)
-[14] Install sudo and add user 1000 to sudo (y)
-[15] Install Termiantor terminal and config theme (y)
-[16] Install and config Thunar (show toolbar and double-click for active items) (y)
-[17] Install tint2 bar and themes (y)
-[18] Install mixer and volume control (y)
-[19] Install script autosnap for autosnap windows with double click in titlebar (y)
-[20] Config text mode login using tty instead of lightdm display manager (y)
-[21] Install theme Arc GTK and set as default (y)
-[22] Install pack of popular fonts (y)
-[23] Install icon theme Numix-Paper and set as default (y)
-[24] Install nitrogen and copy wallpapers pack and set Aptenodytes wallpaper as default (y)
-
-
-
 # Exec all actions interactively:
 $ sudo ./install
 
@@ -72,6 +43,44 @@ $ sudo ./install -d
 
 # Exec only actions 5,7,10,11,12,13,14 and 15:
 $ sudo ./install -a 5,7,10-15
+
+
+# List all actions:
+$ ./install -l
+[1] Install some basic packages (y)
+[2] Install Openbox and tools for full environment (y)
+[3] Config useful aliases (y)
+[4] Config new bash prompt (y)
+[5] Config system for show messages during boot (y)
+[6] Config GRUB with password for prevent users edit entries (y)
+[7] Config GRUB for skip menu (timeout=0) (n)
+[8] Config CTRL+ALT+BACKSPACE shortcut for kill X server (y)
+[9] Config vim with custom configs (y)
+[10] Install Atom text editor (n)
+[11] Install Brave browser, add to repositories and set has default browser (y)
+[12] Install Google Chrome, add to repositories and set has default browser (n)
+[13] Install script ps_mem.py (y)
+[14] Install rofi and config as default (y)
+[15] Install Sublime Text, add repositories and set as default editor  (y)
+[16] Install sudo and add user 1000 to sudo (y)
+[17] Install Termiantor terminal and config theme (y)
+[18] Install and config Thunar (show toolbar and double-click for active items) (y)
+[19] Install tint2 bar and themes (y)
+[20] Install VirtualBox 6.1 and Extension Pack, add to repositories and insert to Openbox menu (y)
+[21] Install mixer and volume control (y)
+[22] Install script poweroff_last for automatize shutdown if no users logged in 20 minutes (n)
+[23] Install script autosnap for autosnap windows with double click in titlebar (y)
+[24] Install script brightness (y)
+[25] Install exit menu script based on rofi (y)
+[26] Config text mode login using tty instead of lightdm display manager (y)
+[27] Install script update-notification (y)
+[28] Install theme Arc GTK and set as default (y)
+[29] Install pack of popular fonts (y)
+[30] Install clear xfce4-notify theme (y)
+[31] Install icon theme Numix-Paper and set as default (y)
+[32] Install nitrogen and copy wallpapers pack and set Aptenodytes wallpaper as default (y)
+
+
 ```
   
 &nbsp; 
