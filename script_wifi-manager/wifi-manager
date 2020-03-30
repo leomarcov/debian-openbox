@@ -59,7 +59,7 @@ function main {
         [ ${#addresses[*]} -eq 0 ] && { sleep 1; continue; }
         list
         echo
-		while ! ([ "$n" -le ${addresses[*]} ] && [ "$n" -ge 1 ]); then
+		while ! ([ "$n" -le ${addresses[*]} ] && [ "$n" -ge 1 ]); do
         read -p "Select connection: " n
 		done
     done
