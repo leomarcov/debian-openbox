@@ -18,5 +18,6 @@ for d in /etc/skel/  /home/*/; do
 	d="$d/.config/"; [ ! -d "$d" ] && mkdir -v "$d" && chown -R $(stat "$(dirname "$d")" -c %u:%g) "$d"
 	d="$d/terminator/"; [ ! -d "$d" ] && mkdir -v "$d" && chown -R $(stat "$(dirname "$d")" -c %u:%g) "$d"
 	
-	cp -v "$base_dir"/config "$d/" && chown -R $(stat "$(dirname "$d")" -c %u:%g) "$d/config"
+	f="config"
+	cp -v "$base_dir/$f" "$d/" && chown -R $(stat "$(dirname "$d")" -c %u:%g) "$d/$f"
 done
