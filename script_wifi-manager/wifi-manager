@@ -18,7 +18,8 @@ function print_signal_bar {
 
 function scan {
     iface="$(iw dev | awk '$1=="Interface"{print $2}' | head -1)"
-    
+    [ ! "$(ip link show $iface up)" ] && sudo ip link set dev $iface up
+	
     echo -e "\e[1mScaning interface $iface...\e[0m"
     scan="$(iwlist "$iface" scan | egrep "Address|ESSID|Quality|Channel|Encryption key")"
     
