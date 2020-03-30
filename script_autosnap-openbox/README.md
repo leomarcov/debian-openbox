@@ -15,7 +15,7 @@ It should work in **1 or 2 monitors** (in horizontal).
 ```xml
     <context name="Titlebar">
     ...
-      <mousebind button="Center" action="Click">
+      <mousebind button="Middle" action="Click">
         <action name="Execute">
           <command>autosnap</command>
         </action>        
