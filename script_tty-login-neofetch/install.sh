@@ -24,8 +24,6 @@ systemctl enable physlock.service
 sed -i "/$comment_mark/Id" /etc/profile
 echo '[ ! "$DISPLAY" ] && [ "$(fgconsole)" -eq 1 ] && PROMPT_COMMAND="startx; exit;" '"$comment_mamrk" >> /etc/profile
 
-echo '[ "$(tty)" = "/dev/tty1" ] && startx && exit   '"$comment_mark" >> /etc/profile
-
 # Copy script and config files:
 cp -v /etc/issue /etc/issue.old
 [ ! -d "/etc/systemd/system/getty@.service.d/" ] && mkdir -vp "/etc/systemd/system/getty@.service.d/"
