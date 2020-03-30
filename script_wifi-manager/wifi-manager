@@ -63,7 +63,7 @@ function connect {
 	echo
 	wpa_supplicant -B -i "$iface" -c <(wpa_passphrase "$ssid" "$pass")
 	echo
-	dhclient $iface
+	dhclient -v $iface
 }
 
 
