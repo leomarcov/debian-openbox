@@ -55,7 +55,9 @@ function connect {
 	local iface="$2"
 	local pass
 	read -p "$ssid passowrd: " pass
+	echo
 	wpa_supplicant -B -i "$iface" -c <(wpa_passphrase "$ssid" "$pass")
+	echo
 	dhclient $iface
 }
 
@@ -76,7 +78,6 @@ function main {
 		done
     done
 	
-	echo
 	connect "${essids[$((n-1))]}" "$iface"
 }
 
