@@ -99,7 +99,7 @@ function main {
         list
         echo
 		while ! ([ "$n" -le ${#addresses[*]} ]&>/dev/null && [ "$n" -ge 1 ]&>/dev/null); do
-        	read -p "Select connection: " n
+        	read -p "Select network: " n
 			[ ! "$n" ] && break
 		done
     done
