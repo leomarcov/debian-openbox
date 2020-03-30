@@ -24,9 +24,9 @@ for f in  /etc/skel/  /home/*/ ; do
 	d="$d/xfce4/";  [ ! -d "$d" ] && mkdir -v "$d" && chown -R $(stat "$(dirname "$d")" -c %u:%g) "$d"	
 	d="$d/xfconf/";  [ ! -d "$d" ] && mkdir -v "$d" && chown -R $(stat "$(dirname "$d")" -c %u:%g) "$d"	
 	d="$d/xfce-perchannel-xml/";  [ ! -d "$d" ] && mkdir -v "$d" && chown -R $(stat "$(dirname "$d")" -c %u:%g) "$d"	
-	f="$d/xfce4-notifyd.xml"
 	
-	[ ! -f "$f" ] && cp -v "$base_dir/xfce4-notifyd.xml" "$d" && chown -R $(stat "$(dirname "$d")" -c %u:%g) "$f"
+	f="xfce4-notifyd.xml"
+	[ ! -f "$d/$f" ] && cp -v "$base_dir/$f" "$d" && chown -R $(stat "$(dirname "$d")" -c %u:%g) "$d/$f"
 	sed -i '/name="theme"/s/value=".*"/value="clear-notify"/' "$f"
 done
 
