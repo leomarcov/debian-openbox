@@ -48,7 +48,7 @@ function list {
     
 		[ "$ssid" = "$ssid_current" ] && echo -en "\e[32m\e[1m"
         echo -e "[$((n+1))]␟$quality␟$ssid␟$channel␟$key"
-		[ "$ssid" = "$ssid_current" ] && echo -en "\e[0m"
+		[ "$ssid" = "$ssid_current" ] && echo -en "\e[0m "
     
     done
     ) | column -t -s "␟"
