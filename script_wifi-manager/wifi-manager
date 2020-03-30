@@ -1,10 +1,25 @@
 #!/bin/bash
+#===================================================================================
+# WIFI MANAGER CLI
+# FILE: wifi-manager
+#
+# DESCRIPTION: Wifi connection manager CLI
+#
+# AUTHOR: Leonardo Marco
+# VERSION: 1.0
+# CREATED: 2020.03.29
+#===================================================================================
 
 
+#=== FUNCTION ==================================================================
+# NAME: print_signal_bar
+# DESCRIPTION: prints a wifi singal bar from a signal value like 33/70
+# PARAM1: signal like 33/70
+#===============================================================================
 function print_signal_bar {
     a=$(echo "$1" | cut -f1 -d "/")
     b=$(echo "$1" | cut -f2 -d "/")
-    s=$(((a*100/b)/25+1)); [ $a -eq 0 ] && s=0
+    s=$(((a*100/b)/25+1)); [ $a -eq 0 ] && s=0		# Value from 0 to 5
 
     case $s in
     0) echo "____" ;;
@@ -16,6 +31,10 @@ function print_signal_bar {
 }
 
 
+#=== FUNCTION ==================================================================
+# NAME: scan
+# DESCRIPTION: scan visible wifi networks ssid and fill arrays: address, channels, qualities, keys and essids
+#===============================================================================
 function scan {
     iface="$(iw dev | awk '$1=="Interface"{print $2}' | head -1)"
     [ ! "$(ip link show $iface up)" ] && sudo ip link set dev $iface up
@@ -31,6 +50,11 @@ function scan {
     essids=($(echo "$scan" | grep ESSID | cut -f2 -d: | cut -f2 -d\"))
 }
 
+
+#=== FUNCTION ==================================================================
+# NAME: list
+# DESCRIPTION: print a list of ssids scanned in columns
+#===============================================================================
 function list {
     (
 	# Get current connected SSID
@@ -54,6 +78,12 @@ function list {
     ) | column -t -s "␟"
 }
 
+
+#=== FUNCTION ==================================================================
+# NAME: disconnect
+# DESCRIPTION: disconnect current wifi connection and down wlan iface
+# PARAM1: iface to disconnect
+#===============================================================================
 function disconnect {
 	local iface="$1"
 	local ssid_current="$(iwgetid $iface | cut -f2 -d: | cut -f2 -d\")"
@@ -63,6 +93,13 @@ function disconnect {
 	ip link set dev $iface down	
 }
 
+
+#=== FUNCTION ==================================================================
+# NAME: connect
+# DESCRIPTION: connect to ssid asking for password
+# PARAM1: ssid to connect
+# PARAM2: iface
+#===============================================================================
 function connect {
 	local ssid="$1"
 	local ssid_current="$(iwgetid $iface | cut -f2 -d: | cut -f2 -d\")"
@@ -106,7 +143,6 @@ function main {
 	
 	connect "${essids[$((n-1))]}" "$iface"
 }
-
 
 
 main
