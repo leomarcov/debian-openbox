@@ -366,7 +366,7 @@
           <enabled>false</enabled>
           <name>Lock screen</name>
         </startupnotify>
-        <command>x-lock</command>
+        <command>x-locker</command>
       </action>
     </keybind>
     <keybind key="W-e">
