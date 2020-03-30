@@ -6,18 +6,18 @@ It should work in **1 or 2 monitors** (in horizontal).
 ![peek-12-10-2017-20-43](https://user-images.githubusercontent.com/32820131/40352231-9d64c1fa-5dae-11e8-8137-890cadf2c293.gif)
 
 ## Install
-  * Download `autosnap.sh` and copy the script to accessible PATH directory and make it executable.
+  * Download `autosnap` and copy the script to accessible PATH directory and make it executable.
   ```bash
-  cp autosnap.sh /usr/bin/
-  chmod +x /usr/bin/autosnap.sh
+  cp autosnap /usr/bin/
+  chmod +x /usr/bin/autosnap
   ```
-  * Edit Openbox config file `rc.xml` and config mouse center click (or what you want) to exec  command command `autosnap.sh`:
+  * Edit Openbox config file `rc.xml` and config mouse center click (or what you want) to exec  command command `autosnap`:
 ```xml
     <context name="Titlebar">
     ...
       <mousebind button="Center" action="Click">
         <action name="Execute">
-          <command>autosnap.sh</command>
+          <command>autosnap</command>
         </action>        
       </mousebind>
     ...
