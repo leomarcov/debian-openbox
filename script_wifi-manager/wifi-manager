@@ -64,7 +64,6 @@ function connect {
 		killall wpa_supplicant
 		dhclient -v -r "$iface"
 		ip link set dev $iface down
-		exit
 	fi
 	
 	echo -en "\e[1m$ssid\e[0m password: "
