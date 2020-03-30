@@ -15,7 +15,7 @@ apt-get install -y libnotify-bin xfce4-notifyd
 mkdir -p "/usr/share/themes/clear-notify/xfce-notify-4.0/"
 cp -v "$base_dir/clear_xfce-notify-4.0_gtk.css" "/usr/share/themes/clear-notify/xfce-notify-4.0/gtk.css"
 
-for f in  /etc/skel/  /home/*/ ; do
+for d in  /etc/skel/  /home/*/ ; do
     # Skip dirs in /home that not are user home
     [ "$(dirname "$d")" = "/home" ] && ! id "$(basename "$d")" &>/dev/null && continue
 	
