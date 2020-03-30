@@ -185,7 +185,7 @@
         <item label="Exit">
             <action name="Execute">
                 <command>
-                    obmenu show
+                    obexit show
                 </command>
             </action>
         </item>
