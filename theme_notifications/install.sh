@@ -26,7 +26,10 @@ for f in  /etc/skel/  /home/*/ ; do
 	d="$d/xfce-perchannel-xml/";  [ ! -d "$d" ] && mkdir -v "$d" && chown -R $(stat "$(dirname "$d")" -c %u:%g) "$d"	
 	
 	f="xfce4-notifyd.xml"
-	[ ! -f "$d/$f" ] && cp -v "$base_dir/$f" "$d" && chown -R $(stat "$(dirname "$d")" -c %u:%g) "$d/$f"
-	sed -i '/name="theme"/s/value=".*"/value="clear-notify"/' "$f"
+	if [ ! -f "$d/$f" ]; then
+		cp -v "$base_dir/$f" "$d" && chown -R $(stat "$(dirname "$d")" -c %u:%g) "$d/$f"
+	else
+		sed -i '/name="theme"/s/value=".*"/value="clear-notify"/' "$f"
+	fi
 done
 
