@@ -51,8 +51,9 @@ function list {
 }
 
 function main {
+	# Select network
     unset n
-    while [ ! "$n" ]; do
+    while [ ! "$n" ] || [ "$n" -gt ${#addresses[*]} ] || [ "$n" -lt 1 ]; do
         clear
         scan
         [ ${#addresses[*]} -eq 0 ] && { sleep 1; continue; }
