@@ -12,15 +12,15 @@
 #===================================================================================
 
 # Key combinations in openbox (same as configured in rc.xml)
-topleft_key="ctrl+KP_Home"
-top_key="ctrl+KP_Up"
-topright_key="ctrl+KP_Prior"
-left_key="ctrl+KP_Left"
-center_key="ctrl+KP_Begin"
-right_key="ctrl+KP_Right"
-bottomleft_key="ctrl+KP_End"
-bottom_key="ctrl+KP_Down"
-bottomright_key="ctrl+KP_Next"
+topleft_key="super+KP_Home"
+top_key="super+KP_Up"
+topright_key="super+KP_Prior"
+left_key="super+KP_Left"
+center_key="super+KP_Begin"
+right_key="super+KP_Right"
+bottomleft_key="super+KP_End"
+bottom_key="super+KP_Down"
+bottomright_key="super+KP_Next"
 
 # Format xrandr output
 xrandr="$(xrandr | grep -w "connected" | grep -o "[0-9]\+x[0-9]\++[0-9]\++[0-9]\+" | tr "x+" " " | sort -nk 4)"
