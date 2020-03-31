@@ -26,13 +26,13 @@ function print_signal_bar {
     local b=$(echo "$1" | cut -f2 -d "/")
 	local p=$((a*100/b))	# Percent
 	
-	if [ "$p" -lt 12 ]; then
+	if [ "$p" -le 12 ]; then
 		echo "$p%  ____" 
-	elif [ "$p" -lt 37 ]; then
+	elif [ "$p" -le 37 ]; then
 		echo "$p%  ▂___"
-	elif [ "$p" -lt 62 ]; then
+	elif [ "$p" -le 62 ]; then
 		echo "$p%  ▂▄__"
-	elif [ "$p" -lt 85 ]; then
+	elif [ "$p" -le 85 ]; then
 		echo "$p%  ▂▄▆_"
 	elif [ "$p" -le 100 ]; then
 		echo "$p%  ▂▄▆█"
