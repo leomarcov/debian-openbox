@@ -3,7 +3,7 @@
 # WIFI MANAGER CLI
 # FILE: wifi-manager
 #
-# DESCRIPTION: Wifi connection manager CLI
+# DESCRIPTION: a simple wifi manager CLI
 #
 # AUTHOR: Leonardo Marco
 # VERSION: 1.0
@@ -51,7 +51,7 @@ function scan {
 	
     echo -e "\e[1mScaning interface $iface...\e[0m"
     local scan="$(sudo iwlist "$iface" scan | egrep "Address|ESSID|Quality|Channel|Encryption key")"
-    
+	
     IFS=$'\n'
     addresses=($(echo "$scan" | grep Address: | egrep -o "([0-9A-F]{2}:)+[0-9A-F]{2}"))
     channels=($(echo "$scan" | grep Channel: | cut -f2 -d:))
@@ -66,7 +66,8 @@ function scan {
 # DESCRIPTION: print the list of scanned SSIDS and show in columns
 #===============================================================================
 function list {
-    (	
+    (
+	local configured="$(wpa_cli list_networks | grep "^[0-9][[:blank:]]" | cut -f2)"
     echo -e "\e[1mNUM␟  SIGNAL␟SSID␟CHANNEL␟ENCRYPT\e[0m"
     for n in $(seq 0 $((${#addresses[*]}-1))); do
 		local addr="${addresses[$n]}"
