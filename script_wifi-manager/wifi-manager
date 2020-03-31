@@ -27,7 +27,7 @@ function print_signal_bar {
 	local p=$((a*100/b))	# Percent
 	
 	if [ "$p" -lt 12 ]; then
-		echo "$p%  ____" ;;
+		echo "$p%  ____" 
 	elif [ "$p" -lt 37 ]; then
 		echo "$p%  ▂___"
 	elif [ "$p" -lt 62 ]; then
