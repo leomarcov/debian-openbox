@@ -161,9 +161,9 @@ function disconnect {
 #===============================================================================
 function show_status {
 	iwgetid && echo
-	ip -c a show dev $iface
-	echo
 	[ "$daemon_enabled" ] && wpa_cli -i "$iface" status
+	echo
+	ip -c a show dev $iface
 }
 
 
