@@ -62,7 +62,7 @@ function scan {
 #===============================================================================
 function list {
     (	
-    echo -e "\e[1mNUM␟SIGNAL␟SSID␟CHANNEL␟ENCRYPT\e[0m"
+    echo -e "\e[1mNUM␟  SIGNAL␟SSID␟CHANNEL␟ENCRYPT\e[0m"
     for n in $(seq 0 $((${#addresses[*]}-1))); do
 		local addr="${addresses[$n]}"
         local ssid="${essids[$n]}"
