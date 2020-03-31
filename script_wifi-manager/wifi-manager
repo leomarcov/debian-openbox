@@ -102,7 +102,6 @@ function disconnect {
 #===============================================================================
 function connect {
 	local ssid="$1"
-	local ssid_current="$(iwgetid $iface | cut -f2 -d: | cut -f2 -d\")"
 	local iface="$2"
 	local pass
 	
