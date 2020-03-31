@@ -1,12 +1,12 @@
 # debian-openbox
-<img align="left"  src="https://user-images.githubusercontent.com/32820131/77852132-2de64c00-71dd-11ea-8a66-e4cd3de916f8.png" width="90"> Openbox is a beautifull and lightweight desktop manager, but tediuos to install and config a full usable environment. This script collection automatize **Openbox** installation and essentials tools and apply configurations, styles and themes. Script must be exec over **Debian 10** installation (better on netinstall without desktop environment installed). Each action can be selected interactively in order to install only desired packages and configs.
+<img align="left"  src="https://user-images.githubusercontent.com/32820131/77852132-2de64c00-71dd-11ea-8a66-e4cd3de916f8.png" width="90"> Openbox is a beautiful and lightweight desktop manager, but tediuos to install and config a full usable environment. This script collection automatize **Openbox** installation and essentials tools and apply configurations, styles and themes. Script must be exec over **Debian 10** installation (better on netinstall without desktop environment installed). Each action can be selected interactively in order to install only desired packages and configs.
 
 &nbsp; 
 ## Main features
   * Install Openbox and dependences.
   * Install and config essential Openbox tools: Tint2, Rofi, Terminator, Thunar, volume control, etc.
   * Config a basic themes and styles for Openbox, Gtk, fonts, icon pack, wallpapers.
-  * Install some user tools: Brave/Chrome browser, SublimeText, Atom, VirtualBox and Extensión Pack, sudo,, etc.
+  * Install some user tools: Brave/Chrome browser, SublimeText, Atom, VirtualBox and Extensión Pack, sudo,nomacs image viewer etc.
   * Config prompt and aliases.
   * Config Grub for skip menu or protect by password and show messages during boot.
   * Install [**`Numix-Paper icon theme`**](https://github.com/leomarcov/debian-openbox/tree/master/theme_numix-paper-icon), a theme based on Numix and Paper icon packs.
