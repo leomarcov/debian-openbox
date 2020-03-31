@@ -14,7 +14,7 @@ find /var/cache/apt/pkgcache.bin -mtime 0 &>/dev/null ||  apt-get update
 apt-get -y install xdotool
 
 cp -v "$base_dir/autosnap" /usr/bin/
-chmod +x /usr/bin/autosnap
+chmod +x /usr/bin/autosnap 
 
 for d in /etc/skel/  /home/*/; do
     # Skip dirs in /home that not are user home
