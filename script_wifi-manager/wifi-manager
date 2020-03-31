@@ -11,10 +11,11 @@
 #===================================================================================
 
 #=== GLOBAL VARIABLES DEFINITION ===============================================
-dependences="iwgetid iwlist wpa_supplicant wpa_cli dhclient ip sudo"
-unset iface				# iface to use
-unset ssid_current		# Current ssid connected
-
+dependences="iwgetid iwlist wpa_supplicant wpa_cli dhclient ip sudo"		# script dependences
+wpa_config="/etc/wpa_supplicant/wpa_supplicant.conf"						# wpa_supplicant file config to use
+unset daemon_enabled														# Empty if not wpa-cli daemon controlled is enabled
+unset iface																	# iface to use
+unset ssid_current															# Current ssid connected
 unset n_networks
 unset addresses
 unset channels
@@ -26,7 +27,7 @@ declare -A id_networkds
 
 
 
-function wpa_cli-check {
+function wpacli_check {
 	pgrep wpa_supplicant &>/dev/null || return 1
 	wpa-cli -h >/dev/null || return 2
 	return 0
@@ -34,19 +35,19 @@ function wpa_cli-check {
 
 
 
-function wpa_cli-is_stored {
+function wpacli_isstored {
 	local ssid="$1"
 	wpa_cli -i "$iface" list_networks 2>/dev/null | grep "^[0-9][[:blank:]]" | cut -f2 | grep "^${ssid}$" &>/dev/null
 	return $?
 }
 
-function wpa_cli-get-id {
+function wpacli_getid {
 	local ssid="$1"
 	wpa_cli -i $iface list_networks | grep "^[0-9][[:blank:]]" | cut -f1-2 | grep "[[:blank:]]${ssid}$" | cut -f1
 }
 
 
-function wpa_cli-add_network {
+function wpacli_addnetwork {
 	echo hola
 }
 
@@ -104,8 +105,8 @@ function scan {
         [ ! "$ssid" ] && ssid="$addr"
         essids[$n]="$ssid"
 
-        wpa_cli-is_stored "$ssid" && stored[$n]="*"
-        id_networkds["$ssid"]=$(wpa_cli-get-id "$ssid")
+        wpacli_isstored "$ssid" && stored[$n]="*"
+        id_networkds["$ssid"]=$(wpacli_getid "$ssid")
     done
     IFS="$IFS2"
 }
@@ -129,7 +130,7 @@ function list {
        	local saved="${stored[$n]}"
 
 		[ "$ssid" = "$ssid_current" ] && echo -en "\e[32m\e[1m"
-        echo -e "[$((n+1))]␟$quality␟$ssid␟$channel␟$key␟$saved${id_networkds["$ssid"]}"
+        echo -e "[$((n+1))]␟$quality␟$ssid␟$channel␟$key␟$saved"
 		[ "$ssid" = "$ssid_current" ] && echo -en "\e[0m"
     done
     echo
@@ -142,12 +143,28 @@ function list {
 # DESCRIPTION: disconnect current wifi connection and down wlan iface
 #===============================================================================
 function disconnect {
-	echo -e "\n\e[1mDisconnecting from $ssid_current\e[0m"
-	sudo killall wpa_supplicant
+	echo -e "\n\e[1mDisconnecting $iface interface\e[0m"
+	if [ "$daemon_enabled" ]; then
+		wpa_cli -i "$iface" disconnect
+	else
+		sudo killall wpa_supplicant
+	fi
+
 	sudo dhclient -v -r "$iface"
-	sudo ip link set dev $iface down	
+	sudo ip link set dev "$iface" down	
 }
 
+
+#=== FUNCTION ==================================================================
+# NAME: show_status
+# DESCRIPTION: show current status
+#===============================================================================
+function show_status {
+	iwgetid && echo
+	ip -c a show dev $iface
+	echo
+	[ "$daemon_enabled" ] && wpa_cli -i "$iface" status
+}
 
 
 
@@ -162,17 +179,21 @@ function connect_no-saved {
 	sudo dhclient -v "$iface"
 }
 
-function wpa_cli-connecto_notsaved {
+
+function wpacli_connect_notsaved {
 	local ssid="$1"
 	local pass="$2"
 
 	local ndi="$(wpa_cli -i "$iface" add_network)"
-	wpa_cli -i "$iface" 
+	wpa_cli -i "$iface" set_network "$nid" ssid \""$ssid"\"
+	wpa_cli -i "$iface" set_network "$nid" pass \""$pass"\"
+	wpa_cli -i "$iface" select_network "$ssid"
 
+	sudo dhcliente -v "$iface"
 }
 
 
-function wpa_cli-connect_saved {
+function wpacli_connect_saved {
 	local ssid="$1"
 	local nid="${id_networkds["$ssid"]}" 
 
@@ -204,6 +225,20 @@ function connect {
 	
 	echo -e "\n\e[1mGetting DHCP address\e[0m"
 	sudo dhclient -v $iface
+}
+
+
+
+
+#=== FUNCTION ==================================================================
+# NAME: init_wpa-daemon 
+# DESCRIPTION: checks wpa_supplicant daemon is enabled and start it and checks if wpa_cli is enabled
+#===============================================================================
+function init_wpa-daemon {
+	pgrep wpa_supplicant &>/dev/null || wpa_supplicant -B -i "$iface" -c "$wpa_config"
+	sleep 0.1
+	unset daemon_enabled
+	wpa_cli -i "$iface" help &>/dev/null && daemon_enabled=1
 }
 
 
@@ -261,7 +296,7 @@ function main {
 		case $p in
 			h) 	help 0									;;
 			i) 	iface="$OPTARG" 						;;
-			s)	ssid="$OPTARG"							;;
+			s)	pssid=1; ssid="$OPTARG"				;;
 			\?) error_msg "Unknow option: -$OPTARG" 1	;;
 		esac
 	done
@@ -278,9 +313,55 @@ function main {
     fi
 	ssid_current="$(iwgetid $iface | cut -f2 -d: | cut -f2 -d\")"
 
+	# SELECT ACTION
+	while true; do 
+		clear
+		scan
+		list
+		init_wpa-daemon 
+		echo
+		unset action
+		while [ ! "$action" ]; do
+			echo -en "\e[1mAction (h for help)\e[0m: "; read action
+			case "${action,,}" in
+				d|disconnect) 
+					disconnect
+					read -p "Press enter to continue..."
+				;;
+				s|status)
+					show_status
+					echo
+					read -p "Press enter to continue..."
+				;;
+				c|connect)  
+					echo "connect"
+				;;
+				h|help)
+					echo -e "  \e[1mc\e[0monnect\t\tDisconnect"
+					echo -e "  \e[1md\e[0misconnect\t\tDisconnect"
+					echo -e "  \e[1mr\e[0meload\t\tRescan available wifi networks"
+					echo -e "  \e[1ms\e[0mtatus\t\tShow current status connection"
+					echo
+					unset action
+				;;
+				""|reload|r) action="reload"
+				;;
+				*) unset action
+				;;
+			esac
+		done
+	done
 
-	# SELECT NETWORK
-	if [ ! "$ssid" ]; then
+}
+
+main "$@"
+
+
+
+##############3
+
+	# SHOW LIST AND SELECT NETWORK
+	if [ ! "$pssid" ]; then
 	    unset n_selected
 	    while [ ! "$n_selected" ]; do
 	        clear
@@ -295,12 +376,3 @@ function main {
 	    done
 	    local ssid="${essids[$((n_selected-1))]}"
 	fi
-
-	# CONNECT NETWORK
-	connect "$ssid"
-}
-
-main "$@"
-
-
-
