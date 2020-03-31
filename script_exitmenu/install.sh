@@ -6,8 +6,9 @@
 
 base_dir="$(dirname "$(readlink -f "$0")")"
 
-cp -v "$base_dir/obmenu" /usr/bin
-chmod +x /usr/bin/obmenu
+f="obexit"
+cp -v "$base_dir/$f" /usr/bin
+chmod +x "/usr/bin/$f"
 
 for d in /etc/skel/  /home/*/; do
     # Skip dirs in /home that not are user home
