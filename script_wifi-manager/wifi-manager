@@ -11,6 +11,7 @@
 #===================================================================================
 
 #=== GLOBAL VARIABLES DEFINITION ===============================================
+dependences="iwgetid iwlist wpa_supplicant dhclient ip sudo"
 unset iface				# iface to use
 unset ssid_current		# Current ssid connected
 
@@ -43,7 +44,7 @@ function scan {
     [ ! "$(ip link show $iface up)" ] && sudo ip link set dev $iface up
 	
     echo -e "\e[1mScaning interface $iface...\e[0m"
-    scan="$(iwlist "$iface" scan | egrep "Address|ESSID|Quality|Channel|Encryption key")"
+    scan="$(sudo iwlist "$iface" scan | egrep "Address|ESSID|Quality|Channel|Encryption key")"
     
     IFS=$'\n'
     addresses=($(echo "$scan" | grep Address: | egrep -o "([0-9A-F]{2}:)+[0-9A-F]{2}"))
@@ -65,19 +66,19 @@ function list {
 	
     echo -e "\e[1mNUM␟SIGNAL␟SSID␟CHANNEL␟ENCRYPT\e[0m"
     for n in $(seq 0 $((${#addresses[*]}-1))); do
-		addr="${addresses[$n]}"
-        ssid="${essids[$n]}"
+		local addr="${addresses[$n]}"
+        local ssid="${essids[$n]}"
 		[ ! "$ssid" ] && ssid="$addr"
-        channel="${channels[$n]}"
-        quality="${qualities[$n]}"
+        local channel="${channels[$n]}"
+        local quality="${qualities[$n]}"
         quality="$(print_signal_bar $quality)"
-        key="${keys[$n]}"
+        local key="${keys[$n]}"
     
 		[ "$ssid" = "$ssid_current" ] && echo -en "\e[32m\e[1m"
         echo -e "[$((n+1))]␟$quality␟$ssid␟$channel␟$key"
 		[ "$ssid" = "$ssid_current" ] && echo -en "\e[0m"
-    
     done
+    echo
     ) | column -t -s "␟"
 }
 
@@ -88,9 +89,9 @@ function list {
 #===============================================================================
 function disconnect {
 	echo -e "\n\e[1mDisconnecting from $ssid_current\e[0m"
-	killall wpa_supplicant
-	dhclient -v -r "$iface"
-	ip link set dev $iface down	
+	sudo killall wpa_supplicant
+	sudo dhclient -v -r "$iface"
+	sudo ip link set dev $iface down	
 }
 
 
@@ -117,10 +118,10 @@ function connect {
 	echo -e "\n\e[1mConnecting to $ssid_current\e[0m"
 	[ "$ssid_current" ] && dhclient -v -r "$iface"
 	echo
-	wpa_supplicant -B -i "$iface" -c <(wpa_passphrase "$ssid" "$pass")
+	sudo bash -c 'wpa_supplicant -B -i "'"$iface"'" -c <(wpa_passphrase "'"$ssid"'" "'"$pass"'")'
 	
 	echo -e "\n\e[1mGetting DHCP address\e[0m"
-	dhclient -v $iface
+	sudo dhclient -v $iface
 }
 
 
@@ -130,17 +131,13 @@ function connect {
 # DESCRIPTION: checks for script dependences and exit if not found any
 #===============================================================================
 function check_dependences {
-	deps="iwgetid iwlist wpa_supplicant dhclient ip sudo"
 	deps_err=""
 	
-	for d in $deps; do
+	for d in $dependences; do
 		! which "$d" &>/dev/null && deps_err="$deps_err${deps_err:+" "}$d"
 	done
 	
-	if [ "$deps_err" ]; then
-		echo "Not found dependences: $deps_err" 1>&2
-		exit 1
-	fi
+	[ "$deps_err" ] && error_msg "Missing dependences: $deps_err\nPlease, solve dependences and try it again" 1
 	
 	return 0
 }
@@ -148,34 +145,76 @@ function check_dependences {
 
 
 #=== FUNCTION ==================================================================
+# NAME: help
+# DESCRIPTION: checks for script dependences and exit if not found any
+#===============================================================================
+function help {
+	echo "Usage $(basename $0) [-h] [-i iface]"
+	exit $1
+}
+
+
+#=== FUNCTION ==================================================================
+# NAME: error
+# DESCRIPTION: show error message and exit
+# PARAM1: msg
+# PARAM2: exit code 
+#===============================================================================
+function error_msg {
+	local msg="$1"
+	local ecode="$2"
+
+	echo -e "$msg" 1>&2
+	[ "$ecode" ] && exit "$ecode"
+}
+
+
+#=== FUNCTION ==================================================================
 # NAME: main function
 # DESCRIPTION: start function
 #===============================================================================
 function main {
+	# PARAMETERS
+	while getopts ":hi:s:" p; do
+		case $p in
+			h) 	help 0									;;
+			i) 	iface="$OPTARG" 						;;
+			s)	ssid="$OPTARG"							;;
+			\?) error_msg "Unknow option: -$OPTARG" 1	;;
+		esac
+	done
+
+
 	# CHECK DEPENDENCES
-	chech_dependences
+	check_dependences
 	
 	# GET GLOBAL VARIABLES VALUES
-    iface="$(iw dev | awk '$1=="Interface"{print $2}' | head -1)"
+	if [ "$iface" ]; then
+		ip a show dev "$iface" >/dev/null || exit 1
+	else 
+    	iface="$(iw dev | awk '$1=="Interface"{print $2}' | head -1)"
+    fi
 	ssid_current="$(iwgetid $iface | cut -f2 -d: | cut -f2 -d\")"
 
 	# SELECT NETWORK
-    unset n
-    while [ ! "$n" ]; do
-        clear
-        scan
-        [ ${#addresses[*]} -eq 0 ] && { sleep 1; continue; }
-        list
-        echo
-		while ! ([ "$n" -le ${#addresses[*]} ]&>/dev/null && [ "$n" -ge 1 ]&>/dev/null); do
-        	read -p "Select network: " n
-			[ ! "$n" ] && break
-		done
-    done
-	
+	if [ ! "$ssid" ]; then
+	    unset n
+	    while [ ! "$n" ]; do
+	        clear
+	        scan
+	        [ ${#addresses[*]} -eq 0 ] && { sleep 1; continue; }
+	        list
+			while ! ([ "$n" -le ${#addresses[*]} ]&>/dev/null && [ "$n" -ge 1 ]&>/dev/null); do
+	        	read -p "Select network: " n
+				[ ! "$n" ] && break
+			done
+	    done
+	    local ssid="${essids[$((n-1))]}"
+	fi
+
 	# CONNECT NETWORK
-	connect "${essids[$((n-1))]}" "$iface"
+	connect "$ssid" "$iface"
 }
 
-main
+main "$@"
 
