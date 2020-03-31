@@ -11,9 +11,44 @@
 #===================================================================================
 
 #=== GLOBAL VARIABLES DEFINITION ===============================================
-dependences="iwgetid iwlist wpa_supplicant dhclient ip sudo"
+dependences="iwgetid iwlist wpa_supplicant wpa_cli dhclient ip sudo"
 unset iface				# iface to use
 unset ssid_current		# Current ssid connected
+
+unset n_networks
+unset addresses
+unset channels
+unset essids
+unset qualities
+unset keys
+declare -A id_networkds
+
+
+
+
+function wpa_cli-check {
+	pgrep wpa_supplicant &>/dev/null || return 1
+	wpa-cli -h >/dev/null || return 2
+	return 0
+}
+
+
+
+function wpa_cli-is_stored {
+	local ssid="$1"
+	wpa_cli -i "$iface" list_networks 2>/dev/null | grep "^[0-9][[:blank:]]" | cut -f2 | grep "^${ssid}$" &>/dev/null
+	return $?
+}
+
+function wpa_cli-get-id {
+	local ssid="$1"
+	wpa_cli -i $iface list_networks | grep "^[0-9][[:blank:]]" | cut -f1-2 | grep "[[:blank:]]${ssid}$" | cut -f1
+}
+
+
+function wpa_cli-add_network {
+	echo hola
+}
 
 
 #=== FUNCTION ==================================================================
@@ -35,7 +70,7 @@ function print_signal_bar {
 	elif [ "$p" -le 85 ]; then
 		echo "$p%  ▂▄▆_"
 	elif [ "$p" -le 100 ]; then
-		echo "$p%  ▂▄▆█"
+		echo "$p%$([ "$p" -lt 100 ] && echo " ") ▂▄▆█"
 	else
 		echo "ERROR"
 	fi
@@ -47,17 +82,32 @@ function print_signal_bar {
 # DESCRIPTION: scan visible wifi networks ssid and fill arrays: address, channels, qualities, keys and essids
 #===============================================================================
 function scan {
+    IFS2="$IFS"; IFS=$'\n'
+
     [ ! "$(ip link show $iface up)" ] && sudo ip link set dev $iface up
 	
     echo -e "\e[1mScaning interface $iface...\e[0m"
     local scan="$(sudo iwlist "$iface" scan | egrep "Address|ESSID|Quality|Channel|Encryption key")"
 	
-    IFS=$'\n'
     addresses=($(echo "$scan" | grep Address: | egrep -o "([0-9A-F]{2}:)+[0-9A-F]{2}"))
     channels=($(echo "$scan" | grep Channel: | cut -f2 -d:))
     qualities=($(echo "$scan" | grep Quality | egrep -o "[0-9]+/[0-9]+"))
     keys=($(echo "$scan" | grep "Encryption key" | cut -f 2 -d:))
-    essids=($(echo "$scan" | grep ESSID | cut -f2 -d: | cut -f2 -d\"))
+    essids=($(echo "$scan" | grep ESSID | cut -f2 -d:))
+    n_networks="${#addresses[*]}"
+
+    # Loop scaned networks for complete empty ssids and sotred array
+    for n in $(seq 0 $((n_networks-1))); do
+    	local addr="${addresses[$n]}"
+        local ssid="${essids[$n]}"
+        ssid="$(echo "$ssid" | cut -f2 -d\")"
+        [ ! "$ssid" ] && ssid="$addr"
+        essids[$n]="$ssid"
+
+        wpa_cli-is_stored "$ssid" && stored[$n]="*"
+        id_networkds["$ssid"]=$(wpa_cli-get-id "$ssid")
+    done
+    IFS="$IFS2"
 }
 
 
@@ -67,19 +117,19 @@ function scan {
 #===============================================================================
 function list {
     (
-	local configured="$(wpa_cli list_networks | grep "^[0-9][[:blank:]]" | cut -f2)"
-    echo -e "\e[1mNUM␟  SIGNAL␟SSID␟CHANNEL␟ENCRYPT\e[0m"
-    for n in $(seq 0 $((${#addresses[*]}-1))); do
+    IFS=$'\n'
+    echo -e "\e[1mNUM␟  SIGNAL␟SSID␟CHANNEL␟ENCRYPT␟SAVED\e[0m"
+    for n in $(seq 0 $((n_networks-1))); do
 		local addr="${addresses[$n]}"
         local ssid="${essids[$n]}"
-		[ ! "$ssid" ] && ssid="$addr"
         local channel="${channels[$n]}"
         local quality="${qualities[$n]}"
         quality="$(print_signal_bar $quality)"
         local key="${keys[$n]}"
-    
+       	local saved="${stored[$n]}"
+
 		[ "$ssid" = "$ssid_current" ] && echo -en "\e[32m\e[1m"
-        echo -e "[$((n+1))]␟$quality␟$ssid␟$channel␟$key"
+        echo -e "[$((n+1))]␟$quality␟$ssid␟$channel␟$key␟$saved${id_networkds["$ssid"]}"
 		[ "$ssid" = "$ssid_current" ] && echo -en "\e[0m"
     done
     echo
@@ -99,6 +149,38 @@ function disconnect {
 }
 
 
+
+
+function connect_no-saved {
+	local ssid="$1"
+	local pass="$2"
+
+	echo -e "\n\e[1mConnecting to $ssid_current\e[0m"
+	wpa_supplicant -B -i "$iface" -c <(wpa_passphrase "$ssid" "$pass")
+
+	echo -e "\n\e[1mGetting DHCP address\e[0m"
+	sudo dhclient -v "$iface"
+}
+
+function wpa_cli-connecto_notsaved {
+	local ssid="$1"
+	local pass="$2"
+
+	local ndi="$(wpa_cli -i "$iface" add_network)"
+	wpa_cli -i "$iface" 
+
+}
+
+
+function wpa_cli-connect_saved {
+	local ssid="$1"
+	local nid="${id_networkds["$ssid"]}" 
+
+	wpa_cli -i "$iface" select_network "$nid"
+	sudo dhclient -v "$iface"
+}
+
+
 #=== FUNCTION ==================================================================
 # NAME: connect
 # DESCRIPTION: connect to ssid and ask for password
@@ -106,7 +188,6 @@ function disconnect {
 #===============================================================================
 function connect {
 	local ssid="$1"
-	local iface="$2"
 	local pass
 	
 	if [ "$ssid_current" ]; then
@@ -119,8 +200,6 @@ function connect {
 	read pass
 	
 	echo -e "\n\e[1mConnecting to $ssid_current\e[0m"
-	[ "$ssid_current" ] && dhclient -v -r "$iface"
-	echo
 	sudo bash -c 'wpa_supplicant -B -i "'"$iface"'" -c <(wpa_passphrase "'"$ssid"'" "'"$pass"'")'
 	
 	echo -e "\n\e[1mGetting DHCP address\e[0m"
@@ -202,24 +281,26 @@ function main {
 
 	# SELECT NETWORK
 	if [ ! "$ssid" ]; then
-	    unset n
-	    while [ ! "$n" ]; do
+	    unset n_selected
+	    while [ ! "$n_selected" ]; do
 	        clear
 	        scan
 	        [ ${#addresses[*]} -eq 0 ] && { sleep 1; continue; }
 	        list
-			while ! ([ "$n" -le ${#addresses[*]} ]&>/dev/null && [ "$n" -ge 1 ]&>/dev/null); do
+			while ! ([ "$n_selected" -le ${#addresses[*]} ]&>/dev/null && [ "$n_selected" -ge 1 ]&>/dev/null); do
 				echo
-	        	read -p "Select network: " n
-				[ ! "$n" ] && break
+	        	read -p "Select network: " n_selected
+				[ ! "$n_selected" ] && break
 			done
 	    done
-	    local ssid="${essids[$((n-1))]}"
+	    local ssid="${essids[$((n_selected-1))]}"
 	fi
 
 	# CONNECT NETWORK
-	connect "$ssid" "$iface"
+	connect "$ssid"
 }
 
 main "$@"
+
+
 
