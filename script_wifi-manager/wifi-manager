@@ -24,14 +24,15 @@ unset ssid_current		# Current ssid connected
 function print_signal_bar {
     local a=$(echo "$1" | cut -f1 -d "/")
     local b=$(echo "$1" | cut -f2 -d "/")
+	local p=$((a*100/p))
     local s=$(((a*100/b)/25+1)); [ $a -eq 0 ] && s=0		# Value from 0 to 5
 
     case $s in
-    0) echo "____" ;;
-    1) echo "▂___" ;;
-    2) echo "▂▄__" ;;
-    3) echo "▂▄▆_" ;;
-    [4-9]) echo "▂▄▆█" ;;
+    0) echo "$p% ____" ;;
+    1) echo "$p% ▂___" ;;
+    2) echo "$p% ▂▄__" ;;
+    3) echo "$p%▂▄▆_" ;;
+    [4-9]) echo "$p% ▂▄▆█" ;;
     esac
 }
 
@@ -44,7 +45,7 @@ function scan {
     [ ! "$(ip link show $iface up)" ] && sudo ip link set dev $iface up
 	
     echo -e "\e[1mScaning interface $iface...\e[0m"
-    scan="$(sudo iwlist "$iface" scan | egrep "Address|ESSID|Quality|Channel|Encryption key")"
+    local scan="$(sudo iwlist "$iface" scan | egrep "Address|ESSID|Quality|Channel|Encryption key")"
     
     IFS=$'\n'
     addresses=($(echo "$scan" | grep Address: | egrep -o "([0-9A-F]{2}:)+[0-9A-F]{2}"))
@@ -60,10 +61,7 @@ function scan {
 # DESCRIPTION: print the list of scanned SSIDS and show in columns
 #===============================================================================
 function list {
-    (
-	# Get current connected SSID
-	local 
-	
+    (	
     echo -e "\e[1mNUM␟SIGNAL␟SSID␟CHANNEL␟ENCRYPT\e[0m"
     for n in $(seq 0 $((${#addresses[*]}-1))); do
 		local addr="${addresses[$n]}"
@@ -130,7 +128,7 @@ function connect {
 # DESCRIPTION: checks for script dependences and exit if not found any
 #===============================================================================
 function check_dependences {
-	deps_err=""
+	local deps_err=""
 	
 	for d in $dependences; do
 		! which "$d" &>/dev/null && deps_err="$deps_err${deps_err:+" "}$d"
@@ -187,13 +185,14 @@ function main {
 	# CHECK DEPENDENCES
 	check_dependences
 	
-	# GET GLOBAL VARIABLES VALUES
+	# SET GLOBAL VARIABLES VALUES
 	if [ "$iface" ]; then
 		ip a show dev "$iface" >/dev/null || exit 1
 	else 
     	iface="$(iw dev | awk '$1=="Interface"{print $2}' | head -1)"
     fi
 	ssid_current="$(iwgetid $iface | cut -f2 -d: | cut -f2 -d\")"
+
 
 	# SELECT NETWORK
 	if [ ! "$ssid" ]; then
