@@ -28,11 +28,11 @@ function print_signal_bar {
     local s=$(((a*100/b)/25+1)); [ $a -eq 0 ] && s=0		# Value from 0 to 5
 
     case $s in
-    0) echo "$p% ____" ;;
-    1) echo "$p% ▂___" ;;
-    2) echo "$p% ▂▄__" ;;
-    3) echo "$p%▂▄▆_" ;;
-    [4-9]) echo "$p% ▂▄▆█" ;;
+    0) echo "$p%  ____" ;;
+    1) echo "$p%  ▂___" ;;
+    2) echo "$p%  ▂▄__" ;;
+    3) echo "$p%  ▂▄▆_" ;;
+    [4-9]) echo "$p%  ▂▄▆█" ;;
     esac
 }
 
