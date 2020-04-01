@@ -2,8 +2,6 @@
   dbus = False
   title_font = Monospace 10
   title_use_system_font = False
-[keybindings]
-  hide_window = <Shift><Control>a
 [layouts]
   [[default]]
     [[[child1]]]
