@@ -16,6 +16,7 @@ wpa_config="/etc/wpa_supplicant/wpa_supplicant.conf"						# wpa_supplicant file 
 unset daemon_enabled														# Empty if not wpa-cli daemon controlled is enabled
 unset iface																	# iface to use
 unset ssid_current															# Current ssid connected
+unset scan_out																# Raw output of scan command
 unset n_networks
 unset addresses
 unset channels
@@ -88,7 +89,8 @@ function scan {
     [ ! "$(ip link show $iface up)" ] && sudo ip link set dev $iface up
 	
     echo -e "\e[1mScaning interface $iface...\e[0m"
-    local scan="$(sudo iwlist "$iface" scan | egrep "Address|ESSID|Quality|Channel|Encryption key")"
+    scan_out="$(sudo iwlist $iface scan)"
+    local scan="$(echo "$scan_out" | egrep "Address|ESSID|Quality|Channel|Encryption key")"
 	
     addresses=($(echo "$scan" | grep Address: | egrep -o "([0-9A-F]{2}:)+[0-9A-F]{2}"))
     channels=($(echo "$scan" | grep Channel: | cut -f2 -d:))
@@ -161,9 +163,16 @@ function disconnect {
 #===============================================================================
 function show_status {
 	iwgetid && echo
-	[ "$daemon_enabled" ] && wpa_cli -i "$iface" status
-	echo
 	ip -c a show dev $iface
+	echo
+	[ "$daemon_enabled" ] && wpa_cli -i "$iface" status
+}
+
+
+function show_info {
+	local n="$1"
+	local a="${addresses[$n]}"
+	echo "$scan_out" | sed -n "/Address: ${a}/,/Address/p" | head -n -1 | egrep --color -e "^" -e "Address|ESSID|Quality|Channel|Encryption key"
 }
 
 
@@ -314,42 +323,50 @@ function main {
 	ssid_current="$(iwgetid $iface | cut -f2 -d: | cut -f2 -d\")"
 
 	# SELECT ACTION
+	action="scan"
 	while true; do 
-		clear
-		scan
-		list
-		init_wpa-daemon 
-		echo
-		unset action
-		while [ ! "$action" ]; do
-			echo -en "\e[1mAction (h for help)\e[0m: "; read action
-			case "${action,,}" in
-				d|disconnect) 
-					disconnect
-					read -p "Press enter to continue..."
-				;;
-				s|status)
-					show_status
-					echo
-					read -p "Press enter to continue..."
-				;;
-				c|connect)  
-					echo "connect"
-				;;
-				h|help)
-					echo -e "  \e[1mc\e[0monnect\t\tDisconnect"
-					echo -e "  \e[1md\e[0misconnect\t\tDisconnect"
-					echo -e "  \e[1mr\e[0meload\t\tRescan available wifi networks"
-					echo -e "  \e[1ms\e[0mtatus\t\tShow current status connection"
-					echo
-					unset action
-				;;
-				""|reload|r) action="reload"
-				;;
-				*) unset action
-				;;
-			esac
-		done
+		case "${action,,}" in
+			""|scan|reload|rescan|list)
+				clear
+				scan
+				clear
+				list
+				init_wpa-daemon 
+				echo
+			;;
+			d|disconnect) 
+				disconnect
+				echo
+			;;
+			s|status)
+				show_status
+				echo
+			;;
+			c|connect)  
+				echo "connect"
+			;;
+			i*|info*)
+				show_info "$(echo "$action" | awk '{print $2}')"
+				echo
+			;; 
+			h|help)
+				echo -e "  \e[1mc\e[0monnect\t\tDisconnect"
+				echo -e "  \e[1md\e[0misconnect\t\tDisconnect"
+				echo -e "  \e[1mr\e[0meload\t\tRescan available wifi networks"
+				echo -e "  \e[1ms\e[0mtatus\t\tShow current status connection"
+				echo -e "  \e[1is\e[0mnfo n\t\tShow network info"
+				echo -e "  \e[1il\e[0mist n\t\tRescan networks"
+				echo
+				unset action
+			;;
+			q|quit|exit)
+				exit 0
+			;;
+			*) echo "Invalid option!"
+			;;
+		esac
+
+		echo -en "\e[1mAction (h for help)\e[0m: "; read action
 	done
 
 }
