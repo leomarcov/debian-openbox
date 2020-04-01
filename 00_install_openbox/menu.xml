@@ -16,6 +16,7 @@
                 </command>
             </action>
         </item>
+		<separator/>
         <item label="Web Browser">
             <action name="Execute">
                 <command>
@@ -37,6 +38,7 @@
                 </command>
             </action>
         </item>
+		
         <separator/>
  
         <menu id="preferences" label="Preferences">
