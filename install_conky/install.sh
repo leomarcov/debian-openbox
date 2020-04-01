@@ -15,7 +15,8 @@ for d in /etc/skel/  /home/*/ ; do
     # Skip dirs in /home that not are user home
     [ "$(dirname "$d")" = "/home" ] && ! id "$(basename "$d")" &>/dev/null && continue
 	
-	cp -v "$base_dir"/conkyrc "$d/.conkyrc"
+	f="conkyrc"
+	cp -v "$base_dir"/conkyrc "$d/.$f"  && chown -R $(stat "$d" -c %u:%g) "$d/.$f"	
 done
 
 # Show /home in conky if /home has mounted in separated partition
