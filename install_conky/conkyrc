@@ -193,15 +193,15 @@ S H O R T C U T    K E Y S
 ${hr}
 Win${alignr}Launcher
 Win${alignr}Window switch
-Win + Kp_Num${alignr}Half maximize win
+Win + Kp_Num${alignr}Snap window
 Win + t${alignr}Terminal
 Win + f${alignr}File Manager
 Win + w${alignr}Web Browser
 Win + e${alignr}Editor
 Win + h${alignr}Task Manager
-Win + Esc${alignr}X Kill
+Win + Esc${alignr}xkill
 Win + l${alignr}Lock Screen
 Win + x${alignr}Logout
-Ctrl + Alt + Backspace${alignr}Kill X
+Ctrl + Alt + Backspace${alignr}Close X
 PrtScr${alignr}Screenshot
 ]];
