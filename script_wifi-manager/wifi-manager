@@ -22,9 +22,7 @@ unset channels
 unset essids
 unset qualities
 unset keys
-declare -A id_networkds
-
-
+declare -A id_networks
 
 
 
@@ -36,7 +34,7 @@ function wpacli_isstored {
 	return $?
 }
 
-function wpacli_getid {
+function daemon_getid {
 	local ssid="$1"
 	wpa_cli -i $iface list_networks | grep "^[0-9][[:blank:]]" | cut -f1-2 | grep "[[:blank:]]${ssid}$" | cut -f1
 }
@@ -104,7 +102,7 @@ function scan {
         # Get saved networks from daemon
         if [ "$daemon_enabled" ]; then
         	wpacli_isstored "$ssid" && stored[$n]="*"
-        	id_networkds["$ssid"]=$(wpacli_getid "$ssid")
+        	id_networks["$ssid"]=$(daemon_getid "$ssid")
     	fi
     done
     IFS="$IFS2"
@@ -166,7 +164,7 @@ function get_connected-ssid {
 #===============================================================================
 function show_status {
 	echo
-	iwgetid 
+	iwgetid "$iface"
 	[ "$daemon_enabled" ] && echo -e "wpa_cli   \e[1m\e[32menabled\e[0m\n" || echo -e "wpa_cli   \e[1m\e[31mdisabled\e[0m\n"
 
 	ip -c a show dev $iface
@@ -195,26 +193,8 @@ function connect_no-saved {
 }
 
 
-function wpacli_connect_notsaved {
-	local ssid="$1"
-	local pass="$2"
-
-	local ndi="$(wpa_cli -i "$iface" add_network)"
-	wpa_cli -i "$iface" set_network "$nid" ssid \""$ssid"\"
-	wpa_cli -i "$iface" set_network "$nid" pass \""$pass"\"
-	wpa_cli -i "$iface" select_network "$ssid"
-
-	sudo dhcliente -v "$iface"
-}
 
 
-function wpacli_connect_saved {
-	local ssid="$1"
-	local nid="${id_networkds["$ssid"]}" 
-
-	wpa_cli -i "$iface" select_network "$nid"
-	sudo dhclient -v "$iface"
-}
 
 
 #=== FUNCTION ==================================================================
@@ -223,24 +203,42 @@ function wpacli_connect_saved {
 # PARAM1: ssid to connect
 #===============================================================================
 function connect {
-	local ssid="$1"
-	local pass
+	local n="$((${1}-1))"
+	local ssid="${essids[$n]}"
+	local saved="${stored[$n]}"
+	local dn="${id_networks["$ssid"]}"
+
+	# If connected first disconnect
+	[ "$(get_connected-ssid )" ] && disconnect
 	
-	local ssid_current="$(get_connected-ssid)"
-	if [ "$ssid_current" ]; then
-		disconnect "$iface"
-		[ "$ssid_current" = "$ssid" ] && exit
+	# CONNECT SAVED NETWORK
+	if [ "$saved" ]; then
+		echo -e "\n\e[1mConnecting to saved $ssid ($dn)\e[0m"
+		wpa_cli -i "$iface" select_network "$dn"|| return
+
+	# CONNECT DAEMON-NOTSAVED
+	elif [ "$dameon_enabled" ]; then
+		local nN="$(wpa_cli -i "$iface" add_network)"
+		wpa_cli -i "$iface" set_network "$nn" ssid \""$ssid"\" || return 1
+		wpa_cli -i "$iface" set_network "$nn" pass \""$pass"\" || return 1
+		wpa_cli -i "$iface" select_network "$nn" || return 1
+
+		# Save password?
+		unset q
+		while [ "${q,,}" != "n" ]  && [ "${q,,}" != "y" ]; do read -p "Save network? (y/n): " q; done
+		if [ "${q,,}" = "y" ]; then
+			wpa_cli -i "$iface" save_config
+		fi
+
+	# CONNECT NOTDAEMON
+	else
+		# sudo bash -c 'wpa_supplicant -B -i "'"$iface"'" -c <(wpa_passphrase "'"$ssid"'" "'"$pass"'")'
+		wpa_supplicant -B -i "$iface" -c <(wpa_passphrase "$ssid" "$pass")
 	fi
-	
-	# Read pass
-	echo -en "\e[1m$ssid\e[0m password: "
-	read pass
-	
-	echo -e "\n\e[1mConnecting to $ssid\e[0m"
-	sudo bash -c 'wpa_supplicant -B -i "'"$iface"'" -c <(wpa_passphrase "'"$ssid"'" "'"$pass"'")'
-	
+
+	# DHCP 
 	echo -e "\n\e[1mGetting DHCP address\e[0m"
-	sudo dhclient -v $iface
+	sudo dhclient -v "$iface" || return 1
 }
 
 
@@ -334,10 +332,10 @@ function main {
 	while true; do 
 		case "${action,,}" in
 			""|r|rescan|scan|list)
+				init_wpa-daemon 
 				clear
 				scan
 				list
-				init_wpa-daemon 
 				echo
 			;;
 			d|disconnect) 
@@ -348,11 +346,14 @@ function main {
 				show_status
 				echo
 			;;
-			c|connect)  
-				echo "connect"
+			c*|connect)
+				n="$(echo "$action" | awk '{print $2}')"
+				connect "$n"
+				echo
 			;;
 			i*|info*)
-				show_info "$(echo "$action" | awk '{print $2}')"
+				n="$(echo "$action" | awk '{print $2}')"
+				show_info "$n"
 				echo
 			;; 
 			h|help)
