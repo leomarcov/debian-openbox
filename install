@@ -92,6 +92,7 @@ fi
 
 #=== EXEC-ACTIONS ==================================================================
 base_dir="$(dirname "$(readlink -f "$0")")"
+echo "$PATH" | grep -q sbin || export PATH="/sbin/:/usr/sbin:$PATH"
 n=0
 
 # For each .sh file
