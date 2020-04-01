@@ -28,11 +28,6 @@ declare -A id_networkds
 
 
 
-function wpacli_check {
-	pgrep wpa_supplicant &>/dev/null || return 1
-	wpa-cli -h >/dev/null || return 2
-	return 0
-}
 
 
 
@@ -107,8 +102,11 @@ function scan {
         [ ! "$ssid" ] && ssid="$addr"
         essids[$n]="$ssid"
 
-        wpacli_isstored "$ssid" && stored[$n]="*"
-        id_networkds["$ssid"]=$(wpacli_getid "$ssid")
+        # Get saved networks from daemon
+        if [ "$daemon_enabled" ]; then
+        	wpacli_isstored "$ssid" && stored[$n]="*"
+        	id_networkds["$ssid"]=$(wpacli_getid "$ssid")
+    	fi
     done
     IFS="$IFS2"
 }
@@ -162,7 +160,10 @@ function disconnect {
 # DESCRIPTION: show current status
 #===============================================================================
 function show_status {
-	iwgetid && echo
+	echo
+	iwgetid 
+	[ "$daemon_enabled" ] && echo -e "wpa_cli   \e[1m\e[32menabled\e[0m\n" || echo -e "wpa_cli   \e[1m\e[31mdisabled\e[0m\n"
+
 	ip -c a show dev $iface
 	echo
 	[ "$daemon_enabled" ] && wpa_cli -i "$iface" status
@@ -246,8 +247,8 @@ function connect {
 function init_wpa-daemon {
 	pgrep wpa_supplicant &>/dev/null || wpa_supplicant -B -i "$iface" -c "$wpa_config"
 	sleep 0.1
-	unset daemon_enabled
-	wpa_cli -i "$iface" help &>/dev/null && daemon_enabled=1
+
+	wpa_cli -h >/dev/null && daemon_enabled=1 || daemon_enabled=""
 }
 
 
@@ -326,10 +327,9 @@ function main {
 	action="scan"
 	while true; do 
 		case "${action,,}" in
-			""|scan|reload|rescan|list)
+			""|r|rescan|scan|list)
 				clear
 				scan
-				clear
 				list
 				init_wpa-daemon 
 				echo
@@ -350,12 +350,11 @@ function main {
 				echo
 			;; 
 			h|help)
-				echo -e "  \e[1mc\e[0monnect\t\tDisconnect"
+				echo -e "  \e[1mc\e[0monnect n\t\tConnect to network"
 				echo -e "  \e[1md\e[0misconnect\t\tDisconnect"
-				echo -e "  \e[1mr\e[0meload\t\tRescan available wifi networks"
+				echo -e "  \e[1mr\e[0mescan\t\tRescan available wifi networks"
 				echo -e "  \e[1ms\e[0mtatus\t\tShow current status connection"
-				echo -e "  \e[1is\e[0mnfo n\t\tShow network info"
-				echo -e "  \e[1il\e[0mist n\t\tRescan networks"
+				echo -e "  \e[1mi\e[0mnfo n\t\tShow network info"
 				echo
 				unset action
 			;;
