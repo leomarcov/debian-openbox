@@ -1,6 +1,6 @@
 #!/bin/bash
 # ACTION: Config GRUB with password for prevent users edit entries
-# DEFAULT: y
+# DEFAULT: n
 
 # Check root
 [ "$(id -u)" -ne 0 ] && { echo "Must run as root" 1>&2; exit 1; }
