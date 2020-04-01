@@ -58,7 +58,7 @@ syndaemon -i .5 -K -t -R -d &
 nitrogen --restore
 
 ## Start Conky
-which conky &>/dev/null || conky
+which conky &>/dev/null && conky
 
 ## Compton
 compton &
