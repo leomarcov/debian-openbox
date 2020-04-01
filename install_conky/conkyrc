@@ -1,0 +1,207 @@
+--[[ conky configuration
+ ------------------------------
+ For conky variables and commands use the terminal command:
+
+ man conky
+
+ ------------------------------
+ BunsenLabs conky threads
+
+ Index » Scripts, Tutorials & Tips » Conky - Calendars / Clocks / Time
+ https://forums.bunsenlabs.org/viewtopic.php?id=516
+
+ Open a thread and post conky questions in: Index » GUI & Applications
+ https://forums.bunsenlabs.org/viewforum.php?id=4
+
+ Display your completed conky and codes
+ Index » Scripts, Tutorials & Tips » Show us your conky
+ https://forums.bunsenlabs.org/viewtopic.php?id=512
+
+ ------------------------------
+ BunsenLabs conky scripts help
+ Openbox Menu/Preferences/Conky/Conky Manager Help
+
+ If there are one or more conkys running, it is possible to kill one conky with
+ the following command, IF you used what is between the quotes to start the conky, e.g.:
+ pkill -xf "conky -q -c $HOME/.config/conky/BL-Default.conkyrc"
+]]
+
+
+conky.config = {
+
+--  Window Settings
+    own_window = true,
+    own_window_type = 'normal',
+    own_window_transparent = true,
+    own_window_hints = 'undecorated,below,skip_taskbar,skip_pager,sticky',
+    own_window_colour = '000000',
+    own_window_class = 'Conky',
+    own_window_title = 'BunsenLabs Default Conky',
+
+-- ARGB can be used for real transparency
+--own_window_argb_visual = true, -- Options: true|false
+
+-- NOTE that a composite manager is required for real transparency and ARGB will not
+-- work as desired (in most cases) in conjunction with 'own_window_type override'.
+-- Use with: own_window_type = 'normal',
+-- Use with: own_window_transparent = false,
+
+-- When ARGB visuals are enabled, use the following to modify the alpha value. Valid
+-- range is 0-255, where 0 is 0% opacity, and 255 is 100% opacity.
+--own_window_argb_value = 150,
+
+    minimum_width = 200, minimum_height = 0,-- width | height
+    maximum_width = 200,
+
+    gap_x = 40,-- left | right
+    gap_y = 40,-- up | down
+
+    alignment = 'top_right',
+--  End Window Settings
+
+
+--  Font Settings
+-- Use Xft (anti-aliased font and stuff)
+    use_xft = true,
+
+--font = 'Liberation Mono:bold:size=10',
+--font = 'Liberation Sans:size=10',
+    font = 'Sans-serif:size=10',
+
+-- Alpha of Xft font. Must be a value at or between 1 and 0
+    xftalpha = 1,
+
+-- Force UTF8? requires XFT
+    override_utf8_locale = true,
+
+    uppercase = false,
+--  End Font Settings
+
+
+--  Color Settings
+    draw_shades = false,
+    default_shade_color = '000000',
+
+    draw_outline = false,-- amplifies text if true
+    default_outline_color = '000000',
+
+default_color='eeeeee', -- Beam green
+--default_color = '656667', -- Waldorf original colour
+--default_color = '7a7a7a', -- Flame  & BunsenLabs Grey
+--default_color = '929292', -- BunsenLabs Grey
+--default_color = 'C0C0C0', -- BunsenLabs Silver
+    color0 = 'B0E0E6',-- PowderBlue
+    color1 = '778899',-- LightSlateGray
+    color2 = 'D8BFD8',-- Thistle
+    color3 = '9ACD32',-- YellowGreen
+    color4 = 'FFA07A',-- LightSalmon
+    color5 = 'FFDEAD',-- NavajoWhite
+    color6 = '00BFFF',-- DeepSkyBlue
+    color7 = '5F9EA0',-- CadetBlue
+    color8 = 'BDB76B',-- DarkKhaki
+    color9 = 'C0C0C0',-- Silver
+--  End Color Settings
+
+
+--  Borders Section
+    draw_borders = false,
+-- Stippled borders?
+    stippled_borders = 5,
+-- border margins
+    border_inner_margin = 5,
+    border_outer_margin = 0,
+-- border width
+    border_width = 2,
+-- graph borders
+    draw_graph_borders = false,
+--default_graph_height = 15,
+--default_graph_width = 40,
+--  End Borders Section
+
+
+--  Miscellaneous Section
+-- Boolean value, if true, Conky will be forked to background when started.
+    background = true,
+
+-- Adds spaces around certain objects to stop them from moving other things
+-- around, this only helps if you are using a mono font
+-- Options: right, left or none
+    use_spacer = 'none',
+
+-- Default and Minimum size is 256 - needs more for single commands that
+-- "call" a lot of text IE: bash scripts
+--text_buffer_size = 6144,
+
+-- Subtract (file system) buffers from used memory?
+    no_buffers = true,
+
+-- change GiB to G and MiB to M
+    short_units = true,
+
+-- Imlib2 image cache size, in bytes. Default 4MiB Increase this value if you use
+-- $image lots. Set to 0 to disable the image cache.
+    imlib_cache_size = 0,
+
+-- Use the Xdbe extension? (eliminates flicker)
+-- It is highly recommended to use own window with this one
+-- so double buffer won't be so big.
+    double_buffer = true,
+
+-- Maximum size of user text buffer, i.e. layout below TEXT line in config file
+-- (default is 16384 bytes)
+--max_user_text = 16384,
+
+-- Desired output unit of all objects displaying a temperature. Parameters are
+-- either "fahrenheit" or "celsius". The default unit is degree Celsius.
+--temperature_unit = 'Fahrenheit',
+
+-- Update interval in seconds
+    update_interval = 5,
+
+--  End Miscellaneous Section
+};
+
+
+conky.text = [[
+S Y S T E M    I N F O
+${hr}
+Host:${alignr}${nodename}
+Uptime:${alignr}${uptime}
+RAM:$alignr${mem} / ${memmax}
+Swap usage:${alignr}${swap} / ${swapmax}
+Disk usage:$alignr${fs_used /} / ${fs_size /}
+#Root usage:$alignr${fs_used /} / ${fs_size /}
+#Home usage:$alignr${fs_used /home} / ${fs_size /home}
+CPU Average:${alignr}${cpu cpu0}%
+#
+# Weather information from openweathermap.org can be displayed in conky by
+# using the script $HOME/.config/conky/scripts/bunsenweather.sh. The openweathermap
+# service requires registration in order to receive an API Key, which has to be
+# added to bunsenweather.sh. For further info see this script and the following thread:
+# https://forums.bunsenlabs.org/viewtopic.php?id=2060
+#
+# Calling bunsenweather.sh from conky works by using
+# ${execpi <t> /path/to/bunsenweather.sh "yourlocation"}
+# where <t> is the update interval. If "yourlocation" is not defined, the script
+# sets geolocation based on your IP adress using the website ipinfo.io.
+#
+#W E A T H E R
+#${hr}
+#${execpi 600 $HOME/.config/conky/scripts/bunsenweather.sh}
+
+S H O R T C U T    K E Y S
+${hr}
+Win${alignr}Launcher
+Alt + Tab${alignr}Window switch
+Ctl + Kp_Num${alignr}Half win maximize
+Win + t${alignr}Terminal
+Win + f${alignr}File Manager
+Win + w${alignr}Web Browser
+Win + e${alignr}Editor
+Win + m${alignr}Media Player
+Win + h${alignr}Task Manager
+Win + l${alignr}Lock Screen
+Win + x${alignr}Logout
+Ctrl + Alt + Backspace${alignr}Kill X
+PrtScr${alignr}Screenshot
+]];
