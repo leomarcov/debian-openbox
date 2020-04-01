@@ -57,6 +57,9 @@ syndaemon -i .5 -K -t -R -d &
 ## Set a wallpaper
 nitrogen --restore
 
+## Start Conky
+which conky &>/dev/null || conky
+
 ## Compton
 compton &
 
