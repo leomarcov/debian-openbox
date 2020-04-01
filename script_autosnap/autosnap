@@ -46,14 +46,14 @@ else
 fi
 
 # Check zone-position
-if [ "$current_y" -lt "$((${current_screen[1]}*1/8))" ]; then # IN-TOP
+if [ "$current_y" -lt "$((${current_screen[1]}*1/3))" ]; then # IN-TOP
 	var_key="top"
-elif [ "$current_y" -gt "$((${current_screen[1]}*7/8))" ]; then # IN-BOTTOM
+elif [ "$current_y" -gt "$((${current_screen[1]}*2/3))" ]; then # IN-BOTTOM
 	var_key="bottom"
 fi
-if [ "$current_x" -lt "$((${current_screen[0]}*1/8))" ]; then # IN-LEFT
+if [ "$current_x" -lt "$((${current_screen[0]}*1/3))" ]; then # IN-LEFT
 	var_key="${var_key}left"
-elif [ "$current_x" -gt "$((${current_screen[0]}*7/8))" ]; then # IN-RIGHT
+elif [ "$current_x" -gt "$((${current_screen[0]}*2/3))" ]; then # IN-RIGHT
 	var_key="${var_key}right"
 fi
 [ ! "$var_key" ] && var_key="center"
