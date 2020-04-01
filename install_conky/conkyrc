@@ -192,13 +192,14 @@ CPU Average:${alignr}${cpu cpu0}%
 S H O R T C U T    K E Y S
 ${hr}
 Win${alignr}Launcher
-Alt + Tab${alignr}Window switch
-Ctl + Kp_Num${alignr}Half win maximize
+Win${alignr}Window switch
+Win + Kp_Num${alignr}Half maximize win
 Win + t${alignr}Terminal
 Win + f${alignr}File Manager
 Win + w${alignr}Web Browser
 Win + e${alignr}Editor
 Win + h${alignr}Task Manager
+Win + Esc${alignr}X Kill
 Win + l${alignr}Lock Screen
 Win + x${alignr}Logout
 Ctrl + Alt + Backspace${alignr}Kill X
