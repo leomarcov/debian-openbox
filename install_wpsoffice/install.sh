@@ -7,9 +7,9 @@
 
 base_dir="$(dirname "$(readlink -f "$0")")"
 
-atom_url="https://atom.io/download/deb"
+url="http://wdl1.pcfg.cache.wpscdn.com/wpsdl/wpsoffice/download/linux/9126/wps-office_11.1.0.9126.XA_amd64.deb"
 t=$(mktemp -d)
-wget -P "$t" "$atom_url"  
+wget -P "$t" "$url"  
 if [ $? -eq 0 ]; then
   yes | dpkg -i "$t/"*
   apt-get install -f -y 
