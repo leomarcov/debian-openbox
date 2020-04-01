@@ -176,7 +176,7 @@ function show_status {
 
 
 function show_info {
-	local n="$1"
+	local n="$((${1}-1))"
 	local a="${addresses[$n]}"
 	echo "$scan_out" | sed -n "/Address: ${a}/,/Address/p" | head -n -1 | grep -v "Unknown" | egrep --color -e "^" -e "Address|ESSID|Quality|Channel|Encryption key"
 }
