@@ -36,6 +36,7 @@ xset r rate 250 25
 # Alias Super key to Super+Space for single-key menu.
 # See 'man xcape' for other possibilities.
 ###xcape -e 'Super_L=Super_L|space'
+xcape -e "Super_L=Control_L|Tab" 
 
 ### TOUCHPAD: comment out the next two entries if you don't have one
 
@@ -69,6 +70,3 @@ pnmixer &
 xfce4-clipman &
 
 
-xmodmap ~/.Xmodmap &
-xbindkeys &
-xcape -e "Super_L=Control_L|Tab" 
