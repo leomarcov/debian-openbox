@@ -94,7 +94,7 @@
                     <action name="Restart"/>
                 </item>
             </menu>
-			<item label="Toogle composition">
+			<item label="Toggle composition">
 				<action name="Execute">
 					<command>
 						bash -c "pgrep compton &amp;>/dev/null &amp;&amp; killall compton || compton&amp;"
@@ -122,6 +122,13 @@
                     </command>
                 </action>
             </item>
+            <item label="Alternatives">
+                <action name="Execute">
+                    <command>
+                        galternatives
+                    </command>
+                </action>
+            </item>
             <item label="Notifications">
                 <action name="Execute">
                     <command>xfce4-notifyd-config</command>
@@ -134,47 +141,13 @@
                     </command>
                 </action>
             </item>
-            <menu id="DisplaySettings" label="Display">
-                <item label="ARandR Screen Layout Editor">
-                    <action name="Execute">
-                        <command>
-                            arandr
-                        </command>
-                    </action>
-                </item>
-                <separator label="Help"/>
-                <item label="man xrandr">
-                    <action name="Execute">
-                        <command>
-                            x-terminal-emulator -T 'man xrandr' -e man xrandr
-                        </command>
-                    </action>
-                </item>
-            </menu>
-        </menu>
-        <menu id="system" label="System">
-            <item label="Synaptic Package Manager">
-                <action name="Execute">
-                    <command>
-                        pkexec synaptic
-                    </command>
-                </action>
-            </item>
-            <item label="GParted">
-                <action name="Execute">
-                    <command>
-                        pkexec gparted
-                    </command>
-                </action>
-            </item>
-            <item label="Edit Debian Alternatives">
-                <action name="Execute">
-                    <command>
-                        galternatives
-                    </command>
-                </action>
-            </item>
-            <separator/>
+			<item label="Display">
+				<action name="Execute">
+					<command>
+						arandr
+					</command>
+				</action>
+			</item>
         </menu>
         <separator/>
         <item label="Lock Screen">
