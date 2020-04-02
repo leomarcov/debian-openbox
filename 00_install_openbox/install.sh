@@ -22,10 +22,10 @@ for d in /etc/skel /home/*/; do
     # Skip dirs in /home that not are user home
     [ "$(dirname "$d")" = "/home" ] && ! id "$(basename "$d")" &>/dev/null && continue
 
-	# Create config folders if no exists
+	# Create config folder if no exists
 	d="$d/.config/"; [ ! -d "$d" ] && mkdir -v "$d" && chown -R $(stat "$(dirname "$d")" -c %u:%g) "$d"
 	
-	#Copy compton file
+	# Copy compton file
 	f="compton.conf"
 	cp -v "$base_dir/$f" "$d" && chown -R $(stat "$d" -c %u:%g) "$d/$f"	
 	
