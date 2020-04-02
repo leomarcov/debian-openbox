@@ -9,14 +9,14 @@
     <menu id="root-menu" label="Openbox 3">
 <item label="Run Program"><action name="Execute"><command>rofi -show drun -display-drun Search</command></action></item>    <!-- ##DEBIAN-OPENBOX-rofi -->
         <item label="VirtualBox"><action name="Execute"><command>virtualbox</command></action></item> <separator/>
-        <item label="Terminal">
+		<separator/>
+		<item label="Terminal">
             <action name="Execute">
                 <command>
                     x-terminal-emulator
                 </command>
             </action>
         </item>
-		<separator/>
         <item label="Web Browser">
             <action name="Execute">
                 <command>
