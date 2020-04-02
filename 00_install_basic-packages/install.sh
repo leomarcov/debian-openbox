@@ -1,6 +1,6 @@
 #!/bin/bash
 # ACTION: Install some basic packages
-# INFO: Useful packages: vim vlc fonts-freefont-ttf fonts-droid-fallback zip unzip gmtp mtp-tools mailutils traceroute acl gnupg2 synaptic
+# INFO: Packages: vim vlc fonts-freefont-ttf fonts-droid-fallback zip unzip gmtp mtp-tools mailutils traceroute acl gnupg2 synaptic
 # DEFAULT: y
 
 # Check root
