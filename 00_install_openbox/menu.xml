@@ -102,7 +102,7 @@
 	                    </command>
 	                </action>
 	            </item>
-	            <item label="Edit autostart themes">
+	            <item label="Edit autostarted themes">
         			<action name="Execute">
 	                    <command>
 	                        x-text-editor ~/.config/tint2/tint2-sessionfile
