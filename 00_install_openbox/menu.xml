@@ -94,6 +94,29 @@
                     <action name="Restart"/>
                 </item>
             </menu>
+        	<menu id="tint2" label="Tint2 Taskbar">
+        		<item label="Themes config folder">
+        			<action name="Execute">
+	                    <command>
+	                        x-file-manager ~/.config/tint2/
+	                    </command>
+	                </action>
+	            </item>
+	            <item label="Edit autostart themes">
+        			<action name="Execute">
+	                    <command>
+	                        x-text-editor ~/.config/tint2/tint2-sessionfile
+	                    </command>
+	                </action>
+	            </item>
+	            <item label="Restart">
+	                <action name="Execute">
+	                    <command>
+	                        bash -c 'killall tint2; cat ~/.config/tint2/tint2-sessionfile | while read t; do tint2 -c "$t" &#38; done' 
+	                    </command>
+	                </action>
+               </item>
+        	</menu>
 			<item label="Toggle composition">
 				<action name="Execute">
 					<command>
