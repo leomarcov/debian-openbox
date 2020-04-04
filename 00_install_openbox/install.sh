@@ -12,6 +12,9 @@ base_dir="$(dirname "$(readlink -f "$0")")"
 find /var/cache/apt/pkgcache.bin -mtime 0 &>/dev/null ||  apt-get update
 apt-get install -y openbox obconf obmenu xinit lxappearance compton xfce4-screenshooter xfce4-clipman xfce4-power-manager arandr htop libexo-1-0 gsimplecal
 
+apt-get install network-manager network-manager-gnome
+systemctl disable NetworkManager-wait-online.service
+
 
 # COPY OPENBOX THEME
 tar -xzvf "$base_dir"/openbox_theme.tgz -C /usr/share/themes/
