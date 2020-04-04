@@ -164,12 +164,15 @@ function get_connected-ssid {
 #===============================================================================
 function show_status {
 	echo
-	iwgetid "$iface"
-	[ "$daemon_enabled" ] && echo -e "wpa_cli   \e[1m\e[32menabled\e[0m\n" || echo -e "wpa_cli   \e[1m\e[31mdisabled\e[0m\n"
 
-	ip -c a show dev $iface
-	echo
-	[ "$daemon_enabled" ] && wpa_cli -i "$iface" status
+	echo -e "WPA DAEMON CLI \e[1m\e[32mENABLED\e[0m\n" || echo -e "wpa_cli   \e[1m\e[31mDISABLED\e[0m\n"	
+	if [ "$daemon_enabled" ]; then
+		wpa_cli -i "$iface" status | egrep  --color=auto -e ^ -e "^ip_address" -e "^ssid" -e "^wpa_state"
+	else 
+		iwgetid "$iface"
+		echo
+		ip -c a show dev $iface
+	fi
 }
 
 
@@ -217,7 +220,12 @@ function connect {
 		wpa_cli -i "$iface" select_network "$dn"|| return
 
 	# CONNECT DAEMON-NOTSAVED
-	elif [ "$dameon_enabled" ]; then
+	elif [ "$daemon_enabled" ]; then
+		# Read password
+		local pass
+		while [ ! "$pass" ]; do read -p "$ssid password: " pass; done
+
+		echo -e "\n\e[1mConnecting to $ssid\e[0m"
 		local nN="$(wpa_cli -i "$iface" add_network)"
 		wpa_cli -i "$iface" set_network "$nn" ssid \""$ssid"\" || return 1
 		wpa_cli -i "$iface" set_network "$nn" pass \""$pass"\" || return 1
@@ -300,6 +308,31 @@ function error_msg {
 }
 
 
+
+
+function get_network_id {
+	local n="$1"
+
+	# If n number and in range
+	if [ "$n" -le ${#addresses[*]} ]&>/dev/null && [ "$n" -ge 1 ]; then
+		echo "$n"
+		return 0
+	fi
+
+	# Search for n by ssid
+	local ssid="$n"
+	local IFS=$'\n'
+	n="$(echo "${essids[*]}" | grep "^${ssid}$" -n | cut -f1 -d:)"
+	if [ "$n" ]; then
+		echo "$n"
+		return 0
+	fi
+
+	return 1
+}
+
+
+
 #=== FUNCTION ==================================================================
 # NAME: main function
 # DESCRIPTION: start function
@@ -331,7 +364,12 @@ function main {
 	action="scan"
 	while true; do 
 		case "${action,,}" in
-			""|r|rescan|scan|list)
+			l|list) 
+				clear
+				list
+				echo
+			;;
+			""|r|rescan|scan)
 				init_wpa-daemon 
 				clear
 				scan
@@ -348,11 +386,21 @@ function main {
 			;;
 			c*|connect)
 				n="$(echo "$action" | awk '{print $2}')"
+				if ! n="$(get_network_id "$n")"; then
+					error_msg "Invalid network id!"
+					continue
+				fi
+				
 				connect "$n"
 				echo
 			;;
 			i*|info*)
 				n="$(echo "$action" | awk '{print $2}')"
+				if ! n="$(get_network_id "$n")"; then
+					error_msg "Invalid network id!"
+					continue
+				fi				
+
 				show_info "$n"
 				echo
 			;; 
