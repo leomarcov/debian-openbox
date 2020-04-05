@@ -48,7 +48,7 @@ for d in /etc/skel /home/*/; do
 	cp -v "$base_dir/$f" "$d" && chown -R $(stat "$d" -c %u:%g) "$d/$f"	
 	
 	# Copy fonts.conf
-	d="$d2/fontconfig/"
+	d="$d2/fontconfig/";  [ ! -d "$d" ] && mkdir -v "$d" && chown -R $(stat "$(dirname "$d")" -c %u:%g) "$d"
 	f="fonts.conf"
 	cp -v "$base_dir/$f" "$d" && chown -R $(stat "$d" -c %u:%g) "$d/$f"	
 done
