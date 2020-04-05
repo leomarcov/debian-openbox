@@ -210,7 +210,7 @@ execp_font_color = #FFFFFF 100
 execp_centered = 1
 execp_padding = 8 0 0
 execp_tooltip = Pending updates...
-execp_lclick_command = x-terminal-emulator -b -e update-notification -i
+execp_lclick_command = x-terminal-emulator -e update-notification
 
 
 #---------------------------------------------
