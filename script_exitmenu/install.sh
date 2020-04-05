@@ -20,6 +20,6 @@ for d in /etc/skel/  /home/*/; do
 	d="$d/rofi/";  [ ! -d "$d" ] && mkdir -v "$d" && chown -R $(stat "$(dirname "$d")" -c %u:%g) "$d"
 
 	# Copy theme
-	f="menu.rasi"
+	f="openbox-menu.rasi"
 	cp -v "$base_dir/$f" "$d/" && chown -R $(stat "$(dirname "$d")" -c %u:%g) "$d/$f"
 done
