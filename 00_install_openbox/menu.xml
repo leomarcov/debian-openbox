@@ -5,9 +5,8 @@
         xsi:schemaLocation="http://openbox.org/
                 file:///usr/share/openbox/menu.xsd">
 
-
     <menu id="root-menu" label="Openbox 3">
-		<item label="Run Program" icon="/usr/share/icons/Openbox-menu/search.png">
+		<item label="Run Program" icon="/usr/share/icons/openbox-menu/search.png">
 			<action name="Execute">
 				<command>
 					rofi -show drun -display-drun Search
@@ -15,28 +14,28 @@
 			</action>
 		</item>
 		<separator/>
-		<item label="Terminal" icon="/usr/share/icons/Openbox-menu/terminal.png">
+		<item label="Terminal" icon="/usr/share/icons/openbox-menu/terminal.png">
             <action name="Execute">
                 <command>
                     x-terminal-emulator
                 </command>
             </action>
         </item>
-        <item label="Web Browser" icon="/usr/share/icons/Openbox-menu/web-browser.png">
+        <item label="Web Browser" icon="/usr/share/icons/openbox-menu/web-browser.png">
             <action name="Execute">
                 <command>
                     x-www-browser
                 </command>
             </action>
         </item>
-        <item label="File Manager" icon="/usr/share/icons/Openbox-menu/file-manager.png">
+        <item label="File Manager" icon="/usr/share/icons/openbox-menu/file-manager.png">
             <action name="Execute">
                 <command>
                     x-file-manager
                 </command>
             </action>
         </item>
-        <item label="Text Editor" icon="/usr/share/icons/Openbox-menu/text-editor.png">
+        <item label="Text Editor" icon="/usr/share/icons/openbox-menu/text-editor.png">
             <action name="Execute">
                 <command>
                     x-text-editor
@@ -178,7 +177,7 @@
 			</item>
         </menu>
         <separator/>
-        <item label="Exit" icon="/usr/share/icons/Openbox-menu/exit.png">
+        <item label="Exit" icon="/usr/share/icons/openbox-menu/exit.png">
             <action name="Execute">
                 <command>
                     obexit show
