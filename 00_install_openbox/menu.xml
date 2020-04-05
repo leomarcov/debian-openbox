@@ -7,31 +7,36 @@
 
 
     <menu id="root-menu" label="Openbox 3">
-<item label="Run Program"><action name="Execute"><command>rofi -show drun -display-drun Search</command></action></item>    <!-- ##DEBIAN-OPENBOX-rofi -->
-        <item label="VirtualBox"><action name="Execute"><command>virtualbox</command></action></item> <separator/>
+		<item label="Run Program" icon="/usr/share/icons/Openbox-menu/search.png">
+			<action name="Execute">
+				<command>
+					rofi -show drun -display-drun Search
+				</command>
+			</action>
+		</item>
 		<separator/>
-		<item label="Terminal">
+		<item label="Terminal" icon="/usr/share/icons/Openbox-menu/terminal.png">
             <action name="Execute">
                 <command>
                     x-terminal-emulator
                 </command>
             </action>
         </item>
-        <item label="Web Browser">
+        <item label="Web Browser" icon="/usr/share/icons/Openbox-menu/web-browser.png">
             <action name="Execute">
                 <command>
                     x-www-browser
                 </command>
             </action>
         </item>
-        <item label="File Manager">
+        <item label="File Manager" icon="/usr/share/icons/Openbox-menu/file-manager.png">
             <action name="Execute">
                 <command>
                     x-file-manager
                 </command>
             </action>
         </item>
-        <item label="Text Editor">
+        <item label="Text Editor" icon="/usr/share/icons/Openbox-menu/text-editor.png">
             <action name="Execute">
                 <command>
                     x-text-editor
@@ -41,7 +46,7 @@
 		
         <separator/>
  
-        <menu id="preferences" label="Preferences">
+        <menu id="preferences" label="Preferences" icon="/usr/share/icons/Openbox-menu/settings.png">
             <menu id="obConfig" label="Openbox">
                 <item label="Edit menu.xml">
                     <action name="Execute">
@@ -173,14 +178,7 @@
 			</item>
         </menu>
         <separator/>
-        <item label="Lock Screen">
-            <action name="Execute">
-                <command>
-					x-locker
-                </command>
-            </action>
-        </item>
-        <item label="Exit">
+        <item label="Exit" icon="/usr/share/icons/Openbox-menu/exit.png">
             <action name="Execute">
                 <command>
                     obexit show
