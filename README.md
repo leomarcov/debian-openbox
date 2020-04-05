@@ -4,7 +4,7 @@
 &nbsp; 
 ## Main features
   * Install Openbox and dependences.
-  * Install and config essential Openbox tools: Tint2, Rofi, Terminator, Thunar, volume control, etc.
+  * Install and config essential Openbox tools: Tint2, Rofi, Terminator, Thunar, volume control, gsimplecal, etc.
   * Config a basic themes and styles for Openbox, Gtk, fonts, icon pack, wallpapers, exit menu.
   * Install some user tools: Brave/Chrome browser, SublimeText, Atom, VirtualBox and Extensión Pack, sudo,nomacs image viewer, WPS Office and others.
   * Config prompt,  path, aliases and home directories permissions.
