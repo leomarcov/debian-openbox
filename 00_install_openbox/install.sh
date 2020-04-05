@@ -53,7 +53,3 @@ for d in /etc/skel /home/*/; do
 	cp -v "$base_dir/$f" "$d" && chown -R $(stat "$d" -c %u:%g) "$d/$f"	
 done
 
-
-
-
-
