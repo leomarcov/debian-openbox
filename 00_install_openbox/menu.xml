@@ -45,7 +45,7 @@
 		
         <separator/>
  
-        <menu id="preferences" label="Preferences" icon="/usr/share/icons/Openbox-menu/settings.png">
+        <menu id="preferences" label="Preferences" icon="/usr/share/icons/openbox-menu/settings.png">
             <menu id="obConfig" label="Openbox">
                 <item label="Edit menu.xml">
                     <action name="Execute">
