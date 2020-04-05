@@ -21,7 +21,7 @@
 &nbsp; 
 ## Install
   * Install Debian 10 netinstall. Do not install `Debian desktop environment`.
-  * Clone or download project.
+  * Clone or download this project: `git clone https://github.com/debian-openbox`
   * Exec `install` script and select scripts you want to install.
   
 ```
