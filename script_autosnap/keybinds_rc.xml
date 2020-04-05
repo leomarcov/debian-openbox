@@ -1,6 +1,9 @@
     <keybind key="W-KP_0">                  <!-- #DEBIAN-OPENBOX-autosnap -->
       <action name="ToggleAlwaysOnTop"/>    <!-- #DEBIAN-OPENBOX-autosnap -->
     </keybind>                              <!-- #DEBIAN-OPENBOX-autosnap -->
+    <keybind key="W-0">                    <!-- #DEBIAN-OPENBOX-autosnap -->
+      <action name="ToggleAlwaysOnTop"/>    <!-- #DEBIAN-OPENBOX-autosnap -->
+    </keybind>                              <!-- #DEBIAN-OPENBOX-autosnap -->
     <keybind key="W-KP_Add">                <!-- #DEBIAN-OPENBOX-autosnap -->
       <action name="Maximize"/>             <!-- #DEBIAN-OPENBOX-autosnap -->
     </keybind>                              <!-- #DEBIAN-OPENBOX-autosnap -->
@@ -8,6 +11,15 @@
       <action name="UnmaximizeFull"/>       <!-- #DEBIAN-OPENBOX-autosnap -->
     </keybind>                              <!-- #DEBIAN-OPENBOX-autosnap -->
     <keybind key="W-KP_Home">               <!-- #DEBIAN-OPENBOX-autosnap -->
+      <action name="UnmaximizeFull"/>       <!-- #DEBIAN-OPENBOX-autosnap -->
+      <action name="MoveResizeTo">          <!-- #DEBIAN-OPENBOX-autosnap -->
+        <x>0</x>                            <!-- #DEBIAN-OPENBOX-autosnap -->
+        <y>0</y>                            <!-- #DEBIAN-OPENBOX-autosnap -->
+        <width>50%</width>                  <!-- #DEBIAN-OPENBOX-autosnap -->
+        <height>50%</height>                <!-- #DEBIAN-OPENBOX-autosnap -->
+      </action>                             <!-- #DEBIAN-OPENBOX-autosnap -->
+    </keybind>                              <!-- #DEBIAN-OPENBOX-autosnap -->
+    <keybind key="W-7">                     <!-- #DEBIAN-OPENBOX-autosnap -->
       <action name="UnmaximizeFull"/>       <!-- #DEBIAN-OPENBOX-autosnap -->
       <action name="MoveResizeTo">          <!-- #DEBIAN-OPENBOX-autosnap -->
         <x>0</x>                            <!-- #DEBIAN-OPENBOX-autosnap -->
@@ -25,7 +37,25 @@
         <height>50%</height>                <!-- #DEBIAN-OPENBOX-autosnap -->
       </action>                             <!-- #DEBIAN-OPENBOX-autosnap -->
     </keybind>                              <!-- #DEBIAN-OPENBOX-autosnap -->
+    <keybind key="W-8">                     <!-- #DEBIAN-OPENBOX-autosnap -->
+      <action name="UnmaximizeFull"/>       <!-- #DEBIAN-OPENBOX-autosnap -->
+      <action name="MoveResizeTo">          <!-- #DEBIAN-OPENBOX-autosnap -->
+        <x>0</x>                            <!-- #DEBIAN-OPENBOX-autosnap -->
+        <y>0</y>                            <!-- #DEBIAN-OPENBOX-autosnap -->
+        <width>100%</width>                 <!-- #DEBIAN-OPENBOX-autosnap -->
+        <height>50%</height>                <!-- #DEBIAN-OPENBOX-autosnap -->
+      </action>                             <!-- #DEBIAN-OPENBOX-autosnap -->
+    </keybind>                              <!-- #DEBIAN-OPENBOX-autosnap -->
     <keybind key="W-KP_Prior">              <!-- #DEBIAN-OPENBOX-autosnap -->
+      <action name="UnmaximizeFull"/>       <!-- #DEBIAN-OPENBOX-autosnap -->
+      <action name="MoveResizeTo">          <!-- #DEBIAN-OPENBOX-autosnap -->
+        <x>-0</x>                           <!-- #DEBIAN-OPENBOX-autosnap -->
+        <y>0</y>                            <!-- #DEBIAN-OPENBOX-autosnap -->
+        <width>50%</width>                  <!-- #DEBIAN-OPENBOX-autosnap -->
+        <height>50%</height>                <!-- #DEBIAN-OPENBOX-autosnap -->
+      </action>                             <!-- #DEBIAN-OPENBOX-autosnap -->
+    </keybind>                              <!-- #DEBIAN-OPENBOX-autosnap -->
+    <keybind key="W-9">                     <!-- #DEBIAN-OPENBOX-autosnap -->
       <action name="UnmaximizeFull"/>       <!-- #DEBIAN-OPENBOX-autosnap -->
       <action name="MoveResizeTo">          <!-- #DEBIAN-OPENBOX-autosnap -->
         <x>-0</x>                           <!-- #DEBIAN-OPENBOX-autosnap -->
@@ -37,7 +67,19 @@
     <keybind key="W-KP_Begin">              <!-- #DEBIAN-OPENBOX-autosnap -->
       <action name="ToggleMaximize"/>       <!-- #DEBIAN-OPENBOX-autosnap -->
     </keybind>                              <!-- #DEBIAN-OPENBOX-autosnap -->
+    <keybind key="W-5">                     <!-- #DEBIAN-OPENBOX-autosnap -->
+      <action name="ToggleMaximize"/>       <!-- #DEBIAN-OPENBOX-autosnap -->
+    </keybind>                              <!-- #DEBIAN-OPENBOX-autosnap -->
     <keybind key="W-KP_Left">               <!-- #DEBIAN-OPENBOX-autosnap -->
+      <action name="UnmaximizeFull"/>       <!-- #DEBIAN-OPENBOX-autosnap -->
+      <action name="MoveResizeTo">          <!-- #DEBIAN-OPENBOX-autosnap -->
+        <x>0</x>                            <!-- #DEBIAN-OPENBOX-autosnap -->
+        <y>0</y>                            <!-- #DEBIAN-OPENBOX-autosnap -->
+        <width>50%</width>                  <!-- #DEBIAN-OPENBOX-autosnap -->
+        <height>100%</height>               <!-- #DEBIAN-OPENBOX-autosnap -->
+      </action>                             <!-- #DEBIAN-OPENBOX-autosnap -->
+    </keybind>                              <!-- #DEBIAN-OPENBOX-autosnap -->
+    <keybind key="W-4">                     <!-- #DEBIAN-OPENBOX-autosnap -->
       <action name="UnmaximizeFull"/>       <!-- #DEBIAN-OPENBOX-autosnap -->
       <action name="MoveResizeTo">          <!-- #DEBIAN-OPENBOX-autosnap -->
         <x>0</x>                            <!-- #DEBIAN-OPENBOX-autosnap -->
@@ -55,7 +97,25 @@
         <height>100%</height>               <!-- #DEBIAN-OPENBOX-autosnap -->
       </action>                             <!-- #DEBIAN-OPENBOX-autosnap -->
     </keybind>                              <!-- #DEBIAN-OPENBOX-autosnap -->
+    <keybind key="W-6">                     <!-- #DEBIAN-OPENBOX-autosnap -->
+      <action name="UnmaximizeFull"/>       <!-- #DEBIAN-OPENBOX-autosnap -->
+      <action name="MoveResizeTo">          <!-- #DEBIAN-OPENBOX-autosnap -->
+        <x>-0</x>                           <!-- #DEBIAN-OPENBOX-autosnap -->
+        <y>0</y>                            <!-- #DEBIAN-OPENBOX-autosnap -->
+        <width>50%</width>                  <!-- #DEBIAN-OPENBOX-autosnap -->
+        <height>100%</height>               <!-- #DEBIAN-OPENBOX-autosnap -->
+      </action>                             <!-- #DEBIAN-OPENBOX-autosnap -->
+    </keybind>                              <!-- #DEBIAN-OPENBOX-autosnap -->
     <keybind key="W-KP_End">                <!-- #DEBIAN-OPENBOX-autosnap -->
+      <action name="UnmaximizeFull"/>       <!-- #DEBIAN-OPENBOX-autosnap -->
+      <action name="MoveResizeTo">          <!-- #DEBIAN-OPENBOX-autosnap -->
+        <x>0</x>                            <!-- #DEBIAN-OPENBOX-autosnap -->
+        <y>-0</y>                           <!-- #DEBIAN-OPENBOX-autosnap -->
+        <width>50%</width>                  <!-- #DEBIAN-OPENBOX-autosnap -->
+        <height>50%</height>                <!-- #DEBIAN-OPENBOX-autosnap -->
+      </action>                             <!-- #DEBIAN-OPENBOX-autosnap -->
+    </keybind>                              <!-- #DEBIAN-OPENBOX-autosnap -->
+    <keybind key="W-1">                     <!-- #DEBIAN-OPENBOX-autosnap -->
       <action name="UnmaximizeFull"/>       <!-- #DEBIAN-OPENBOX-autosnap -->
       <action name="MoveResizeTo">          <!-- #DEBIAN-OPENBOX-autosnap -->
         <x>0</x>                            <!-- #DEBIAN-OPENBOX-autosnap -->
@@ -73,6 +133,15 @@
         <height>50%</height>                <!-- #DEBIAN-OPENBOX-autosnap -->
       </action>                             <!-- #DEBIAN-OPENBOX-autosnap -->
     </keybind>                              <!-- #DEBIAN-OPENBOX-autosnap -->
+    <keybind key="W-2">                     <!-- #DEBIAN-OPENBOX-autosnap -->
+      <action name="UnmaximizeFull"/>       <!-- #DEBIAN-OPENBOX-autosnap -->
+      <action name="MoveResizeTo">          <!-- #DEBIAN-OPENBOX-autosnap -->
+        <x>-0</x>                           <!-- #DEBIAN-OPENBOX-autosnap -->
+        <y>-0</y>                           <!-- #DEBIAN-OPENBOX-autosnap -->
+        <width>100%</width>                 <!-- #DEBIAN-OPENBOX-autosnap -->
+        <height>50%</height>                <!-- #DEBIAN-OPENBOX-autosnap -->
+      </action>                             <!-- #DEBIAN-OPENBOX-autosnap -->
+    </keybind>                              <!-- #DEBIAN-OPENBOX-autosnap -->
     <keybind key="W-KP_Next">               <!-- #DEBIAN-OPENBOX-autosnap -->
       <action name="UnmaximizeFull"/>       <!-- #DEBIAN-OPENBOX-autosnap -->
       <action name="MoveResizeTo">          <!-- #DEBIAN-OPENBOX-autosnap -->
@@ -80,6 +149,15 @@
       	<y>-0</y>                           <!-- #DEBIAN-OPENBOX-autosnap -->
       	<width>50%</width>                  <!-- #DEBIAN-OPENBOX-autosnap -->
       	<height>50%</height>                <!-- #DEBIAN-OPENBOX-autosnap -->
+      </action>                             <!-- #DEBIAN-OPENBOX-autosnap -->
+    </keybind>                              <!-- #DEBIAN-OPENBOX-autosnap -->
+    <keybind key="W-3">                     <!-- #DEBIAN-OPENBOX-autosnap -->
+      <action name="UnmaximizeFull"/>       <!-- #DEBIAN-OPENBOX-autosnap -->
+      <action name="MoveResizeTo">          <!-- #DEBIAN-OPENBOX-autosnap -->
+        <x>-0</x>                           <!-- #DEBIAN-OPENBOX-autosnap -->
+        <y>-0</y>                           <!-- #DEBIAN-OPENBOX-autosnap -->
+        <width>50%</width>                  <!-- #DEBIAN-OPENBOX-autosnap -->
+        <height>50%</height>                <!-- #DEBIAN-OPENBOX-autosnap -->
       </action>                             <!-- #DEBIAN-OPENBOX-autosnap -->
     </keybind>                              <!-- #DEBIAN-OPENBOX-autosnap -->
     <keybind key="C-A-Left">                <!-- #DEBIAN-OPENBOX-autosnap -->
