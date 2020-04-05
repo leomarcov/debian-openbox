@@ -52,7 +52,7 @@ panel_window_name = launcher
 # EXECUTOR
 #---------------------------------------------
 execp = new
-execp_command = echo "Run..."
+execp_command = echo "Run"
 execp_interval = 0
 execp_background_id = 2
 execp_font = Droid Sans 11
