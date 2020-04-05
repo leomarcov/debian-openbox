@@ -18,7 +18,8 @@ systemctl disable NetworkManager-wait-online.service
 
 # COPY OPENBOX THEME
 tar -xzvf "$base_dir"/openbox_theme.tgz -C /usr/share/themes/
-cp -r "$base_dir/openbox_menu" /usr/share/icons/
+cp -rv "$base_dir/openbox-menu" /usr/share/icons/
+
 
 # COPY OPENBOX CONFIG FILES
 for d in /etc/skel /home/*/; do
