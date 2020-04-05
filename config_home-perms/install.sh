@@ -17,5 +17,5 @@ for d in  /home/*/; do
     [ "$(dirname "$d")" = "/home" ] && ! id "$(basename "$d")" &>/dev/null && continue
 	
 	# Set current home permissions
-	chmod 0750 "$d"
+	chmod -v 0750 "$d"
 done
