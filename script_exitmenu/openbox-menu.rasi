@@ -5,30 +5,31 @@
  *******************************************************************************/
 
 * {
-	theme: "box";
-    selected-normal-foreground:  rgba ( 255, 255, 255, 100 % );
-    foreground:                  rgba ( 193, 193, 193, 100 % );
+	theme: "openbox-menu";
+    background:                  rgba ( 255, 255, 255, 100 % );
+    foreground:                  rgba ( 102, 102, 102, 100 % );
+    selected-normal-background:  rgba ( 236, 237, 238, 100 % );
+    selected-normal-foreground:  @foreground;
     normal-foreground:           @foreground;
+    separatorcolor:              @selected-normal-background;
+
     alternate-normal-background: rgba ( 39, 39, 39, 0 % );
     red:                         rgba ( 220, 50, 47, 60 % );
     selected-urgent-foreground:  rgba ( 255, 24, 68, 100 % );
     blue:                        rgba ( 38, 139, 210, 100 % );
     urgent-foreground:           rgba ( 255, 24, 68, 100 % );
     alternate-urgent-background: rgba ( 39, 50, 56, 0 % );
-    active-foreground:           rgba ( 128, 203, 196, 100 % );
+    active-foreground:           @foreground;
     lightbg:                     rgba ( 238, 232, 213, 100 % );
-    selected-active-foreground:  rgba ( 128, 203, 196, 100 % );
+    selected-active-foreground:  @foreground;
     alternate-active-background: rgba ( 39, 50, 56, 50 % );
-    background:                  rgba ( 39, 39, 39, 95 % );
     bordercolor:                 rgba ( 39, 39, 39, 95 % );
     alternate-normal-foreground: @foreground;
     normal-background:           rgba ( 39, 50, 56, 0 % );
     lightfg:                     rgba ( 88, 104, 117, 50 % );
-    scroll: 					 rgba ( 193, 193, 193, 50 % );
-    selected-normal-background:  rgba ( 57, 66, 73, 50 % );
+    scroll: 					 rgba ( 193, 193, 193, 100 % );
     border-color:                @foreground;
     spacing:                     3;
-    separatorcolor:              rgba ( 30, 37, 41, 50 % );
     urgent-background:           rgba ( 39, 50, 56, 50 % );
     selected-urgent-background:  rgba ( 57, 66, 73, 50 % );
     alternate-urgent-foreground: @urgent-foreground;
@@ -36,6 +37,7 @@
     alternate-active-foreground: @active-foreground;
     active-background:           rgba ( 39, 50, 56, 100 % );
     selected-active-background:  rgba ( 57, 66, 73, 50 % );
+    font:						 "Droid Sans Regular 12";
 }
 #window {
     background-color: @background;
@@ -56,7 +58,7 @@
 }
 #listview {
     fixed-height: 0;
-    border:       0px dash 0px 0px ;
+    border:       1px solid 0px 0px ;
     border-color: @separatorcolor;
     spacing:      2px ;
     scrollbar:    false;
