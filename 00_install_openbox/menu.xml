@@ -129,7 +129,7 @@
 					</command>
 				</action>
 			</item>			
-            <item label="Appearance">
+            <item label="GTK appearance">
                 <action name="Execute">
                     <command>
                         lxappearance
