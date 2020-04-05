@@ -1,6 +1,7 @@
 
 #!/bin/bash
-# ACTION: Config vim with custom configs
+# ACTION: Config users home directories permissions to 750 
+# INFO: By default permissions are 755 and has access permissions to all users
 # DEFAULT: y
 
 # Check root
@@ -8,14 +9,13 @@
 
 base_dir="$(dirname "$(readlink -f "$0")")"
 
-# Install vim
-find /var/cache/apt/pkgcache.bin -mtime 0 &>/dev/null ||  apt-get update
-apt-get install -y vim
+# Config adduser for create users with $HOME permisions 0750
+[ -f /etc/adduser.conf ] && sed -i 's/DIR_MODE=[0-9]*/DIR_MODE=0750/g' /etc/adduser.conf
 
-
-for d in  /etc/skel/  /home/*/ /root/; do
+for d in  /home/*/; do
     # Skip dirs in /home that not are user home
     [ "$(dirname "$d")" = "/home" ] && ! id "$(basename "$d")" &>/dev/null && continue
 	
-	cp -v "$base_dir/vimrc" "$d/.vimrc" && chown -R $(stat "$(dirname "$d")" -c %u:%g) "$d/.vimrc"
+	# Set current home permissions
+	chmod 0750 "$d"
 done
