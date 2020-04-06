@@ -44,7 +44,8 @@
         </item>
 		
         <separator/>
- 
+ 		<menu id="desktop-app-menu" label="Applications" icon="/usr/share/icons/openbox-menu/applications.png" execute="obamenu" />
+
         <menu id="preferences" label="Preferences" icon="/usr/share/icons/openbox-menu/settings.png">
             <menu id="obConfig" label="Openbox">
                 <item label="Edit menu.xml">
@@ -110,6 +111,13 @@
         			<action name="Execute">
 	                    <command>
 	                        x-text-editor ~/.config/tint2/tint2-sessionfile
+	                    </command>
+	                </action>
+	            </item>
+	            <item label="Tint2 config tool">
+        			<action name="Execute">
+	                    <command>
+	                        tint2conf
 	                    </command>
 	                </action>
 	            </item>
