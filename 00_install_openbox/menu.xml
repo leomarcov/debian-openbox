@@ -44,8 +44,8 @@
         </item>
 		
         <separator/>
+		
  		<menu id="desktop-app-menu" label="Applications" icon="/usr/share/icons/openbox-menu/applications.png" execute="obamenu" />
-
         <menu id="preferences" label="Preferences" icon="/usr/share/icons/openbox-menu/settings.png">
             <menu id="obConfig" label="Openbox">
                 <item label="Edit menu.xml">
