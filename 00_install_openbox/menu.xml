@@ -157,16 +157,16 @@
                     </command>
                 </action>
             </item>
+            <item label="Notifications">
+                <action name="Execute">
+                    <command>xfce4-notifyd-config</command>
+                </action>
+            </item>
             <item label="Alternatives">
                 <action name="Execute">
                     <command>
                         galternatives
                     </command>
-                </action>
-            </item>
-            <item label="Notifications">
-                <action name="Execute">
-                    <command>xfce4-notifyd-config</command>
                 </action>
             </item>
             <item label="Power Management">
@@ -176,6 +176,27 @@
                     </command>
                 </action>
             </item>
+			<item label="Network configuration">
+				<action name="Execute">
+					<command>
+						nm-connection-editor
+					</command>
+				</action>
+			</item>
+			<item label="Preferred Applications">
+				<action name="Execute">
+					<command>
+						exo-preferred-applications
+					</command>
+				</action>
+			</item>
+			<item label="Removable Drives and Media">
+				<action name="Execute">
+					<command>
+						thunar-volman-settings
+					</command>
+				</action>
+			</item>
 			<item label="Display">
 				<action name="Execute">
 					<command>
@@ -184,7 +205,9 @@
 				</action>
 			</item>
         </menu>
+		
         <separator/>
+		
         <item label="Exit" icon="/usr/share/icons/openbox-menu/exit.png">
             <action name="Execute">
                 <command>
