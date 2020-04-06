@@ -15,22 +15,22 @@ elif [ "$1" = "show" ]; then
 
 else
     case "$@" in
-    "Logout")
+    *"Logout")
         openbox --exit
         ;;
-    "Lock session")
+    *"Lock session")
         x-locker
         ;;
-    "Power off")
+    *"Power off")
         systemctl poweroff
         ;;
-    "Reboot")
+    *"Reboot")
         systemctl reboot
         ;;
-    "Suspend")
+    *"Suspend")
         systemctl suspend
         ;;
-    "Hibernate")
+    *"Hibernate")
         systemctl hibernate
         ;;
     esac
