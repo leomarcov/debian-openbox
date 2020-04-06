@@ -6,6 +6,11 @@
 
 base_dir="$(dirname "$(readlink -f "$0")")"
 
+# Install fonts-noto for utf-8 symbols
+find /var/cache/apt/pkgcache.bin -mtime 0 &>/dev/null ||  apt-get update 
+apt-get install -y fonts-noto
+
+
 f="obexit"
 cp -v "$base_dir/$f" /usr/bin
 chmod +x "/usr/bin/$f"
