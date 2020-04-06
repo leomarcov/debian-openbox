@@ -17,4 +17,4 @@ fi
 rm -rf "$t"
 
 # Remove strange WPS dirs
-rm -rf /home/*/模板
+rm -rf /home/*/模板 /root/模板
