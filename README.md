@@ -15,7 +15,7 @@
   * Install [**`update-notification script`**](https://github.com/leomarcov/debian-openbox/tree/master/script_update-notification-tint) for check and manage repositories updates.
   * Install [**`brightness control script`**](https://github.com/leomarcov/debian-openbox/tree/master/script_brightness-control) for increase/decrease birghtness screen.
 
-<img src="https://user-images.githubusercontent.com/32820131/77943761-103ce380-72be-11ea-8944-438ef13452d2.png">
+<img src="https://user-images.githubusercontent.com/32820131/78614586-37bc1f00-786f-11ea-8c28-1509b8bb2c11.png">
 
 
 &nbsp; 
