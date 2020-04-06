@@ -37,7 +37,7 @@
     alternate-active-foreground: @active-foreground;
     active-background:           rgba ( 39, 50, 56, 100 % );
     selected-active-background:  rgba ( 57, 66, 73, 50 % );
-    font:						 "Droid Sans Regular 12";
+    font:						 "Droid Sans Regular 14";
 }
 #window {
     background-color: @background;
