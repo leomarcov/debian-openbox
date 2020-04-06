@@ -15,3 +15,6 @@ if [ $? -eq 0 ]; then
   apt-get install -f -y 
 fi 
 rm -rf "$t"
+
+# Remove strange WPS dirs
+rm -rf /home/*/模板
