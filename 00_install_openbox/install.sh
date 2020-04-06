@@ -13,7 +13,7 @@ find /var/cache/apt/pkgcache.bin -mtime 0 &>/dev/null ||  apt-get update
 apt-get install -y openbox obconf obmenu xinit lxappearance compton xfce4-screenshooter xfce4-clipman xfce4-power-manager arandr htop libexo-1-0 gsimplecal xcape gparted
 
 apt-get install -y network-manager network-manager-gnome
-systemctl disable NetworkManager-wait-online.service
+systemctl mask NetworkManager-wait-online.service
 
 
 # COPY OPENBOX THEME
