@@ -33,7 +33,6 @@ for d in /etc/skel/  /home/*/; do
 	
 	# Edit rc.xml config
 	sed -i "/${comment_mark}/d" "$f"		# Delete lines added previously
-	sed -i "s/<command>gmrun<\/command>/<command>${rofi_command}<\/command>/g" "$f"	# Change alt+f2 shortkey for rofi
 	sed -i "/<keyboard>/a<keybind key=\"C-Tab\"><action name=\"Execute\"><command>${rofi_command}<\/command><\/action><\/keybind>     <\!-- #${comment_mark} -->" "$f"	# Add ctrl+tab shortkey
 	
 	# Set as runas in menu:
