@@ -204,6 +204,6 @@ Win + x${alignr}Logout
 Alt + Tab${alignr}Window switch
 Win + Num${alignr}Snap window
 Win + Arrow${alignr}Expand window
-Win + Esc${alignr}Kill window
+Win + Esc${alignr}Kill window selector
 Ctrl + Alt + Backspace${alignr}Kill X
 ]];
