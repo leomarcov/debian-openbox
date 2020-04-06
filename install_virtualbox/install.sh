@@ -23,14 +23,14 @@ find /var/cache/apt/pkgcache.bin -mtime 0 &>/dev/null ||  apt-get update
 apt-get install -y linux-headers-$(uname -r) "$vb_package" || exit 1
 
 # Add VirtualBox in OpenBox menu:
-for d in /etc/skel/  /home/*/ ; do
-    # Skip dirs in /home that not are user home
-    [ "$(dirname "$d")" = "/home" ] && ! id "$(basename "$d")" &>/dev/null && continue
-
-	f="$d/.config/openbox/menu.xml"
-	[ ! -f "$f" ] && continue
-	! grep -q '<command>virtualbox<\/command>' "$f" && sed -i '0,/<separator\/>/s//<item label="VirtualBox"><action name="Execute"><command>virtualbox<\/command><\/action><\/item> <separator\/>/' "$f"
-done
+# for d in /etc/skel/  /home/*/ ; do
+#    # Skip dirs in /home that not are user home
+#    [ "$(dirname "$d")" = "/home" ] && ! id "$(basename "$d")" &>/dev/null && continue#
+#
+#	f="$d/.config/openbox/menu.xml"
+#	[ ! -f "$f" ] && continue
+#	! grep -q '<command>virtualbox<\/command>' "$f" && sed -i '0,/<separator\/>/s//<item label="VirtualBox"><action name="Execute"><command>virtualbox<\/command><\/action><\/item> <separator\/>/' "$f"
+# done
 
 
 # Get Extension Pack
