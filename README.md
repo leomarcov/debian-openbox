@@ -89,7 +89,6 @@ $ ./install -l
 [37] Install icon theme Numix-Paper and set as default (y)
 [38] Install nitrogen and copy wallpapers pack and set Aptenodytes wallpaper as default (y)
 
-
 ```
   
 &nbsp; 
