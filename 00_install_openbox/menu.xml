@@ -140,7 +140,7 @@
 	                </action>
                </item>
         	</menu>
-        	<menu id="compositor" label="Tint2 Taskbar">
+        	<menu id="compositor" label="Compositor">
 	            <item label="Edit Compositor Settings">
         			<action name="Execute">
 	                    <command>
