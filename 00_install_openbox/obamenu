@@ -6,7 +6,8 @@
 applications_dirs = ("/usr/share/applications", )
 image_dir_base = "/usr/share" # without "pixmaps" -/usr/local/share in FreeBSD, /usr/share on linux
 icon_Theme = "Humanity"
-image_cat_prefix = "applications-"  # if empty will create no icon text only menu
+#image_cat_prefix = "applications-"  # if empty will create no icon text only menu
+image_cat_prefix = ""  # if empty will create no icon text only menu
 #application_groups = ("Office",  "Development",  "Graphics", "Internet",  "Games", "System",  "Multimedia",  "Utilities",  "Settings")
 application_groups = ("Office",  "Development",  "Graphics", "Internet",  "Games", "System",  "Multimedia",  "Utilities")
 
