@@ -19,7 +19,7 @@ else
         openbox --exit
         ;;
     "Lock session")
-        physlock
+        x-locker
         ;;
     "Power off")
         systemctl poweroff
