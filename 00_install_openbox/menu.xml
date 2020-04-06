@@ -5,15 +5,24 @@
         xsi:schemaLocation="http://openbox.org/
                 file:///usr/share/openbox/menu.xsd">
 
+
     <menu id="root-menu" label="Openbox 3">
 		<item label="Run Program" icon="/usr/share/icons/openbox-menu/search.png">
 			<action name="Execute">
+				<command>rofi -show drun -display-drun Search -combi drun</command>
+			</action>
+		</item> 
+
+		<separator/>
+
+		<item label="VirtualBox" icon="/usr/share/icons/openbox-menu/virtualbox.png">
+			<action name="Execute">
 				<command>
-					rofi -show drun -display-drun Search -combi drun
+					virtualbox
 				</command>
 			</action>
-		</item>
-		<separator/>
+		</item> 
+		
 		<item label="Terminal" icon="/usr/share/icons/openbox-menu/terminal.png">
             <action name="Execute">
                 <command>
@@ -44,9 +53,11 @@
         </item>
 		
         <separator/>
-		
- 		<menu id="desktop-app-menu" label="Applications" icon="/usr/share/icons/openbox-menu/applications.png" execute="obamenu" />
+		<menu id="desktop-app-menu" label="Applications" icon="/usr/share/icons/openbox-menu/applications.png" execute="obamenu" />
+
+
         <menu id="preferences" label="Preferences" icon="/usr/share/icons/openbox-menu/settings.png">
+        	<separator label="GRAPHICAL PREFERENCES"/>
             <menu id="obConfig" label="Openbox">
                 <item label="Edit menu.xml">
                     <action name="Execute">
@@ -100,21 +111,21 @@
                 </item>
             </menu>
         	<menu id="tint2" label="Tint2 Taskbar">
-        		<item label="Themes config folder">
+        		<item label="Open themes config folder">
         			<action name="Execute">
 	                    <command>
 	                        x-file-manager ~/.config/tint2/
 	                    </command>
 	                </action>
 	            </item>
-	            <item label="Edit autostarted themes">
+	            <item label="Edit Autostarted Themes">
         			<action name="Execute">
 	                    <command>
 	                        x-text-editor ~/.config/tint2/tint2-sessionfile
 	                    </command>
 	                </action>
 	            </item>
-	            <item label="Tint2 config tool">
+	            <item label="Tint2 Config Tool">
         			<action name="Execute">
 	                    <command>
 	                        tint2conf
@@ -129,21 +140,37 @@
 	                </action>
                </item>
         	</menu>
-			<item label="Toggle composition">
+        	<menu id="conky" label="Conky">
+	            <item label="Edit Default Config">
+        			<action name="Execute">
+	                    <command>
+	                        x-text-editor ~/.conkyrc
+	                    </command>
+	                </action>
+	            </item>
+	            <item label="Restart">
+	                <action name="Execute">
+	                    <command>
+	                        bash -c 'killall conky; conky' 
+	                    </command>
+	                </action>
+               </item>	
+			</menu>
+			<item label="Toggle Composition">
 				<action name="Execute">
 					<command>
 						bash -c "pgrep compton &amp;>/dev/null &amp;&amp; killall compton || compton&amp;"
 					</command>
 				</action>
 			</item>			
-            <item label="GTK appearance">
+            <item label="GTK Appearance">
                 <action name="Execute">
                     <command>
                         lxappearance
                     </command>
                 </action>
             </item>
-            <item label="Font configuration">
+            <item label="Font Configuration">
                 <action name="Execute">
                     <command>
                         x-text-editor ~/.config/fontconfig/fonts.conf
@@ -162,6 +189,23 @@
                     <command>xfce4-notifyd-config</command>
                 </action>
             </item>
+			<item label="Display">
+				<action name="Execute">
+					<command>
+						arandr
+					</command>
+				</action>
+			</item>
+
+        	<separator label="SYSTEM PREFERENCES"/>
+
+            <item label="Synaptic Package Manager">
+                <action name="Execute">
+                    <command>
+                        synaptic-pkexec
+                    </command>
+                </action>
+            </item>
             <item label="Alternatives">
                 <action name="Execute">
                     <command>
@@ -176,7 +220,7 @@
                     </command>
                 </action>
             </item>
-			<item label="Network configuration">
+			<item label="Network Configuration">
 				<action name="Execute">
 					<command>
 						nm-connection-editor
@@ -197,17 +241,17 @@
 					</command>
 				</action>
 			</item>
-			<item label="Display">
+			<item label="GParted Partition Manager">
 				<action name="Execute">
 					<command>
-						arandr
+						gparted
 					</command>
 				</action>
 			</item>
         </menu>
-		
+
         <separator/>
-		
+
         <item label="Exit" icon="/usr/share/icons/openbox-menu/exit.png">
             <action name="Execute">
                 <command>
