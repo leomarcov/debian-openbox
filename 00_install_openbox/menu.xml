@@ -9,7 +9,7 @@
 		<item label="Run Program" icon="/usr/share/icons/openbox-menu/search.png">
 			<action name="Execute">
 				<command>
-					rofi -show drun -display-drun Search
+					rofi -show drun -display-drun Search -combi drun
 				</command>
 			</action>
 		</item>
