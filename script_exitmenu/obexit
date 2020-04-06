@@ -1,14 +1,14 @@
 #!/bin/bash
 
-options=" ⏻  Power off
- 🗘  Reboot
- ⏸ Suspend
- ⏾  Hibernate
- 🗙 Logout
- 🗝   Lock session"
+options=" ⏻\tPower off
+ 🗘\tReboot
+ ⏸\tSuspend
+ ⏾\tHibernate
+ 🗙\tLogout
+ 🗝 \tLock session"
 
 if [ $# -eq 0 ]; then
-    echo "$options"
+    echo -e "$options"
 
 elif [ "$1" = "show" ]; then
     rofi -theme openbox-menu -show Action -modi "Action:$(readlink -f "$0")"
