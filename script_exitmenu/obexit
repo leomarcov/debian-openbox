@@ -1,37 +1,37 @@
 #!/bin/bash
 
-options="Power off
-Reboot
-Suspend
-Hibernate
-Logout
-Lock session"
+options=" ⏻  Power off
+ 🗘  Reboot
+ ⏸ Suspend
+ ⏾  Hibernate
+ 🗙 Logout
+ 🗝   Lock session"
 
 if [ $# -eq 0 ]; then
-	echo "$options"
+    echo "$options"
 
 elif [ "$1" = "show" ]; then
-	rofi -theme openbox-menu -show Action -modi "Action:$(readlink -f "$0")"
+    rofi -theme openbox-menu -show Action -modi "Action:$(readlink -f "$0")"
 
 else
-	case "$@" in
-	"Logout")
-		openbox --exit
-		;;
-	"Lock session")
-		physlock
-		;;
-	"Power off")
-		systemctl poweroff
-		;;
-	"Reboot")
-		systemctl reboot
-		;;
-	"Suspend") 
-		systemctl suspend
-		;;
-	"Hibernate")
-		systemctl hibernate
-		;;
-	esac
+    case "$@" in
+    "Logout")
+        openbox --exit
+        ;;
+    "Lock session")
+        physlock
+        ;;
+    "Power off")
+        systemctl poweroff
+        ;;
+    "Reboot")
+        systemctl reboot
+        ;;
+    "Suspend")
+        systemctl suspend
+        ;;
+    "Hibernate")
+        systemctl hibernate
+        ;;
+    esac
 fi
