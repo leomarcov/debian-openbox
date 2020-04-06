@@ -22,7 +22,6 @@ for l in $deb_lines; do
 done
 )
 
-
 # Update and install packages
 apt-get update  
-apt-get install ttf-mscorefonts-installer rar
+apt-get -y install ttf-mscorefonts-installer rar
