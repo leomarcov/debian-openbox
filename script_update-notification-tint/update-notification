@@ -84,6 +84,7 @@ function tint2_executor_msg {
 #===============================================================================
 function install {
 	which aptitude &>/dev/null || apt-get install -y aptitude
+	which anacron &>/dev/null || apt-get install -y anacron
 	
 	echo "Copying $(basename $0) to $install_file"
 	[ "$install_file" = "$(readlink -f $0)" ] || sudo cp "$0" "$install_file" 
