@@ -55,6 +55,14 @@ function interactive_upgrade() {
 
 	sudo rm "$updates_file"
 	
+	# Restart tints
+	if [ -s ~/.config/tint2/tint2-sessionfile ]; then
+		killall tint2
+		cat ~/.config/tint2/tint2-sessionfile | while read t; do 
+			tint2 -c "$t" &
+		done
+	fi
+	
 	echo
 	read -p "Update complete..."
 	exit
