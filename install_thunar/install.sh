@@ -16,12 +16,19 @@ for d in /etc/skel/  /home/*/ ; do
 
     # Create config folders if no exists
 	d="$d/.config/"; [ ! -d "$d" ] && mkdir -v "$d" && chown -R $(stat "$(dirname "$d")" -c %u:%g) "$d"
+	d2="$d"
 	d="$d/xfce4/"; [ ! -d "$d" ] && mkdir -v "$d" && chown -R $(stat "$(dirname "$d")" -c %u:%g) "$d"
 	d="$d/xfconf/"; [ ! -d "$d" ] && mkdir -v "$d" && chown -R $(stat "$(dirname "$d")" -c %u:%g) "$d"
 	d="$d/xfce-perchannel-xml/"; [ ! -d "$d" ] && mkdir -v "$d" && chown -R $(stat "$(dirname "$d")" -c %u:%g) "$d"
 	
 	f="thunar.xml"
 	cp -v "$base_dir/$f" "$d" && chown -R $(stat "$(dirname "$d")" -c %u:%g) "$d/$f"
+	
+	d="$d2/Thunar/"; [ ! -d "$d" ] && mkdir -v "$d" && chown -R $(stat "$(dirname "$d")" -c %u:%g) "$d"
+	f="uca.xml"
+	cp -v "$base_dir/$f" "$d"
+	
+	
 done
 
 update-alternatives --install /usr/bin/x-file-manager x-file-manager /usr/bin/thunar 90
