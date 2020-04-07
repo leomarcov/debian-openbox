@@ -8,7 +8,7 @@
 base_dir="$(dirname "$(readlink -f "$0")")"
 	
 find /var/cache/apt/pkgcache.bin -mtime 0 &>/dev/null ||  apt-get update
-apt-get install -y thunar
+apt-get install -y thunar catfish
 
 for d in /etc/skel/  /home/*/ ; do
     # Skip dirs in /home that not are user home
