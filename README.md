@@ -21,7 +21,7 @@
 
 &nbsp; 
 ## Install
-  * Install Debian 10 netinstall, better don't install `Debian desktop environment`. Script should work too in Debian 9 and may be in others Debian based systems, but isn't guaranted.
+  * Install Debian 10 netinstall, better don't install `Debian desktop environment`. Script should work in Debian 9 too and may be in others Debian based systems, but isn't guaranted.
   * Clone or download this project: `git clone https://github.com/leomarcov/debian-openbox`
   * Exec `install` script and select scripts you want to install.
   
