@@ -302,7 +302,7 @@
 					</command>
 				</action>
 			</item>	
-			<item label="Check pending updates">
+			<item label="Check Pending Updates">
 				<action name="Execute">
 					<command>
 						x-terminal-emulator -m -e bash -c "update-notification; update-notification -i"
