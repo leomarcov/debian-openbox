@@ -298,7 +298,7 @@
 			<item label="WIFI Scan Networks">
 				<action name="Execute">
 					<command>
-						x-terminal-emulator -m -e nmcli dev wifi list
+						x-terminal-emulator -m -e bash -c "nmcli dev wifi list; read"
 					</command>
 				</action>
 			</item>	
