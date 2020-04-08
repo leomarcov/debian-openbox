@@ -4,6 +4,11 @@
  * Copyright: Rasmus Steinke
  *******************************************************************************/
 
+configuration {
+	modi: "drun";	
+	display-drun: "Search";
+ }
+
 * {
     selected-normal-foreground:  rgba ( 255, 255, 255, 100 % );
     foreground:                  rgba ( 193, 193, 193, 100 % );
