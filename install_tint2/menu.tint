@@ -60,7 +60,7 @@ execp_font_color = #FFFFFF 90
 execp_centered = 1
 execp_padding = 20 0 0
 execp_tooltip = 
-execp_lclick_command = rofi -show drun -display-drun Search -combi drun
+execp_lclick_command = rofi -show drun
 
 execp = new
 execp_command = echo "VirtualBox"
