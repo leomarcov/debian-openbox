@@ -62,6 +62,16 @@ function interactive_upgrade() {
 
 	echo -n "" > "$updates_file"
 	
+	# Restart tint2 bars
+	(
+		if [ -s ~/.config/tint2/tint2-sessionfile ]; then
+			killall tint2
+			cat ~/.config/tint2/tint2-sessionfile | while read t; do 
+				tint2 -c "$t" &
+			done
+		fi
+	)&>/dev/null &
+
 	echo
 	read -p "Update complete..."
 	exit
