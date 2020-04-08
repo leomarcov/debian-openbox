@@ -1,4 +1,4 @@
-i#!/bin/bash
+#!/bin/bash
 # ACTION: Install nitrogen and copy wallpapers pack and set Aptenodytes wallpaper as default
 # INFO: Aptenodytes Forsteri Wallpaper by Nixiepro is a clear and beautiful Bunsen wallpaper.
 # DEFAULT: y
