@@ -10,7 +10,11 @@ base_dir="$(dirname "$(readlink -f "$0")")"
 wp_dir="/usr/share/backgrounds/wallpapers/"
 wp_default="bl-colorful-aptenodytes-forsteri-by-nixiepro.png"
 
-apt-get -y install nitrogen
+# Install nitrogen
+if ! which nitrogen &>/dev/null; then
+	find /var/cache/apt/pkgcache.bin -mtime 0 &>/dev/null ||  apt-get update
+	apt-get -y install nitrogen
+fi
 
 mkdir -p "$wp_dir"
 cp -v "$base_dir/wallpapers/"* "$wp_dir"
