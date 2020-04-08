@@ -98,7 +98,7 @@ n=0
 # For each .sh file
 IFS=$'\n\t'
 shopt -s extglob
-for script in 
+for script in \
 	$(ls "$base_dir"/install_*/install.sh &>/dev/null) \
 	$(ls "$base_dir"/config_*/install.sh &>/dev/null) \
 	$(ls "$base_dir"/script_*/install.sh &>/dev/null) \
