@@ -1,6 +1,6 @@
 #!/bin/bash
 # ACTION: Install a collection of solarized wallpapers (author Andreas: Linz https://git.klingt.net/alinz) and config for rotate everyday for all users
-# DEFAULT: n
+# DEFAULT: y
 
 # Check root
 [ "$(id -u)" -ne 0 ] && { echo "Must run as root" 1>&2; exit 1; }
