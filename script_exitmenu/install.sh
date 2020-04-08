@@ -1,4 +1,4 @@
-# ACTION: Install exit menu script based on rofi
+# ACTION: Install script obexit with exit-power menu based on rofi
 # DEFAULT: y
 
 # Check root
