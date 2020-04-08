@@ -4,15 +4,14 @@
 wps_dir="/usr/share/backgrounds/wallpapers-alinz/"
 ########################################################################
 
-
-# Get all wallpaper paths in array
+# Put all wallpaper paths in array
 IFS=$'\n'
 wps_paths=($(ls "$wps_dir"/*))
 
 # Get today wallpaper position in array
-n=${#wps_paths[*]}										# Num of files
-shopt -s extglob; d=$(date +%j); d=${d##+(0)}			# Day of year
-n=$((d%n))												# Today wp position
+n=${#wps_paths[*]}										# Num of items in array
+shopt -s extglob; d=$(date +%j); d=${d##+(0)}			# Today day of year
+n=$((d%n))												# Today array position
 
 # Get today wallpaper path
 wp_default="${wps_paths[$n]}"
