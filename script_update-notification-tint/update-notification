@@ -31,8 +31,17 @@ function update () {
 	echo "Updating package repositoriy..."
 	aptitude update &> /dev/null
 	echo "Checking updates and saving in $updates_file..."
-	sudo bash -c 'aptitude search "~U" &> '"$updates_file"
-	[ ! -s "$updates_file" ] && rm "$updates_file" &> /dev/null
+	aptitude search "~U" > "$updates_file" || exit 1
+	
+	clear
+	if [ ! -s "$updates_file" ]; then
+		echo "No pending updates!"
+	else
+		echo -e "\e[1mPENDING UPDATES\e[0m"
+		cat "$updates_file"
+	fi
+
+	echo
 	exit 0
 }
 
@@ -53,15 +62,7 @@ function interactive_upgrade() {
 		exit 1; 
 	fi
 
-	sudo rm "$updates_file"
-	
-	# Restart tints
-	if [ -s ~/.config/tint2/tint2-sessionfile ]; then
-		killall tint2
-		cat ~/.config/tint2/tint2-sessionfile | while read t; do 
-			tint2 -c "$t" &
-		done
-	fi
+	echo -n "" > "$updates_file"
 	
 	echo
 	read -p "Update complete..."
@@ -73,7 +74,7 @@ function interactive_upgrade() {
 # DESCRIPTION: shot text for display in systray
 #===============================================================================
 function tint2_executor_msg {
-	[ -r "$updates_file" ] && echo $(wc "$updates_file" -l | cut -f 1 -d " ")" UPDATES  //"
+	[ -s "$updates_file" ] && echo $(wc "$updates_file" -l | cut -f 1 -d " ")" UPDATES  //"
 	exit 0
 }
 
@@ -84,7 +85,6 @@ function tint2_executor_msg {
 #===============================================================================
 function install {
 	which aptitude &>/dev/null || apt-get install -y aptitude
-	which anacron &>/dev/null || apt-get install -y anacron
 	
 	echo "Copying $(basename $0) to $install_file"
 	[ "$install_file" = "$(readlink -f $0)" ] || sudo cp "$0" "$install_file" 
@@ -107,6 +107,10 @@ execp_font_color = #FFFFFF 100
 execp_centered = 1
 execp_padding = 8 0 0
 '
+
+	touch "$updates_file"
+	chmod a+w "$updates_file"
+
 	exit 
 }
 
