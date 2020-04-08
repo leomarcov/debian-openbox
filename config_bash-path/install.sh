@@ -1,5 +1,5 @@
 #!/bin/bash
-# ACTION: Copy modified .profile file with new path and color definitions
+# ACTION: Config modified .profile file with new path and color definitions
 # DEFAULT: y
 
 # Check root
