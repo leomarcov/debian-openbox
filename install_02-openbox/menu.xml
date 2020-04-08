@@ -265,7 +265,7 @@
 				</action>
 			</item>
         </menu>
-
+		
         <menu id="info" label="System info" icon="/usr/share/icons/openbox-menu/stats.png">
 			<item label="Memory Usage">
 				<action name="Execute">
@@ -299,6 +299,13 @@
 				<action name="Execute">
 					<command>
 						x-terminal-emulator -m -e nmcli dev wifi list
+					</command>
+				</action>
+			</item>	
+			<item label="Check pending updates">
+				<action name="Execute">
+					<command>
+						x-terminal-emulator -m -e bash -c "update-notification; update-notification -i"
 					</command>
 				</action>
 			</item>	
