@@ -7,7 +7,7 @@
 [ "$(id -u)" -ne 0 ] && { echo "Must run as root" 1>&2; exit 1; }
 
 comment_mark="#DEBIAN-OPENBOX-rofi"
-rofi_command="rofi -show drun -display-drun Search -combi drun"
+rofi_command="rofi -show drun"
 base_dir="$(dirname "$(readlink -f "$0")")"
 
 # Install rofi package
