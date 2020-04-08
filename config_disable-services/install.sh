@@ -1,6 +1,6 @@
  
 #!/bin/bash
-# ACTION: Disable some unnecessary services for not start during boot time
+# ACTION: Config to disable some unnecessary services (no start in boot time)
 # INFO: Services are: NetworkManager-wait-online.service, ModemManager.service, pppd-dns.service
 # DEFAULT: y
 
