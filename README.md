@@ -94,9 +94,9 @@ $ ./install -l
   
 &nbsp; 
 ## Customize
-The script can be easily customized. Each action script `.sh` placed in a subdirectory are automatillacy recognized by `install`.
+The script can be easily customized. Each `install.sh` script placed in a subdirectory are automatillacy recognized by `install`.
   * For remove action simply delete the action directory.
-  * For add action simply add new folder and place the install script `.sh` and dependences. The script must have this header:
+  * For add action simply add new folder and place the install script `install.sh` and dependences. The script must have this header:
   ```
   #!/bin/bash
   # ACTION: Description of the action
