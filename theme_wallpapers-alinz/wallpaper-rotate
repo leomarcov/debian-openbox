@@ -10,13 +10,9 @@ IFS=$'\n'
 wps_paths=($(ls "$wps_dir"/*))
 
 # Get today wallpaper position in array
-n=${#wps_paths[*]}
-d=$(date +%e)
-if [ $n -gt 30 ]; then
-	n=$((n%d))
-else
-	n=$((d%n))
-fi
+n=${#wps_paths[*]}					# Num of files
+d=$(date +%j);	d=${d##+(0)}		# Day of year
+n=$((d%n))							# Today wp position
 
 # Get today wallpaper path
 wp_default="$(wps_paths[$n]}"
