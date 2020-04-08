@@ -1,6 +1,6 @@
 
 #!/bin/bash
-# ACTION: Add contrib and non-free repositories and install some basic packages
+# ACTION: Install some non-free packages and dd contrib and non-free repositories to APT
 # INFO: Useful packages: rar ttf-mscorefonts-installer
 # DEFAULT: y
 
