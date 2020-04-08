@@ -8,7 +8,7 @@
 base_dir="$(dirname "$(readlink -f "$0")")"
 
 # Install dependences
-if ! which anacron &>/dev/null || ! wich nitrogen &>/dev/null; then
+if ! which anacron &>/dev/null || ! which nitrogen &>/dev/null; then
 	find /var/cache/apt/pkgcache.bin -mtime 0 &>/dev/null ||  apt-get update
 	apt-get -y install anacron nitrogen
 fi
