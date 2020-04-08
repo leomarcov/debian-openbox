@@ -267,42 +267,42 @@
         </menu>
 
         <menu id="info" label="System info" icon="/usr/share/icons/openbox-menu/stats.png">
-			<item label="Memory usage">
+			<item label="Memory Usage">
 				<action name="Execute">
 					<command>
-						x-terminal-emulator -e sudo bash -c "ps_mem.py; read"
+						x-terminal-emulator -m -e sudo bash -c "ps_mem.py; read"
 					</command>
 				</action>
 			</item>
-			<item label="Process monitor">
+			<item label="Process Monitor">
 				<action name="Execute">
 					<command>
-						x-terminal-emulator -e htop
+						x-terminal-emulator -m -e htop
 					</command>
 				</action>
 			</item>
-			<item label="WIFI scan network">
+			<item label="Disks Usage">
 				<action name="Execute">
 					<command>
-						x-terminal-emulator -e nmcli dev wifi list
+						x-terminal-emulator -e bash -c 'lsblk -f -o name,size,fsavail,fsused,fstype,label,mountpoint; read'
 					</command>
 				</action>
 			</item>	
-			<item label="Partitions size">
-				<action name="Execute">
-					<command>
-						x-terminal-emulator -e bash -c 't=$(df -h); echo "$t" | head -1; echo "$t" | grep "^/dev/" --color=none; read'
-					</command>
-				</action>
-			</item>		
-			<item label="CPU usage">
+			<item label="CPU Usage">
 				<action name="Execute">
 					<command>
 						x-terminal-emulator -m -e s-tui
 					</command>
 				</action>
 			</item>	
-        </menu>		
+			<item label="WIFI Scan Networks">
+				<action name="Execute">
+					<command>
+						x-terminal-emulator -m -e nmcli dev wifi list
+					</command>
+				</action>
+			</item>	
+        </menu>
 		
         <separator/>
 
