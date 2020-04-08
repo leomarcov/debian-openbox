@@ -1,5 +1,5 @@
 #!/bin/bash
-# ACTION: Install a collection of solarized wallpapers (author Andreas: Linz https://git.klingt.net/alinz) and config for rotate everyday for all users
+# ACTION: Install a collection of solarized wallpapers (author: Andreas Linz https://git.klingt.net/alinz) and config for rotate everyday for all users
 # DEFAULT: y
 
 # Check root
