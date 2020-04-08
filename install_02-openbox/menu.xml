@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<openbox_menu xmlns="http://openbox.org/"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://openbox.org/
+                file:///usr/share/openbox/menu.xsd">
+
+
+    <menu id="root-menu" label="Openbox 3">
+		<item label="Run Program" icon="/usr/share/icons/openbox-menu/search.png">
+			<action name="Execute">
+				<command>rofi -show drun</command>
+			</action>
+		</item> 
+
+		<separator/>
+
+		<item label="VirtualBox" icon="/usr/share/icons/openbox-menu/virtualbox.png">
+			<action name="Execute">
+				<command>
+					virtualbox
+				</command>
+			</action>
+		</item> 
+		
+		<item label="Terminal" icon="/usr/share/icons/openbox-menu/terminal.png">
+            <action name="Execute">
+                <command>
+                    x-terminal-emulator
+                </command>
+            </action>
+        </item>
+        <item label="Web Browser" icon="/usr/share/icons/openbox-menu/web-browser.png">
+            <action name="Execute">
+                <command>
+                    x-www-browser
+                </command>
+            </action>
+        </item>
+        <item label="File Manager" icon="/usr/share/icons/openbox-menu/file-manager.png">
+            <action name="Execute">
+                <command>
+                    x-file-manager
+                </command>
+            </action>
+        </item>
+        <item label="Text Editor" icon="/usr/share/icons/openbox-menu/text-editor.png">
+            <action name="Execute">
+                <command>
+                    x-text-editor
+                </command>
+            </action>
+        </item>
+		
+        <separator/>
+		<menu id="desktop-app-menu" label="Applications" icon="/usr/share/icons/openbox-menu/applications.png" execute="obamenu" />
+
+
+        <menu id="preferences" label="Preferences" icon="/usr/share/icons/openbox-menu/settings.png">
+        	<separator label="GRAPHICAL PREFERENCES"/>
+            <menu id="obConfig" label="Openbox">
+                <item label="Edit menu.xml">
+                    <action name="Execute">
+                        <command>
+                            x-text-editor ~/.config/openbox/menu.xml
+                        </command>
+                    </action>
+                </item>
+                <item label="Edit rc.xml">
+                    <action name="Execute">
+                        <command>
+                            x-text-editor ~/.config/openbox/rc.xml
+                        </command>
+                    </action>
+                </item>
+                <item label="Edit autostart">
+                    <action name="Execute">
+                        <command>
+                            x-text-editor ~/.config/openbox/autostart
+                        </command>
+                    </action>
+                </item>
+                <separator/>
+                <item label="Menu Editor">
+                    <action name="Execute">
+                        <command>
+                            obmenu
+                        </command>
+                    </action>
+                </item>
+                <item label="WM Preferences">
+                    <action name="Execute">
+                        <command>
+                            obconf
+                        </command>
+                    </action>
+                </item>
+                <item label="How to Edit Menu">
+                    <action name="Execute">
+                        <command>
+                            yad --button="OK":0 --center --window-icon=distributor-logo-bunsenlabs --text-info --title=&quot;How to Edit the Menu&quot; --filename=&quot;/usr/share/bunsen/docs/helpfile-menu.txt&quot; --width=900 --height=700 --fontname=Monospace
+                        </command>
+                    </action>
+                </item>
+                <separator/>
+                <item label="Reconfigure">
+                    <action name="Reconfigure"/>
+                </item>
+                <item label="Restart">
+                    <action name="Restart"/>
+                </item>
+            </menu>
+        	<menu id="tint2" label="Tint2 Taskbar">
+        		<item label="Open Themes Folder">
+        			<action name="Execute">
+	                    <command>
+	                        x-file-manager ~/.config/tint2/
+	                    </command>
+	                </action>
+	            </item>
+	            <item label="Edit Autostarted Themes">
+        			<action name="Execute">
+	                    <command>
+	                        x-text-editor ~/.config/tint2/tint2-sessionfile
+	                    </command>
+	                </action>
+	            </item>
+	            <item label="Tint2 Config Tool">
+        			<action name="Execute">
+	                    <command>
+	                        tint2conf
+	                    </command>
+	                </action>
+	            </item>
+	            <item label="Restart">
+	                <action name="Execute">
+	                    <command>
+	                        bash -c 'killall tint2; cat ~/.config/tint2/tint2-sessionfile | while read t; do tint2 -c "$t" &#38; done' 
+	                    </command>
+	                </action>
+               </item>
+        	</menu>
+        	<menu id="compositor" label="Compositor">
+	            <item label="Edit Compositor Settings">
+        			<action name="Execute">
+	                    <command>
+	                        x-text-editor ~/.config/compton.conf
+	                    </command>
+	                </action>
+	            </item>
+				<item label="Restart Compositor">
+					<action name="Execute">
+						<command>
+							bash -c 'killall compton; compton'
+						</command>
+					</action>
+				</item>						
+	            <item label="Stop Compositor">
+	                <action name="Execute">
+	                    <command>
+	                        killall compton
+	                    </command>
+	                </action>
+               </item>		
+			</menu>
+        	<menu id="conky" label="Conky">
+	            <item label="Edit Default Config">
+        			<action name="Execute">
+	                    <command>
+	                        x-text-editor ~/.conkyrc
+	                    </command>
+	                </action>
+	            </item>
+	            <item label="Restart">
+	                <action name="Execute">
+	                    <command>
+	                        bash -c 'killall conky; conky' 
+	                    </command>
+	                </action>
+               </item>	
+			</menu>	
+            <item label="GTK Appearance">
+                <action name="Execute">
+                    <command>
+                        lxappearance
+                    </command>
+                </action>
+            </item>
+            <item label="Font Configuration">
+                <action name="Execute">
+                    <command>
+                        x-text-editor ~/.config/fontconfig/fonts.conf
+                    </command>
+                </action>
+            </item>
+            <item label="Wallpaper">
+                <action name="Execute">
+                    <command>
+                        nitrogen
+                    </command>
+                </action>
+            </item>
+            <item label="Notifications">
+                <action name="Execute">
+                    <command>xfce4-notifyd-config</command>
+                </action>
+            </item>
+			<item label="Display">
+				<action name="Execute">
+					<command>
+						arandr
+					</command>
+				</action>
+			</item>
+
+        	<separator label="SYSTEM PREFERENCES"/>
+
+            <item label="Synaptic Package Manager">
+                <action name="Execute">
+                    <command>
+                        synaptic-pkexec
+                    </command>
+                </action>
+            </item>
+            <item label="Alternatives">
+                <action name="Execute">
+                    <command>
+                        galternatives
+                    </command>
+                </action>
+            </item>
+            <item label="Power Management">
+                <action name="Execute">
+                    <command>
+                        xfce4-power-manager-settings
+                    </command>
+                </action>
+            </item>
+			<item label="Network Configuration">
+				<action name="Execute">
+					<command>
+						nm-connection-editor
+					</command>
+				</action>
+			</item>
+			<item label="Preferred Applications">
+				<action name="Execute">
+					<command>
+						exo-preferred-applications
+					</command>
+				</action>
+			</item>
+			<item label="Removable Drives and Media">
+				<action name="Execute">
+					<command>
+						thunar-volman-settings
+					</command>
+				</action>
+			</item>
+			<item label="GParted Partition Manager">
+				<action name="Execute">
+					<command>
+						gparted
+					</command>
+				</action>
+			</item>
+        </menu>
+
+        <separator/>
+
+        <item label="Exit" icon="/usr/share/icons/openbox-menu/exit.png">
+            <action name="Execute">
+                <command>
+                    obexit show
+                </command>
+            </action>
+        </item>
+<!-- comment out or remove the preceding "Exit" item,
+and uncomment the following "exit-menu"
+for one-click exit options. -->
+<!--
+        <menu id="exit-menu"></menu>
+-->
+    </menu>
+</openbox_menu>

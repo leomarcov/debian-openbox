@@ -97,7 +97,8 @@ n=0
 
 # For each .sh file
 IFS=$'\n\t'
-for script in $(ls "$base_dir"/*/*.sh); do
+shopt -s extglob
+for script in $(ls "$base_dir"/install_*/install.sh) $(ls "$base_dir"/config_*/install.sh) $(ls "$base_dir"/script_*/install.sh) $(ls "$base_dir"/theme_*/install.sh) $(ls "$base_dir"/!(install_*|script_*|config_*|theme_*)/install.sh); do
 	head="$(head -10 "$script")"
 	# Get ACTION field:
 	action="$(echo "$head" | grep "#[[:blank:]]*ACTION:" | sed 's/#[[:blank:]]*ACTION:[[:blank:]]*//')"
