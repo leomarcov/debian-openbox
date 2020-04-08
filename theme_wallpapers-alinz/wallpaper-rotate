@@ -1,10 +1,10 @@
 #!/bin/bash
 
-#### CONFIG #####################################################
+#### CONFIG ############################################################
 wps_dir="/usr/share/backgrounds/wallpapers-alinz/"
+########################################################################
 
 
-# ROTATE WALLPAPER
 # Get all wallpaper paths in array
 IFS=$'\n'
 wps_paths=($(ls "$wps_dir"/*))
@@ -20,3 +20,21 @@ fi
 
 # Get today wallpaper path
 wp_path="$(wps_paths[$n]}"
+
+# Set wallpaper to all users
+for d in /home/*/; do
+	# Skip dirs in /home that not are user home
+	! id "$(basename "$d")" &>/dev/null && continue
+	
+	# Create config folders if no exists
+	d="$d/.config/"; [ ! -d "$d" ] && mkdir -v "$d" && chown -R $(stat "$(dirname "$d")" -c %u:%g) "$d"
+	d="$d/nitrogen/"; [ ! -d "$d" ] && mkdir -v "$d" && chown -R $(stat "$(dirname "$d")" -c %u:%g) "$d"
+
+	f="bg-saved.cfg"
+	[ ! -f "$d/$f" ] && cp "$base_dir/$f" "$d" && chown -R $(stat "$(dirname "$d")" -c %u:%g) "$d/$f"
+	sed -i 's/^file *= *.*/file='$(echo "$wp_dir/$wp_default" | sed 's/\//\\\//g' )'/' "$d/$f"
+ 	
+	f="nitrogen.cfg"
+	[ ! -f "$d/$f" ] && cp "$base_dir/$f" "$d" && chown -R $(stat "$(dirname "$d")" -c %u:%g) "$d/$f"
+	sed -i 's/^dirs *= *.*/dirs='$(echo "$wp_dir" | sed 's/\//\\\//g')';/' "$d/$f"
+done
