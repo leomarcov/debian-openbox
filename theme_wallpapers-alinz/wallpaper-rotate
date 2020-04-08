@@ -1,0 +1,12 @@
+#!/bin/bash
+
+# CONFIG
+wps_dir="/usr/share/backgrounds/wallpapers-alinz/"
+
+
+# ROTATE WALLPAPER
+IFS=$'\n'
+wps_paths=($(ls "$wps_dir"/*))
+n=$((${#wps_paths[*]}-1))
+
+n=$((${#wps_paths[*]} % $(date +%e)))
