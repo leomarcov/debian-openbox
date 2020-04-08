@@ -2,8 +2,8 @@
 <img align="left"  src="https://user-images.githubusercontent.com/32820131/77852132-2de64c00-71dd-11ea-8a66-e4cd3de916f8.png" width="90"> Openbox is a beautiful and lightweight desktop manager, but tediuos to install and config a full usable environment. This script collection automatize **Openbox** installation and essentials tools and apply my personal configurations, styles and themes. `install` script execs interactively each script action in order to install only desired packages and configs.
 
 &nbsp; 
-## Main scripts
-  * `[install_openbox]`: Install Openbox and dependences.
+## Main scripts features
+  * Install Openbox and dependences.
   * Install and config essential Openbox tools: Tint2, Rofi, Terminator, Thunar, volume control, gsimplecal, etc.
   * Config a basic themes and styles for Openbox, Gtk, fonts, icon pack, wallpapers, exit menu.
   * Install some user tools: Brave/Chrome browser, SublimeText, Atom, VirtualBox and Extensión Pack, sudo,nomacs image viewer, WPS Office and others.
@@ -21,7 +21,7 @@
 
 &nbsp; 
 ## Install
-  * Install Debian 10 netinstall, better do not install `Debian desktop environment`. Script should work too in Debian 9 and may by others systems, but isnt guaranted.
+  * Install Debian 10 netinstall, better do not install `Debian desktop environment`. Script should work too in Debian 9 and may by others Debian based systems, but isn't guaranted.
   * Clone or download this project: `git clone https://github.com/debian-openbox`
   * Exec `install` script and select scripts you want to install.
   
