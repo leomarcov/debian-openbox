@@ -14,7 +14,9 @@ if ! which anacron &>/dev/null; then
 fi
 
 # Copy wallpapers folder
-cp -rv "${base_dir}/wallpapers-alinz/" /usr/share/backgrounds/
+d="/usr/share/backgrounds/"
+[ ! -d "$d" ] && mkdir -p "$d"
+cp -rv "${base_dir}/wallpapers-alinz/" "$d"
 
 # Copy rotate script
 f="wallpaper-rotate"
