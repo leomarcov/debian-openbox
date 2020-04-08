@@ -266,6 +266,44 @@
 			</item>
         </menu>
 
+        <menu id="info" label="System info" icon="/usr/share/icons/openbox-menu/stats.png">
+			<item label="Memory usage">
+				<action name="Execute">
+					<command>
+						x-terminal-emulator -e sudo bash -c "ps_mem.py; read"
+					</command>
+				</action>
+			</item>
+			<item label="Process monitor">
+				<action name="Execute">
+					<command>
+						x-terminal-emulator -e htop
+					</command>
+				</action>
+			</item>
+			<item label="WIFI scan network">
+				<action name="Execute">
+					<command>
+						x-terminal-emulator -e nmcli dev wifi list
+					</command>
+				</action>
+			</item>	
+			<item label="Partitions size">
+				<action name="Execute">
+					<command>
+						x-terminal-emulator -e bash -c 't=$(df -h); echo "$t" | head -1; echo "$t" | grep "^/dev/" --color=none; read'
+					</command>
+				</action>
+			</item>		
+			<item label="CPU usage">
+				<action name="Execute">
+					<command>
+						x-terminal-emulator -m -e s-tui
+					</command>
+				</action>
+			</item>	
+        </menu>		
+		
         <separator/>
 
         <item label="Exit" icon="/usr/share/icons/openbox-menu/exit.png">
