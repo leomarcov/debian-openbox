@@ -1,7 +1,6 @@
 
 #!/bin/bash
-# ACTION: Install some non-free packages and dd contrib and non-free repositories to APT
-# INFO: Useful packages: rar 
+# ACTION: Add Debian repositories contrib and non-free
 # DEFAULT: y
 
 # Check root
@@ -24,4 +23,3 @@ done
 
 # Update and install packages
 apt-get update  
-apt-get -y install rar
