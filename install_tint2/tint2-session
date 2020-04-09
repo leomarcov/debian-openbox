@@ -27,6 +27,7 @@ function check_sessionfile() {
 	fi
 }
 
+
 #=== FUNCTION ======================================================================
 # NAME: stop
 # DESCRIPTION: stop all tint2 process
@@ -50,6 +51,7 @@ function start() {
 
 
 
+# PARAMETERS PROCESSING
 case "${1,,}" in
 	""|start|restart)
 		check_sessionfile
