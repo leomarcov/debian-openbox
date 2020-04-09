@@ -181,7 +181,7 @@
 	            <item label="Stop">
 	                <action name="Execute">
 	                    <command>
-	                        conky-session
+	                        conky-session stop
 	                    </command>
 	                </action>
                </item>				
