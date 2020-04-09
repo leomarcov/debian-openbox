@@ -9,7 +9,6 @@
 ## 	/usr/lib/i386-linux-gnu/openbox-xdg-autostart --list
 ##
 ## More information about this can be found at: http://openbox.org/wiki/Help:Autostart
-##
 
 
 #### START SETTINGS  #################################################################################
@@ -17,8 +16,6 @@ xset r rate 250 25							# Set keyboard settings to 250ms delay and 25cps (chara
 xcape -e "Super_L=Control_L|Tab" 			# Alias for: Super key (win) = Control_Left+Tab
 # synclient VertEdgeScroll=1 HorizEdgeScroll=1 TapButton1=1 2>/dev/null	# Configure touchpad
 # syndaemon -i .5 -K -t -R -d & 				# Disable touchpad while typing
-
-
 
 #### START APPLICATIONS ###############################################################################
 /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 &	# GNOME PolicyKit authentication
