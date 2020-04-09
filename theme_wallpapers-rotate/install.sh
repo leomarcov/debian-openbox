@@ -31,7 +31,7 @@ for d in  /etc/skel/  /home/*/; do
 
 	f="nitrogen.cfg"
 	[ ! -f "$d/$f" ] && cp "$base_dir/$f" "$d" && chown -R $(stat "$(dirname "$d")" -c %u:%g) "$d/$f"
-	sed -i 's/^dirs *= *.*/dirs='$(echo "$wp_base/$wp_dir" | sed 's/\//\\\//g')';/' "$d/$f"
+	sed -i 's/^dirs *= *.*/dirs='$(echo "$wp_base" | sed 's/\//\\\//g')';/' "$d/$f"
 
 	f="bg-saved.cfg"
 	[ ! -f "$d/$f" ] && cp "$base_dir/$f" "$d" && chown -R $(stat "$(dirname "$d")" -c %u:%g) "$d/$f"
