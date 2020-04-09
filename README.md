@@ -14,7 +14,7 @@ The script `install` can exec all scripts or only a select list:
   * `install -a 5,8-12`: install selected scripts.
 
 &nbsp; 
-## Main scripts features
+## Main features
   * Install Openbox and dependences.
   * Install and config essential Openbox tools: Tint2, Rofi, Terminator, Thunar, volume control, gsimplecal, etc.
   * Config a basic themes and styles for Openbox, Gtk, fonts, icon pack, wallpapers, exit menu.
