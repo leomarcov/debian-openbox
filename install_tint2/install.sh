@@ -27,7 +27,7 @@ for d in /etc/skel/  /home/*/; do
 	
 	# Copy all tint2 configs
 	touch "$d/each .tint file here is autoloaded"
-	cp -v "$base_dir/"*.tint_ "$d" && chown $(stat "$(dirname "$d")" -c %u:%g) "$d"/*.tint
+	cp -v "$base_dir/"*.tint_ "$d" && chown $(stat "$(dirname "$d")" -c %u:%g) "$d"/*.tint_
 	
 	[ "$laptop" ] && [ ! "$virtualmachine" ] && tint_version="_laptop"
 	
