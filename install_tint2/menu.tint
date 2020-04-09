@@ -187,23 +187,3 @@ separator_style = line
 separator_color = #FFFFFF 30
 separator_padding = 0
 
-separator = new
-separator_background_id = 1
-separator_size = 1
-separator_style = line
-separator_color = #FFFFFF 30
-separator_padding = 0
-
-separator = new
-separator_background_id = 1
-separator_size = 1
-separator_style = line
-separator_color = #FFFFFF 30
-separator_padding = 0
-
-separator = new
-separator_background_id = 1
-separator_size = 1
-separator_style = line
-separator_color = #FFFFFF 30
-separator_padding = 0
