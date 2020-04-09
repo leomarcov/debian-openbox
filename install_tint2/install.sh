@@ -7,7 +7,7 @@
 
 base_dir="$(dirname "$(readlink -f "$0")")"
 
-# INSTALL TINT
+# Install tint2
 find /var/cache/apt/pkgcache.bin -mtime 0 &>/dev/null ||  apt-get update
 apt-get install -y tint2
 
