@@ -1,31 +1,14 @@
 #!/bin/bash
 #===================================================================================
 # FILE: tint2-session
-# DESCRIPTION: manage tint2 session file and stop, start and restart tint2 configs
+# DESCRIPTION: manage tint2 processes
 # AUTHOR: Leonardo Marco
 # VERSION: 1.0
 # CREATED: 2020.04.09
 # LICENSE: GNU General Public License v3.0
 #===================================================================================
 
-session_file="$HOME/.config/tint2/tint2-sessionfile"
-default_tint="$HOME/.config/tint2/tint2rc"
-
-#=== FUNCTION ======================================================================
-# NAME: check_sessionfile
-# DESCRIPTION: checks if user session file exists or create it with tint2 default config
-#===================================================================================
-function check_sessionfile() {
-	if [ ! -s "$session_file" ]; then
-		if [ ! -s "$default_tint" ]; then
-			echo "Tint2 session file or default tint not found!"
-			exit 1
-		fi
-
-		echo "Creating tint2 session file $session_file with default tint2rc config"
-		echo "$default_tint" > "$session_file"
-	fi
-}
+tints_path="$HOME/.config/tint2/"
 
 
 #=== FUNCTION ======================================================================
@@ -40,21 +23,19 @@ function stop() {
 
 #=== FUNCTION ======================================================================
 # NAME: start
-# DESCRIPTION: read user tint2 session file and start all tint2
+# DESCRIPTION: load each .tint file in user tint folder
 #===================================================================================
 function start() {
 	local IFS=$'\n'
-	cat "$session_file" | sort -u | while read f; do 
+	foreach f in $(ls "$tints_path"/*.tint; do
 		(setsid tint2 -c "$f" &)
 	done 
 }
 
 
-
-# PARAMETERS PROCESSING
+# EXEC ACTION ACCORDING $1
 case "${1,,}" in
 	""|start|restart)
-		check_sessionfile
 		stop
 		start		
 	;;
