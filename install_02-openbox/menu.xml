@@ -110,6 +110,29 @@
                     <action name="Restart"/>
                 </item>
             </menu>
+        	<menu id="compositor" label="Compositor">
+	            <item label="Edit Compositor Settings">
+        			<action name="Execute">
+	                    <command>
+	                        x-text-editor ~/.config/compton.conf
+	                    </command>
+	                </action>
+	            </item>
+				<item label="Restart Compositor">
+					<action name="Execute">
+						<command>
+							bash -c 'killall compton; compton'
+						</command>
+					</action>
+				</item>						
+	            <item label="Stop Compositor">
+	                <action name="Execute">
+	                    <command>
+	                        killall compton
+	                    </command>
+	                </action>
+               </item>		
+			</menu>			
         	<menu id="tint2" label="Tint2 Taskbar">
         		<item label="Open Themes Folder">
         			<action name="Execute">
@@ -140,45 +163,29 @@
 	                </action>
                </item>
         	</menu>
-        	<menu id="compositor" label="Compositor">
-	            <item label="Edit Compositor Settings">
+        	<menu id="conky" label="Conky">
+        		<item label="Open Themes Folder">
         			<action name="Execute">
 	                    <command>
-	                        x-text-editor ~/.config/compton.conf
+	                        x-file-manager ~/.config/conky/
 	                    </command>
 	                </action>
 	            </item>
-				<item label="Restart Compositor">
-					<action name="Execute">
-						<command>
-							bash -c 'killall compton; compton'
-						</command>
-					</action>
-				</item>						
-	            <item label="Stop Compositor">
-	                <action name="Execute">
-	                    <command>
-	                        killall compton
-	                    </command>
-	                </action>
-               </item>		
-			</menu>
-        	<menu id="conky" label="Conky">
-	            <item label="Edit Default Config">
+	            <item label="Edit Autostarted Themes">
         			<action name="Execute">
 	                    <command>
-	                        x-text-editor ~/.conkyrc
+	                        x-text-editor ~/.config/conky/conky-sessionfile
 	                    </command>
 	                </action>
 	            </item>
 	            <item label="Restart">
 	                <action name="Execute">
 	                    <command>
-	                        bash -c 'killall conky; conky' 
+	                        conky-session
 	                    </command>
 	                </action>
-               </item>	
-			</menu>	
+               </item>
+        	</menu>			
             <item label="GTK Appearance">
                 <action name="Execute">
                     <command>
