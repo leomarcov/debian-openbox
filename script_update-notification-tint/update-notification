@@ -62,16 +62,8 @@ function interactive_upgrade() {
 
 	echo -n "" > "$updates_file"
 	
-	# Restart all tint2
-	echo "Restarting tint2"
-	(
-		if [ -s ~/.config/tint2/tint2-sessionfile ]; then
-			killall tint2
-			cat ~/.config/tint2/tint2-sessionfile | while read t; do 
-				tint2 -c "$t" &
-			done
-		fi
-	)&>/dev/null &
+	# Restart tint2 session
+	pgrep tint2 &>/dev/null && which tint2-session &>/dev/null tint2-session
 
 	echo
 	read -p "Update complete..."
