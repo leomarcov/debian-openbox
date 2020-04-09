@@ -32,7 +32,6 @@ for d in /etc/skel/  /home/*/; do
 	echo "$rc" > "$f"
 
 	# Add context titlebar
-	sed -i '/<context name="Titlebar">/,/<\/context>/{//!d}' "$f"	# Delete current context titlebar
 	rc="$(sed '/<context name="Titlebar">/q' "$f"; cat "$base_dir/titlebar_rc.xml"; sed -n -e '/<context name="Titlebar">/,$p' "$f" | tail +2)"
 	echo "$rc" > "$f"
 done
