@@ -36,6 +36,6 @@ for d in /etc/skel/  /home/*/; do
 done
 
 # Copy tint2-session
-f="tint2-restart"
+f="tint2-session"
 cp -v "$base_dir/$f" /usr/bin
 chmod a+x "/usr/bin/$f"
