@@ -64,7 +64,7 @@ which conky &>/dev/null && conky
 compton &
 
 # Tint2
-while read t; do tint2 -c "$t" & done < ~/.config/tint2/tint2-sessionfile &
+tint2-session &
 
 ## Volume control for systray
 pnmixer &
