@@ -7,7 +7,7 @@ Each action script and dependence are in a directory. There are 4 scripts catego
   * **theme scripts**: copy themes, icons, or apply some graphical configs
   * **script scripts**: install some script. 
 
-The script `install` can exec all scripts or only a select list:
+The main script `install` can exec all scripts or only a select list:
   * `install -l`: list all scripts.
   * `install`: exec all scripts interactively asking if install or not.
   * `install -d`: install all default scripts.
