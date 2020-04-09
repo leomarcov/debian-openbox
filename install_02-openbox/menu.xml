@@ -284,7 +284,7 @@
 			<item label="Disks Usage">
 				<action name="Execute">
 					<command>
-						x-terminal-emulator -e bash -c 'lsblk -f -o name,size,fsavail,fsused,fstype,label,mountpoint; read'
+						x-terminal-emulator -m -e bash -c 'lsblk -o name,size,type,mountpoint; echo; dfc -f | egrep "^FILESYSTEM|^/dev"; echo; read'
 					</command>
 				</action>
 			</item>	
