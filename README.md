@@ -1,5 +1,11 @@
 # Openbox install script collection for Debian
-<img align="left"  src="https://user-images.githubusercontent.com/32820131/77852132-2de64c00-71dd-11ea-8a66-e4cd3de916f8.png" width="90"> Openbox is a beautiful and lightweight desktop manager, but tediuos to install and config a full usable environment. This script collection automatize **Openbox** installation and essentials tools and apply my personal configurations, styles and themes. `install` script execs interactively each script action in order to install only desired packages and configs.
+<img align="left"  src="https://user-images.githubusercontent.com/32820131/77852132-2de64c00-71dd-11ea-8a66-e4cd3de916f8.png" width="90"> Openbox is a beautiful and lightweight desktop manager, but tediuos to install and config a full usable environment. This script collection automatize **Openbox** installation and essentials tools and apply my personal configurations, styles and themes.
+
+Script `install` allow apply all actions or only desired:
+  * `install -l`: list all actions.
+  * `install`: exec all actions interactively asking if install or not.
+  * `install -d`: install all default actions.
+  * `install -a 5,8-12`: install selected actions.
 
 &nbsp; 
 ## Main scripts features
