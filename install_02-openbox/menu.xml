@@ -135,7 +135,7 @@
 	            <item label="Restart">
 	                <action name="Execute">
 	                    <command>
-	                        bash -c 'killall tint2; cat ~/.config/tint2/tint2-sessionfile | while read t; do tint2 -c "$t" &#38; done' 
+	                        tint2-session
 	                    </command>
 	                </action>
                </item>
