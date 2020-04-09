@@ -6,7 +6,7 @@
 # Check root
 [ "$(id -u)" -ne 0 ] && { echo "Must run as root" 1>&2; exit 1; }
 
-comment_mark="#DEBIAN-OPENBOX"
+comment_mark="#DEBIAN-OPENBOX-ttyloginneofetch"
 base_dir="$(dirname "$(readlink -f "$0")")"
 
 # Config runlevel 3
@@ -22,7 +22,7 @@ systemctl enable physlock.service
 	
 # Config tty1 to autoexec startx
 sed -i "/$comment_mark/Id" /etc/profile
-echo '[ ! "$DISPLAY" ] && [ "$(fgconsole)" -eq 1 ] && PROMPT_COMMAND="startx; exit;" '"$comment_mamrk" >> /etc/profile
+echo '[ ! "$DISPLAY" ] && [ "$(tty)" = "/dev/tty1" ] && PROMPT_COMMAND="startx; exit;" '"$comment_mark" >> /etc/profile
 
 # Copy script and config files:
 cp -v /etc/issue /etc/issue.old
