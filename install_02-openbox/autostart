@@ -42,10 +42,10 @@ xcape -e "Super_L=Control_L|Tab"
 
 ## Configure touchpad. See 'man synaptics' for more info.
 ## (Now might be using libinput instead of synaptics.)
-synclient VertEdgeScroll=1 HorizEdgeScroll=1 TapButton1=1 2>/dev/null
+# synclient VertEdgeScroll=1 HorizEdgeScroll=1 TapButton1=1 2>/dev/null
 
 ## Disable touchpad while typing
-syndaemon -i .5 -K -t -R -d &
+# syndaemon -i .5 -K -t -R -d &
 
 ### TOUCHPAD END
 
@@ -58,7 +58,7 @@ syndaemon -i .5 -K -t -R -d &
 nitrogen --restore
 
 ## Start Conky
-which conky &>/dev/null && conky
+conky-session &
 
 ## Compton
 compton &
