@@ -10,7 +10,7 @@ base_dir="$(dirname "$(readlink -f "$0")")"
 
 # INSTALL OPENBOX AND DEPENDENCES
 find /var/cache/apt/pkgcache.bin -mtime 0 &>/dev/null ||  apt-get update
-apt-get install -y openbox obconf obmenu xinit lxappearance compton xfce4-screenshooter xfce4-clipman xfce4-power-manager arandr htop libexo-1-0 gsimplecal xcape gparted file-roller s-tui
+apt-get install -y openbox obconf obmenu xinit lxappearance compton xfce4-screenshooter xfce4-clipman xfce4-power-manager arandr libexo-1-0 gsimplecal xcape gparted file-roller
 
 apt-get install -y network-manager network-manager-gnome
 systemctl mask NetworkManager-wait-online.service
@@ -55,3 +55,6 @@ for d in /etc/skel /home/*/; do
 	cp -v "$base_dir/$f" "$d" && chown -R $(stat "$d" -c %u:%g) "$d/$f"	
 done
 
+# INSTALL SYSTEM INFO DEPENDENCES
+wget -P /usr/bin "https://raw.githubusercontent.com/pixelb/ps_mem/master/ps_mem.py" && chmod +x /usr/bin/ps_mem.py
+apt-get install -y s-tui dfc htop
