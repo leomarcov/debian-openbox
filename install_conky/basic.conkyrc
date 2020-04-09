@@ -66,7 +66,7 @@ conky.config = {
 
 --font = 'Liberation Mono:bold:size=10',
 --font = 'Liberation Sans:size=10',
-    font = 'Sans-serif:size=10',
+    font = 'Sans-serif:size=9',
 
 -- Alpha of Xft font. Must be a value at or between 1 and 0
     xftalpha = 1,
