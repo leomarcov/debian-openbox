@@ -34,3 +34,8 @@ for d in /etc/skel/  /home/*/; do
 	echo "$d/menu.tint" | tr -s "/" >> "$d/tint2-sessionfile"
 	chown $(stat "$(dirname "$d")" -c %u:%g) "$d/tint2-sessionfile"; 
 done
+
+# Copy tint2-session
+f="tint2-restart"
+cp -v "$base_dir/$f" /usr/bin
+chmod a+x "/usr/bin/$f"
