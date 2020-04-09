@@ -14,15 +14,19 @@
 #### START SETTINGS  #################################################################################
 xset r rate 250 25							# Set keyboard settings to 250ms delay and 25cps (characters per second)
 xcape -e "Super_L=Control_L|Tab" 			# Alias for: Super key (win) = Control_Left+Tab
-# synclient VertEdgeScroll=1 HorizEdgeScroll=1 TapButton1=1 2>/dev/null	# Configure touchpad
-# syndaemon -i .5 -K -t -R -d & 				# Disable touchpad while typing
+
+# Touchpad settings
+if [ -f /sys/module/battery/initstate ] || [ -d /proc/acpi/battery/BAT0 ]; then
+	synclient VertEdgeScroll=1 HorizEdgeScroll=1 TapButton1=1 2>/dev/null	# Configure touchpad
+	syndaemon -i .5 -K -t -R -d & 											# Disable touchpad while typing
+fi
 
 #### START APPLICATIONS ###############################################################################
 /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 &	# GNOME PolicyKit authentication
 nitrogen --restore													# Set wallpaper
+tint2-session &														# Start tint2
 conky-session &														# Start Conky
 compton &															# Start compositor
-tint2-session &														# Start tint2
 pnmixer &															# Start volume control
 xfce4-clipman &														# Start clipboard manager
 
