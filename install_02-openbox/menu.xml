@@ -134,17 +134,10 @@
                </item>		
 			</menu>			
         	<menu id="tint2" label="Tint2 Taskbar">
-        		<item label="Open Themes Folder">
+        		<item label="Open Your Tints Folder">
         			<action name="Execute">
 	                    <command>
 	                        x-file-manager ~/.config/tint2/
-	                    </command>
-	                </action>
-	            </item>
-	            <item label="Edit Autostarted Tints">
-        			<action name="Execute">
-	                    <command>
-	                        x-text-editor ~/.config/tint2/tint2-sessionfile
 	                    </command>
 	                </action>
 	            </item>
@@ -155,36 +148,43 @@
 	                    </command>
 	                </action>
 	            </item>
-	            <item label="Restart">
+	            <item label="Start/Restart">
 	                <action name="Execute">
 	                    <command>
 	                        tint2-session
 	                    </command>
 	                </action>
                </item>
+	            <item label="Stop">
+	                <action name="Execute">
+	                    <command>
+	                        tint2-session stop
+	                    </command>
+	                </action>
+               </item>				
         	</menu>
         	<menu id="conky" label="Conky">
-        		<item label="Open Themes Folder">
+        		<item label="Open Your Conkys Folder">
         			<action name="Execute">
 	                    <command>
 	                        x-file-manager ~/.config/conky/
 	                    </command>
 	                </action>
 	            </item>
-	            <item label="Edit Autostarted Conkys">
-        			<action name="Execute">
-	                    <command>
-	                        x-text-editor ~/.config/conky/conky-sessionfile
-	                    </command>
-	                </action>
-	            </item>
-	            <item label="Restart">
+	            <item label="Start/Restart">
 	                <action name="Execute">
 	                    <command>
 	                        conky-session
 	                    </command>
 	                </action>
                </item>
+	            <item label="Stop">
+	                <action name="Execute">
+	                    <command>
+	                        conky-session
+	                    </command>
+	                </action>
+               </item>				
         	</menu>			
             <item label="GTK Appearance">
                 <action name="Execute">
