@@ -63,7 +63,7 @@ function interactive_upgrade() {
 	echo -n "" > "$updates_file"
 	
 	# Restart tint2 session
-	pgrep tint2 &>/dev/null && which tint2-session &>/dev/null tint2-session
+	pgrep tint2 &>/dev/null && which tint2-session &>/dev/null && tint2-session
 
 	echo
 	read -p "Update complete..."
