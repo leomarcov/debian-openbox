@@ -9,7 +9,7 @@ Each action script and dependence are in a directory. There are 4 scripts catego
 
 The main script `install` can exec all scripts or only a select list:
   * `install -l`: list all scripts.
-  * `install`: exec all scripts interactively asking if install or not.
+  * `install`: exec all scripts interactively asking for each one if install or not.
   * `install -d`: install all default scripts.
   * `install -a 5,8-12`: install selected scripts.
 
