@@ -1,4 +1,5 @@
 #!/bin/bash
+# Start or restart all tint2 configs saved in session file
 
 session_file="$HOME/.config/tint2/tint2-session"
 default_tint="$HOME/.config/tint2/tint2rc"
