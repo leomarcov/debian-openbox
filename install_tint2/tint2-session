@@ -23,7 +23,7 @@ function stop() {
 
 #=== FUNCTION ======================================================================
 # NAME: start
-# DESCRIPTION: load each .tint file in user tint folder
+# DESCRIPTION: load each .tint file in user tint path
 #===================================================================================
 function start() {
 	local IFS=$'\n'
