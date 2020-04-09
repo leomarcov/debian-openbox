@@ -141,7 +141,7 @@
 	                    </command>
 	                </action>
 	            </item>
-	            <item label="Edit Autostarted Themes">
+	            <item label="Edit Autostarted Tints">
         			<action name="Execute">
 	                    <command>
 	                        x-text-editor ~/.config/tint2/tint2-sessionfile
@@ -171,7 +171,7 @@
 	                    </command>
 	                </action>
 	            </item>
-	            <item label="Edit Autostarted Themes">
+	            <item label="Edit Autostarted Conkys">
         			<action name="Execute">
 	                    <command>
 	                        x-text-editor ~/.config/conky/conky-sessionfile
