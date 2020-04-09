@@ -18,7 +18,7 @@ if ! which nitrogen &>/dev/null; then
 fi
 
 [ ! -d "$wp_base" ] && mkdir -p "$wp_base"
-cp -rv "$base_dir/wp_dir/" "$wp_base"
+cp -rv "$base_dir/$wp_dir/" "$wp_base"
 
 for d in  /etc/skel/  /home/*/; do
 	# Skip dirs in /home that not are user home
