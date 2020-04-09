@@ -1,0 +1,26 @@
+#!/bin/bash
+
+session_file="$HOME/.config/tint2/tint2-session"
+default_tint="$HOME/.config/tint2/tint2rc"
+
+# CHECK SESSION FILE
+if [ ! -s "$session_file" ]; then
+	if [ ! -s "$default_tint" ]; then
+		echo "Tint2 session file or default tint not found!"
+		exit 1
+	fi
+	
+	echo "Creating tint2 session file $session_file with default tint2rc config"
+	echo "$default_tint" > "$session_file"
+	exit 1
+fi
+
+# KILL CURRENT TINT2
+killall tint2
+killall -9 tint2
+
+# EXEC SESSION TINTS
+IFS=$'\n'
+while read t; do 
+	(setsid tint2 -c "$t" &)
+done < "$session_file"
