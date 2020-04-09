@@ -30,7 +30,7 @@ for d in /etc/skel/  /home/*/; do
 	
 	[ "$laptop" ] && [ ! "$virtualmachine" ] && tint_version="_laptop"
 	
-	# Set taskbar.tint and menu.tint as default tints
+	# Include taskbar.tint in session file
 	echo "$d/taskbar${tint_version}.tint" | tr -s "/" > "$d/tint2-sessionfile"
 	echo "$d/menu.tint" | tr -s "/" >> "$d/tint2-sessionfile"
 	chown $(stat "$(dirname "$d")" -c %u:%g) "$d/tint2-sessionfile"; 
