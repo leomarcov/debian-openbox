@@ -46,7 +46,7 @@ function start() {
 	local IFS=$'\n'
 	cat "$session_file" | sourt -u | while read f; do 
 		(setsid tint2 -c "$f" &)
-	done < 
+	done 
 }
 
 
