@@ -1,7 +1,7 @@
 
 #!/bin/bash
 # ACTION: Install some non-free packages and dd contrib and non-free repositories to APT
-# INFO: Useful packages: rar ttf-mscorefonts-installer
+# INFO: Useful packages: rar 
 # DEFAULT: y
 
 # Check root
@@ -24,4 +24,4 @@ done
 
 # Update and install packages
 apt-get update  
-apt-get -y install ttf-mscorefonts-installer rar
+apt-get -y install rar
