@@ -26,14 +26,14 @@ for d in /etc/skel/  /home/*/; do
 	d="$d/tint2/";  [ ! -d "$d" ] && mkdir -v "$d" && chown -R $(stat "$(dirname "$d")" -c %u:%g) "$d"
 	
 	# Copy all tint2 configs
-	cp -v "$base_dir/"*.tint "$d" && chown $(stat "$(dirname "$d")" -c %u:%g) "$d"/*.tint
+	touch "$d/each .tint file here is autoloaded"
+	cp -v "$base_dir/"*.tint_ "$d" && chown $(stat "$(dirname "$d")" -c %u:%g) "$d"/*.tint
 	
 	[ "$laptop" ] && [ ! "$virtualmachine" ] && tint_version="_laptop"
 	
-	# Include taskbar.tint in session file
-	echo "$d/taskbar${tint_version}.tint" | tr -s "/" > "$d/tint2-sessionfile"
-	echo "$d/menu.tint" | tr -s "/" >> "$d/tint2-sessionfile"
-	chown $(stat "$(dirname "$d")" -c %u:%g) "$d/tint2-sessionfile"; 
+	# Config .tints to autoload
+	mv "$d/taskbar${tint_version}.tint_" "$d/taskbar${tint_version}.tint"
+	mv "$d/menu.tint_" "$d/menu.tint"
 done
 
 # Copy tint2-session
