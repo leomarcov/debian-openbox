@@ -27,7 +27,7 @@ function stop() {
 #===================================================================================
 function start() {
 	local IFS=$'\n'
-	foreach f in $(ls "$tints_path"/*.tint); do
+	for f in $(ls "$tints_path"/*.tint); do
 		(setsid tint2 -c "$f" &)
 	done 
 }
