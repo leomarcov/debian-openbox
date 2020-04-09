@@ -1,75 +1,32 @@
 ## Openbox autostart
 ## ====================
-## When you login to your BunsenLabs Openbox session, this autostart script
-## will be executed to set-up your environment and launch any applications
-## you want to run at startup.
+## When you login to Opènbox this autostart script will be executed to set-up your environment 
+## and launch any applications you want to run at startup.
 ##
 ## Note: some programs, such as 'nm-applet' are run via XDG autostart.
-## Run
-## /usr/lib/x86_64-linux-gnu/openbox-xdg-autostart --list
-## or
-## /usr/lib/i386-linux-gnu/openbox-xdg-autostart --list
-## to list any XDG autostarted programs.
+## To see a list of any XDG autostarted programs run:
+## 	/usr/lib/x86_64-linux-gnu/openbox-xdg-autostart --list
+## 	/usr/lib/i386-linux-gnu/openbox-xdg-autostart --list
 ##
-## More information about this can be found at:
-## http://openbox.org/wiki/Help:Autostart
-##
-## If you do something cool with your autostart script and you think others
-## could benefit from your hack, please consider sharing it at:
-## http://forums.bunsenlabs.org (registration required)
+## More information about this can be found at: http://openbox.org/wiki/Help:Autostart
 ##
 
-### SETTINGS START
 
-## Set keyboard settings - 250 ms delay and 25 cps (characters per second) repeat rate.
-## Adjust the values according to your preferances.
-xset r rate 250 25
+#### START SETTINGS  #################################################################################
+xset r rate 250 25							# Set keyboard settings to 250ms delay and 25cps (characters per second)
+xcape -e "Super_L=Control_L|Tab" 			# Alias for: Super key (win) = Control_Left+Tab
+# synclient VertEdgeScroll=1 HorizEdgeScroll=1 TapButton1=1 2>/dev/null	# Configure touchpad
+# syndaemon -i .5 -K -t -R -d & 				# Disable touchpad while typing
 
-## Add keyboard mapping.
-#xmodmap -e "keysym Insert = Multi_key"
 
-## Disable CapsLock
-#setxkbmap -option ctrl:nocaps
-# alternative: use as compose key
-#setxkbmap -option compose:caps
 
-# Alias Super key to Super+Space for single-key menu.
-# See 'man xcape' for other possibilities.
-###xcape -e 'Super_L=Super_L|space'
-xcape -e "Super_L=Control_L|Tab" 
-
-### TOUCHPAD: comment out the next two entries if you don't have one
-
-## Configure touchpad. See 'man synaptics' for more info.
-## (Now might be using libinput instead of synaptics.)
-# synclient VertEdgeScroll=1 HorizEdgeScroll=1 TapButton1=1 2>/dev/null
-
-## Disable touchpad while typing
-# syndaemon -i .5 -K -t -R -d &
-
-### TOUCHPAD END
-
-### SETTINGS END
-
-## GNOME PolicyKit authentication
-/usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 &
-
-## Set a wallpaper
-nitrogen --restore
-
-## Start Conky
-conky-session &
-
-## Compton
-compton &
-
-# Tint2
-tint2-session &
-
-## Volume control for systray
-pnmixer &
-
-## Start Clipboard manager
-xfce4-clipman &
+#### START APPLICATIONS ###############################################################################
+/usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 &	# GNOME PolicyKit authentication
+nitrogen --restore													# Set wallpaper
+conky-session &														# Start Conky
+compton &															# Start compositor
+tint2-session &														# Start tint2
+pnmixer &															# Start volume control
+xfce4-clipman &														# Start clipboard manager
 
 
