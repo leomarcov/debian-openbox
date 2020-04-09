@@ -1,6 +1,6 @@
 #!/bin/bash
 # ACTION: Install some basic packages
-# INFO: Packages: vim vlc zip unzip gmtp mtp-tools mailutils traceroute acl gnupg2 synaptic mlocate evince
+# INFO: Packages: vim vlc zip unzip gmtp mtp-tools mailutils traceroute acl gnupg2 synaptic galternatives yad mlocate evince
 # DEFAULT: y
 
 # Check root
