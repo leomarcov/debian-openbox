@@ -1,10 +1,20 @@
 #!/bin/bash
-# Manage tint2 session file and stop, start and restart tint2 configs
+#===================================================================================
+# FILE: tint2-session
+# DESCRIPTION: manage tint2 session file and stop, start and restart tint2 configs
+# AUTHOR: Leonardo Marco
+# VERSION: 1.0
+# CREATED: 2020.04.09
+# LICENSE: GNU General Public License v3.0
+#===================================================================================
 
 session_file="$HOME/.config/tint2/tint2-sessionfile"
 default_tint="$HOME/.config/tint2/tint2rc"
 
-# CHECK SESSION FILE
+#=== FUNCTION ======================================================================
+# NAME: check_sessionfile
+# DESCRIPTION: checks if user session file exists or create it with tint2 default config
+#===================================================================================
 function check_sessionfile() {
 	if [ ! -s "$session_file" ]; then
 		if [ ! -s "$default_tint" ]; then
@@ -17,19 +27,27 @@ function check_sessionfile() {
 	fi
 }
 
-# KILL CURRENT TINT2
+#=== FUNCTION ======================================================================
+# NAME: stop
+# DESCRIPTION: stop all tint2 process
+#===================================================================================
 function stop() {
 	killall tint2
 	killall -9 tint2
 }
 
-# EXEC SESSION TINTS
+
+#=== FUNCTION ======================================================================
+# NAME: start
+# DESCRIPTION: read user tint2 session file and start all tint2
+#===================================================================================
 function start() {
 	local IFS=$'\n'
-	while read t; do 
-		(setsid tint2 -c "$t" &)
-	done < "$session_file"
+	cat "$session_file" | sourt -u | while read f; do 
+		(setsid tint2 -c "$f" &)
+	done < 
 }
+
 
 
 case "${1,,}" in
@@ -41,6 +59,6 @@ case "${1,,}" in
 	stop)
 		stop
 	*)
-	
+		echo "tint2-session [start|stop|restart]
 	;;
 esac
