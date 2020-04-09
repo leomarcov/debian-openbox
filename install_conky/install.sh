@@ -14,9 +14,17 @@ apt-get install -y conky
 for d in /etc/skel/  /home/*/ ; do
     # Skip dirs in /home that not are user home
     [ "$(dirname "$d")" = "/home" ] && ! id "$(basename "$d")" &>/dev/null && continue
+
+	# Create config folders if no exists
+	d="$d/.config/"; [ ! -d "$d" ] && mkdir -v "$d" && chown -R $(stat "$(dirname "$d")" -c %u:%g) "$d"
+	d="$d/conky/";  [ ! -d "$d" ] && mkdir -v "$d" && chown -R $(stat "$(dirname "$d")" -c %u:%g) "$d"
+
+	# Copy all conky configs
+	cp -v "$base_dir/"*.conkyrc "$d" && chown $(stat "$(dirname "$d")" -c %u:%g) "$d"/*.conkyrc
 	
-	f="conkyrc"
-	cp -v "$base_dir"/conkyrc "$d/.$f"  && chown -R $(stat "$d" -c %u:%g) "$d/.$f"	
+	# Include basic.conkyrc in sessionfile
+	echo "$d/basic.conkyrc" | tr -s "/" > "$d/conky-sessionfile"
+	chown $(stat "$(dirname "$d")" -c %u:%g) "$d/conky-sessionfile"; 
 done
 
 # Show /home in conky if /home has mounted in separated partition
@@ -25,3 +33,9 @@ for f in  /etc/skel/.conkyrc  /home/*/.conkyrc; do
 	sed -i '/Home usage/s/^#//g' "$f"
 done
 fi
+
+
+# Copy tint2-session
+f="conky-session"
+cp -v "$base_dir/$f" /usr/bin
+chmod a+x "/usr/bin/$f"
