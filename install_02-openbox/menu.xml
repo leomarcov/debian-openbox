@@ -134,17 +134,17 @@
                </item>		
 			</menu>			
         	<menu id="tint2" label="Tint2 Taskbar">
-        		<item label="Open Your Tints Folder">
-        			<action name="Execute">
-	                    <command>
-	                        x-file-manager ~/.config/tint2/
-	                    </command>
-	                </action>
-	            </item>
 	            <item label="Tint2 Config Tool">
         			<action name="Execute">
 	                    <command>
 	                        tint2conf
+	                    </command>
+	                </action>
+	            </item>
+				<item label="Open Your Tints Folder">
+        			<action name="Execute">
+	                    <command>
+	                        x-file-manager ~/.config/tint2/
 	                    </command>
 	                </action>
 	            </item>
