@@ -118,14 +118,14 @@
 	                    </command>
 	                </action>
 	            </item>
-				<item label="Restart Compositor">
+				<item label="Restart">
 					<action name="Execute">
 						<command>
 							bash -c 'killall compton; compton'
 						</command>
 					</action>
 				</item>						
-	            <item label="Stop Compositor">
+	            <item label="Stop">
 	                <action name="Execute">
 	                    <command>
 	                        killall compton
