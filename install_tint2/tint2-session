@@ -58,9 +58,10 @@ case "${1,,}" in
 		stop
 		start		
 	;;
-	stop)
-		stop
-	*)
-		echo "tint2-session [start|stop|restart]
+	stop)	
+		stop	
+	;;
+	*)	
+		echo "tint2-session [start|stop|restart] 
 	;;
 esac
