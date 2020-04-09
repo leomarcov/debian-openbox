@@ -1,0 +1,8 @@
+#!/bin/bash
+
+		if [ -s ~/.config/tint2/tint2-sessionfile ]; then
+			killall tint2
+			cat ~/.config/tint2/tint2-sessionfile | while read t; do 
+				tint2 -c "$t" &
+			done
+		fi
