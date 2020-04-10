@@ -318,13 +318,15 @@
 			</item>	
         </menu>
 	    
-		<item label="Help" icon="/usr/share/icons/openbox-menu/help.png">
-            <action name="Execute">
-                <command>
-                    obexit show
-                </command>
-            </action>
-        </item>	
+        <menu id="help" label="Help" icon="/usr/share/icons/openbox-menu/help.png">		
+	        <item label="Shortcuts" icon="/usr/share/icons/openbox-menu/help.png">
+	            <action name="Execute">
+	                <command>
+	                    prueba
+	                </command>
+	            </action>
+	        </item>
+        </menu>
 		
         <separator/>
 
