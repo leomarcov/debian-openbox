@@ -311,10 +311,10 @@
         </menu>
 	    
         <menu id="help" label="Help" icon="/usr/share/icons/openbox-menu/help.png">		
-	        <item label="Shortcuts" icon="/usr/share/icons/openbox-menu/help.png">
+	        <item label="Shortcuts and mouse bindings">
 	            <action name="Execute">
 	                <command>
-	                    prueba
+	                    bash -c 'yad --button=gtk-ok --center --undecorated --fixed --borders=25 --title="Shortcuts and mouse bindings" --text="$(</usr/share/doc/openbox/help/shortcuts.txt)"'
 	                </command>
 	            </action>
 	        </item>
