@@ -9,36 +9,27 @@
 	Win+L				Lock Screen
 	Win+x				Logout Menu
 
-DESKTOP 
-	Alt+Space			Window menu
-	Win+F1				Go to desktop 1
-	Win+F2				Go to desktop 2
-	Win+F3				Go to desktop 3
-	Win+F4				Go to desktop 4
-	Ctrl+Alt+Backspace		Kill X Windows
-
-MOVE WINDOWS
-	Win+d				Toogle minimice/maximice active Windows
-	Alt+F4				Close Window
-	Alt+F5				Minimize Window
-	Alt+F6				Tooglel maximize		
-	Alt+Esc				Send to back
-	Win+Esc				Mouse selector to kill window
-	Alt+Mouse-Left			Move Window
-	Alt+m 				Move Window
-	Win+0				Toogle Always on Top
-
 RESIZE WINDOWS
 	Mouse-Middle in titlebar	Half-maximize Window
 	Win+Num 1-9			Half-maximize Window
 	Win+Alt+Arrow 			Half-maximize Window
 	Win+Arrow			Expand Window
-	Mouse-Right in titlebar		Drag resize Window
-	Alt+Mouse-Right			Drag resize Window
-	Alt+r 				Drag resize Window
+	Mouse-Right in titlebar		Resize Window
+	Alt+Mouse-Right			Resize Window
+	Alt+r 				Resize Window
 
+MOVE WINDOWS
+	Win+d				Toogle minimice/maximice all windows
+	Alt+F4				Close Window
+	Alt+F5				Minimize Window
+	Alt+F6				Toogle maximize		
+	Alt+Esc				Send window to back
+	Win+Esc				Mouse selector to kill window
+	Alt+Mouse-Left			Move Window
+	Alt+m 				Move Window
 
 FOCUS WINDOW
+	Win+Tab				Open window menu selector
 	Alt+Tab 			Focus next Window
 	Alt+Shift+Tab 			Focus previous Window
 	Win+Shift+Arrows		Focus near Window
@@ -46,3 +37,12 @@ FOCUS WINDOW
 	Ctrl+Alt+Right			Go to right desktop
 	Shift+Alt+Left 			Send window to left desktop
 	Shift+Alt+Right 		Send window to right desktop
+	Win+0				Toogle window always on Top
+
+DESKTOP 
+	Ctrl+Alt+Backspace		Kill X and go back to login
+	Win+F1				Go to Desktop 1
+	Win+F2				Go to Desktop 2
+	Win+F3				Go to Desktop 3
+	Win+F4				Go to Desktop 4
+	Alt+Space			Open window menu
