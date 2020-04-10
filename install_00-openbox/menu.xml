@@ -59,13 +59,20 @@
         <menu id="preferences" label="Preferences" icon="/usr/share/icons/openbox-menu/settings.png">
         	<separator label="GRAPHICAL PREFERENCES"/>
             <menu id="obConfig" label="Openbox">
-                <item label="Edit menu.xml">
+                <item label="Openbox Preferences">
                     <action name="Execute">
                         <command>
-                            x-text-editor ~/.config/openbox/menu.xml
+                            obconf
                         </command>
                     </action>
-                </item>
+                </item>				
+                <item label="Menu Editor">
+                    <action name="Execute">
+                        <command>
+                            obmenu
+                        </command>
+                    </action>
+                </item>				
                 <item label="Edit rc.xml">
                     <action name="Execute">
                         <command>
@@ -73,32 +80,17 @@
                         </command>
                     </action>
                 </item>
+                <item label="Edit menu.xml">
+                    <action name="Execute">
+                        <command>
+                            x-text-editor ~/.config/openbox/menu.xml
+                        </command>
+                    </action>
+                </item>				
                 <item label="Edit autostart">
                     <action name="Execute">
                         <command>
                             x-text-editor ~/.config/openbox/autostart
-                        </command>
-                    </action>
-                </item>
-                <separator/>
-                <item label="Menu Editor">
-                    <action name="Execute">
-                        <command>
-                            obmenu
-                        </command>
-                    </action>
-                </item>
-                <item label="WM Preferences">
-                    <action name="Execute">
-                        <command>
-                            obconf
-                        </command>
-                    </action>
-                </item>
-                <item label="How to Edit Menu">
-                    <action name="Execute">
-                        <command>
-                            yad --button="OK":0 --center --window-icon=distributor-logo-bunsenlabs --text-info --title=&quot;How to Edit the Menu&quot; --filename=&quot;/usr/share/bunsen/docs/helpfile-menu.txt&quot; --width=900 --height=700 --fontname=Monospace
                         </command>
                     </action>
                 </item>
@@ -163,7 +155,7 @@
 	                </action>
                </item>				
         	</menu>
-        	<menu id="conky" label="Conky">
+        	<menu id="conky" label="Conky Panels">
         		<item label="Open Your Conkys Folder">
         			<action name="Execute">
 	                    <command>
