@@ -36,7 +36,6 @@ MOVE & CLOSE WINDOWS
     Alt+m 			Move Window
 
 FOCUS WINDOW
-    Win+Tab			Open window menu selector
     Alt+Tab 			Focus next Window
     Alt+Shift+Tab 		Focus previous Window
     Win+Shift+Arrows		Focus near Window
