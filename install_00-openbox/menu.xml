@@ -314,7 +314,7 @@
 	        <item label="Shortcuts and mouse bindings">
 	            <action name="Execute">
 	                <command>
-	                    yad --text-info --button="Close" --center --fixed --borders=20 --title="Shortcuts and mouse bindings" --width=700 --height=700 --fontname="Monospace" --filename="/usr/share/doc/openbox/help/shortcuts.txt"
+	                    yad --text-info --button="Close" --borders=20 --title="Shortcuts and mouse bindings" --width=700 --height=700 --fontname="Monospace" --filename="/usr/share/doc/openbox/help/shortcuts.txt"
 	                </command>
 	            </action>
 	        </item>
