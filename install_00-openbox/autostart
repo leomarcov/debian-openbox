@@ -25,7 +25,7 @@ fi
 /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 &	# GNOME PolicyKit authentication
 nitrogen --restore													# Set wallpaper
 tint2-session &														# Start tint2
-conky-session &														# Start Conky
+(sleep 1; conky-session) &											# Start Conky
 compton &															# Start compositor
 pnmixer &															# Start volume control
 xfce4-clipman &														# Start clipboard manager
