@@ -25,7 +25,7 @@ RESIZE WINDOWS
     Alt+Mouse-Right		Resize Window
     Alt+r 			Resize Window
 
-MOVE WINDOWS
+MOVE & CLOSE WINDOWS
     Win+d			Toogle minimice/maximice all windows
     Alt+F4			Close Window
     Alt+F5			Minimize Window
