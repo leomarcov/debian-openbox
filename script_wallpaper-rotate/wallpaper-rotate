@@ -2,12 +2,15 @@
 
 #### CONFIG ############################################################
 wps_dir="/usr/share/backgrounds/wallpapers-alinz/"
-bg_color="#0d3642"
 ########################################################################
+
+# Checks
+[ ! -d "$wps_dir" ] && exit 1
+
 
 # Put all wallpaper paths in array
 IFS=$'\n'
-wps_paths=($(ls "$wps_dir"/*))
+wps_paths=($(ls "$wps_dir"/*))							# Array with all wallpapers path
 
 # Get today wallpaper position in array
 n=${#wps_paths[*]}										# Num of items in array
@@ -15,13 +18,11 @@ shopt -s extglob; d=$(date +%j); d=${d##+(0)}			# Today day of year
 n=$((d%n))												# Today array position
 
 # Get today wallpaper path
-wp_default="${wps_paths[$n]}"
+wp_selected="${wps_paths[$n]}"
+echo -e "Selected wallpaper is:\t\t$wp_selected"
 
-echo "Today wallpaper is: $wp_default"
+# Generate link
+wp_link="$wps_dir/wp-rotate.${wp_selected##*.}"
+echo -e "Creating wallpaper link in:\t$wp_link"
+ln -sf "$wp_selected" "$wp_link"
 
-# Set wallpaper to all users
-for f in /home/*/.config/nitrogen/bg-saved.cfg; do
-	echo "Setting wallpaper in $f"
-	sed -i 's/^file *= *.*/file='$(echo "$wp_default" | sed 's/\//\\\//g' )'/' "$f"
-	sed -i 's/^bgcolor *= *.*/bgcolor='"$bg_color"'/' "$f"
-done

@@ -1,6 +1,6 @@
 #!/bin/bash
-# ACTION: Install nitrogen and copy wallpaper pack and set Aptenodytes wallpaper as default
-# INFO: Aptenodytes Forsteri Wallpaper by Nixiepro is a clear and beautiful Bunsen wallpaper.
+# ACTION: Install nitrogen,  copy wallpapers pack and set default wallpaper to all users
+# INFO: Include solarized wallpapers pack by Adre
 # DEFAULT: y
 
 # Check root
@@ -8,8 +8,15 @@
 
 base_dir="$(dirname "$(readlink -f "$0")")"
 wp_base="/usr/share/backgrounds/"
-wp_dir="wallpapers-pack1"
-wp_default="bl-colorful-aptenodytes-forsteri-by-nixiepro.png"
+
+# Select default wallpaper
+if [ -f "$wp_base/wallpapers-alinz/wp-rotate.png" ]; then
+	wp_dir="wallpapers-alinz"
+	wp_default="wp-rotate.png"
+else
+	wp_dir="wallpapers-pack1"
+	wp_default="bl-colorful-aptenodytes-forsteri-by-nixiepro.png"
+fi
 
 # Install nitrogen
 if ! which nitrogen &>/dev/null; then
@@ -17,8 +24,10 @@ if ! which nitrogen &>/dev/null; then
 	apt-get -y install nitrogen
 fi
 
+# Copy wallpapers folderes
 [ ! -d "$wp_base" ] && mkdir -p "$wp_base"
-cp -rv "$base_dir/$wp_dir/" "$wp_base"
+cp -rv "$base_dir/wallpapers"* "$wp_base"
+
 
 for d in  /etc/skel/  /home/*/; do
 	# Skip dirs in /home that not are user home
