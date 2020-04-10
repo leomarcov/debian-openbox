@@ -1,3 +1,2 @@
 # Wallpaper rotation
-Script to rotate wallpapers daily using nitrogen wallpaper manager. 
-Include beautiful set of solarized Linux wallpapers created by [Andreas Linz](https://git.klingt.net/alinz/linux-pictures)
+Script to rotate daily wallpaper images in a folder. Script generates a link file in the folder that links to file image everyday.  
