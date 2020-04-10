@@ -436,13 +436,34 @@
         <y>0</y>
       </action>
     </keybind>
-
     <keybind key="A-r">
       <action name="Resize"/>
     </keybind>
     <keybind key="A-m">
       <action name="Move"/>
     </keybind>
+	  
+    <keybind key="A-Up">
+      <action name="Execute">
+        <command>xte 'keyup Alt_L' 'key Page_Up'</command>
+      </action>
+    </keybind>
+     <keybind key="A-Down">
+      <action name="Execute">
+        <command>xte 'keyup Alt_L' 'key Page_Down'</command>
+      </action>
+    </keybind>
+     <keybind key="A-Left">
+      <action name="Execute">
+        <command>xte 'keyup Alt_L' 'key Home'</command>
+      </action>
+    </keybind>
+     <keybind key="A-Right">
+      <action name="Execute">
+        <command>xte 'keyup Alt_L' 'key End'</command>
+      </action>
+    </keybind> 
+	  
   </keyboard>
 
   <mouse>
