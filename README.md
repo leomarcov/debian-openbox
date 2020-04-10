@@ -1,11 +1,5 @@
 # Openbox install script collection for Debian
-<img align="left"  src="https://user-images.githubusercontent.com/32820131/77852132-2de64c00-71dd-11ea-8a66-e4cd3de916f8.png" width="90"> Openbox is a beautiful and lightweight window manager, but tediuos to install and config a full usable environment. This script collection automatize **Openbox** installation and essentials tools and apply my personal configurations, styles and themes. Althoughs is a collection of my particular configs may be interesting for someone.
- 
-Each action script and dependences are in a directory. There are 4 scripts categories:
-  * **install scripts**: install packages or download some installer and install those
-  * **config scripts**: apply some configurations in system.
-  * **theme scripts**: copy themes, icons, or apply some graphical configs
-  * **script scripts**: install some script. 
+<img align="left"  src="https://user-images.githubusercontent.com/32820131/77852132-2de64c00-71dd-11ea-8a66-e4cd3de916f8.png" width="90"> Openbox is a beautiful and lightweight window manager, but tediuos to install and config a full usable environment. This script collection automatize **Openbox** installation and essentials tools and apply configurations, styles and themes. Althoughs is a collection of my particular configs may be interesting for someone. You can install all scripts from bare Debian netinstall for config a full environment exec only some scripts.
 
 The main script `install` can exec all scripts or only a select list:
   * `install -l`: list all scripts.
