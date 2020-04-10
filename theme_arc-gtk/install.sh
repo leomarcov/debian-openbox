@@ -10,7 +10,8 @@ base_dir="$(dirname "$(readlink -f "$0")")"
 gtk_default="Arc"
 
 find /var/cache/apt/pkgcache.bin -mtime 0 &>/dev/null ||  apt-get update  
-apt-get -y install arc-theme
+apt-get install -y arc-theme
+apt-get install -y gtk3-nocsd		# Force Openbox titlebar in GT3 disabled client side decoration
 
 # Change accent color blue (#5294e2) for grey:
 find /usr/share/themes/Arc -type f -exec sed -i 's/#5294e2/#b3bcc6/g' {} \;   
