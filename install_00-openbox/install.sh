@@ -57,7 +57,7 @@ done
 
 # INSTALL HELP DOCS
 d="help"
-cp -rv "$base_dir/$d" "/usr/share/doc/openbox/$d"
+cp -rv "$base_dir/$d" "/usr/share/doc/openbox/"
 
 # INSTALL SYSTEM INFO DEPENDENCES
 wget -P /usr/bin "https://raw.githubusercontent.com/pixelb/ps_mem/master/ps_mem.py" && chmod +x /usr/bin/ps_mem.py
