@@ -15,6 +15,7 @@ wp_rotate_dest="/usr/share/backgrounds/wallpapers-alinz/"		# Directory where rot
 wp_rotate_name="wp-rotate"										# Name of rotate wallpaper link (extension will be completed automatically)
 ########################################################################
 
+
 # Checks
 [ ! -d "$wps_src" ] && exit 1
 [ ! -w  "wps_rotate_dest" ] && exit 1
