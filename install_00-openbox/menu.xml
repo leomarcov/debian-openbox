@@ -311,7 +311,7 @@
         </menu>
 	    
         <menu id="help" label="Help" icon="/usr/share/icons/openbox-menu/help.png">		
-	        <item label="Shortcuts and mouse bindings">
+	        <item label="Shortcuts and mouse bindings" icon="/usr/share/icons/openbox-menu/shortcut.png">
 	            <action name="Execute">
 	                <command>
 	                    yad --text-info --button="Close" --borders=20 --title="Shortcuts and mouse bindings" --width=700 --height=700 --fontname="Monospace" --filename="/usr/share/doc/openbox/help/shortcuts.txt"
