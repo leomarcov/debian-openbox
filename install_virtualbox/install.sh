@@ -43,3 +43,8 @@ t=$(mktemp -d)
 wget -P "$t" "$ep_url"  
 [ $? -eq 0 ] && yes | vboxmanage extpack install --replace "$t"/*extpack 
 rm -rf "$t"
+
+# Fix Virtualbox not load gtk theme
+apt-get install -y qt5-style-plugins
+echo "export QT_QPA_PLATFORMTHEME=gtk2" >> /etc/environment
+
