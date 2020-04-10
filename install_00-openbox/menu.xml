@@ -317,6 +317,14 @@
 				</action>
 			</item>	
         </menu>
+	    
+		<item label="Help" icon="/usr/share/icons/openbox-menu/help.png">
+            <action name="Execute">
+                <command>
+                    obexit show
+                </command>
+            </action>
+        </item>	
 		
         <separator/>
 
