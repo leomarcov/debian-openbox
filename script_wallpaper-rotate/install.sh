@@ -1,22 +1,38 @@
 #!/bin/bash
-# ACTION: Install script to rotate everyday Linux solarized wallpapers pack by Andreas Linz
-# DEFAULT: y
+#===================================================================================
+# FILE: wallpaper-rotate
+# DESCRIPTION: select image from directory rotationally and generates link to it
+# AUTHOR: Leonardo Marco
+# VERSION: 1.0
+# CREATED: 2020.04.20
+# LICENSE: GNU General Public License v3.0
+#===================================================================================
 
-# Check root
-[ "$(id -u)" -ne 0 ] && { echo "Must run as root" 1>&2; exit 1; }
 
-base_dir="$(dirname "$(readlink -f "$0")")"
+#### CONFIG ############################################################
+wps_src="/usr/share/backgrounds/wallpapers-alinz/"				# Directory where all images are stored
+wp_rotate_dest="/usr/share/backgrounds/wallpapers-alinz/"		# Directory where rotate wallpaper link will be saved
+wp_rotate_name="wp-rotate"										# Name of rotate wallpaper link (extension will be completed automatically)
+########################################################################
 
-# Install dependences
-if ! which anacron &>/dev/null; then
-	find /var/cache/apt/pkgcache.bin -mtime 0 &>/dev/null ||  apt-get update
-	apt-get -y install anacron
-fi
+# Checks
+[ ! -d "$wps_src" ] && exit 1
+[ ! -w  "wps_rotate_dest" ] && exit 1
 
-# Copy rotate script in cron.daily dir
-f="wallpaper-rotate"
-cp -v "${base_dir}/$f" /etc/cron.daily/
-chmod a+x "/etc/cron.daily/$f"
+# Put all wallpaper paths in array
+IFS=$'\n'
+wps_paths=($(ls "$wps_src"/*))							# Array with all wallpapers path
 
-# Exec now rotation
-"/etc/cron.daily/$f"
+# Get today wallpaper position in array
+n=${#wps_paths[*]}										# Num of items in array
+shopt -s extglob; d=$(date +%j); d=${d##+(0)}			# Today day of year
+n=$((d%n))												# Today array position
+
+# Get today wallpaper path
+wp_selected="${wps_paths[$n]}"
+echo -e "Selected wallpaper is:\t\t$wp_selected"
+
+# Generate link
+wp_link="${wp_rotate_dest}/${wp_rotate_name}.${wp_selected##*.}"
+echo -e "Creating wallpaper link in:\t$wp_link"
+ln -sf "$wp_selected" "$wp_link"
