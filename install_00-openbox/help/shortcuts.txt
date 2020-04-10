@@ -18,8 +18,10 @@ DESKTOP
 	Ctrl+Alt+Backspace		Kill X Windows
 
 MOVE WINDOWS
+	Win+d				Toogle minimice/maximice active Windows
 	Alt+F4				Close Window
 	Alt+F5				Minimize Window
+	Alt+F6				Tooglel maximize		
 	Alt+Esc				Send to back
 	Win+Esc				Mouse selector to kill window
 	Alt+Mouse-Left			Move Window
