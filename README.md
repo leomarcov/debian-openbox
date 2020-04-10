@@ -22,7 +22,7 @@ The main script `install` can exec all scripts or only a select list:
   * Install [**`brightness control script`**](https://github.com/leomarcov/debian-openbox/tree/master/script_brightness-control) for increase/decrease birghtness screen.
   * Install [**`exit menu`**](https://github.com/leomarcov/debian-openbox/tree/master/script_exitmenu) based on rofi to show power and exit options.
 
-<img src="https://user-images.githubusercontent.com/32820131/78614586-37bc1f00-786f-11ea-8c28-1509b8bb2c11.png">
+<img src="https://user-images.githubusercontent.com/32820131/79006211-f7072300-7b58-11ea-88a5-ddbb3b71183d.png">
 
 
 &nbsp; 
