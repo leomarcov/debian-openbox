@@ -18,7 +18,7 @@ wp_rotate_name="wp-rotate"										# Name of rotate wallpaper link (extension w
 
 # Checks
 [ ! -d "$wps_src" ] && exit 1
-[ ! -w  "wps_rotate_dest" ] && exit 1
+[ ! -w  "$wps_rotate_dest" ] && exit 1
 
 # Put all wallpaper paths in array
 IFS=$'\n'
