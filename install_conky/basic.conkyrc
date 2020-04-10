@@ -195,13 +195,10 @@ Win${alignr}Launcher
 Win + t${alignr}Terminal
 Win + f${alignr}File Manager
 Win + w${alignr}Web Browser
-Win + e${alignr}Editor
-Win + h${alignr}Task Manager
-Win + v${alignr}Volume control
+Win + e${alignr}Text Editor
 Win + l${alignr}Lock Screen
 Win + x${alignr}Logout
 
-Alt + Tab${alignr}Window switch
 Win + Num${alignr}Snap window
 Win + Arrow${alignr}Expand window
 Win + Esc${alignr}Kill window
