@@ -55,6 +55,10 @@ for d in /etc/skel /home/*/; do
 	cp -v "$base_dir/$f" "$d" && chown -R $(stat "$d" -c %u:%g) "$d/$f"	
 done
 
+# INSTALL HELP DOCS
+d="help"
+cp -rv "$base_dir/$d" "/usr/share/doc/openbox/$d"
+
 # INSTALL SYSTEM INFO DEPENDENCES
 wget -P /usr/bin "https://raw.githubusercontent.com/pixelb/ps_mem/master/ps_mem.py" && chmod +x /usr/bin/ps_mem.py
 apt-get install -y s-tui dfc htop
