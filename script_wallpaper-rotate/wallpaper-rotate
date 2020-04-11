@@ -15,6 +15,8 @@ wp_rotate_dest="/usr/share/backgrounds/wallpapers-alinz/"		# Directory where rot
 wp_rotate_name="wp-rotate"										# Name of rotate wallpaper link (extension will be completed automatically)
 ########################################################################
 
+shopt -s extglob
+
 
 # Checks
 [ ! -d "$wps_src" ] && exit 1
@@ -22,11 +24,11 @@ wp_rotate_name="wp-rotate"										# Name of rotate wallpaper link (extension w
 
 # Put all wallpaper paths in array
 IFS=$'\n'
-wps_paths=($(ls "$wps_src"/*))							# Array with all wallpapers path
+wps_paths=($(ls "$wps_src"/!(${wp_rotate_name}.*)))		# Array with all wallpapers path
 
 # Get today wallpaper position in array
 n=${#wps_paths[*]}										# Num of items in array
-shopt -s extglob; d=$(date +%j); d=${d##+(0)}			# Today day of year
+d=$(date +%j); d=${d##+(0)}								# Today day of year
 n=$((d%n))												# Today array position
 
 # Get today wallpaper path
