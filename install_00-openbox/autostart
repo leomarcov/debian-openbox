@@ -1,6 +1,6 @@
 ## Openbox autostart
 ## ====================
-## When you login to Opènbox this autostart script will be executed to set-up your environment 
+## When you login to Openbox this autostart script will be executed to set-up your environment 
 ## and launch any applications you want to run at startup.
 ##
 ## Note: some programs, such as 'nm-applet' are run via XDG autostart.
