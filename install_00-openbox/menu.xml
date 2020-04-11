@@ -310,15 +310,86 @@
 			</item>	
         </menu>
 	    
-        <menu id="help" label="Help" icon="/usr/share/icons/openbox-menu/help.png">		
-	        <item label="Shortcuts and mouse bindings" icon="/usr/share/icons/openbox-menu/shortcut.png">
-	            <action name="Execute">
-	                <command>
-	                    yad --text-info --button="Close" --borders=20 --title="Shortcuts and mouse bindings" --width=700 --height=700 --fontname="Monospace" --filename="/usr/share/doc/openbox/help/shortcuts.txt"
-	                </command>
-	            </action>
-	        </item>
+        <menu id="help" label="Help" icon="/usr/share/icons/openbox-menu/help2.png">		
+        <item label="How to change wallpaper?" icon="/usr/share/icons/openbox-menu/help2.png">
+            <action name="Execute">
+                <command>
+                    yad --text-info --button="Close" --borders=20 --title="Shortcuts and mouse bindings" --width=700 --height=700 --fontname="Monospace" --filename="/usr/share/doc/openbox/help/shortcuts.txt"
+                </command>
+            </action>
+        </item>		
+        <item label="How to config taskbar (tint2)?" icon="/usr/share/icons/openbox-menu/help2.png">
+            <action name="Execute">
+                <command>
+                    yad --text-info --button="Close" --borders=20 --title="Shortcuts and mouse bindings" --width=700 --height=700 --fontname="Monospace" --filename="/usr/share/doc/openbox/help/shortcuts.txt"
+                </command>
+            </action>
+        </item>	   
+        <item label="How to config panels (conky)?" icon="/usr/share/icons/openbox-menu/help2.png">
+            <action name="Execute">
+                <command>
+                    yad --text-info --button="Close" --borders=20 --title="Shortcuts and mouse bindings" --width=700 --height=700 --fontname="Monospace" --filename="/usr/share/doc/openbox/help/shortcuts.txt"
+                </command>
+            </action>
+        </item>	        
+        <item label="How to config displays and monitor resolution?" icon="/usr/share/icons/openbox-menu/help2.png">
+            <action name="Execute">
+                <command>
+                    yad --text-info --button="Close" --borders=20 --title="Shortcuts and mouse bindings" --width=700 --height=700 --fontname="Monospace" --filename="/usr/share/doc/openbox/help/shortcuts.txt"
+                </command>
+            </action>
+        </item>	  
+        <item label="How to config this menu?" icon="/usr/share/icons/openbox-menu/help2.png">
+            <action name="Execute">
+                <command>
+                    yad --text-info --button="Close" --borders=20 --title="Shortcuts and mouse bindings" --width=700 --height=700 --fontname="Monospace" --filename="/usr/share/doc/openbox/help/shortcuts.txt"
+                </command>
+            </action>
+        </item>	         
+        <item label="How to config autostarted programs?" icon="/usr/share/icons/openbox-menu/help2.png">
+            <action name="Execute">
+                <command>
+                    yad --text-info --button="Close" --borders=20 --title="Shortcuts and mouse bindings" --width=700 --height=700 --fontname="Monospace" --filename="/usr/share/doc/openbox/help/shortcuts.txt"
+                </command>
+            </action>
+        </item>               
+        <item label="How to config keyboard and mouse shortcuts?" icon="/usr/share/icons/openbox-menu/help2.png">
+            <action name="Execute">
+                <command>
+                    yad --text-info --button="Close" --borders=20 --title="Shortcuts and mouse bindings" --width=700 --height=700 --fontname="Monospace" --filename="/usr/share/doc/openbox/help/shortcuts.txt"
+                </command>
+            </action>
+        </item>	   
+        <item label="How to config windows syles and icons?" icon="/usr/share/icons/openbox-menu/help2.png">
+            <action name="Execute">
+                <command>
+                    yad --text-info --button="Close" --borders=20 --title="Shortcuts and mouse bindings" --width=700 --height=700 --fontname="Monospace" --filename="/usr/share/doc/openbox/help/shortcuts.txt"
+                </command>
+            </action>
+        </item>	          
+        <item label="How to config printer?" icon="/usr/share/icons/openbox-menu/help2.png">
+            <action name="Execute">
+                <command>
+                    yad --text-info --button="Close" --borders=20 --title="Shortcuts and mouse bindings" --width=700 --height=700 --fontname="Monospace" --filename="/usr/share/doc/openbox/help/shortcuts.txt"
+                </command>
+            </action>
+        </item>	        
+        <item label="How to config bluetooth?" icon="/usr/share/icons/openbox-menu/help2.png">
+            <action name="Execute">
+                <command>
+                    yad --text-info --button="Close" --borders=20 --title="Shortcuts and mouse bindings" --width=700 --height=700 --fontname="Monospace" --filename="/usr/share/doc/openbox/help/shortcuts.txt"
+                </command>
+            </action>
+        </item>	                          
         </menu>
+
+        <item label="Shortcuts keys" icon="/usr/share/icons/openbox-menu/shortcut.png">
+            <action name="Execute">
+                <command>
+                    yad --text-info --button="Close" --borders=20 --title="Shortcuts and mouse bindings" --width=700 --height=700 --fontname="Monospace" --filename="/usr/share/doc/openbox/help/shortcuts.txt"
+                </command>
+            </action>
+        </item>		
 		
         <separator/>
 
