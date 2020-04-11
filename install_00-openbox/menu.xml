@@ -295,6 +295,13 @@
                     </command>
                 </action>
             </item>
+			<item label="Check Pending Updates">
+				<action name="Execute">
+					<command>
+						x-terminal-emulator -m -e bash -c "update-notification -i; read"
+					</command>
+				</action>
+			</item>	            
             <item label="Alternatives">
                 <action name="Execute">
                     <command>
@@ -372,13 +379,6 @@
 				<action name="Execute">
 					<command>
 						x-terminal-emulator -m -e bash -c 'if [ "$(iw dev)" ]; then  while true; do nmcli dev wifi list; read; clear; done; else echo "No WIFI interfaces found!"; read; fi'
-					</command>
-				</action>
-			</item>	
-			<item label="Check Pending Updates">
-				<action name="Execute">
-					<command>
-						x-terminal-emulator -m -e bash -c "update-notification; update-notification -i"
 					</command>
 				</action>
 			</item>	
