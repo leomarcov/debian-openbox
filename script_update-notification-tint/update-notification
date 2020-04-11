@@ -31,9 +31,17 @@ function update () {
 	echo "Updating package repositoriy..."
 	aptitude update &> /dev/null
 	echo "Checking updates and saving in $updates_file..."
-	aptitude search "~U" > "$updates_file" || exit 1
-	echo
-	exit 0
+	aptitude search "~U" > "$updates_file" 
+	echo 
+
+	# No updates
+	if [ ! -s "$updates_file" ]; then
+		echo -e "\e[1mNO PENDING UPDATES\e[0m"
+	# Pending updates
+	else
+		echo -e "\e[1mPENDING UPDATES\e[0m"
+		cat "$updates_file"
+	fi
 }
 
 
@@ -42,16 +50,9 @@ function update () {
 # DESCRIPTION: make apt upgrade interactive
 #===============================================================================
 function interactive_upgrade() {
-	if [ ! -s "$updates_file" ]; then
-		echo "NO PENDING UPDATES"
-		echo
-		read -p "Press enter to exit"
-		exit 0
-	fi
+	update
+	 [ ! -s "$updates_file" ] && exit 0
 
-	echo -e "\e[1mPENDING UPDATES\e[0m"
-	cat "$updates_file"
-	echo
 	read -p "Press enter to continue upgrade..."
 
 	sudo aptitude full-upgrade
