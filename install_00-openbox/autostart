@@ -13,8 +13,9 @@
 
 #### START SETTINGS  #################################################################################
 [ -d ~/.screenlayout ] && "$(ls ~/.screenlayout/*.sh | head -1)"		# Exec first script screenlayout found
-xset r rate 250 25							# Set keyboard settings to 250ms delay and 25cps (characters per second)
-xcape -e "Super_L=Control_L|Tab" 			# Alias for: Super key (win) = Control_Left+Tab
+xset r rate 250 25								# Set keyboard settings to 250ms delay and 25cps (characters per second)
+xcape -e "Super_L=Control_L|Tab" 				# Alias for: Super key (win) = Control_Left+Tab
+[[ -f ~/.Xmodmap ]] && xmodmap ~/.Xmodmap &		# Load xmodmap keys mapping
 
 # Touchpad settings
 if [ -f /sys/module/battery/initstate ] || [ -d /proc/acpi/battery/BAT0 ]; then
