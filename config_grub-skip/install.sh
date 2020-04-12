@@ -3,10 +3,11 @@
 # INFO: If you are using only one OS in the computer you con skip GRUB menu for faster boot.
 # DEFAULT: n
 
+# Config variables
+base_dir="$(dirname "$(readlink -f "$0")")"
+
 # Check root
 [ "$(id -u)" -ne 0 ] && { echo "Must run as root" 1>&2; exit 1; }
-
-base_dir="$(dirname "$(readlink -f "$0")")"
 
 # Delete existing lines
 for i in $(cat "$base_dir/grub.conf"  | cut -f1 -d=);do
