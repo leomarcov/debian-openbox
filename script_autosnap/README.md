@@ -6,7 +6,7 @@ It work in **1 or 2 monitors** (in horizontal).
 ![peek-12-10-2017-20-43](https://user-images.githubusercontent.com/32820131/40352231-9d64c1fa-5dae-11e8-8137-890cadf2c293.gif)
 
 ## Install
-Use `install.sh` script. The script will be installed and system and Openbox config file autoconfigured for call the script when middle click in titlebar is pressed.
+Use `install.sh` script. The script will be installed and Openbox config file autoconfigured for call the script when middle click in titlebar is pressed.
 
 ## Manual install
   * Download `autosnap` and copy the script to accessible PATH directory and make it executable.
