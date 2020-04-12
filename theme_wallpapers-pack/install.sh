@@ -10,7 +10,6 @@ base_dir="$(dirname "$(readlink -f "$0")")"
 wp_base="/usr/share/backgrounds/"
 
 # Select default wallpaper
-[ -f "/etc/cron.daily/wallpaper-rotate" ] && "/etc/cron.daily/wallpaper-rotate"
 if [ -f "$wp_base/wallpapers-alinz/wp-rotate.png" ]; then
 	wp_dir="wallpapers-alinz"
 	wp_default="wp-rotate.png"
