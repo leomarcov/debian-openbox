@@ -24,7 +24,7 @@ shopt -s extglob
 
 # Put all wallpaper paths in array
 IFS=$'\n'
-wps_paths=($(ls "$wps_src"/!(${wp_rotate_name}.*)))		# Array with all wallpapers path
+wps_paths=($(find "$wps_src" -type f))					# Array with all wallpapers path
 
 # Get today wallpaper position in array
 n=${#wps_paths[*]}										# Num of items in array
