@@ -8,4 +8,4 @@ Exec=openbox --exit
 Icon=exit
 Categories=Power;
 GenericName=Logout session
-Keywords=power;logout
+Keywords=exit;logout
