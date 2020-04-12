@@ -11,7 +11,7 @@
 #===================================================================================
 
 #=== GLOBAL VARIABLES DEFINITION ===============================================
-dependences="iwgetid iwlist wpa_supplicant wpa_cli dhclient ip sudo"		# script dependences
+dependences="iwgetid iwlist wpa_supplicant wpa_cli dhclient ip"		# script dependences
 wpa_config="/etc/wpa_supplicant/wpa_supplicant.conf"						# wpa_supplicant file config to use
 unset daemon_enabled														# Empty if not wpa-cli daemon controlled is enabled
 unset iface																	# iface to use
@@ -78,10 +78,10 @@ function print_signal_bar {
 function scan {
     IFS2="$IFS"; IFS=$'\n'
 
-    [ ! "$(ip link show $iface up)" ] && sudo ip link set dev $iface up
+    [ ! "$(ip link show $iface up)" ] && ip link set dev $iface up
 	
     echo -e "\e[1mScaning interface $iface...\e[0m"
-    scan_out="$(sudo iwlist $iface scan)"
+    scan_out="$(iwlist $iface scan)"
     local scan="$(echo "$scan_out" | egrep "Address|ESSID|Quality|Channel|Encryption key")"
 	
     addresses=($(echo "$scan" | grep Address: | egrep -o "([0-9A-F]{2}:)+[0-9A-F]{2}"))
@@ -145,11 +145,11 @@ function disconnect {
 	if [ "$daemon_enabled" ]; then
 		wpa_cli -i "$iface" disconnect
 	else
-		sudo killall wpa_supplicant
+		killall wpa_supplicant
 	fi
 
-	sudo dhclient -v -r "$iface"
-	sudo ip link set dev "$iface" down	
+	dhclient -v -r "$iface"
+	ip link set dev "$iface" down	
 }
 
 
@@ -192,7 +192,7 @@ function connect_no-saved {
 	wpa_supplicant -B -i "$iface" -c <(wpa_passphrase "$ssid" "$pass")
 
 	echo -e "\n\e[1mGetting DHCP address\e[0m"
-	sudo dhclient -v "$iface"
+	dhclient -v "$iface"
 }
 
 
@@ -240,13 +240,12 @@ function connect {
 
 	# CONNECT NOTDAEMON
 	else
-		# sudo bash -c 'wpa_supplicant -B -i "'"$iface"'" -c <(wpa_passphrase "'"$ssid"'" "'"$pass"'")'
 		wpa_supplicant -B -i "$iface" -c <(wpa_passphrase "$ssid" "$pass")
 	fi
 
 	# DHCP 
 	echo -e "\n\e[1mGetting DHCP address\e[0m"
-	sudo dhclient -v "$iface" || return 1
+	dhclient -v "$iface" || return 1
 }
 
 
@@ -351,6 +350,7 @@ function main {
 
 	# CHECK DEPENDENCES
 	check_dependences
+	[ "$USER" != root ] && error_msg "Must exec with root privileges" 1
 	
 	# SET GLOBAL VARIABLES VALUES
 	if [ "$iface" ]; then
