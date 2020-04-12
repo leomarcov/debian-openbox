@@ -9,3 +9,4 @@ text/markdown=sublime_text.desktop;
 video/x-matroska=vlc.desktop;
 application/vnd.rar=org.gnome.FileRoller.desktop;
 application/x-shellscript=sublime_text.desktop;
+text/html=google-chrome.desktop;brave-browser.desktop;firefox.desktop;
