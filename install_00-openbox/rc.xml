@@ -481,8 +481,8 @@
 
     <context name="Frame">
     <!-- DEBIAN-OPENBOX-mouse-button-close-window -->  
-	  <mousebind button="Button7" action="Click">
-          <action name="Close"/>
+      <mousebind button="Button7" action="Click">
+      	<action name="Close"/>
       </mousebind>
 		
       <mousebind button="A-Left" action="Press">
