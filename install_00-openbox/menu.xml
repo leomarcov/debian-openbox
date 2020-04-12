@@ -350,7 +350,7 @@
 			<item label="Memory Usage">
 				<action name="Execute">
 					<command>
-						x-terminal-emulator -m -e sudo bash -c 'tput civis; while true; do clear; out=$(ps_mem.py); outl=$(echo "$out" | wc -l); sl=$(tput lines); if [ "$sl" -lt "$outl" ]; then echo "$out" | sed -e "3,$((outl-sl+4))d"; else echo "$out"; fi; read -t 2; done'
+						x-terminal-emulator -m -e sudo bash -c 'tput civis; while true; do clear; out=$(ps_mem.py -S); outl=$(echo "$out" | wc -l); sl=$(tput lines); if [ "$sl" -lt "$outl" ]; then echo "$out" | sed -e "3,$((outl-sl+4))d"; else echo "$out"; fi; read -t 2; done'
 					</command>
 				</action>
 			</item>
