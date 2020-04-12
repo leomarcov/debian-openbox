@@ -200,6 +200,7 @@ Win + e${alignr}Editor
 D E S K T O P   K E Y S
 ${hr}
 Win + Num${alignr}Snap window
+M.Middle in title${alignr}Snap window
 Alt + M.Right${alignr}Resize window
 Win + Arrow${alignr}Expand window
 Win + Esc${alignr}Kill window
