@@ -378,7 +378,7 @@
 			<item label="WIFI Scan Networks">
 				<action name="Execute">
 					<command>
-						x-terminal-emulator -m -e bash -c 'if [ "$(iw dev)" ]; then  while true; do nmcli dev wifi list; read; clear; done; else echo "No WIFI interfaces found!"; read; fi'
+						x-terminal-emulator -m -e bash -c 'if [ "$(iw dev)" ]; then nmcli device wifi rescan; while true; do nmcli dev wifi list; read; clear; done; else echo "No WIFI interfaces found!"; read; fi'
 					</command>
 				</action>
 			</item>	
