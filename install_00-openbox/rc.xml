@@ -480,6 +480,11 @@
        switching due to hitting the edge of the screen -->
 
     <context name="Frame">
+    <!-- DEBIAN-OPENBOX-mouse-button-close-window -->  
+	  <mousebind button="Button7" action="Click">
+          <action name="Close"/>
+      </mousebind>
+		
       <mousebind button="A-Left" action="Press">
         <action name="Focus"/>
         <action name="Raise"/>
