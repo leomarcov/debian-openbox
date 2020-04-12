@@ -1,6 +1,6 @@
 ## Openbox autostart
 ## ====================
-## When you login to Openbox this autostart script will be executed to set-up your environment 
+## When you login to Opènbox this autostart script will be executed to set-up your environment 
 ## and launch any applications you want to run at startup.
 ##
 ## Note: some programs, such as 'nm-applet' are run via XDG autostart.
@@ -12,10 +12,12 @@
 
 
 #### START SETTINGS  #################################################################################
-[ -d ~/.screenlayout ] && "$(ls ~/.screenlayout/*.sh | head -1)"		# Exec first script screenlayout found
-xset r rate 250 25								# Set keyboard settings to 250ms delay and 25cps (characters per second)
-xcape -e "Super_L=Control_L|Tab" 				# Alias for: Super key (win) = Control_Left+Tab
-[[ -f ~/.Xmodmap ]] && xmodmap ~/.Xmodmap &		# Load xmodmap keys mapping
+[ -d ~/.screenlayout ] && "$(ls ~/.screenlayout/*.sh | head -1)"	# Exec first script screenlayout found
+
+xset r rate 250 25													# Set keyboard settings to 250ms delay and 25cps (characters per second)
+xcape -e "Super_L=Control_L|Tab" 									# Alias for: Super key (win) = Control_Left+Tab
+[[ -f ~/.Xmodmap ]] && xmodmap ~/.Xmodmap &							# Load xmodmap keys mapping
+
 
 # Touchpad settings
 if [ -f /sys/module/battery/initstate ] || [ -d /proc/acpi/battery/BAT0 ]; then
@@ -31,5 +33,3 @@ tint2-session &														# Start tint2
 compton &															# Start compositor
 pnmixer &															# Start volume control
 xfce4-clipman &														# Start clipboard manager
-
-
