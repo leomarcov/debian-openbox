@@ -34,6 +34,9 @@ for d in /etc/skel /home/*/; do
 	# Copy compton file
 	f="compton.conf"
 	cp -v "$base_dir/$f" "$d" && chown -R $(stat "$d" -c %u:%g) "$d/$f"	
+	# Copy mimeapps.list file
+	f="mimeapps.list"
+	cp -v "$base_dir/$f" "$d" && chown -R $(stat "$d" -c %u:%g) "$d/$f"	
 	
 	# Create config folders if no exists
 	d2="$d"
