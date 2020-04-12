@@ -350,7 +350,7 @@
 			<item label="Memory Usage">
 				<action name="Execute">
 					<command>
-						x-terminal-emulator -m -e sudo bash -c "ps_mem.py; read"
+						x-terminal-emulator -m -e sudo bash -c "watch ps_mem.py; read"
 					</command>
 				</action>
 			</item>
