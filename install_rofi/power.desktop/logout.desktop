@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Name=Logout session
+Type=Application
+Comment=Logout session
+Terminal=true
+Exec=openbox --exit
+Icon=exit
+Categories=Power;
+GenericName=Logout session
+Keywords=power;logout
