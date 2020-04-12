@@ -9,6 +9,10 @@
 base_dir="$(dirname "$(readlink -f "$0")")"
 wp_base="/usr/share/backgrounds/"
 
+# Copy wallpapers folderes
+[ ! -d "$wp_base" ] && mkdir -p "$wp_base"
+cp -rv "$base_dir/wallpapers"* "$wp_base"
+
 # Select default wallpaper
 [ -f "/etc/cron.daily/wallpaper-rotate" ] && /etc/cron.daily/wallpaper-rotate
 if [ -f "$wp_base/wallpapers-alinz/wp-rotate.png" ]; then
@@ -24,11 +28,6 @@ if ! which nitrogen &>/dev/null; then
 	find /var/cache/apt/pkgcache.bin -mtime 0 &>/dev/null ||  apt-get update
 	apt-get -y install nitrogen
 fi
-
-# Copy wallpapers folderes
-[ ! -d "$wp_base" ] && mkdir -p "$wp_base"
-cp -rv "$base_dir/wallpapers"* "$wp_base"
-
 
 for d in  /etc/skel/  /home/*/; do
 	# Skip dirs in /home that not are user home
