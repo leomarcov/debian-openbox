@@ -8,4 +8,4 @@ Exec=x-locker
 Icon=lock
 Categories=Power;
 GenericName=Lock Session
-Keywords=power;lock
+Keywords=exit;lock
