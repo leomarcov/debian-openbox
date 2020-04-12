@@ -1,8 +1,7 @@
-      <mousebind button="Middle" action="Click">                          <!-- #DEBIAN-OPENBOX-autosnap -->
-        <action name="Execute">                                           <!-- #DEBIAN-OPENBOX-autosnap -->
-          <command>autosnap</command>                                     <!-- #DEBIAN-OPENBOX-autosnap -->
-        </action>                                                         <!-- #DEBIAN-OPENBOX-autosnap -->
-      </mousebind>                                                        <!-- #DEBIAN-OPENBOX-autosnap -->
-
+      <mousebind button="Middle" action="Click"> 		<!-- #DEBIAN-OPENBOX-autosnap -->
+        <action name="Execute"> 						<!-- #DEBIAN-OPENBOX-autosnap -->
+          <command>autosnap</command> 					<!-- #DEBIAN-OPENBOX-autosnap -->
+        </action> 										<!-- #DEBIAN-OPENBOX-autosnap -->
+      </mousebind> 										<!-- #DEBIAN-OPENBOX-autosnap -->
 
 
