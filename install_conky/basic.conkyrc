@@ -171,7 +171,7 @@ RAM:$alignr${mem} / ${memmax}
 Swap usage:${alignr}${swap} / ${swapmax}
 Disk usage:$alignr${fs_used /} / ${fs_size /}
 #Root usage:$alignr${fs_used /} / ${fs_size /}
-#Home usage:$alignr${fs_used /home} / ${fs_size /home}
+Home usage:$alignr${fs_used /home} / ${fs_size /home}
 CPU Average:${alignr}${cpu cpu0}%
 #
 # Weather information from openweathermap.org can be displayed in conky by
@@ -189,18 +189,21 @@ CPU Average:${alignr}${cpu cpu0}%
 #${hr}
 #${execpi 600 $HOME/.config/conky/scripts/bunsenweather.sh}
 
-S H O R T C U T    K E Y S
+A P P S    K E Y S
 ${hr}
 Win${alignr}Launcher
 Win + t${alignr}Terminal
 Win + f${alignr}File Manager
 Win + w${alignr}Web Browser
-Win + e${alignr}Text Editor
-Win + l${alignr}Lock Screen
-Win + x${alignr}Logout
+Win + e${alignr}Editor
 
+D E S K T O P   K E Y S
+${hr}
 Win + Num${alignr}Snap window
+Alt + M.Right${alignr}Resize window
 Win + Arrow${alignr}Expand window
 Win + Esc${alignr}Kill window
+Win + l${alignr}Lock Screen
+Win + x${alignr}Logout
 Ctrl + Alt + Backspace${alignr}Kill X
 ]];
