@@ -40,3 +40,6 @@ for d in /etc/skel/  /home/*/; do
 	#sed -i "/<item label=\"Run Program\">/,/<\/item>/d" "$f"	# Delte current Run program entry
 	#sed -i "/<menu id=\"root-menu\"/a<item label=\"Run Program\"><action name=\"Execute\"><command>${rofi_command}<\/command><\/action><\/item>    <\!-- #${comment_mark} -->" "$f"	# Add Run Program entry
 done
+
+# Copy .desktop power actions
+cp -v "${base_dir}/power.desktop"/* /usr/share/applications/
