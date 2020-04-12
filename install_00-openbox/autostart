@@ -16,7 +16,7 @@
 
 xset r rate 250 25													# Set keyboard settings to 250ms delay and 25cps (characters per second)
 xcape -e "Super_L=Control_L|Tab" 									# Alias for: Super key (win) = Control_Left+Tab
-[[ -f ~/.Xmodmap ]] && xmodmap ~/.Xmodmap &							# Load xmodmap keys mapping
+[ -f ~/.Xmodmap ] && xmodmap ~/.Xmodmap &							# Load xmodmap keys mapping
 
 
 # Touchpad settings
