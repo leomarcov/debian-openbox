@@ -142,7 +142,7 @@ if (! cat /etc/*release | grep -i debian || ! cat /etc/*release | egrep -i "bust
 fi
 
 
-# GET ALL SCRIPTS PATH
+# GET ALL SCRIPTS PATHS
 scripts="$(ls "$base_dir"/install_*/install.sh 2>/dev/null)
 $(ls "$base_dir"/config_*/install.sh 2>/dev/null)
 $(ls "$base_dir"/script_*/install.sh 2>/dev/null)
