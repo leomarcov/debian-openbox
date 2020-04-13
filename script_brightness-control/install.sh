@@ -1,6 +1,5 @@
 #!/bin/bash
-# ACTION: Install script brightness
-# INFO: Script brightness.sh increase/decrease and set default brightness.
+# ACTION: Install script for inc/dec screen brightness (used in taskbar for inc/dec brightness with mouse wheel)
 # DEFAULT: y
 
 # Check root
