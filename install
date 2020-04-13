@@ -1,13 +1,26 @@
 #!/bin/bash
 #===================================================================================
-# DEBIAN OPENBOX INSTALL SCRIPT
+# INSTALL SCRIPTS
 # FILE: install
-# DESCRIPTION: automatize Openbox installation in Debian 
+# DESCRIPTION: automatize installation of set of scripts
 # AUTHOR: Leonardo Marco
 # VERSION: 1.0
 # CREATED: 2020.03.29
 # LICENSE: GNU General Public License v3.0
 #===================================================================================
+
+#=== GLOBAL CONFIG =================================================================
+shopt -s extglob														# Activate extendend Bash expasions
+base_dir="$(dirname "$(readlink -f "$0")")"								# Install script path
+echo "$PATH" | grep -q sbin || export PATH="/sbin/:/usr/sbin:$PATH"		# PATH with sbin
+IFS=$'\n\t'																# field separator
+
+#=== GLOBAL VARIABLES ===============================================================
+unset naction															# Global naction counter
+unset scripts 															# List of all install scripts path
+
+
+
 
 #=== FUNCTION ======================================================================
 # NAME: help
@@ -28,35 +41,37 @@ Usage: '$(basename $0)' [-l] [-a <actions>] [-y] [-d] [-h]
 
 #=== FUNCTION ======================================================================
 # NAME: ask_action
-# DESCRIPTION: ask for a action and determine if do it or not do
+# DESCRIPTION: show action description and asks if install it or not
+# PARAMS
+#	$1	action field (action description)
+#	$2	info field 
+#	$3	default field
+#
 # EXIT CODE: 
 #	0-> do the action
 #	1-> dont do de action
 #===================================================================================
-n=0
 function ask_action() {
 	action="$1"
 	info="$2"
 	default="${3,,}"; default="${default:0:1}"; 
 	[ "$default" != "n" ] && default="y"
-	n=$((n+1))
 
-	# Skip action if not in -a
-	[ "$actions" ] && { echo "$actions" | grep -w "$n" &> /dev/null || return 1; } 
-	
-	
-	[ "$list" ] && echo -e "[$n] $action ($default)" && return 1
+	# Only show header in list mode
+	[ "$list" ] && echo -e " [$naction] $action ($default)" && return 1
 
 	# Show action 
 	[ "${default,,}" = "y" ] && q="(Y/n)?" || q="(y/N))?"
-	echo -en "\n\e[33m${info}\n\e[39m\e[1m[$n] \e[4m${action}\e[0m $q "
+	echo -en "\n\e[33m${info}\n\e[39m\e[1m [$naction] \e[4m${action}\e[0m $q "
 	
+	# Ask if install
 	case "$yes" in
 		allyes) 	q="y"; echo	"$q"					;;
 		default) 	q="$default"; echo "$q"				;;
 		*)	 		read q; q="${q,,}"; q="${q:0:1}"	;;
 	esac
 	
+	# Exit code
 	[ "$q" != "n" ] && [ "$q" != "y" ] && q="$default"
 	[ "${q,,}" != "n" ] && return 0
 	return 1
@@ -64,17 +79,31 @@ function ask_action() {
 
 
 
-#=== PARAMS ========================================================================
-while getopts ":hlyda:" o; do
-	case "$o" in
-	h)	help 			;;
-	l)	list="true"		;;
-	y)	yes="allyes"	;;
-	d)	yes="default"	;;
-	a)	for a in $(echo "$OPTARG" | tr "," " "); do
+#=== FUNCTION ======================================================================
+# NAME: expand_actions
+# DESCRIPTION: get action unexpanded and expand it and save in action variable
+#	1-10,12 -> actions=1 2 3 4 5 6 7 8 9 10 12
+#   all 	-> actions=1 2 3 4 5 6 ... n
+#   bash 	-> actions=3 4 5 (all actions with bash in description)
+# PARAMS
+#	$1	actions unexpanded
+# EXIT CODE: 
+#	0-> do the action
+#	1-> dont do de action
+#===================================================================================
+function expand_actions() {
+	local actions_unexpanded="$1"
+	actions=""
+
+	if [ "${actions_unexpanded,,}" = "all" ]; then
+		actions=$(seq -s" " 1 $(echo "$scripts" | wc -l))
+		return
+	fi
+
+	for a in $(echo "$actions_unexpanded" | tr "," " "); do
 			# Is text 
 			if echo "$a" | grep -q "[a-zA-Z]"; then
-				actions="$actions $(bash "$0" -l | grep -i "$a" | cut -f1 -d" " | tr -d "[]" | tr '$\n' " ")"
+				actions="$actions $(bash -c "$(readlink -f "$0") -l" | grep -i "$a" | cut -f1 -d"]" | tr -d "[]" | tr '$\n' " ")"
 			# Is a range
 			elif echo "$a" | grep -qE "[0-9]"*-"[0-9]"; then
 				actions="$actions $(eval echo {$(echo $a|sed "s/-/../")})"
@@ -82,21 +111,29 @@ while getopts ":hlyda:" o; do
 			elif [ "$a" -eq 0 ] &>/dev/null; [ $? -le 1 ]; then
 				actions="$actions $a"
 			fi
-		done			
-		
-		if [ ! "$(echo "$actions" | tr -d " ")" ]; then
-			echo "No actions to exec for $OPTARG"
-			exit 1
-		fi
-		;;
+		done	
+}
+
+
+
+# READ PARAMS
+while getopts ":hlyda:" o; do
+	case "$o" in
+	h)	help 									;;
+	l)	list="true"								;;
+	y)	yes="allyes"							;;
+	d)	yes="default"							;;
+	a)	actions="$OPTARG"						;;	# -a with argument
+	*)	[ "$OPTARG" = "a" ] && actions="all"	;;	# -a without argument
 	esac
 done
 
 
-#=== CHECKS =======================================================================
-# Check root
+# CHECK ROOT PRIVILEGES
 [ ! "$list" ] && [ "$(id -u)" -ne 0 ] && echo "Administrative privileges needed" && exit 1
-# Check Debian version
+
+
+# CHECK DEBIAN VERSION
 if (! cat /etc/*release | grep -i debian || ! cat /etc/*release | egrep -i "buster|stretch") &> /dev/null; then
 	echo "Seems you are not running Debian Buster distro"
 	echo "Some actions may fail. Cross your fingers and press enter..."
@@ -104,21 +141,33 @@ if (! cat /etc/*release | grep -i debian || ! cat /etc/*release | egrep -i "bust
 fi
 
 
-#=== EXEC-ACTIONS ==================================================================
-base_dir="$(dirname "$(readlink -f "$0")")"
-echo "$PATH" | grep -q sbin || export PATH="/sbin/:/usr/sbin:$PATH"
-n=0
+# GET ALL SCRIPTS PATH
+scripts="$(ls "$base_dir"/install_*/install.sh 2>/dev/null)
+$(ls "$base_dir"/config_*/install.sh 2>/dev/null)
+$(ls "$base_dir"/script_*/install.sh 2>/dev/null)
+$(ls "$base_dir"/theme_*/install.sh 2>/dev/null)
+$(ls "$base_dir"/!(install_*|script_*|config_*|theme_*)/install.sh 2>/dev/null)"
 
-# For each .sh file
-IFS=$'\n\t'
-shopt -s extglob
-for script in \
-	$(ls "$base_dir"/install_*/install.sh 2>/dev/null) \
-	$(ls "$base_dir"/config_*/install.sh 2>/dev/null) \
-	$(ls "$base_dir"/script_*/install.sh 2>/dev/null) \
-	$(ls "$base_dir"/theme_*/install.sh 2>/dev/null) \
-	$(ls "$base_dir"/!(install_*|script_*|config_*|theme_*)/install.sh 2>/dev/null); 
-do
+
+# NO PARAMS: LIST AND ASK FOR ACTION
+if [ ! "$list" ] && [ ! "$actions" ]; then
+	# List all actions
+	bash -c "$(readlink -f "$0") -l"
+	# Select actions interactive
+	unset a actions
+	while [ ! "$actions" ]; do
+		read -p "Select actions: " a
+		expand_actions "$a"
+		[ ! "$actions" ] && a=""
+	done
+elif [ "$actions" ]; then
+	expand_actions "$actions"
+fi
+
+
+# LOOP ALL SCRIPTS AND ASK FOR INSTALL IF SELECTED
+naction=0
+for script in $scripts; do
 	head="$(head -10 "$script")"
 	# Get ACTION field:
 	action="$(echo "$head" | grep "#[[:blank:]]*ACTION:" | sed 's/#[[:blank:]]*ACTION:[[:blank:]]*//')"
@@ -128,12 +177,20 @@ do
 	# Get DEFAULTfield:
 	default="$(echo "$head" | grep "#[[:blank:]]*DEFAULT:" | sed 's/#[[:blank:]]*DEFAULT:[[:blank:]]*//')"
 
+	naction=$((naction+1))
+
+	# Skip action if not selected
+	[ "$actions" ] && ! echo "$actions" | grep -w "$naction" &> /dev/null && continue 1
+
 	if ask_action "$action" "$info" "$default"; then
 		bash "$script"		# EXEC SCRIPT
 	fi
 done
 
+
+# REBOOT?
 if [ ! "$list" ] && [ ! "$actions" ] && ask_action "Reboot" "" "y"; then 
 	reboot
 fi
+
 echo
