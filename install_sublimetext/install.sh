@@ -12,7 +12,6 @@ if ! grep -R "download.sublimetext.com" /etc/apt/ &> /dev/null; then
 	apt-get update
 fi
 
-
 # Install package
 apt-get install sublime-text || exit 1
 
