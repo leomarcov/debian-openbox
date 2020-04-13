@@ -2,10 +2,11 @@
 # ACTION: Install WPS Office
 # DEFAULT: y
 
+# Config variables
+base_dir="$(dirname "$(readlink -f "$0")")"
+
 # Check root
 [ "$(id -u)" -ne 0 ] && { echo "Must run as root" 1>&2; exit 1; }
-
-base_dir="$(dirname "$(readlink -f "$0")")"
 
 url="http://wdl1.pcfg.cache.wpscdn.com/wpsdl/wpsoffice/download/linux/9126/wps-office_11.1.0.9126.XA_amd64.deb"
 t=$(mktemp -d)
@@ -16,5 +17,5 @@ if [ $? -eq 0 ]; then
 fi 
 rm -rf "$t"
 
-# Remove strange WPS dirs
+# Remove strange WPS dirs ?¿
 rm -rf /home/*/模板 /root/模板 /etc/skel/模板
