@@ -25,4 +25,5 @@ chmod -v a+x /usr/bin/neofetch-issue.sh
 echo '[Service]
 ExecStartPre=-/bin/bash -c "/usr/bin/neofetch-issue.sh"' | tee "/etc/systemd/system/getty@.service.d/override.conf"
 
+# Recomended: install physlock
 ```
