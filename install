@@ -71,11 +71,22 @@ while getopts ":hlyda:" o; do
 	y)	yes="allyes"	;;
 	d)	yes="default"	;;
 	a)	for a in $(echo "$OPTARG" | tr "," " "); do
+			# Is text 
+			if echo "$a" | grep -q "[a-zA-Z]"; then
+				actions="$actions $(bash "$0" -l | grep -i "$a" | cut -f1 -d" " | tr -d "[]" | tr '$\n' " ")"
 			# Is a range
-			echo "$a" | grep -E "[0-9]"*-"[0-9]" &> /dev/null && actions="$actions $(eval echo {$(echo $a|sed "s/-/../")})"
+			elif echo "$a" | grep -qE "[0-9]"*-"[0-9]"; then
+				actions="$actions $(eval echo {$(echo $a|sed "s/-/../")})"
 			# Is a number 
-			[ "$a" -eq 0 ] &>/dev/null; [ $? -le 1 ] && actions="$actions $a"
+			elif [ "$a" -eq 0 ] &>/dev/null; [ $? -le 1 ]; then
+				actions="$actions $a"
+			fi
 		done			
+		
+		if [ ! "$(echo "$actions" | tr -d " ")" ]; then
+			echo "No actions to exec for $OPTARG"
+			exit 1
+		fi
 		;;
 	esac
 done
