@@ -37,8 +37,8 @@ $ ./install -h
 Exec scripts actions
 Usage: install [-l] [-a <actions>] [-y] [-d] [-h]
    -l		Only list actions 
-   -a <actions>	Only do selected actions by number range (e.g: -a 5,6,10-15)
-   -a <pattern>	Only do selected actions by text pattern (e.g: -a terminator)
+   -a <actions>	Only exec selected actions by number range (e.g: -a 5,6,10-15)
+   -a <pattern>	Only exec selected actions by text pattern (e.g: -a terminator)
    -y		Auto-answer yes to all actions
    -d		Auto-answer default to all actions
    -h		Show this help
