@@ -19,7 +19,7 @@ shopt -s extglob
 
 
 # Checks
-if [ ! -d "$wps_src" ] || [ ! -r "$wp_src" ]; then
+if [ ! -d "$wps_src" ] || [ ! -r "$wps_src" ]; then
 	echo "Cant access to wallpapers directory $wps_src" 1>&2
 	exit 1
 fi
