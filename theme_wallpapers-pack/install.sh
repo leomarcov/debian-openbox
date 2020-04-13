@@ -3,11 +3,12 @@
 # INFO: Include beautiful set of solarized Linux wallpapers created by Andreas Linz (https://git.klingt.net/alinz/linux-pictures)
 # DEFAULT: y
 
-# Check root
-[ "$(id -u)" -ne 0 ] && { echo "Must run as root" 1>&2; exit 1; }
-
+# Config variables
 base_dir="$(dirname "$(readlink -f "$0")")"
 wp_base="/usr/share/backgrounds/"
+
+# Check root
+[ "$(id -u)" -ne 0 ] && { echo "Must run as root" 1>&2; exit 1; }
 
 # Copy wallpapers folderes
 [ ! -d "$wp_base" ] && mkdir -p "$wp_base"
@@ -30,8 +31,7 @@ if ! which nitrogen &>/dev/null; then
 fi
 
 for d in  /etc/skel/  /home/*/; do
-	# Skip dirs in /home that not are user home
-	[ "$(dirname "$d")" = "/home" ] && ! id "$(basename "$d")" &>/dev/null && continue
+	[ "$(dirname "$d")" = "/home" ] && ! id "$(basename "$d")" &>/dev/null && continue	# Skip dirs that no are homes
 	
 	# Create config folders if no exists
 	d="$d/.config/"; [ ! -d "$d" ] && mkdir -v "$d" && chown -R $(stat "$(dirname "$d")" -c %u:%g) "$d"
