@@ -64,3 +64,4 @@ apt-get install -y s-tui dfc htop
 
 # Copy cups-session
 cp -v ${base_dir}/cups-session /usr/bin
+chmod a+x /usr/bin/cups-session
