@@ -14,7 +14,7 @@ border_color = #000000 0
 # ID 2 - panel
 rounded = 0
 border_width = 0
-#background_color = #121B24 80
+#background_color = #121B24 75
 background_color = #000000 75
 border_width = 0
 border_color = 
