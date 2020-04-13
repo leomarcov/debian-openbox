@@ -1,5 +1,5 @@
 #!/bin/bash
-# ACTION: Install WPS Office
+# ACTION: Install WPS Office Suite
 # DEFAULT: y
 
 # Config variables
