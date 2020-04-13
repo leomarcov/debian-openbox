@@ -1,5 +1,5 @@
 #!/bin/bash
-# ACTION: Install tint2 bar and themes
+# ACTION: Install tint2 taskbars and taskbar/menu themes
 # DEFAULT: y
 
 # Config variables
