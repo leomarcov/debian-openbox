@@ -83,7 +83,7 @@ function change_brightness() {
 
 if [ ! -d "$bl_dir" ]; then
 	echo "$bl_dir dont exist"
-	echo "Please contig bl_dir in $0 file"
+	echo "Please edit $0 and config bl_dir variable with brightness directory"
 	exit 1
 fi
 
