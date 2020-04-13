@@ -66,7 +66,7 @@ Home usage:$alignr${fs_used /home} / ${fs_size /home}
 CPU usage:$alignr${cpu cpu0}%
 
 
-A P P S    K E Y S
+A P P S    S H O R T C U T S
 ${hr}
 Win${alignr}Launcher
 Win + t${alignr}Terminal
@@ -74,7 +74,7 @@ Win + f${alignr}File Manager
 Win + w${alignr}Web Browser
 Win + e${alignr}Editor
 
-D E S K T O P   K E Y S
+D E S K T O P    S H O R T C U T S
 ${hr}
 Win + Num${alignr}Snap window
 M.Middle in title${alignr}Snap window
