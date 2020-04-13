@@ -1,5 +1,5 @@
 #!/bin/bash
-# ACTION: Copy some  popular fonts
+# ACTION: Install some popular fonts
 # DESC: Popuar fonts: Droid Sans, Open Sans, Roboto, Microsoft fonts, Oswald, Overpass, Profont, and others.
 # DEFAULT: y
 
