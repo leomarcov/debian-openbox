@@ -1,5 +1,6 @@
 #!/bin/bash
 # ACTION: Install mixer and volume control
+# INFO: pnmixer and pavucontrol
 # DEFAULT: y
 
 # Install packages
