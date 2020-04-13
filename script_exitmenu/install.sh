@@ -10,7 +10,7 @@ base_dir="$(dirname "$(readlink -f "$0")")"
 
 # Install fonts-noto for utf-8 symbols
 find /var/cache/apt/pkgcache.bin -mtime 0 &>/dev/null ||  apt-get update 
-apt-get install -y fonts-noto-core
+apt-get install -y fonts-noto
 
 # Copy obexit script
 f="obexit"
