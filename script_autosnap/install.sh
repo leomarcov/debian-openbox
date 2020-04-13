@@ -1,6 +1,5 @@
 #!/bin/bash
 # ACTION: Install script autosnap for half-maximize windows with mouse middle click in titlebar
-# INFO: Script autosnap half-maximize windows in Openbox WM.
 # DEFAULT: y
 
 # Config variables
