@@ -27,7 +27,7 @@ The main script `install` can exec all scripts or only a select list:
 
 &nbsp; 
 ## Install
-  * Install Debian 10 netinstall, better don't install `Debian desktop environment`. Script should work in Debian 9 too and may be in others Debian based systems, but isn't guaranted.
+  * Install Debian 9 or 10 netinstall, better don't install `Debian desktop environment`.
   * Clone or download this project: `git clone https://github.com/leomarcov/debian-openbox`
   * Exec `install` script and select scripts you want to install.
   
