@@ -1,5 +1,5 @@
 #!/bin/bash
-# ACTION: Install nomacs image viewer and configs
+# ACTION: Install nomacs image viewer
 # DEFAULT: y
 
 # Config variables
