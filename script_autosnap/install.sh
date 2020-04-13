@@ -3,22 +3,24 @@
 # INFO: Script autosnap half-maximize windows in Openbox WM.
 # DEFAULT: y
 
-# Check root
-[ "$(id -u)" -ne 0 ] && { echo "Must run as root" 1>&2; exit 1; }
-
+# Config variables
 base_dir="$(dirname "$(readlink -f "$0")")"
 comment_mark="#DEBIAN-OPENBOX-autosnap"
 
-# Install dependences
+# Check root
+[ "$(id -u)" -ne 0 ] && { echo "Must run as root" 1>&2; exit 1; 
+
+# Install packages
 find /var/cache/apt/pkgcache.bin -mtime 0 &>/dev/null ||  apt-get update 
 apt-get -y install xdotool
 
+# Copy autosnap script
 cp -v "$base_dir/autosnap" /usr/bin/
 chmod +x /usr/bin/autosnap 
 
+# Copy users config
 for d in /etc/skel/  /home/*/; do
-    # Skip dirs in /home that not are user home
-    [ "$(dirname "$d")" = "/home" ] && ! id "$(basename "$d")" &>/dev/null && continue
+    [ "$(dirname "$d")" = "/home" ] && ! id "$(basename "$d")" &>/dev/null && continue	# Skip dirs that no are homes
 	
 	f="$d/.config/openbox/rc.xml"
 	# Skip if Openbox no rc.xml found
