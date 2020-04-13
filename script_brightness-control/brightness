@@ -80,17 +80,27 @@ function change_brightness() {
 	set_brightness "$bl_next"
 }
 
+function check_bldir () {
+	if [ ! -d "$bl_dir" ]; then
+		echo "$bl_dir dont exist"
+		echo "Please edit $0 and config bl_dir variable with brightness directory"
+		exit 1
+	fi
+}
 
-if [ ! -d "$bl_dir" ]; then
-	echo "$bl_dir dont exist"
-	echo "Please edit $0 and config bl_dir variable with brightness directory"
-	exit 1
-fi
 
 case "$1" in
-	-I)	install ;;
-	-dec|-inc|-def) change_brightness "$1" ;;
-	*) help ;;
+	-I)	
+		check_bldir
+		install 
+	;;
+	-dec|-inc|-def) 
+		check_bldir
+		change_brightness "$1" 
+	;;
+	*) 
+		help 
+	;;
 esac
 
 
