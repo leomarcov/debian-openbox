@@ -1,5 +1,5 @@
 #!/bin/bash
-# ACTION: Config modified .profile file with new path and color definitions
+# ACTION: Config modified .profile file with new path (sbin for all users) and color definitions
 # DEFAULT: y
 
 # Config variables
