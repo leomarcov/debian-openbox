@@ -1,5 +1,5 @@
 #!/bin/bash
-# ACTION: Install Openbox and tools for full environment
+# ACTION: Install Openbox and essential tools and configs
 # DEFAULT: y
 
 # Config variables
