@@ -1,5 +1,5 @@
 #!/bin/bash
-# ACTION: Install sudo and add user 1000 to sudo
+# ACTION: Install sudo and add user 1000 to sudo group
 # DEFAULT: y
 
 # Check root
