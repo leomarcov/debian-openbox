@@ -13,13 +13,12 @@
 shopt -s extglob														# Activate extendend Bash expasions
 base_dir="$(dirname "$(readlink -f "$0")")"								# Install script path
 echo "$PATH" | grep -q sbin || export PATH="/sbin/:/usr/sbin:$PATH"		# PATH with sbin
-IFS=$'\n\t'																# field separator
 
 #=== GLOBAL VARIABLES ===============================================================
+unset actions 															# Global selected actions array
 unset naction															# Global naction counter
-unset scripts 															# List of all install scripts path
-
-
+unset scripts 															# List of all paths scripts detected
+unset nscripts															# Num of sctrips in list $scripts
 
 
 #=== FUNCTION ======================================================================
@@ -30,23 +29,30 @@ function help() {
 	echo -e 'Exec scripts actions
 Usage: '$(basename $0)' [-l] [-a <actions>] [-y] [-d] [-h]
    \e[1m-l\e[0m\t\tOnly list actions 
-   \e[1m-a all\e[0m\tExec all actions
-   \e[1m-a <actions>\e[0m\tOnly exec selected actions by number range (e.g: -a 5,6,10-15)
-   \e[1m-a <pattern>\e[0m\tOnly exec selected actions by text pattern (e.g: -a terminator)
+   \e[1m-a <actions>\e[0m\tOnly exec selected actions by number range or text pattern (comma separated)
    \e[1m-y\e[0m\t\tAuto-answer yes to all actions
    \e[1m-d\e[0m\t\tAuto-answer default to all actions
-   \e[1m-h\e[0m\t\tShow this help'
+   \e[1m-h\e[0m\t\tShow this help
+
+ Samples:
+   \e[1minstall -l\e[0m\t\tList all actions
+   \e[1minstall\e[0m\t\tExec all actions asking if install or not
+   \e[1minstall -a 1-5,12\e[0m\tOnly exec actions 1 to 5 and 12
+   \e[1minstall -a grub\e[0m\tOnly exec actions with grub text in description
+   \e[1minstall -d\e[0m\t\tExec all actions with Y has default answer (no ask)
+   \e[1minstall -y\e[0m\t\tExec all actions (no ask)'
 	exit 0
 }
+
 
 
 #=== FUNCTION ======================================================================
 # NAME: ask_action
 # DESCRIPTION: show action description and asks if install it or not
 # PARAMS
-#	$1	action field (action description)
-#	$2	info field 
-#	$3	default field
+#	$1	action field (description)
+#	$2	info field (more info)
+#	$3	default field (y|n|empty)
 #
 # EXIT CODE: 
 #	0-> do the action
@@ -82,7 +88,7 @@ function ask_action() {
 
 #=== FUNCTION ======================================================================
 # NAME: expand_actions
-# DESCRIPTION: get action unexpanded and expand it and save in action variable
+# DESCRIPTION: get action unexpanded and expand it and save in actions array
 #	1-10,12 -> actions=1 2 3 4 5 6 7 8 9 10 12
 #   all 	-> actions=1 2 3 4 5 6 ... n
 #   bash 	-> actions=3 4 5 (all actions with bash in description)
@@ -94,25 +100,32 @@ function ask_action() {
 #===================================================================================
 function expand_actions() {
 	local actions_unexpanded="$1"
-	actions=""
+	unset actions
 
-	if [ "${actions_unexpanded,,}" = "all" ]; then
-		actions=$(seq -s" " 1 $(echo "$scripts" | wc -l))
+	if [ ! "${actions_unexpanded,,}" ]; then
+		actions=($(seq -s" " 1 "$nscripts"))
 		return
 	fi
 
+	IFS=$'\n\t '
 	for a in $(echo "$actions_unexpanded" | tr "," " "); do
-			# Is text 
-			if echo "$a" | grep -q "[a-zA-Z]"; then
-				actions="$actions $(bash -c "$(readlink -f "$0") -l" | grep -i "$a" | cut -f1 -d"]" | tr -d "[]" | tr '$\n' " ")"
-			# Is a range
-			elif echo "$a" | grep -qE "[0-9]"*-"[0-9]"; then
-				actions="$actions $(eval echo {$(echo $a|sed "s/-/../")})"
-			# Is a number 
-			elif [ "$a" -eq 0 ] &>/dev/null; [ $? -le 1 ]; then
-				actions="$actions $a"
-			fi
-		done	
+		# Is text 
+		if echo "$a" | grep "[a-zA-Z]" &>/dev/null; then
+			actions=(${actions[*]} $(bash -c "$(readlink -f "$0") -l" | grep -i "$a" &>/dev/null | cut -f1 -d"]" | tr -d "[]" | tr '$\n' " "))
+		# Is a range
+		elif echo "$a" | grep -E "[0-9]"*-"[0-9]" &>/dev/null; then
+			actions=(${actions[*]} $(eval echo {$(echo $a|sed "s/-/../")}))
+		# Is a number 
+		elif [ "$a" -eq 0 ] &>/dev/null; [ $? -le 1 ]; then
+			actions=(${actions[*]} $a)
+		fi
+	done
+
+	# Remove invalid actions
+	a="${actions[*]}"; unset actions
+	for a in $a; do
+		[ "$a" -ge 1 ] && [ "$a" -le "$nscripts" ] && actions=(${actions[*]} $a)
+	done
 }
 
 
@@ -120,12 +133,11 @@ function expand_actions() {
 # READ PARAMS
 while getopts ":hlyda:" o; do
 	case "$o" in
-	h)	help 									;;
-	l)	list="true"								;;
-	y)	yes="allyes"							;;
-	d)	yes="default"							;;
-	a)	actions="$OPTARG"						;;	# -a with argument
-	*)	[ "$OPTARG" = "a" ] && actions="all"	;;	# -a without argument
+	h)	help 				;;
+	l)	list="true"			;;
+	y)	yes="allyes"		;;
+	d)	yes="default"		;;
+	a)	actions="$OPTARG"	;;	
 	esac
 done
 
@@ -143,26 +155,25 @@ fi
 
 
 # GET ALL SCRIPTS PATHS
+IFS=$'\n\t'
 scripts="$(ls "$base_dir"/install_*/install.sh 2>/dev/null)
 $(ls "$base_dir"/config_*/install.sh 2>/dev/null)
 $(ls "$base_dir"/script_*/install.sh 2>/dev/null)
 $(ls "$base_dir"/theme_*/install.sh 2>/dev/null)
 $(ls "$base_dir"/!(install_*|script_*|config_*|theme_*)/install.sh 2>/dev/null)"
+scripts="$(echo "$scripts" | sed '/^$/d')"		# Delte empty lines
 
+nscripts=$(echo "$scripts" | wc -l)
+if [ "$nscripts" -eq 0 ]; then
+	echo "No action scripts found!"
+	exit 1
+fi
 
-# NO PARAMS: LIST AND ASK FOR ACTION
-if [ ! "$list" ] && [ ! "$actions" ]; then
-	# List all actions
-	bash -c "$(readlink -f "$0") -l"
-	# Select actions interactive
-	unset a actions
-	while [ ! "$actions" ]; do
-		read -p "Select actions: " a
-		expand_actions "$a"
-		[ ! "$actions" ] && a=""
-	done
-elif [ "$actions" ]; then
-	expand_actions "$actions"
+# EXPAND ACTIONS
+expand_actions "$actions"
+if [ ! "$actions" ]; then
+	echo "No actions to exec!"
+	exit 1
 fi
 
 
@@ -181,11 +192,10 @@ for script in $scripts; do
 	naction=$((naction+1))
 
 	# Skip action if not selected
-	[ "$actions" ] && ! echo "$actions" | grep -w "$naction" &> /dev/null && continue 1
+	echo "${actions[*]}" | grep -qw "$naction" || continue
 
-	if ask_action "$action" "$info" "$default"; then
-		bash "$script"		# EXEC SCRIPT
-	fi
+	# Exec script if answer y
+	ask_action "$action" "$info" "$default" && bash "$script"
 done
 
 echo
