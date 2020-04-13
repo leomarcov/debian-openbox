@@ -2,10 +2,11 @@
 # ACTION: Install script to rotate everyday Linux solarized wallpapers pack by Andreas Linz
 # DEFAULT: y
 
+# Config variables
+base_dir="$(dirname "$(readlink -f "$0")")"
+
 # Check root
 [ "$(id -u)" -ne 0 ] && { echo "Must run as root" 1>&2; exit 1; }
-
-base_dir="$(dirname "$(readlink -f "$0")")"
 
 # Install dependences
 if ! which anacron &>/dev/null; then
