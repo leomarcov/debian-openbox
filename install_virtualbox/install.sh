@@ -2,13 +2,13 @@
 # ACTION: Install VirtualBox 6.1 and Extension Pack, add to repositories and insert to Openbox menu
 # DEFAULT: y
 
-# Check root
-[ "$(id -u)" -ne 0 ] && { echo "Must run as root" 1>&2; exit 1; }
-
-
+# Config variables
 vb_package="virtualbox-6.1"
 ep_url="https://download.virtualbox.org/virtualbox/6.1.4/Oracle_VM_VirtualBox_Extension_Pack-6.1.4.vbox-extpack"
 main_distro="$(cat /etc/apt/sources.list | grep ^deb | awk '{print $3}' | head -1)"
+
+# Check root
+[ "$(id -u)" -ne 0 ] && { echo "Must run as root" 1>&2; exit 1; }
 
 # Install repositories and update
 if ! grep -R "download.virtualbox.org" /etc/apt/ &> /dev/null; then
@@ -33,12 +33,13 @@ apt-get install -y linux-headers-$(uname -r) "$vb_package" || exit 1
 # done
 
 
-# Get Extension Pack
+# Check if virtualbox is installed
 if ! which vboxmanage &> /dev/null; then
   echo "VirtualBox is not installed"
   exit 1
 fi
 
+# Install extension pack
 t=$(mktemp -d)
 wget -P "$t" "$ep_url"  
 [ $? -eq 0 ] && yes | vboxmanage extpack install --replace "$t"/*extpack 
