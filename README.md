@@ -25,8 +25,7 @@ The main script `install` can exec all scripts or only a select list:
 
 <img align="center" width="450" src="https://user-images.githubusercontent.com/32820131/79147593-764c5f00-7dc4-11ea-9ca2-f2569260928f.png"> <img align="center" width="450" src="https://user-images.githubusercontent.com/32820131/79147594-76e4f580-7dc4-11ea-9f2c-56376bd9e6fa.png">
 
-<img align="center" width="450" src="https://user-images.githubusercontent.com/32820131/79147600-777d8c00-7dc4-11ea-9e01-f3d072fa8961.png"> <img align="center" width="450" src="https://user-images.githubusercontent.com/32820131/79147597-76e4f580-7dc4-11ea-8db4-c676b93cb60e.png">
-<img align="center" width="450" src="https://user-images.githubusercontent.com/32820131/79147603-777d8c00-7dc4-11ea-9653-2dbe56e31373.png">
+<img align="center" width="450" src="https://user-images.githubusercontent.com/32820131/79147600-777d8c00-7dc4-11ea-9e01-f3d072fa8961.png"> <img align="center" width="450" src="https://user-images.githubusercontent.com/32820131/79147603-777d8c00-7dc4-11ea-9653-2dbe56e31373.png">
 
 <img align="center" width="450" src="https://user-images.githubusercontent.com/32820131/79147588-75b3c880-7dc4-11ea-91ce-d97f4c9cf718.png">
 
