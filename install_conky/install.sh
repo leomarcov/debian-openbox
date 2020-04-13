@@ -1,5 +1,5 @@
 #!/bin/bash
-# ACTION: Install theme Conky with new theme
+# ACTION: Install Conky and add basic sysinfo-shortcuts panel
 # DEFAULT: y
 
 # Config variables
