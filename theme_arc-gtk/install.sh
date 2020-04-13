@@ -3,22 +3,23 @@
 # INFO: Arc GTK theme is a clear and cool GTK theme. 
 # DEFAULT: y
 
-# Check root
-[ "$(id -u)" -ne 0 ] && { echo "Must run as root" 1>&2; exit 1; }
-
+# Config variables
 base_dir="$(dirname "$(readlink -f "$0")")"
 gtk_default="Arc"
 
+# Check root
+[ "$(id -u)" -ne 0 ] && { echo "Must run as root" 1>&2; exit 1; }
+
+# Install packages
 find /var/cache/apt/pkgcache.bin -mtime 0 &>/dev/null ||  apt-get update  
 apt-get install -y arc-theme
-apt-get install -y gtk3-nocsd		# Force Openbox titlebar in GT3 disabled client side decoration
+apt-get install -y gtk3-nocsd		# Force show titlebar in GTK3 new windows
 
 # Change accent color blue (#5294e2) for grey:
 find /usr/share/themes/Arc -type f -exec sed -i 's/#5294e2/#b3bcc6/g' {} \;   
 	
 for f in  /etc/skel/ /home/*/ ; do
-    # Skip dirs in /home that not are user home
-    [ "$(dirname "$d")" = "/home" ] && ! id "$(basename "$d")" &>/dev/null && continue
+    [ "$(dirname "$d")" = "/home" ] && ! id "$(basename "$d")" &>/dev/null && continue	# Skip dirs that no are homes
 	
 	f="$d/.gtkrc-2.0"
 	[ ! -f "$f" ] && cp -v "$base_dir/gtkrc-2.0" "$d/.gtkrc-2.0" && chown -R $(stat "$(dirname "$d")" -c %u:%g) "$f"
