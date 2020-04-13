@@ -171,4 +171,4 @@
         <to>right</to>                      <!-- #DEBIAN-OPENBOX-autosnap -->
         <wrap>no</wrap>                     <!-- #DEBIAN-OPENBOX-autosnap -->
       </action>                             <!-- #DEBIAN-OPENBOX-autosnap -->
-    </keybind>                              <!-- #DEBIAN-OPENBOX-autosnap -->
+    </keybind>                              <!-- #DEBIAN-OPENBOX-autosnap --> 
