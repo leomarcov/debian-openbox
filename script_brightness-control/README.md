@@ -1,7 +1,7 @@
 # Brightness control
 **`brightness`**: script for increase/decrease in small steps.
 ```bash
-$ ./brightness.sh -h
+$ ./brightness -h
 Inc/dec the brightness
 Usage: brightness.sh -inc|-dec|-h|-I|-U
    -h	 Show command help
