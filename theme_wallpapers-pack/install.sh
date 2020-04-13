@@ -1,5 +1,5 @@
 #!/bin/bash
-# ACTION: Install nitrogen,  copy wallpapers pack and set default wallpaper to all users
+# ACTION: Install nitrogen tool, copy wallpapers pack and set default wallpaper to all users
 # INFO: Include beautiful set of solarized Linux wallpapers created by Andreas Linz (https://git.klingt.net/alinz/linux-pictures)
 # DEFAULT: y
 
