@@ -2,21 +2,22 @@
 # ACTION: Install tint2 bar and themes
 # DEFAULT: y
 
+# Config variables
+base_dir="$(dirname "$(readlink -f "$0")")"
+
 # Check root
 [ "$(id -u)" -ne 0 ] && { echo "Must run as root" 1>&2; exit 1; }
 
-base_dir="$(dirname "$(readlink -f "$0")")"
-
-# Install tint2
+# Install packages
 find /var/cache/apt/pkgcache.bin -mtime 0 &>/dev/null ||  apt-get update
 apt-get install -y tint2
 
-
-# Check if laptop:
+# Check if laptop or virtualmachine
 [ -f /sys/module/battery/initstate ] || [ -d /proc/acpi/battery/BAT0 ] && laptop="true"
 # Check if virtualmachine:
 cat /proc/cpuinfo | grep -i hypervisor &>/dev/null && virtualmachine="true"
 
+# Copy users config
 for d in /etc/skel/  /home/*/; do
     # Skip dirs in /home that not are user home
     [ "$(dirname "$d")" = "/home" ] && ! id "$(basename "$d")" &>/dev/null && continue
