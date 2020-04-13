@@ -12,4 +12,4 @@ apt-get install -y cups
 
 # Add user 1000 to sudo group
 user=$(cat /etc/passwd | cut -f 1,3 -d: | grep :1000$ | cut -f1 -d:)
-[ "$user" ] && adduser "$user" lpqadmin
+[ "$user" ] && adduser "$user" lpadmin
