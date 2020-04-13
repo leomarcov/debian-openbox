@@ -2,31 +2,27 @@
 # ACTION: Install Openbox and tools for full environment
 # DEFAULT: y
 
+# Config variables
+base_dir="$(dirname "$(readlink -f "$0")")"
+
 # Check root
 [ "$(id -u)" -ne 0 ] && { echo "Must run as root" 1>&2; exit 1; }
 
-base_dir="$(dirname "$(readlink -f "$0")")"
-
-
-# INSTALL OPENBOX AND DEPENDENCES
+# Install packages
 find /var/cache/apt/pkgcache.bin -mtime 0 &>/dev/null ||  apt-get update
 apt-get install -y openbox obconf obmenu xinit lxappearance compton xfce4-screenshooter xfce4-clipman xfce4-power-manager arandr libexo-1-0 gsimplecal xcape gparted file-roller xautomation python-xdg
-
 apt-get install -y network-manager network-manager-gnome
-systemctl mask NetworkManager-wait-online.service
 
-
-# COPY OPENBOX THEME
+# Copy theme
 tar -xzvf "$base_dir"/openbox_theme.tgz -C /usr/share/themes/
 cp -rv "$base_dir/openbox-menu" /usr/share/icons/
 
-# COPY obamenu
+# Copy obamenu
 cp -v "$base_dir/obamenu" /usr/bin
 
-# COPY OPENBOX CONFIG FILES
+# Copy users config
 for d in /etc/skel /home/*/; do
-    # Skip dirs in /home that not are user home
-    [ "$(dirname "$d")" = "/home" ] && ! id "$(basename "$d")" &>/dev/null && continue
+    [ "$(dirname "$d")" = "/home" ] && ! id "$(basename "$d")" &>/dev/null && continue	# Skip dirs that no are homes
 
 	# Create config folder if no exists
 	d="$d/.config/"; [ ! -d "$d" ] && mkdir -v "$d" && chown -R $(stat "$(dirname "$d")" -c %u:%g) "$d"
@@ -58,10 +54,10 @@ for d in /etc/skel /home/*/; do
 	cp -v "$base_dir/$f" "$d" && chown -R $(stat "$d" -c %u:%g) "$d/$f"	
 done
 
-# INSTALL HELP DOCS
+# Install help docs
 d="help"
 cp -rv "$base_dir/$d" "/usr/share/doc/openbox/"
 
-# INSTALL SYSTEM INFO DEPENDENCES
+# Install system info dependences
 wget -P /usr/bin "https://raw.githubusercontent.com/pixelb/ps_mem/master/ps_mem.py" && chmod +x /usr/bin/ps_mem.py
 apt-get install -y s-tui dfc htop
