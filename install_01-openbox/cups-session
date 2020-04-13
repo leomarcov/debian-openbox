@@ -1,0 +1,46 @@
+#!/bin/bash
+# If cups is running open x-www-browser in https://localhost:631
+# If cups is not installed installl cups and open browser
+
+
+# NO CUPS
+if [ "$1" = "-I" ]; then
+    # INSTALL CUPS
+    if ! dpkg -l cups | grep -q "^ii"; then
+        # Install package
+        echo "CUPS is not installed"
+        while true; do
+            read -p "Install cups? (Y/n) " q;
+            [ "${q,,}" = "n" ] && exit
+            ([ ! "$q" ] || [ "${q,,}" = "y" ]) && break
+        done
+        echo
+        sudo apt-get install -y cups || exit 1
+
+        # Adduser to lpadmin    
+        echo; echo "===================================================================="
+        read -p "Select users to admin printers (space separated): " ul
+        for u in $ul; do
+            sudo adduser $u lpadmin
+        done
+
+        # Open browser
+        echo
+        read -p "Press enter to open CUPS admin page"
+         x-www-browser "http://localhost:631"
+    # START CUPS
+    else
+        echo "CUPS is installed but not running"
+        read
+    fi
+
+# OPEN CUPS ADMIN
+elif systemctl status cups&>/dev/null; then
+    x-www-browser "http://localhost:631"
+    exit
+
+# CALL TO INSTALL CUPS
+else
+    x-terminal-emulator -e "$(readlink -f "$0")" -I
+fi
+~  
