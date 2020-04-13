@@ -52,7 +52,7 @@ border_color =
 # ID 6 - active desktop number
 rounded = 0
 border_width = 0
-background_color = #000000 80
+background_color = #000000 90
 border_width = 0
 border_color = 
 
