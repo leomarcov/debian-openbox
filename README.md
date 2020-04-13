@@ -4,10 +4,9 @@
 The main script `install` can exec all scripts or only a select list:
   * `install`: install scripts interactively.
   * `install -l`: list all scripts.
-  * `install -a all`: exec all scripts asking for each one if install or not.
-  * `install -a all -d`: exec all scripts and answer default option.
+  * `install -d`: exec all scripts and autoanswer default option.
   * `install -a 5,8-12`: install selected scripts.
-  * `install -a bash`: install all actions with text bash in description.
+  * `install -a grub`: install all actions with grub bash in description.
 
 &nbsp; 
 ## Main features
@@ -39,70 +38,77 @@ $ ./install -h
 Exec scripts actions
 Usage: install [-l] [-a <actions>] [-y] [-d] [-h]
    -l		Only list actions 
-   -a all   Exec all actions
-   -a <actions>	Only exec selected actions by number range (e.g: -a 5,6,10-15)
-   -a <pattern>	Only exec selected actions by text pattern (e.g: -a terminator)
+   -a <actions>	Only exec selected actions by number range or text pattern (comma separated)
    -y		Auto-answer yes to all actions
    -d		Auto-answer default to all actions
    -h		Show this help
 
+ Samples:
+   install -l		List all actions
+   install		Exec all actions asking if install or not
+   install -a 1-5,12	Only exec actions 1 to 5 and 12
+   install -a grub	Only exec actions with grub text in description
+   install -d		Exec all actions with Y has default answer (no ask)
+   install -y		Exec all actions (no ask)
 
 
 # Exec all actions interactively:
-$ ./install -a all
+$ ./install
 
 # Exec all actions and answer yes to all:
-$ ./install -a all -y
+$ ./install -y
 
 # Exec all actions and answer default to all:
-$ ./install -a all -d
+$ ./install -d
 
 # Exec only actions 5,7,10,11,12,13,14 and 15:
 $ ./install -a 5,7,10-15
 
+# Exec only actions with grub text in description:
+$ ./install -a grub
 
 # List all actions:
 $ ./install -l
-[1] Install Openbox and essential tools and configs (y)
-[2] Install Atom text editor (n)
-[3] Install some basic packages (y)
-[4] Install Brave browser, add to repositories and set has default browser (y)
-[5] Install Conky and add basic sysinfo-shortcuts panel (y)
-[6] Install CUPS printer system and add user 1000 to lpadmin group (n)
-[7] Install Google Chrome, add to repositories and set has default browser (y)
-[8] Install nomacs image viewer (y)
-[9] Install rofi and config as default launcher (y)
-[10] Install Sublime Text, add repositories and set as default editor  (y)
-[11] Install sudo and add user 1000 to sudo group (y)
-[12] Install Termiantor terminal and config theme (y)
-[13] Install Thunar filemanager and configs (show toolbar and double-click for active items) (y)
-[14] Install tint2 taskbars and taskbar/menu themes (y)
-[15] Install VirtualBox 6.1 and Extension Pack and add to repositories  (y)
-[16] Install mixer and volume control (y)
-[17] Install WPS Office Suite (y)
-[18] Add Debian repositories contrib and non-free (y)
-[19] Config useful aliases (y)
-[20] Config modified .profile file with new path (sbin for all users) and color definitions (y)
-[21] Config new bash prompt (y)
-[22] Config system for show text messages during boot (y)
-[23] Config to disable some unnecessary services (no start in boot time) (y)
-[24] Config GRUB with password protection for prevent users edit entries (n)
-[25] Config GRUB for skip menu (timeout=0) (n)
-[26] Config all users home directories permissions to 750  (y)
-[27] Config CTRL+ALT+BACKSPACE shortcut for kill X server (y)
-[28] Config vim with custom configs (y)
-[29] Install script poweroff_last for automatize shutdown if no users logged in 20 minutes (n)
-[30] Install script autosnap for half-maximize windows with mouse middle click in titlebar (y)
-[31] Install script for inc/dec screen brightness (used in taskbar for inc/dec brightness with mouse wheel) (y)
-[32] Install script obexit with exit-power menu based on rofi (y)
-[33] Config login in text tty mode instead of graphical desktop manager (y)
-[34] Install script update-notification for check periodically APT updates and show in tint2 bar executor (y)
-[35] Install script to rotate everyday Linux solarized wallpapers pack by Andreas Linz (y)
-[36] Install theme Arc GTK and set as default (y)
-[37] Install some popular fonts (y)
-[38] Install clear xfce4-notify theme (y)
-[39] Install icon theme Numix-Paper and set as default (y)
-[40] Install nitrogen tool, copy wallpapers pack and set default wallpaper to all users (y)
+ [1] Install some basic packages (y)
+ [2] Install Openbox and essential tools and configs (y)
+ [3] Install Atom text editor (n)
+ [4] Install Brave browser, add to repositories and set has default browser (y)
+ [5] Install Conky and add basic sysinfo-shortcuts panel (y)
+ [6] Install CUPS printer system and add user 1000 to lpadmin group (n)
+ [7] Install Google Chrome, add to repositories and set has default browser (y)
+ [8] Install nomacs image viewer (y)
+ [9] Install rofi and config as default launcher (y)
+ [10] Install Sublime Text, add repositories and set as default editor  (y)
+ [11] Install sudo and add user 1000 to sudo group (y)
+ [12] Install Terminator terminal and config theme (y)
+ [13] Install Thunar filemanager and configs (show toolbar and double-click for active items) (y)
+ [14] Install tint2 taskbars and taskbar/menu themes (y)
+ [15] Install VirtualBox 6.1 and Extension Pack and add to repositories  (y)
+ [16] Install mixer and volume control (y)
+ [17] Install WPS Office Suite (y)
+ [18] Add Debian repositories contrib and non-free (y)
+ [19] Config useful aliases (y)
+ [20] Config modified .profile file with new path (sbin for all users) and color definitions (y)
+ [21] Config new bash prompt (y)
+ [22] Config system for show text messages during boot (y)
+ [23] Config to disable some unnecessary services (no start in boot time) (y)
+ [24] Config GRUB with password protection for prevent users edit entries (n)
+ [25] Config GRUB for skip menu (timeout=0) (n)
+ [26] Config all users home directories permissions to 750  (y)
+ [27] Config CTRL+ALT+BACKSPACE shortcut for kill X server (y)
+ [28] Config vim with custom configs (y)
+ [29] Install script poweroff_last for automatize shutdown if no users logged in 20 minutes (n)
+ [30] Install script autosnap for half-maximize windows with mouse middle click in titlebar (y)
+ [31] Install script for inc/dec screen brightness (used in taskbar for inc/dec brightness with mouse wheel) (y)
+ [32] Install script obexit with exit-power menu based on rofi (y)
+ [33] Config login in text tty mode instead of graphical desktop manager (y)
+ [34] Install script update-notification for check periodically APT updates and show in tint2 bar executor (y)
+ [35] Install script to rotate everyday Linux solarized wallpapers pack by Andreas Linz (y)
+ [36] Install theme Arc GTK and set as default (y)
+ [37] Install some popular fonts (y)
+ [38] Install clear xfce4-notify theme (y)
+ [39] Install icon theme Numix-Paper and set as default (y)
+ [40] Install nitrogen tool, copy wallpapers pack and set default wallpaper to all users (y)
 
 ```
   
