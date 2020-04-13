@@ -12,7 +12,6 @@ if ! grep -R "dl.google.com/linux/chrome/deb/" /etc/apt/ &> /dev/null; then
 	apt-get update
 fi
 
-
 # Install package
 apt-get install -y google-chrome-stable
 apt-get remove chromium
