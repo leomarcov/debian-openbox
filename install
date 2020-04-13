@@ -82,8 +82,10 @@ done
 
 
 #=== CHECKS =======================================================================
+# Check root
 [ ! "$list" ] && [ "$(id -u)" -ne 0 ] && echo "Administrative privileges needed" && exit 1
-if ! cat /etc/*release | grep -i buster &> /dev/null; then
+# Check Debian version
+if (! cat /etc/*release | grep -i debian || ! cat /etc/*release | egrep -i "buster|stretch") &> /dev/null; then
 	echo "Seems you are not running Debian Buster distro"
 	echo "Some actions may fail. Cross your fingers and press enter..."
 	read
