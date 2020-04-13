@@ -3,13 +3,14 @@
 # INFO: Numix-Paper is a icon theme based on Numix and Paper icon themes.
 # DEFAULT: y
 
-# Check root
-[ "$(id -u)" -ne 0 ] && { echo "Must run as root" 1>&2; exit 1; }
-
+# Config variables
 base_dir="$(dirname "$(readlink -f "$0")")"
 icon_default="Numix-Paper"
 
-# INSTALL NUMIX & PAPER ICON PACAKGES
+# Check root
+[ "$(id -u)" -ne 0 ] && { echo "Must run as root" 1>&2; exit 1; }
+
+# Install packages
 find /var/cache/apt/pkgcache.bin -mtime 0 &>/dev/null ||  apt-get update  
 apt-get install -y numix-icon-theme
 (cat "$base_dir"/paper-icon-theme*.aa; cat "$base_dir"/paper-icon-theme*.ab) > /tmp/paper-icon-theme.deb
@@ -23,7 +24,6 @@ fi
 
 tar -xzvf "$base_dir"/numix-paper-icon-theme.tgz -C /usr/share/icons/	
 
-	
 for d in  /etc/skel/  /home/*/ ; do
     # Skip dirs in /home that not are user home
     [ "$(dirname "$d")" = "/home" ] && ! id "$(basename "$d")" &>/dev/null && continue
