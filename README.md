@@ -43,14 +43,6 @@ Usage: install [-l] [-a <actions>] [-y] [-d] [-h]
    -d		Auto-answer default to all actions
    -h		Show this help
 
- Samples:
-   install -l		List all actions
-   install		Exec all actions asking if install or not
-   install -a 1-5,12	Only exec actions 1 to 5 and 12
-   install -a grub	Only exec actions with grub text in description
-   install -d		Exec all actions with Y has default answer (no ask)
-   install -y		Exec all actions (no ask)
-
 
 # Exec all actions interactively:
 $ ./install
