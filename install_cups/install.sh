@@ -1,6 +1,6 @@
 #!/bin/bash
 # ACTION: Install CUPS printer system and add user 1000 to lpadmin group
-# INFO: CUPS can be managed in http://localhost:631 and users
+# INFO: CUPS can be managed in http://localhost:631 and admin users must be in lpadmin group
 # DEFAULT: y
 
 # Check root
