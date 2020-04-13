@@ -1,3 +1,4 @@
+#!/bin/bash
 # ACTION: Install script obexit with exit-power menu based on rofi
 # DEFAULT: y
 
