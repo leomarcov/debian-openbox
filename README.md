@@ -5,9 +5,9 @@ The main script `install` can exec all scripts or only a select list:
   * `install`: install scripts interactively.
   * `install -l`: list all scripts.
   * `install -a all`: exec all scripts asking for each one if install or not.
-  * `install -a all -d`: install all default scripts with Y.
+  * `install -a all -d`: exec all scripts and answer default option.
   * `install -a 5,8-12`: install selected scripts.
-  * `install -a bash`: install all actions with text bash in description
+  * `install -a bash`: install all actions with text bash in description.
 
 &nbsp; 
 ## Main features
