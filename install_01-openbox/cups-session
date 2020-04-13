@@ -31,7 +31,10 @@ if [ "$1" = "-I" ]; then
     # START CUPS
     else
         echo "CUPS is installed but not running"
-        read
+        read -p "Press enter to try to start CUPS"
+        sudo systemctl start cups.service
+        sleep 1
+        systemctl status cups&>/dev/null && x-www-browser "http://localhost:631"
     fi
 
 # OPEN CUPS ADMIN
@@ -43,4 +46,3 @@ elif systemctl status cups&>/dev/null; then
 else
     x-terminal-emulator -e "$(readlink -f "$0")" -I
 fi
-~  
