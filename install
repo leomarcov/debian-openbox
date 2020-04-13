@@ -188,10 +188,4 @@ for script in $scripts; do
 	fi
 done
 
-
-# REBOOT?
-if [ ! "$list" ] && [ ! "$actions" ] && ask_action "Reboot" "" "y"; then 
-	reboot
-fi
-
 echo
