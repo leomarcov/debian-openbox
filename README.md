@@ -6,6 +6,7 @@ The main script `install` can exec all scripts or only a select list:
   * `install`: exec all scripts interactively asking for each one if install or not.
   * `install -d`: install all default scripts.
   * `install -a 5,8-12`: install selected scripts.
+  * `install -a bash`: install all actions with text bash in description
 
 &nbsp; 
 ## Main features
@@ -36,10 +37,12 @@ $ ./install -h
 Exec scripts actions
 Usage: install [-l] [-a <actions>] [-y] [-d] [-h]
    -l		Only list actions 
-   -a <actions>	Only do selected actions (e.g: -a 5,6,10-15)
+   -a <actions>	Only do selected actions by number range (e.g: -a 5,6,10-15)
+   -a <pattern>	Only do selected actions by text pattern (e.g: -a terminator)
    -y		Auto-answer yes to all actions
    -d		Auto-answer default to all actions
    -h		Show this help
+
 
 
 # Exec all actions interactively:
