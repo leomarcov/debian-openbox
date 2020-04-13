@@ -1,5 +1,5 @@
 #!/bin/bash
-# ACTION: Config GRUB with password for prevent users edit entries
+# ACTION: Config GRUB with password protection for prevent users edit entries
 # DEFAULT: n
 
 # Config variables
