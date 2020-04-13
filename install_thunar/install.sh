@@ -1,5 +1,5 @@
 #!/bin/bash
-# ACTION: Install and config Thunar (show toolbar and double-click for active items)
+# ACTION: Install Thunar filemanager and configs (show toolbar and double-click for active items)
 # DEFAULT: y
 
 # Config variables
