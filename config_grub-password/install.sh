@@ -2,10 +2,11 @@
 # ACTION: Config GRUB with password for prevent users edit entries
 # DEFAULT: n
 
+# Config variables
+comment_mark="#DEBIAN-OPENBOX"
+
 # Check root
 [ "$(id -u)" -ne 0 ] && { echo "Must run as root" 1>&2; exit 1; }
-
-comment_mark="#DEBIAN-OPENBOX"
 
 # Ask for password
 read -p "Enter password for admin user: " pass
