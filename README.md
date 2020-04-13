@@ -43,16 +43,16 @@ Usage: install [-l] [-a <actions>] [-y] [-d] [-h]
 
 
 # Exec all actions interactively:
-$ sudo ./install
+$ ./install
 
 # Exec all actions and answer yes to all:
-$ sudo ./install -y
+$ ./install -y
 
 # Exec all actions and answer default to all:
-$ sudo ./install -d
+$ ./install -d
 
 # Exec only actions 5,7,10,11,12,13,14 and 15:
-$ sudo ./install -a 5,7,10-15
+$ ./install -a 5,7,10-15
 
 
 # List all actions:
