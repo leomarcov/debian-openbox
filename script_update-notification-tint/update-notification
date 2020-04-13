@@ -54,7 +54,7 @@ function interactive_upgrade() {
 	 [ ! -s "$updates_file" ] && exit 0
 
 	read -p "Press enter to continue upgrade..."
-
+	echo
 	sudo aptitude full-upgrade
 	if ! [ $? -eq 0 ]; then 
 		read; 
