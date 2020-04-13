@@ -32,6 +32,7 @@ Usage: '$(basename $0)' [-l] [-a <actions>] [-y] [-d] [-h]
    \e[1m-l\e[0m\t\tOnly list actions 
    \e[1m-a <actions>\e[0m\tOnly exec selected actions by number range (e.g: -a 5,6,10-15)
    \e[1m-a <pattern>\e[0m\tOnly exec selected actions by text pattern (e.g: -a terminator)
+   \e[1m-a all\e[0m\Exec all actions
    \e[1m-y\e[0m\t\tAuto-answer yes to all actions
    \e[1m-d\e[0m\t\tAuto-answer default to all actions
    \e[1m-h\e[0m\t\tShow this help'
