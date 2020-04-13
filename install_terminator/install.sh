@@ -1,5 +1,5 @@
 #!/bin/bash
-# ACTION: Install Termiantor terminal and config theme
+# ACTION: Install Terminator terminal and config theme
 # DEFAULT: y
 
 # Config variables
