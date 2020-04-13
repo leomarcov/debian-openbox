@@ -45,7 +45,3 @@ for d in  /etc/skel/  /home/*/; do
 	[ ! -f "$d/$f" ] && cp "$base_dir/$f" "$d" && chown -R $(stat "$(dirname "$d")" -c %u:%g) "$d/$f"
 	sed -i 's/^file *= *.*/file='$(echo "$wp_base/$wp_dir/$wp_default" | sed 's/\//\\\//g' )'/' "$d/$f"
 done
-
-
-
-
