@@ -1,5 +1,5 @@
 # Update Notification for tint 
-**`updagte-notification`**: script that checks periodically APT pending updates and show a notification in tint2 bar using executor plugin (since tint2 0.12.4).  
+Script that checks periodically APT pending updates and show a notification in tint2 bar using executor plugin (since tint2 0.12.4).  
 
 ![seleccion_825](https://user-images.githubusercontent.com/32820131/40354912-55396e4c-5db5-11e8-9b22-aaeedc7e91e3.png)
 
@@ -14,7 +14,7 @@ panel_itmes = LTEBSC    # Add E in your config
 
 execp = new
 execp_command = update-notification.sh -m
-execp_lclick_command = x-terminal-emulator -b -e update-notification.sh -i
+execp_lclick_command = x-terminal-emulator -e update-notification.sh -i
 execp_tooltip = Pending updates...
 execp_interval = 0
 execp_padding = 8 0 0
