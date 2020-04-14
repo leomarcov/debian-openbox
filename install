@@ -79,7 +79,7 @@ function ask_action() {
 
 	# Show action 
 	[ "${default,,}" = "y" ] && q="(Y/n)?" || q="(y/N))?"
-	echo -en "\e[33m${info}\n\e[39m\e[1m [$naction] \e[4m${action}\e[0m $q "
+	echo -en "\e[33m${info}\n\e[39m\e[1m[$naction] \e[4m${action}\e[0m $q "
 	
 	# Ask if install
 	case "$yes" in
