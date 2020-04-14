@@ -26,7 +26,7 @@ apt-get install -y linux-headers-$(uname -r) "$vb_package" || exit 1
  for d in /etc/skel/  /home/*/ ; do
 	f="$d/.config/openbox/menu.xml"
 	[ ! -f "$f" ] && continue
-	! grep -q '<command>virtualbox<\/command>' "$f" && sed -i '0,/<separator\/>/s//<separator\/> <item label="VirtualBox" icon="/usr/share/icons/openbox-menu/virtualbox.png"><action name="Execute"><command>virtualbox<\/command><\/action><\/item> /' "$f"
+	! grep -q '<command>virtualbox<\/command>' "$f" && sed -i '0,/<separator\/>/s//<separator\/> <item label="VirtualBox" icon="\/usr\/share\/icons\/openbox-menu\/virtualbox.png"><action name="Execute"><command>virtualbox<\/command><\/action><\/item> /' "$f"
  done
 
 
