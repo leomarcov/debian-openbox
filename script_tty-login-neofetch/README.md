@@ -5,7 +5,7 @@ TTY login message is boring. This script show cool info message at login based o
 
 
 ## Install
-Exec `install.sh script` for install dependences and config apply style in Linux tty. Scripts install and config too [Physlock](https://github.com/muennich/physlock), a tty locker
+Exec `install.sh script` for install script, dependences and apply configs. Scripts install and config [Physlock](https://github.com/muennich/physlock), a tty locker called when come back of suspend mode.
 
 &nbsp; 
 ### Manual install
