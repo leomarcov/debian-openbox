@@ -14,14 +14,6 @@
 		</item> 
 
 		<separator/>
-
-		<item label="VirtualBox" icon="/usr/share/icons/openbox-menu/virtualbox.png">
-			<action name="Execute">
-				<command>
-					virtualbox
-				</command>
-			</action>
-		</item> 
 		
 		<item label="Terminal" icon="/usr/share/icons/openbox-menu/terminal.png">
             <action name="Execute">
