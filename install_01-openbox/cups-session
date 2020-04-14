@@ -6,7 +6,7 @@
 # NO CUPS INSTALLED
 if [ "$1" = "-I" ]; then
     # INSTALL CUPS
-    if ! dpkg -l cups | grep -q "^ii"; then
+    if ! dpkg -l cups &>/dev/null | grep -q "^ii"; then
         # Install package
         echo "CUPS is not installed"
         while true; do
