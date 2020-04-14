@@ -19,7 +19,7 @@ if [ "$1" = "-I" ]; then
 
         # Adduser to lpadmin    
         echo; echo "===================================================================="
-        read -p "Select users to admin printers (space separated): " ul
+        read -p "Select users to allow admin printers (space separated): " ul
         for u in $ul; do
             sudo adduser $u lpadmin
         done
