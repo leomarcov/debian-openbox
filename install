@@ -65,7 +65,7 @@ function ask_action() {
 	[ "$default" != "n" ] && default="y"
 
 	# Only show header in list mode
-	[ "$list" ] && echo -e " [$naction] $action (default: $default)" && return 1
+	[ "$list" ] && echo -e " [$naction] $action ($default)" && return 1
 
 	# Show action 
 	[ "${default,,}" = "y" ] && q="(Y/n)?" || q="(y/N))?"
