@@ -12,7 +12,7 @@
 #===================================================================================
 
 #=== GLOBAL CONFIG =================================================================
-show_categories=1														# Show categories in list
+show_type=1																# Show categories in list
 base_dir="$(dirname "$(readlink -f "$0")")"								# Install script path
 shopt -s extglob														# Activate extendend Bash expasions
 shopt -s checkwinsize													# To get $COLUMNS AND $LINES working
@@ -27,6 +27,7 @@ unset script_actions													# Array with scripts descriptions
 unset script_infos														# Array with scripts infos
 unset script_defaults													# Array with scripts defaults
 unset script_paths 														# Array with scripts paths
+
 
 #===============================================================================
 #  COLORS AND FORMAT
@@ -60,6 +61,7 @@ C_LN="\e[37m"           # Color LIGHT GREY
 
 
 
+
 #=== FUNCTION ======================================================================
 # NAME: help
 # DESCRIPTION: Show command help
@@ -67,21 +69,21 @@ C_LN="\e[37m"           # Color LIGHT GREY
 function help() {
 	echo -e 'Exec a set of scripts
 Usage: '$(basename $0)' [-l] [-a <actions>] [-y] [-d] [-h]
-   \e[1m-l\e[0m\t\tOnly list actions 
-   \e[1m-a <actions>\e[0m\tFilter selected actions by number range or text pattern (comma separated)
-   \e[1m-y\e[0m\t\tAuto-answer yes to all actions
-   \e[1m-d\e[0m\t\tAuto-answer default to all actions
-   \e[1m-h\e[0m\t\tShow this help
+   ${S_B}-l${S_R}\t\tOnly list actions 
+   ${S_B}-a <actions>${S_R}\tFilter selected actions by number range or text pattern (comma separated)
+   ${S_B}-y${S_R}\t\tAuto-answer yes to all actions
+   ${S_B}-d${S_R}\t\tAuto-answer default to all actions
+   ${S_B}-h${S_R}\t\tShow this help
 
  Samples:
-   \e[1minstall\e[0m\t\tExec all actions asking if install or not
-   \e[1minstall -l\e[0m\t\tList all actions
-   \e[1minstall -l -a grub\e[0m\tList all actions with text text in description
-   \e[1minstall -l -a "(N)"\e[0m\tList all actions with text (N) in description
-   \e[1minstall -a 1-5,12\e[0m\tExec actions 1 to 5 and 12
-   \e[1minstall -a grub\e[0m\tExec actions with grub text in description
-   \e[1minstall -d\e[0m\t\tExec all actions with Y has default answer (no ask)
-   \e[1minstall -y\e[0m\t\tExec all actions (no ask)'
+   ${S_B}install${S_R}\t\tExec all actions asking if install or not
+   ${S_B}install -l${S_R}\t\tList all actions
+   ${S_B}install -l -a grub${S_R}\tList all actions with text text in description
+   ${S_B}install -l -a "(N)"${S_R}\tList all actions with text (N) in description
+   ${S_B}install -a 1-5,12${S_R}\tExec actions 1 to 5 and 12
+   ${S_B}install -a grub${S_R}\tExec actions with grub text in description
+   ${S_B}install -d${S_R}\t\tExec all actions with Y has default answer (no ask)
+   ${S_B}install -y${S_R}\t\tExec all actions (no ask)'
 }
 
 
@@ -125,7 +127,7 @@ function list_actions() {
 	local naction
 	local IFS=" "
 	# Print header
-	echo -e "\e[1m NUM\tTYPE\tDESCRIPTION\e[0m"
+	echo -e "${S_B} NUM$([ "$show_type" != "0" ] && echo -e "\tTYPE")\tDESCRIPTION${S_R}"
 	seq -s"=" 1 $([ "$COLUMNS" -gt 120 ] && echo 120 || echo $COLUMNS) | tr -d "[0-9]"
 	# Print list
 	for naction in $actions; do
@@ -133,9 +135,9 @@ function list_actions() {
 		local action="${script_actions[$naction]}"
 		local info="${script_infos[$naction]}"
 		local default="${script_defaults[$naction]^^}"		
-		[ "$show_categories" != "0" ] && local type="$(get_action_type "$(basename "$(dirname "$path")")")"
+		[ "$show_type" != "0" ] && local type="$(get_action_type "$(basename "$(dirname "$path")")")"
 		
-		echo -e " [\e[1m$naction\e[0m]\t${type^^}\t$action ($default)"
+		echo -e " [${S_B}$naction${S_R}]\t${S_D}${type^^}${S_R}\t$action ($default)"
 	done | column -t -s $'\t'
 }
 
@@ -162,12 +164,12 @@ function exec_actions() {
 		local info="${script_infos[$naction]}"
 		local default="${script_defaults[$naction],,}"		
 		[ "$show_categories" != "0" ] && local type="$(get_action_type "$(basename "$(dirname "$path")")")"
-		[ "$type" ] && type="[${type}]"
+		[ "$type" ] && type="[${S_D}${type^^}${S_R}]"
 
 		# Show action 
 		[ "${default,,}" = "y" ] && q="(Y/n)?" || q="(y/N))?"
 		[ "$info" ] && echo
-		echo -en "\e[33m${info}\n\e[39m\e[1m[$naction] ${type^^} ${action}\e[0m $q "
+		echo -en "${C_Y}${info}\n${S_R}[${S_B}$naction${S_R}] ${type} ${action}${S_R} $q "
 
 		# Ask for install
 		case "$yes" in
