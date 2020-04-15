@@ -62,7 +62,7 @@ $ ./install -a grub
 # List all actions:
 $ ./install -l
  NUM	TYPE	DESCRIPTION
-=======================================================================================================================
+==================================================================================================================
  [1]   INSTALL  Install some basic packages (Y)
  [2]   OPENBOX  Install Openbox WM and essential tools and configs (Y)
  [3]   OPENBOX  Install theme Arc GTK and set as default (Y)
@@ -75,7 +75,7 @@ $ ./install -l
  [10]  OPENBOX  Install icon theme Numix-Paper and set as default icons (Y)
  [11]  OPENBOX  Install rofi launcher and config as default launcher (Y)
  [12]  OPENBOX  Install Terminator terminal and come style configs (Y)
- [13]  OPENBOX  Install Thunar filemanager and some configs (show toolbar and double-click for active items) (Y)
+ [13]  OPENBOX  Install Thunar filemanager and some configs (Y)
  [14]  OPENBOX  Install tint2 taskbar and config some taskbar/menu themes (Y)
  [15]  OPENBOX  Install script update-notification for check periodically APT updates (Y)
  [16]  OPENBOX  Install pnmixer and pavucontrol volume control (Y)
@@ -102,7 +102,7 @@ $ ./install -l
  [37]  INSTALL  Install WPS Office Suite (Y)
  [38]  SCRIPT   Install script poweroff_last for auto-poweroff if no users logged in 20 minutes (N)
  [39]  SCRIPT   Install script to control screen brightness (Y)
- [40]  SCRIPT   Config Linux login in text mode (tty) with neofetch style and install tty locker (physlock) (Y)
+ [40]  SCRIPT   Config Linux login in text mode (tty) with neofetch style and install tty locker (Y)
 
 
 ```
