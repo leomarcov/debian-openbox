@@ -35,7 +35,7 @@ done
 
 # Show /home in conky if /home has mounted in separated partition
 if mount | grep -q "on /home[[:blank:]]"; then
-for f in  /etc/skel/.config/conky/basic.conkyrc  /home/*/.config/conky/basic.conkyrc; do
+for f in  /etc/skel/.config/conky/shortcuts.conkyrc  /home/*/.config/conky/shortcuts.conkyrc; do
 	sed -i '/Home usage/s/^#//g' "$f"
 done
 fi
