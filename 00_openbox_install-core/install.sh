@@ -1,5 +1,6 @@
 #!/bin/bash
 # ACTION: Install Openbox WM and essential tools and configs
+# INFO: Openbox is a lightweight window manager, but needs some additional tools and configs for make it usable
 # DEFAULT: y
 
 # Config variables
@@ -10,7 +11,7 @@ base_dir="$(dirname "$(readlink -f "$0")")"
 
 # Install packages
 find /var/cache/apt/pkgcache.bin -mtime 0 &>/dev/null ||  apt-get update
-apt-get install -y openbox obconf obmenu xinit lxappearance compton xfce4-screenshooter xfce4-clipman xfce4-power-manager arandr libexo-1-0 gsimplecal xcape gparted file-roller xautomation python-xdg
+apt-get install -y openbox obconf obmenu xinit lxappearance compton xfce4-screenshooter xfce4-clipman xfce4-power-manager arandr libexo-1-0 gsimplecal xcape gparted file-roller xautomation python-xdg yad
 apt-get install -y network-manager network-manager-gnome
 
 # Copy theme
