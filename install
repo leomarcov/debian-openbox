@@ -15,6 +15,7 @@
 show_categories=1														# Show categories in list
 base_dir="$(dirname "$(readlink -f "$0")")"								# Install script path
 shopt -s extglob														# Activate extendend Bash expasions
+shopt -s checkwinsize													# To get $COLUMNS AND $LINES working
 echo "$PATH" | grep -q sbin || export PATH="/sbin/:/usr/sbin:$PATH"		# PATH with sbin
 
 
@@ -92,11 +93,12 @@ function get_action_type() {
 #===================================================================================
 function list_actions() {
 	[ "$1" = "all" ] && local actions="$(seq -s" " 1 $nscripts)" || local actions="${!actions_sel[*]}"
-	
-	echo -e "\e[1m NUM\tTYPE\tDESCRIPTION\e[0m"
-
 	local naction
 	local IFS=" "
+	# Print header
+	echo -e "\e[1m NUM\tTYPE\tDESCRIPTION\e[0m"
+	seq -s"=" 1 $([ "$COLUMNS" -gt 120 ] && echo 120 || echo $COLUMNS) | tr -d "[0-9]"
+	# Print list
 	for naction in $actions; do
 		local path="${script_paths[$naction]}"
 		local action="${script_actions[$naction]}"
