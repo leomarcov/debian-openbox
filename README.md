@@ -62,7 +62,7 @@ $ ./install -a grub
 # List all actions:
 $ ./install -l
  NUM	TYPE	DESCRIPTION
-=============================================================================================================
+=========================================================================================================
  [1]   INSTALL  Install some basic packages (Y)
  [2]   OPENBOX  Install Openbox WM and essential tools and configs (Y)
  [3]   OPENBOX  Install theme Arc GTK and set as default (Y)
