@@ -113,7 +113,7 @@ The script can be easily customized. Each `install.sh` script placed in a subdir
   ```
   #!/bin/bash
   # ACTION: Description of the action
-  # INFO: Optional aditional info
+  # INFO: Optional additional info
   # DEFAULT: y
   
   scripts commands
