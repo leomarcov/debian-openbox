@@ -35,10 +35,10 @@ The main script `install` can exec all scripts or only a select list:
   
 ```
 $ ./install -h
-Exec scripts actions
+Exec a set of scripts
 Usage: install [-l] [-a <actions>] [-y] [-d] [-h]
    -l		Only list actions 
-   -a <actions>	Only exec selected actions by number range or text pattern (comma separated)
+   -a <actions>	Filter selected actions by number range or text pattern (comma separated)
    -y		Auto-answer yes to all actions
    -d		Auto-answer default to all actions
    -h		Show this help
@@ -47,10 +47,10 @@ Usage: install [-l] [-a <actions>] [-y] [-d] [-h]
 # Exec all actions interactively:
 $ ./install
 
-# Exec all actions and answer yes to all:
+# Exec all actions and answer yes to all (no ask):
 $ ./install -y
 
-# Exec all actions and answer default to all:
+# Exec all actions and answer default to all (no ask and only exec actions with default Y):
 $ ./install -d
 
 # Exec only actions 5,7,10,11,12,13,14 and 15:
