@@ -15,7 +15,7 @@ find /var/cache/apt/pkgcache.bin -mtime 0 &>/dev/null ||  apt-get update
 apt-get install -y nomacs
 
 # Copy users config
-echo -e "\e[1mCopying configs to all users...\e[0m"
+echo -e "\e[1mSetting configs to all users...\e[0m"
 for d in /etc/skel/  /home/*/; do
 	# Create config folders if no exists
 	d="$d/.config/"; [ ! -d "$d" ] && mkdir -v "$d" && chown -R $(stat "$(dirname "$d")" -c %u:%g) "$d"
