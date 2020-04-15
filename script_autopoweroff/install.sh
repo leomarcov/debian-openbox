@@ -1,5 +1,6 @@
 #!/bin/bash
-# ACTION: Install script poweroff_last for automatize shutdown if no users logged in 20 minutes
+# ACTION: Install script poweroff_last for auto-poweroff if no users logged in 20 minutes
+# INFO: This is useful in public or shared computers to avoid left computers on needlessly
 # DEFAULT: n
 
 # Check root

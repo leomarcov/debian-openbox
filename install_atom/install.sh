@@ -1,5 +1,6 @@
 #!/bin/bash
 # ACTION: Install Atom text editor
+# INFO: Atom is text editor oriented to programming languages
 # DEFAULT: n
 
 # Check root

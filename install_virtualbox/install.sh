@@ -1,5 +1,6 @@
 #!/bin/bash
 # ACTION: Install VirtualBox 6.1 and Extension Pack and add to repositories 
+# INFO: VirtualBox is a free opensource hosted hypervisor
 # DEFAULT: y
 
 # Config variables

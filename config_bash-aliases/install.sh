@@ -1,5 +1,6 @@
 #!/bin/bash
 # ACTION: Config useful aliases
+# INFO: Aliases allow exec commands fast with short name or including complex parameters
 # DEFAULT: y
 
 # Config variables

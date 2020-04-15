@@ -1,5 +1,6 @@
 #!/bin/bash
 # ACTION: Install script obexit with exit-power menu based on rofi
+# INFO: Openbox dont include exit menu to select reboot, poweroff, suspend, lock, etc
 # DEFAULT: y
 
 # Config variables

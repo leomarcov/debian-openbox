@@ -1,6 +1,6 @@
 #!/bin/bash
-# ACTION: Config all users home directories permissions to 750 
-# INFO: By default permissions are 755 and grant read permissions to all users
+# ACTION: Config users home directories permissions to 750 (for current and future users)
+# INFO: By default home directories permissions are 755 and grant read permissions to everyone
 # DEFAULT: y
 
 # Config variables

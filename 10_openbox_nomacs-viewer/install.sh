@@ -1,5 +1,6 @@
 #!/bin/bash
-# ACTION: Install Terminator terminal and config theme
+# ACTION: Install nomacs image viewer
+# INFO: Openbox dont include image viewer tool
 # DEFAULT: y
 
 # Config variables
@@ -10,16 +11,16 @@ base_dir="$(dirname "$(readlink -f "$0")")"
 
 # Install packages
 find /var/cache/apt/pkgcache.bin -mtime 0 &>/dev/null ||  apt-get update
-apt-get install -y terminator
+apt-get install -y nomacs
 
-# Copy users config
 for d in /etc/skel/  /home/*/; do
-	[ "$(dirname "$d")" = "/home" ] && ! id "$(basename "$d")" &>/dev/null && continue	# Skip dirs that no are homes 
-
 	# Create config folders if no exists
 	d="$d/.config/"; [ ! -d "$d" ] && mkdir -v "$d" && chown -R $(stat "$(dirname "$d")" -c %u:%g) "$d"
-	d="$d/terminator/"; [ ! -d "$d" ] && mkdir -v "$d" && chown -R $(stat "$(dirname "$d")" -c %u:%g) "$d"
+	d="$d/nomacs/"; [ ! -d "$d" ] && mkdir -v "$d" && chown -R $(stat "$(dirname "$d")" -c %u:%g) "$d"
 	
-	f="config"
+	f="Image Lounge.conf"
 	cp -v "$base_dir/$f" "$d/" && chown -R $(stat "$(dirname "$d")" -c %u:%g) "$d/$f"
 done
+
+# Add as x-image-viewer alternative
+update-alternatives --install /usr/bin/x-image-viewer x-image-viewer $(which nomacs) 90

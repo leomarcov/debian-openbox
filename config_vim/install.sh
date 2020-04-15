@@ -1,5 +1,6 @@
 #!/bin/bash
 # ACTION: Config vim with custom configs
+# INFO: VIM editor has some nice options like show match search, ignore case in search, color scheme, etc.  
 # DEFAULT: y
 
 # Config variables

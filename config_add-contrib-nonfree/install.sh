@@ -1,6 +1,6 @@
-
 #!/bin/bash
 # ACTION: Add Debian repositories contrib and non-free
+# INFO: Contrib and non-free repositories are not enabled by default in Debian install
 # DEFAULT: y
 
 # Check root

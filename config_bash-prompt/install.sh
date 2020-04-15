@@ -1,5 +1,6 @@
 #!/bin/bash
 # ACTION: Config new bash prompt
+# INFO: Bash prompt show colors and info about current dir and user
 # DEFAULT: y
 
 # Config variables

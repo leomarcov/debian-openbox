@@ -1,6 +1,6 @@
 #!/bin/bash
-# ACTION: Install rofi and config as default launcher
-# INFO: Rofi is a simple text switcher and launcher
+# ACTION: Install rofi launcher and config as default launcher
+# INFO: Rofi is a simple text app launcher very useful to search installed tools
 # DEFAULT: y
 
 # Config variables

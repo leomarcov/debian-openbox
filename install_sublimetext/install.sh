@@ -1,5 +1,6 @@
 #!/bin/bash
-# ACTION: Install Sublime Text, add repositories and set as default editor 
+# ACTION: Install Sublime Text, add repositories and set as default editor
+# INFO: Sublime Text is propietary and multiplataform text editor, very fast and beautiful, that supports many programming and markup languages
 # DEFAULT: y
 
 # Check root

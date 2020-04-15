@@ -2,7 +2,9 @@
 #===================================================================================
 # INSTALL SCRIPTS
 # FILE: install
-# DESCRIPTION: automatize installation of set of scripts
+# DESCRIPTION: 	Automatize installation of set of scripts
+# 				Search all install.sh scripts en subdirectories, list all of them and
+#				exec selected scripts
 # AUTHOR: Leonardo Marco
 # VERSION: 1.0
 # CREATED: 2020.03.29
@@ -10,18 +12,20 @@
 #===================================================================================
 
 #=== GLOBAL CONFIG =================================================================
-shopt -s extglob														# Activate extendend Bash expasions
+show_categories=1														# Show categories in list
 base_dir="$(dirname "$(readlink -f "$0")")"								# Install script path
+shopt -s extglob														# Activate extendend Bash expasions
 echo "$PATH" | grep -q sbin || export PATH="/sbin/:/usr/sbin:$PATH"		# PATH with sbin
+
 
 #=== GLOBAL VARIABLES ===============================================================
 unset actions_sel														# Array with selected actions expanded
 unset list 																# Not empty if are in list mode (no exec actions)
 unset nscripts															# Num of sctrips loaded
-unset script_actions													# Array with actions descriptions
-unset script_infos														# Array with actions infos
-unset script_defaults													# Array with actions defaults
-unset script_paths 														# Array with actions paths
+unset script_actions													# Array with scripts descriptions
+unset script_infos														# Array with scripts infos
+unset script_defaults													# Array with scripts defaults
+unset script_paths 														# Array with scripts paths
 
 
 
@@ -31,10 +35,12 @@ unset script_paths 														# Array with actions paths
 # DESCRIPTION: Show command help
 #===================================================================================
 function help() {
-	echo -e 'Exec scripts actions
+	echo -e 'Exec a set of scripts
 Usage: '$(basename $0)' [-l] [-a <actions>] [-y] [-d] [-h]
    \e[1m-l\e[0m\t\tOnly list actions 
    \e[1m-a <actions>\e[0m\tFilter selected actions by number range or text pattern (comma separated)
+
+
    \e[1m-y\e[0m\t\tAuto-answer yes to all actions
    \e[1m-d\e[0m\t\tAuto-answer default to all actions
    \e[1m-h\e[0m\t\tShow this help
@@ -52,46 +58,100 @@ Usage: '$(basename $0)' [-l] [-a <actions>] [-y] [-d] [-h]
 
 
 #=== FUNCTION ======================================================================
-# NAME: ask_action
-# DESCRIPTION: show action info and asks if install it or not
+# NAME: prints action type according dirname
+# EXAMPLES:
+# 	install_tint2-script 		-> install
+# 	10_install_tint2-script 	-> install
+# 	tint2-script 				-> empty
 # PARAMS
-#	$1	naction
+#	$1 dirname
+#===================================================================================
+function get_action_type() {
+	local dirname="$1"
+	# No type (no char _ in dirname)
+	echo "$dirname" | grep -q "_" || return
+	
+	type="$(echo "$dirname" | cut -f1 -d "_")"
+	[ "$type" -eq "$type" ] &>/dev/null && type="$(echo "$dirname" | cut -f2 -d "_")"
+	echo "$type"
+}
+
+
+
+#=== FUNCTION ======================================================================
+# NAME: list_actions
+# DESCRIPTION: show list of all loaded and selected scripts, or all scripts if $1=all
+#
+# PARAMS
+#	[$1]	all or empty
 #
 # GLOBAL VARIABLES READED
-#	list
+#	script_paths[]
 #	script_actions[]
 #	script_infos[]
 #	script_defaults[]
-#
-# EXIT CODE: 
-#	0-> do the action
-#	1-> dont do de action
 #===================================================================================
-function ask_action() {
-	local naction="$1"
-	local action="${script_actions[$naction]}"
-	local info="${script_infos[$naction]}"
-	local default="${script_defaults[$naction],,}"
-	default="${default:0:1}"; [ "$default" != "n" ] && default="y"
-
-	# List mode -> only show header and return 1
-	[ "$list" ] && echo -e " [$naction] $action ($default)" && return 1
-
-	# Show action 
-	[ "${default,,}" = "y" ] && q="(Y/n)?" || q="(y/N))?"
-	echo -en "\e[33m${info}\n\e[39m\e[1m[$naction] \e[4m${action}\e[0m $q "
+function list_actions() {
+	[ "$1" = "all" ] && local actions="$(seq -s" " 1 $nscripts)" || local actions="${!actions_sel[*]}"
 	
-	# Ask if install
-	case "$yes" in
-		allyes) 	q="y"; echo	"$q"					;;
-		default) 	q="$default"; echo "$q"				;;
-		*)	 		read q; q="${q,,}"; q="${q:0:1}"	;;
-	esac
-	
-	# Exit code
-	[ "$q" != "n" ] && [ "$q" != "y" ] && q="$default"
-	[ "${q,,}" != "n" ] && return 0
-	return 1
+	echo -e "\e[1m NUM\tTYPE\tDESCRIPTION\e[0m"
+
+	local naction
+	local IFS=" "
+	for naction in $actions; do
+		local path="${script_paths[$naction]}"
+		local action="${script_actions[$naction]}"
+		local info="${script_infos[$naction]}"
+		local default="${script_defaults[$naction],,}"		
+		[ "$show_categories" != "0" ] && local type="$(get_action_type "$(basename "$(dirname "$path")")")"
+		
+		echo -e " [$naction]\t${type^^}\t$action ($default)"
+	done | column -t -s $'\t'
+}
+
+
+
+#=== FUNCTION ======================================================================
+# NAME: exec_actions
+# DESCRIPTION: exec all selected actions and ask if exec or not
+#
+# GLOBAL VARIABLES READED
+#	script_paths[]
+#	script_actions[]
+#	script_infos[]
+#	script_defaults[]
+#===================================================================================
+function exec_actions() {
+	shopt -s checkwinsize
+
+	local IFS=" "
+	local naction
+	for naction in ${!actions_sel[*]}; do
+		local path="${script_paths[$naction]}"
+		local action="${script_actions[$naction]}"
+		local info="${script_infos[$naction]}"
+		local default="${script_defaults[$naction],,}"		
+		[ "$show_categories" != "0" ] && local type="$(get_action_type "$(basename "$(dirname "$path")")")"
+		[ "$type" ] && type="[$type] "
+
+		# Show action 
+		[ "${default,,}" = "y" ] && q="(Y/n)?" || q="(y/N))?"
+		[ "$info" ] && echo
+		echo -en "\e[33m${info}\n\e[39m\e[1m[$naction] ${type^^} ${action}\e[0m $q "
+
+		# Ask for install
+		case "$yes" in
+			allyes) 	q="y"; echo	"$q"					;;
+			default) 	q="$default"; echo "$q"				;;
+			*)	 		read q; q="${q,,}"; q="${q:0:1}"	;;
+		esac	
+
+		# Exec action	
+		[ "$q" != "n" ] && [ "$q" != "y" ] && q="$default"
+		if [ "${q,,}" != "n" ]; then
+			bash "$path"
+		fi
+	done
 }
 
 
@@ -120,7 +180,7 @@ function expand_actions() {
 		for a in $(echo "$actions" | tr "," " "); do
 			# Is text 
 			if echo "$a" | grep "[a-zA-Z]" &>/dev/null; then
-				actions_sel="${actions_sel} $(search_scripts "$a")"
+				actions_sel="${actions_sel} $(list_actions all | tail -n +2 | grep $([ "$a" = "${a,,}" ]&& echo -i) "$a" | sed 's/^ *\[\|\]//g' | cut -f1 -d" " | tr $'\n' " ")"				
 			# Is a range
 			elif echo "$a" | grep -E "[0-9]"*-"[0-9]" &>/dev/null; then
 				actions_sel="${actions_sel} $(eval echo {$(echo $a|sed "s/-/../")})"
@@ -141,27 +201,6 @@ function expand_actions() {
 
 
 
-#=== FUNCTION ======================================================================
-# NAME: search_scripts
-# DESCRIPTION: search all script number with supplied text in their description
-#
-# PARAMS
-#	$1	text to search
-#
-# GLOBAL VARIABLES READED
-#	script_actions[]
-#===================================================================================
-function search_scripts() {
-	local text="$1"; [ ! "$text" ] && return
-	local naction
-	local IFS=$'\n\t'
-	for naction in ${!script_actions[*]}; do
-		echo "${script_actions[$naction]}" | grep -qi "$text" && echo -n "$naction "
-	done
-}
-
-
-
 
 #=== FUNCTION ======================================================================
 # NAME: load_scripts
@@ -176,12 +215,8 @@ function search_scripts() {
 #===================================================================================
 function load_scripts() {
 	local IFS=$'\n\t'
-	local scripts_paths="$(ls "$base_dir"/install_*/install.sh 2>/dev/null)
-$(ls "$base_dir"/config_*/install.sh 2>/dev/null)
-$(ls "$base_dir"/script_*/install.sh 2>/dev/null)
-$(ls "$base_dir"/theme_*/install.sh 2>/dev/null)
-$(ls "$base_dir"/!(install_*|script_*|config_*|theme_*)/install.sh 2>/dev/null)"
 	local naction=1
+	local scripts_paths="$(find "$base_dir" -maxdepth 2 -type f -name install.sh | sort -n)"
 
 	for script in $scripts_paths; do
 		local head="$(head -10 "$script")"
@@ -192,6 +227,7 @@ $(ls "$base_dir"/!(install_*|script_*|config_*|theme_*)/install.sh 2>/dev/null)"
 		local info="$(echo "$head" | grep "#[[:blank:]]*INFO:" | sed 's/#[[:blank:]]*INFO:[[:blank:]]*//')"
 		# Get DEFAULTfield:
 		local default="$(echo "$head" | grep "#[[:blank:]]*DEFAULT:" | sed 's/#[[:blank:]]*DEFAULT:[[:blank:]]*//')"
+		default="${default:0:1}"; [ "$default" != "n" ] && default="y"
 
 		script_paths[$naction]="$script"
 		script_actions[$naction]="$action"
@@ -232,7 +268,7 @@ function check_os_version() {
 function error_info() {
 	local msg="$1"
 	local code="$2" 
-	echo -e "$msg" 1&>2
+	echo -e "$msg" 1>&2
 	[ "$code" ] && [ "$code" -ne 0 ] &>/dev/null && exit $code
 }
 
@@ -283,12 +319,16 @@ function main() {
 	[ ${#actions_sel[*]} -eq 0 ] && error_info "No actions to exec!" 1
 
 
-	# EXEC SCRIPTS
-	for naction in ${!actions_sel[*]}; do
-		local path="${script_paths[$naction]}"
-		# Ask action and exec it
-		ask_action $naction && bash "$path"
-	done
+	# ONLY LIST ACTIONS
+	if [ "$list" ]; then
+		list_actions
+	
+	# EXEC ACTIONS
+	else
+		[ "${#actions_sel[*]}" -gt 1 ] && list_actions
+		exec_actions
+	fi
+	echo
 }
 
 main "$@"

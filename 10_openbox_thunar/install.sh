@@ -1,5 +1,6 @@
 #!/bin/bash
-# ACTION: Install Thunar filemanager and configs (show toolbar and double-click for active items)
+# ACTION: Install Thunar filemanager and some configs (show toolbar and double-click for active items)
+# INFO: Openbox dont include a file manager tool
 # DEFAULT: y
 
 # Config variables

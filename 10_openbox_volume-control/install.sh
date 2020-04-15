@@ -1,6 +1,6 @@
 #!/bin/bash
-# ACTION: Install mixer and volume control
-# INFO: pnmixer and pavucontrol
+# ACTION: Install pnmixer and pavucontrol volume control
+# INFO: Openbox dont include tools for manage sound devices
 # DEFAULT: y
 
 # Install packages

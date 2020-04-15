@@ -1,5 +1,6 @@
 #!/bin/bash
 # ACTION: Install Google Chrome, add to repositories and set has default browser
+# INFO: Google Chrome is very popular browser. Its recommended install official repositories for weekly updates
 # DEFAULT: y
 
 # Check root

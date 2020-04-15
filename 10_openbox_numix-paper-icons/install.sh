@@ -1,6 +1,6 @@
 #!/bin/bash
 # ACTION: Install icon theme Numix-Paper and set as default
-# INFO: Numix-Paper is a icon theme based on Numix and Paper icon themes.
+# INFO: Numix-Paper is a icon theme based on Numix and Paper icon themes
 # DEFAULT: y
 
 # Config variables

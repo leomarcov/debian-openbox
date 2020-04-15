@@ -1,6 +1,6 @@
 #!/bin/bash
-# ACTION: Config login in text tty mode instead of graphical desktop manager
-# INFO: Login in text mode is cool and nerd. You can use tty1 login and physlock for enter your password when go back from suspend and lock screen
+# ACTION: Config Linux login in text mode (tty) with neofetch style and config tty locker (physlock)
+# INFO: Login in text is fast, light and cool. This script install a neofetch style tty login and a tty locker (physlock) for reautenticate users when go back from suspend or lock screen
 # DEFAULT: y
 
 # Config variables

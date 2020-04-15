@@ -1,5 +1,6 @@
 #!/bin/bash
 # ACTION: Install sudo and add user 1000 to sudo group
+# INFO: SUDO allow users exec commands with root privileges without login as root
 # DEFAULT: y
 
 # Check root

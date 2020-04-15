@@ -1,5 +1,5 @@
 #!/bin/bash
-# ACTION: Config system for show text messages during boot
+# ACTION: Config system for show text messages during boot time
 # INFO: In boot process the system can show a stupid logo or messages about the booting process
 # DEFAULT: y
 
