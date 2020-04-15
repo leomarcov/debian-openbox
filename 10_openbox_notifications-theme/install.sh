@@ -1,5 +1,6 @@
 #!/bin/bash
 # ACTION: Install clear xfce4-notify theme
+# INFO: Notifications theme apply styles to notifications box when some appliation show info in user desktop
 # DEFAULT: y
 
 # Config variables

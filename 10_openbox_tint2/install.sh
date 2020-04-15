@@ -1,5 +1,6 @@
 #!/bin/bash
-# ACTION: Install tint2 taskbars and config some taskbar/menu themes
+# ACTION: Install tint2 taskbar and config some taskbar/menu themes
+# INFO: Openbox dont include taskbar tool
 # DEFAULT: y
 
 # Config variables

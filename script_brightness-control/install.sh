@@ -1,5 +1,7 @@
 #!/bin/bash
-# ACTION: Install script for inc/dec screen brightness (used in tint2 for inc/dec brightness with mouse wheel)
+# ACTION: Install script to control screen brightness
+# INFO: Script birghtness allow increment and decrement screen brightness
+# INFO: Is used in tint2 taskbar config for inc/dec brightness with mouse wheel
 # DEFAULT: y
 
 # Check root

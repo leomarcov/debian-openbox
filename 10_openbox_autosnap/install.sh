@@ -1,5 +1,8 @@
 #!/bin/bash
 # ACTION: Install script autosnap for half-maximize windows with mouse middle click in titlebar
+# INFO: Openbox lacks autosnap windows function (auto half-maximize)
+# INFO: Autosnap script allow half-maximice active window to current quadrant or half screen, accroding mouse location
+# INFO: The script is configured to be called when mouse middle is clicked in titlebar
 # DEFAULT: y
 
 # Config variables
