@@ -28,6 +28,35 @@ unset script_infos														# Array with scripts infos
 unset script_defaults													# Array with scripts defaults
 unset script_paths 														# Array with scripts paths
 
+#===============================================================================
+#  COLORS AND FORMAT
+#===============================================================================
+S_R="\e[0m"            	# Reset all attributes
+S_B="\e[1m"             # Style BOLD
+S_D="\e[2m"             # Style DIM
+S_U="\e[4m"            	# Style UNDERLINE
+S_I="\e[7m"             # Style INVERTED
+C_D="\e[39m"            # Color DEFAULT
+C_R="\e[31m"            # Color RED
+C_BR="\e[1m\e[31m"      # Color BOLD RED
+C_LR="\e[91m"           # Color LIGHT RED
+C_G="\e[32m"            # Color GREEN
+C_BG="\e[1m\e[32m"      # Color BOLD GREEN
+C_LG="\e[92m"           # Color LIGHT GREEN
+C_Y="\e[33m"            # Color YELLOW
+C_BY="\e[1m\e[33m"      # Color BOLD YELLOW
+C_LY="\e[93m"           # Color LIGHT YELLOW
+C_B="\e[34m"            # Color BLUE
+C_BB="\e[1m\e[34m"      # Color BOLD BLUE
+C_LB="\e[94m"           # Color LIGHT BLUE
+C_M="\e[35m"            # Color MAGENTA
+C_BM="\e[1m\e[35m"      # Color BOLD MAGENTA
+C_LM="\e[95m"           # Color LIGHT MAGENTA
+C_C="\e[36m"            # Color CYAN
+C_BC="\e[1m\e[36m"      # Color BOLD CYAN
+C_LC="\e[96m"           # Color LIGHT CYAN
+C_N="\e[90m"            # Color GREY
+C_LN="\e[37m"           # Color LIGHT GREY
 
 
 
