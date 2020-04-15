@@ -103,7 +103,7 @@ function list_actions() {
 		local default="${script_defaults[$naction],,}"		
 		[ "$show_categories" != "0" ] && local type="$(get_action_type "$(basename "$(dirname "$path")")")"
 		
-		[ "$default" = "n" ] && default="\e[1m\e[31m$default\e[0m"
+		[ "$default" = "n" ] && default="\e[1m\e[31m$default\e[0m" || default="\e[1m\e[32m$default\e[0m"
 		echo -e " [$naction]\t${type^^}\t$action ($default)"
 	done | column -t -s $'\t'
 }
