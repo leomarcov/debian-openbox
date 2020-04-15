@@ -68,7 +68,7 @@ C_LN="\e[37m"           # Color LIGHT GREY
 #===================================================================================
 function help() {
 	echo -e "Exec a set of scripts
-Usage: '$(basename $0)' [-l] [-a <actions>] [-y] [-d] [-h]
+Usage: $(basename $0) [-l] [-a <actions>] [-y] [-d] [-h]
    ${S_B}-l${S_R}\t\tOnly list actions 
    ${S_B}-a <actions>${S_R}\tFilter selected actions by number range or text pattern (comma separated)
    ${S_B}-y${S_R}\t\tAuto-answer yes to all actions
@@ -79,12 +79,13 @@ Usage: '$(basename $0)' [-l] [-a <actions>] [-y] [-d] [-h]
    ${S_B}install${S_R}\t\tExec all actions asking if install or not
    ${S_B}install -l${S_R}\t\tList all actions
    ${S_B}install -l -a grub${S_R}\tList all actions with text text in description
-   ${S_B}install -l -a "(N)"${S_R}\tList all actions with text (N) in description
+   ${S_B}install -l -a \"(N)\"${S_R}\tList all actions with text (N) in description
    ${S_B}install -a 1-5,12${S_R}\tExec actions 1 to 5 and 12
    ${S_B}install -a grub${S_R}\tExec actions with grub text in description
    ${S_B}install -d${S_R}\t\tExec all actions with Y has default answer (no ask)
    ${S_B}install -y${S_R}\t\tExec all actions (no ask)"
 }
+
 
 
 
