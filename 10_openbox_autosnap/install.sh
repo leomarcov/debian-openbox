@@ -13,14 +13,17 @@ comment_mark="#DEBIAN-OPENBOX-autosnap"
 [ "$(id -u)" -ne 0 ] && { echo "Must run as root" 1>&2; exit 1; }
 
 # Install packages
+echo -e "\e[1mInstalling packages...\e[0m"
 find /var/cache/apt/pkgcache.bin -mtime 0 &>/dev/null ||  apt-get update 
 apt-get -y install xdotool
 
 # Copy autosnap script
+echo -e "\e[1mCopying sript...\e[0m"
 cp -v "$base_dir/autosnap" /usr/bin/
 chmod +x /usr/bin/autosnap 
 
 # Copy users config
+echo -e "\e[1mCopying configs to all users...\e[0m"
 for d in /etc/skel/  /home/*/; do
     [ "$(dirname "$d")" = "/home" ] && ! id "$(basename "$d")" &>/dev/null && continue	# Skip dirs that no are homes
 	
