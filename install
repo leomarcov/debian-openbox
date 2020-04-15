@@ -58,9 +58,9 @@ Usage: '$(basename $0)' [-l] [-a <actions>] [-y] [-d] [-h]
 #=== FUNCTION ======================================================================
 # NAME: prints action type according dirname
 # EXAMPLES:
-# 	install_tint2-script 		-> install
-# 	10_install_tint2-script 	-> install
-# 	tint2-script 				-> empty
+# 	install_tint2-script 		-> install (first field separated by _)
+# 	10_install_tint2-script 	-> install (if first filed is number then second field)
+# 	tint2-script 				-> empty (if no fields empty)
 # PARAMS
 #	$1 dirname
 #===================================================================================
