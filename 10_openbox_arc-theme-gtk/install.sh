@@ -11,13 +11,16 @@ gtk_default="Arc"
 [ "$(id -u)" -ne 0 ] && { echo "Must run as root" 1>&2; exit 1; }
 
 # Install packages
+echo -e "\e[1mInstalling packages...\e[0m"
 find /var/cache/apt/pkgcache.bin -mtime 0 &>/dev/null ||  apt-get update  
 apt-get install -y arc-theme
 apt-get install -y gtk3-nocsd		# Force show titlebar in GTK3 new windows
 
 # Change accent color blue (#5294e2) for grey:
 find /usr/share/themes/Arc -type f -exec sed -i 's/#5294e2/#b3bcc6/g' {} \;   
-	
+
+# Copy users config
+echo -e "\e[1mCopying configs to all users...\e[0m"
 for f in  /etc/skel/ /home/*/ ; do
     [ "$(dirname "$d")" = "/home" ] && ! id "$(basename "$d")" &>/dev/null && continue	# Skip dirs that no are homes
 	
