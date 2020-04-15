@@ -20,7 +20,7 @@ apt-get install -y gtk3-nocsd		# Force show titlebar in GTK3 new windows
 find /usr/share/themes/Arc -type f -exec sed -i 's/#5294e2/#b3bcc6/g' {} \;   
 
 # Copy users config
-echo -e "\e[1mCopying configs to all users...\e[0m"
+echo -e "\e[1mSetting configs to all users...\e[0m"
 for f in  /etc/skel/ /home/*/ ; do
     [ "$(dirname "$d")" = "/home" ] && ! id "$(basename "$d")" &>/dev/null && continue	# Skip dirs that no are homes
 	
