@@ -23,7 +23,7 @@ cp -v "$base_dir/autosnap" /usr/bin/
 chmod +x /usr/bin/autosnap 
 
 # Copy users config
-echo -e "\e[1mCopying configs to all users...\e[0m"
+echo -e "\e[1mSetting configs to all users...\e[0m"
 for d in /etc/skel/  /home/*/; do
     [ "$(dirname "$d")" = "/home" ] && ! id "$(basename "$d")" &>/dev/null && continue	# Skip dirs that no are homes
 	
