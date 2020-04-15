@@ -179,7 +179,8 @@ function expand_actions() {
 		for a in $(echo "$actions" | tr "," " "); do
 			# Is text 
 			if echo "$a" | grep "[a-zA-Z]" &>/dev/null; then
-				actions_sel="${actions_sel} $(list_actions all | tail -n +2 | grep $([ "$a" = "${a,,}" ]&& echo -i) "$a" | sed 's/^ *\[\|\]//g' | cut -f1 -d" " | tr $'\n' " ")"				
+				actions_sel="${actions_sel} $(list_actions all | 
+sed "s,\x1B\[[0-9;]*[a-zA-Z],,g" | tail -n +2 | grep $([ "$a" = "${a,,}" ]&& echo -i) "$a" | sed 's/^ *\[\|\]//g' | cut -f1 -d" " | tr $'\n' " ")"				
 			# Is a range
 			elif echo "$a" | grep -E "[0-9]"*-"[0-9]" &>/dev/null; then
 				actions_sel="${actions_sel} $(eval echo {$(echo $a|sed "s/-/../")})"
