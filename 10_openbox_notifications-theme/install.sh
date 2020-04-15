@@ -35,7 +35,7 @@ for d in  /etc/skel/  /home/*/ ; do
 	if [ ! -f "$d/$f" ]; then
 		cp -v "$base_dir/$f" "$d" && chown -R $(stat "$(dirname "$d")" -c %u:%g) "$d/$f"
 	else
-		sed -i '/name="theme"/s/value=".*"/value="clear-notify"/' "$f"
+		sed -i '/name="theme"/s/value=".*"/value="clear-notify"/' "$d/$f"
 	fi
 done
 
