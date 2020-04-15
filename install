@@ -130,6 +130,7 @@ function exec_actions() {
 		local info="${script_infos[$naction]}"
 		local default="${script_defaults[$naction],,}"		
 		[ "$show_categories" != "0" ] && local type="$(get_action_type "$(basename "$(dirname "$path")")")"
+		[ "$type" ] && type="[${type}]"
 
 		# Show action 
 		[ "${default,,}" = "y" ] && q="(Y/n)?" || q="(y/N))?"
