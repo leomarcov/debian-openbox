@@ -46,7 +46,8 @@ Usage: '$(basename $0)' [-l] [-a <actions>] [-y] [-d] [-h]
  Samples:
    \e[1minstall\e[0m\t\tExec all actions asking if install or not
    \e[1minstall -l\e[0m\t\tList all actions
-   \e[1minstall -l -a grub\e[0m\tList all actions with grub text in description
+   \e[1minstall -l -a grub\e[0m\tList all actions with text text in description
+   \e[1minstall -l -a "(N)"\e[0m\tList all actions with text (N) in description
    \e[1minstall -a 1-5,12\e[0m\tExec actions 1 to 5 and 12
    \e[1minstall -a grub\e[0m\tExec actions with grub text in description
    \e[1minstall -d\e[0m\t\tExec all actions with Y has default answer (no ask)
@@ -104,7 +105,7 @@ function list_actions() {
 		[ "$show_categories" != "0" ] && local type="$(get_action_type "$(basename "$(dirname "$path")")")"
 		
 		[ "$default" = "N" ] && default="\e[1m\e[31m$default\e[0m" || default="\e[1m\e[32m$default\e[0m"
-		echo -e " [$naction]\t${type^^}\t$action ($default)"
+		echo -e " [\e[1m$naction\e[0m]\t${type^^}\t$action ($default)"
 	done | column -t -s $'\t'
 }
 
