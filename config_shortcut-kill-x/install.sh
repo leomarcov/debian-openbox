@@ -1,6 +1,6 @@
 #!/bin/bash
 # ACTION: Enable CTRL+ALT+BACKSPACE shortcut for kill X server
-# INFO: In most systems CTRL+ALT+BACKSPACE  shortcut for kill X server is disabled, but is very useful for go back to login when X is not responding
+# INFO: In most systems CTRL+ALT+BACKSPACE shortcut for kill X server is disabled, but is very useful for go back to login when X is not responding
 # DEFAULT: y
 
 # Check root

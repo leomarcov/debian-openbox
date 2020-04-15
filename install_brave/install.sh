@@ -1,6 +1,7 @@
 #!/bin/bash
 # ACTION: Install Brave browser, add to repositories and set has default browser
 # INFO: Brave Browser is a fast and secure browser based on Google Chrome. Include ads and tracker blocker and other functions
+# INFO: Its recommended config official repositories for weekly updates
 # DEFAULT: y
 
 # Check root

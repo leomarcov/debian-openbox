@@ -1,6 +1,6 @@
 #!/bin/bash
 # ACTION: Config modified .profile file with new path (sbin for all users) and color definitions
-# INFO: Debian use a profle file with PATH has no sbin dirs for regular users
+# INFO: Debian use a profle file wich PATH has no sbin dirs for regular users
 # DEFAULT: y
 
 # Config variables

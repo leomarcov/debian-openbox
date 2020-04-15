@@ -1,5 +1,5 @@
 #!/bin/bash
-# ACTION: Config useful aliases
+# ACTION: Config some useful aliases (for ls, grep and ip commands)
 # INFO: Aliases allow exec commands fast with short name or including complex parameters
 # DEFAULT: y
 

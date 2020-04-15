@@ -1,6 +1,6 @@
 #!/bin/bash
-# ACTION: Disable some unnecessary services for no start in boot time
-# INFO: Some services included in Debian are unnecesary for most usres (like NetworkManager-wait-online.service, ModemManager.service or pppd-dns.service)
+# ACTION: Disable some unnecessary services
+# INFO: Some boot services included in Debian are unnecesary for most usres (like NetworkManager-wait-online.service, ModemManager.service or pppd-dns.service)
 # DEFAULT: y
 
 # Check root

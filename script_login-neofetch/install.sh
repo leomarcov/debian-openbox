@@ -1,6 +1,7 @@
 #!/bin/bash
-# ACTION: Config Linux login in text mode (tty) with neofetch style and config tty locker (physlock)
-# INFO: Login in text is fast, light and cool. This script install a neofetch style tty login and a tty locker (physlock) for reautenticate users when go back from suspend or lock screen
+# ACTION: Config Linux login in text mode (tty) with neofetch style and install tty locker (physlock)
+# INFO: Login in text is faster, light and cool. 
+# INFO This script install a neofetch style tty login and a tty locker (physlock) for reautenticate users when go back from suspend or lock screen
 # DEFAULT: y
 
 # Config variables
