@@ -10,13 +10,17 @@ base_dir="$(dirname "$(readlink -f "$0")")"
 [ "$(id -u)" -ne 0 ] && { echo "Must run as root" 1>&2; exit 1; }
 
 # Install packages
+echo -e "\e[1mInstalling packages...\e[0m"
 find /var/cache/apt/pkgcache.bin -mtime 0 &>/dev/null ||  apt-get update
 apt-get install -y libnotify-bin xfce4-notifyd
 
 # Create theme
+echo -e "\e[1mCopying theme...\e[0m"
 mkdir -p "/usr/share/themes/clear-notify/xfce-notify-4.0/"
 cp -v "$base_dir/clear_xfce-notify-4.0_gtk.css" "/usr/share/themes/clear-notify/xfce-notify-4.0/gtk.css"
 
+# Copy users config
+echo -e "\e[1mCopying configs to all users...\e[0m"
 for d in  /etc/skel/  /home/*/ ; do
     # Skip dirs in /home that not are user home
     [ "$(dirname "$d")" = "/home" ] && ! id "$(basename "$d")" &>/dev/null && continue
