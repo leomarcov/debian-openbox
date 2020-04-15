@@ -9,11 +9,18 @@ base_dir="$(dirname "$(readlink -f "$0")")"
 # Check root
 [ "$(id -u)" -ne 0 ] && { echo "Must run as root" 1>&2; exit 1; }
 
-# Install conky
+# Install packages
+echo -e "\e[1mInstalling packages...\e[0m"
 find /var/cache/apt/pkgcache.bin -mtime 0 &>/dev/null ||  apt-get update
 apt-get install -y conky
 
+echo -e "\e[1mCopying conky-session...\e[0m"
+f="conky-session"
+cp -v "$base_dir/$f" /usr/bin
+chmod a+x "/usr/bin/$f"
+
 # Copy users config
+echo -e "\e[1mCopying configs to all users...\e[0m"
 for d in /etc/skel/  /home/*/ ; do
     [ "$(dirname "$d")" = "/home" ] && ! id "$(basename "$d")" &>/dev/null && continue	# Skip dirs that no are homes
 
@@ -33,7 +40,3 @@ for f in  /etc/skel/.config/conky/basic.conkyrc  /home/*/.config/conky/basic.con
 done
 fi
 
-# Copy conky-session
-f="conky-session"
-cp -v "$base_dir/$f" /usr/bin
-chmod a+x "/usr/bin/$f"
