@@ -9,6 +9,6 @@
 
 # Install free packages
 find /var/cache/apt/pkgcache.bin -mtime 0 &>/dev/null ||  apt-get update  
-apt-get install -y vim vlc zip unzip gmtp mtp-tools mailutils traceroute acl gnupg2 synaptic galternatives yad mlocate evince apt-transport-https
+apt-get install -y vim vlc zip unzip gmtp mtp-tools mailutils traceroute acl gnupg2 synaptic galternatives mlocate evince apt-transport-https
 
   
