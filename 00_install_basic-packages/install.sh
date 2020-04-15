@@ -1,7 +1,7 @@
 #!/bin/bash
 # ACTION: Install some basic packages
 # INFO: Debian netinstall comes with few list of installed packages
-# INFO: Basic packages: vim vlc zip unzip gmtp mtp-tools mailutils traceroute acl gnupg2 synaptic galternatives mlocate evince apt-transport-https
+# INFO: Some basic packages are: vim vlc zip unzip gmtp mtp-tools mailutils traceroute acl gnupg2 synaptic galternatives mlocate evince apt-transport-https
 # DEFAULT: y
 
 # Check root
