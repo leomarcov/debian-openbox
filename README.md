@@ -6,7 +6,7 @@ The main script `install` can exec all scripts or only a select list:
   * `install -l`: list all scripts.
   * `install -d`: install all scripts with default option Y.
   * `install -a 5,8-12`: exec selected scripts.
-  * `install -a grub`: exec all actions with `bash` in description.
+  * `install -a grub`: exec all actions with `grub` in description.
 
 &nbsp; 
 ## Main features
