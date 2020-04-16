@@ -12,10 +12,13 @@ rofi_command="rofi -show drun"
 [ "$(id -u)" -ne 0 ] && { echo "Must run as root" 1>&2; exit 1; }
 
 # Install packages
+echo -e "\e[1mInstalling packages...\e[0m"
 find /var/cache/apt/pkgcache.bin -mtime 0 &>/dev/null ||  apt-get update  
 apt-get install -y rofi
 
+
 # Config rofi theme and run mode for all users
+echo -e "\e[1mSetting configs to all users...\e[0m"
 for d in /etc/skel/  /home/*/; do
     [ "$(dirname "$d")" = "/home" ] && ! id "$(basename "$d")" &>/dev/null && continue	# Skip dirs that no are homes 
 
@@ -42,4 +45,5 @@ for d in /etc/skel/  /home/*/; do
 done
 
 # Copy .desktop power actions
+echo -e "\e[1mCopying .desktop power actions...\e[0m"
 cp -v "${base_dir}/power.desktop"/* /usr/share/applications/

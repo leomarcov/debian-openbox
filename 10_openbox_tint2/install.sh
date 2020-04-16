@@ -10,6 +10,7 @@ base_dir="$(dirname "$(readlink -f "$0")")"
 [ "$(id -u)" -ne 0 ] && { echo "Must run as root" 1>&2; exit 1; }
 
 # Install packages
+echo -e "\e[1mInstalling packages...\e[0m"
 find /var/cache/apt/pkgcache.bin -mtime 0 &>/dev/null ||  apt-get update
 apt-get install -y tint2
 
@@ -19,6 +20,7 @@ apt-get install -y tint2
 cat /proc/cpuinfo | grep -i hypervisor &>/dev/null && virtualmachine="true"
 
 # Copy users config
+echo -e "\e[1mSetting configs to all users...\e[0m"
 for d in /etc/skel/  /home/*/; do
     # Skip dirs in /home that not are user home
     [ "$(dirname "$d")" = "/home" ] && ! id "$(basename "$d")" &>/dev/null && continue
@@ -39,6 +41,7 @@ for d in /etc/skel/  /home/*/; do
 done
 
 # Copy tint2-session
+echo -e "\e[1mCopying tint2-session..\e[0m"
 f="tint2-session"
 cp -v "$base_dir/$f" /usr/bin
 chmod a+x "/usr/bin/$f"

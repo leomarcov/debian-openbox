@@ -15,7 +15,9 @@ for i in $(cat "$base_dir/grub.conf"  | cut -f1 -d=); do
 done
 
 # Add lines
+echo -e "\e[1mSetting GRUB config...\e[0m"
 cat "$base_dir/grub.conf" >> /etc/default/grub
 
 # Update grub
+echo -e "\e[1mUpdating GRUB..\e[0m"
 update-grub

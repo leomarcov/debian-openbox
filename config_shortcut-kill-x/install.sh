@@ -8,6 +8,7 @@
 
 grep "terminate:ctrl_alt_bksp" /etc/default/keyboard &> /dev/null && exit
 
+echo -e "\e[1mSetting /etc/default/keyboard config...\e[0m"
 if grep "XKBOPTIONS" /etc/default/keyboard &>/dev/null; then
   sed -i "s/XKBOPTIONS=\"/XKBOPTIONS=\"terminate:ctrl_alt_bksp,/" /etc/default/keyboard  
 else

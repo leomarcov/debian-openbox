@@ -17,6 +17,7 @@ if [ ! "$pass" ]; then
 fi
 
 # Config admin user and password
+echo -e "\e[1mSetting GRUB config...\e[0m"
 pbkdf2_pass="$(echo -e "$pass\n$pass"| grub-mkpasswd-pbkdf2  | grep "grub.pbkdf2.*" -o)"
 sed -i "/${comment_mark}/Id" /etc/grub.d/40_custom
 echo 'set superusers="admin"    '"$comment_mark"'
@@ -28,4 +29,5 @@ for f in /etc/grub.d/*; do
 	sed -i 's/\bmenuentry\b/menuentry --unrestricted /g' "$f" 
 done
 
+echo -e "\e[1mUpdating GRUB...\e[0m"
 update-grub

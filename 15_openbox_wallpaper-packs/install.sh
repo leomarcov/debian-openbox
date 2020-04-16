@@ -11,6 +11,7 @@ wp_base="/usr/share/backgrounds/"
 [ "$(id -u)" -ne 0 ] && { echo "Must run as root" 1>&2; exit 1; }
 
 # Copy wallpapers folderes
+echo -e "\e[1mCopying wallpapers directories...\e[0m"
 [ ! -d "$wp_base" ] && mkdir -p "$wp_base"
 cp -rv "$base_dir/wallpapers"* "$wp_base"
 
@@ -26,10 +27,13 @@ fi
 
 # Install nitrogen
 if ! which nitrogen &>/dev/null; then
+	echo -e "\e[1mInstalling packages...\e[0m"
 	find /var/cache/apt/pkgcache.bin -mtime 0 &>/dev/null ||  apt-get update
 	apt-get -y install nitrogen
 fi
 
+# Copy users config
+echo -e "\e[1mSetting configs to all users...\e[0m"
 for d in  /etc/skel/  /home/*/; do
 	[ "$(dirname "$d")" = "/home" ] && ! id "$(basename "$d")" &>/dev/null && continue	# Skip dirs that no are homes
 	
