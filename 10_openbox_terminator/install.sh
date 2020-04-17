@@ -1,5 +1,5 @@
 #!/bin/bash
-# ACTION: Install Terminator terminal and come style configs
+# ACTION: Install Terminator terminal and configs
 # INFO: Openbox dont include a virtual terminal tool
 # DEFAULT: y
 
