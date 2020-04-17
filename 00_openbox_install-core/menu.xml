@@ -356,7 +356,14 @@
 		
         <menu id="info" label="System info" icon="/usr/share/icons/openbox-menu/stats.png">
             <separator label="SYSTEM INFO TOOLS" />
-
+			
+			<item label="System Info Panel">
+				<action name="Execute">
+					<command>
+						x-terminal-emulator -m -e bashtop
+					</command>
+				</action>
+			</item>
 			<item label="Memory Usage">
 				<action name="Execute">
 					<command>
