@@ -52,7 +52,7 @@ function update () {
 function interactive_upgrade() {
 	update
 	echo
-	 [ ! -s "$updates_file" ] && exit 0
+	[ ! -s "$updates_file" ] && exit 0
 
 	read -p "Press enter to continue upgrade..."
 	echo
