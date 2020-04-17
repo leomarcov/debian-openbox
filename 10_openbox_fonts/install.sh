@@ -1,6 +1,6 @@
 #!/bin/bash
 # ACTION: Install some popular fonts
-# INFO: Popuar fonts: Liberation, Noto, Inconsolata, Droid Sans, Open Sans, Roboto, Microsoft fonts, Oswald, Overpass, Profont, and others.
+# INFO: Popular fonts: Liberation, Noto, Inconsolata, Droid Sans, Open Sans, Roboto, Microsoft fonts, Oswald, Overpass, Profont, and others.
 # DEFAULT: y
 
 # Config variables
