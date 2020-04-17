@@ -71,3 +71,8 @@ for d in /etc/skel /home/*/; do
 	f="fonts.conf"
 	cp -v "$base_dir/$f" "$d" && chown -R $(stat "$d" -c %u:%g) "$d/$f"	
 done
+
+
+# Set as default
+echo -e "\e[1mSetting as default alternative...\e[0m"
+update-alternatives --set x-session-manager /usr/bin/openbox-session
