@@ -28,8 +28,11 @@ d="help"
 cp -rv "$base_dir/$d" "/usr/share/doc/openbox/"
 
 # Install system info dependences
-wget -P /usr/bin "https://raw.githubusercontent.com/pixelb/ps_mem/master/ps_mem.py" && chmod +x /usr/bin/ps_mem.py
+wget -P /usr/bin "https://raw.githubusercontent.com/pixelb/ps_mem/master/ps_mem.py" && chmod a+x /usr/bin/ps_mem.py
 apt-get install -y s-tui dfc htop
+
+# Install bashtop
+wget -P /usr/bin "https://raw.githubusercontent.com/aristocratos/bashtop/master/bashtop" && chmod a+x /usr/bin/bashtop
 
 # Copy cups-session
 cp -v ${base_dir}/cups-session /usr/bin
