@@ -52,7 +52,14 @@
         <menu id="preferences" label="Preferences" icon="/usr/share/icons/openbox-menu/settings.png">
         	<separator label="GRAPHICAL PREFERENCES"/>
 
-            <menu id="obConfig" label="Openbox">	
+            <menu id="obConfig" label="Desktop" icon="/usr/share/icons/openbox-menu/openbox.png">	
+	            <item label="Openbox Preferences" icon="/usr/share/icons/openbox-menu/openbox.png">
+	                <action name="Execute">
+	                    <command>
+	                        obconf
+	                    </command>
+	                </action>
+	            </item>	
                 <item label="Edit Openbox config file rc.xml" icon="/usr/share/icons/openbox-menu/text-editor.png">
                     <action name="Execute">
                         <command>
@@ -76,14 +83,7 @@
                 </item>
             </menu>
 
-        	<menu id="obmenu" label="Menu">
-                <item label="GUI Menu Editor" icon="/usr/share/icons/openbox-menu/menu.png">
-                    <action name="Execute">
-                        <command>
-                            obmenu
-                        </command>
-                    </action>
-                </item>	        		
+        	<menu id="obmenu" label="Menu" icon="/usr/share/icons/openbox-menu/menu.png">
                 <item label="Edit menu.xml" icon="/usr/share/icons/openbox-menu/text-editor.png">
                     <action name="Execute">
                         <command>
@@ -91,6 +91,21 @@
                         </command>
                     </action>
                 </item>
+                <item label="GUI Menu Editor" icon="/usr/share/icons/openbox-menu/menu.png">
+                    <action name="Execute">
+                        <command>
+                            obmenu
+                        </command>
+                    </action>
+                </item>	        		
+                <item label="Hide/show icons in menu" icon="/usr/share/icons/openbox-menu/menu-icons.png">
+                    <action name="Execute">
+                        <command>
+							bash -c 'if grep -q icon_hide=\" ~/.config/openbox/menu.xml; then sed -i "s/icon_hide=\"/icon=\"/g" ~/.config/openbox/menu.xml; else sed -i "s/icon=\"/icon_hide=\"/g" ~/.config/openbox/menu.xml; fi'
+                        </command>
+                    </action>
+                    <action name="Reconfigure"/>
+                </item>        
                 <item label="How to configure menu.xml?" icon="/usr/share/icons/openbox-menu/help2.png">
                     <action name="Execute">
                         <command>
@@ -104,7 +119,7 @@
                 </item>
         	</menu>
 
-        	<menu id="compositor" label="Compositor">
+        	<menu id="compositor" label="Compositor" icon="/usr/share/icons/openbox-menu/compositor.png">
 	            <item label="Edit Compositor Settings" icon="/usr/share/icons/openbox-menu/text-editor.png">
         			<action name="Execute">
 	                    <command>
@@ -129,7 +144,7 @@
                </item>		
 			</menu>			
 
-        	<menu id="tint2" label="Tint2 Taskbar">
+        	<menu id="tint2" label="Taskbar" icon="/usr/share/icons/openbox-menu/tint2.png">
 	            <item label="GUI Tint2 Config Tool" icon="/usr/share/icons/openbox-menu/tint2.png">
         			<action name="Execute">
 	                    <command>
@@ -168,7 +183,7 @@
                </item>				
         	</menu>
 
-        	<menu id="conky" label="Conky Panels">
+        	<menu id="conky" label="Conky Panels" icon="/usr/share/icons/openbox-menu/panel.png">
         		<item label="Open Your Conkys Folder" icon="/usr/share/icons/openbox-menu/file-manager.png">
         			<action name="Execute">
 	                    <command>
@@ -200,7 +215,7 @@
                </item>				
         	</menu>	
         	
-        	<menu id="autostart" label="Autostarted programs">		
+        	<menu id="autostart" label="Autostarted programs" icon="/usr/share/icons/openbox-menu/startup.png">		
 	            <item label="Show XDG autostarted programs" icon="/usr/share/icons/openbox-menu/terminal.png">
 	                <action name="Execute">
 	                    <command>
@@ -217,7 +232,7 @@
 	            </item>
         	</menu>
 
-        	<menu id="shortcuts" label="Keyboard and mouse shortcuts">		   		
+        	<menu id="shortcuts" label="Keyboard and mouse shortcuts" icon="/usr/share/icons/openbox-menu/shortcut.png">		   		
 	            <item label="Edit Openbox rc.xml" icon="/usr/share/icons/openbox-menu/text-editor.png">
 	                <action name="Execute">
 	                    <command>
@@ -237,41 +252,34 @@
                     <action name="Reconfigure"/>
                 </item>                          
         	</menu>
-
-            <item label="Openbox Preferences">
-                <action name="Execute">
-                    <command>
-                        obconf
-                    </command>
-                </action>
-            </item>		            
-            <item label="GTK Appearance">
+	            
+            <item label="GTK Appearance" icon="/usr/share/icons/openbox-menu/themes.png">>
                 <action name="Execute">
                     <command>
                         lxappearance
                     </command>
                 </action>
             </item>
-            <item label="Font Configuration">
+            <item label="Font Configuration" icon="/usr/share/icons/openbox-menu/fonts.png">
                 <action name="Execute">
                     <command>
                         x-text-editor ~/.config/fontconfig/fonts.conf
                     </command>
                 </action>
             </item>
-            <item label="Wallpaper">
+            <item label="Wallpaper" icon="/usr/share/icons/openbox-menu/wallpaper.png">
                 <action name="Execute">
                     <command>
                         nitrogen
                     </command>
                 </action>
             </item>
-            <item label="Notifications">
+            <item label="Notifications" icon="/usr/share/icons/openbox-menu/notification.png">
                 <action name="Execute">
                     <command>xfce4-notifyd-config</command>
                 </action>
             </item>
-			<item label="Display">
+			<item label="Display" icon="/usr/share/icons/openbox-menu/display.png">
 				<action name="Execute">
 					<command>
 						arandr
@@ -281,63 +289,63 @@
 
         	<separator label="SYSTEM PREFERENCES"/>
 
-            <item label="Synaptic Package Manager">
+            <item label="Synaptic Package Manager" icon="/usr/share/icons/openbox-menu/package.png">
                 <action name="Execute">
                     <command>
                         synaptic-pkexec
                     </command>
                 </action>
             </item>
-			<item label="Check Pending Updates">
+			<item label="Check Pending Updates" icon="/usr/share/icons/openbox-menu/updates.png">
 				<action name="Execute">
 					<command>
 						x-terminal-emulator -m -e bash -c "update-notification -i; read"
 					</command>
 				</action>
 			</item>	            
-            <item label="Alternatives">
+            <item label="Alternatives" icon="/usr/share/icons/openbox-menu/link.png">
                 <action name="Execute">
                     <command>
                         galternatives
                     </command>
                 </action>
             </item>
-            <item label="Power Management">
+            <item label="Power Management" icon="/usr/share/icons/openbox-menu/power.png">
                 <action name="Execute">
                     <command>
                         xfce4-power-manager-settings
                     </command>
                 </action>
             </item>
-			<item label="Network Configuration">
+			<item label="Network Configuration" icon="/usr/share/icons/openbox-menu/network.png">
 				<action name="Execute">
 					<command>
 						nm-connection-editor
 					</command>
 				</action>
 			</item>
-			<item label="Preferred Applications">
+			<item label="Preferred Applications" icon="/usr/share/icons/openbox-menu/star.png">
 				<action name="Execute">
 					<command>
 						exo-preferred-applications
 					</command>
 				</action>
 			</item>
-			<item label="Removable Drives and Media">
+			<item label="Removable Drives and Media" icon="/usr/share/icons/openbox-menu/usb.png">
 				<action name="Execute">
 					<command>
 						thunar-volman-settings
 					</command>
 				</action>
 			</item>
-			<item label="GParted Partition Manager">
+			<item label="GParted Partition Manager" icon="/usr/share/icons/openbox-menu/disk.png">
 				<action name="Execute">
 					<command>
 						gparted
 					</command>
 				</action>
 			</item>
-            <item label="Printers">
+            <item label="Printers" icon="/usr/share/icons/openbox-menu/printer.png">
                 <action name="Execute">
                     <command>
                         cups-session
