@@ -108,15 +108,15 @@ $ ./install -l
 &nbsp; 
 ## Customize
 The script can be easily customized. Each `install.sh` script placed in a subdirectory are automatillacy recognized by `install`.
-  * For remove action simply delete the action directory.
-  * For add action simply add new folder and place inside `install.sh` script and dependences. `install.sh` script must have this header:
+  * For **remove action** simply delete the action directory.
+  * For **add action** simply add new folder and place inside `install.sh` script and dependences. `install.sh` script must have this header:
   ```
   #!/bin/bash
   # ACTION: Description of the action
   # INFO: Optional additional info
   # DEFAULT: y
   
-  scripts commands
+  scripts commands to do action
   
   ```
 
