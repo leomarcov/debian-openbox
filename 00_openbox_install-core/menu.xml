@@ -9,7 +9,7 @@
     <menu id="root-menu" label="Openbox 3">
 		<item label="Run Program" icon="/usr/share/icons/openbox-menu/search.png">
 			<action name="Execute">
-				<command>rofi -show drun</command>
+				<command>rofi -show drun</command>f
 			</action>
 		</item> 
 
@@ -321,13 +321,6 @@
 				<action name="Execute">
 					<command>
 						nm-connection-editor
-					</command>
-				</action>
-			</item>
-			<item label="Preferred Applications" icon="/usr/share/icons/openbox-menu/star.png">
-				<action name="Execute">
-					<command>
-						exo-preferred-applications
 					</command>
 				</action>
 			</item>
