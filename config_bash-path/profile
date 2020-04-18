@@ -54,5 +54,3 @@ if [ "$TERM" = "linux" ]; then
 #   clear # removes artefacts but also removes /etc/{issue,motd}
 fi
 
-
-QUOTING_STYLE=literal		# Disable ls quoting style
