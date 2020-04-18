@@ -13,4 +13,4 @@ Unzip `numix-paper-icon-theme.tgz` in `/usr/share/icons/` or `~/.icons`.
 Original Numix and Paper themes should be installed in `../Numix` and `../Paper`.   You can install them from packages `numix-icon-theme` and `paper-icon-theme`.  
 `generate-numix-paper-icon-theme.sh` can be called for regenerate links, but not is necessary.
 
-![numix-paper-icon-theme](https://user-images.githubusercontent.com/32820131/40285580-32b6e22c-5c9e-11e8-8567-01f56d1c12db.png)
+![numix-paper-icon-theme](https://user-images.githubusercontent.com/32820131/79639311-6e593a00-818b-11ea-9334-e97b0ccff908.png)
