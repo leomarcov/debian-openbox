@@ -8,9 +8,14 @@ if [ "$1" = "-I" ]; then
     # INSTALL CUPS
     if ! dpkg -l cups &>/dev/null | grep -q "^ii"; then
         # Install package
-        echo "CUPS is not installed"
+		clear
+		echo
+		echo "  INSTALL PRINTING SUPPORT"
+		echo "  ------------------------"
+        echo "  CUPS Printing System is not installed"
         while true; do
-            read -p "Install cups? (Y/n) " q;
+            read -p "  Install CUPS? (Y/n) " q;
+
             [ "${q,,}" = "n" ] && exit
             ([ ! "$q" ] || [ "${q,,}" = "y" ]) && break
         done
@@ -18,8 +23,13 @@ if [ "$1" = "-I" ]; then
         sudo apt-get install -y cups || exit 1
 
         # Adduser to lpadmin    
-        echo; echo "===================================================================="
-        read -p "Select users to allow admin printers (space separated): " ul
+		clear
+		echo	
+		echo "  SELECT USERS FOR ADMIN PRINTERS"
+		echo "  -------------------------------"
+        echo "  Users must allow to lpadmin group in order to admin printers"
+		echo
+        read -p "  Users (space separated): " ul
         for u in $ul; do
             sudo adduser $u lpadmin
         done
