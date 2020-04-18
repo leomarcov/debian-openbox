@@ -404,7 +404,7 @@
         <item label="Shortcuts keys" icon="/usr/share/icons/openbox-menu/shortcut.png">
             <action name="Execute">
                 <command>
-                    yad --text-info --button="Close" --borders=20 --title="Shortcuts and mouse bindings" --width=700 --height=700 --fontname="Monospace" --filename="/usr/share/doc/openbox/help/shortcuts.txt"
+                    yad --text-info --window-icon=keyboard --button="Close" --borders=20 --title="Shortcuts and mouse bindings" --width=700 --height=700 --fontname="Monospace" --filename="/usr/share/doc/openbox/help/shortcuts.txt"
                 </command>
             </action>
         </item>		
