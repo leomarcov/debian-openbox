@@ -29,7 +29,7 @@ The main script `install` can exec all scripts or only a select list:
 
 &nbsp; 
 ## Install
-  * Install Debian 10 netinstall (better don't install `Debian desktop environment`).
+  * Install Debian 10 netinstall (better don't install `Debian desktop environment`, install only `standard system utilities`).
   * Clone or download this project: `git clone https://github.com/leomarcov/debian-openbox`
   * Exec `install` script and select scripts you want to install.
   
