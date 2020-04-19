@@ -2,6 +2,7 @@
 ## ====================
 ## When you login to Openbox this autostart script will be executed to set-up your environment 
 ## and launch any applications you want to run at startup.
+## This script is executed by default shell (sh), so 'bashisms' are not supported.
 ##
 ## Note: some programs, such as 'nm-applet' are run via XDG autostart.
 ## To see a list of any XDG autostarted programs run:
