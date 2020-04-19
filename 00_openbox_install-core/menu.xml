@@ -9,11 +9,11 @@
     <menu id="root-menu" label="Openbox 3">
 		<item label="Run Program" icon="/usr/share/icons/openbox-menu/search.png">
 			<action name="Execute">
-				<command>rofi -show drun</command>f
+				<command>rofi -show drun</command>
 			</action>
 		</item> 
 
-		<separator/>
+		<separator/> <item label="VirtualBox" icon="/usr/share/icons/openbox-menu/virtualbox.png"><action name="Execute"><command>virtualbox</command></action></item> 
 		
 		<item label="Terminal" icon="/usr/share/icons/openbox-menu/terminal.png">
             <action name="Execute">
@@ -317,6 +317,13 @@
                     </command>
                 </action>
             </item>
+            <item label="Bluetooth" icon="/home/nar/Descargas/bluetooth.png"> 		<!--DEBIAN-OPENBOX-bluetooth-->
+                <action name="Execute"> 											<!--DEBIAN-OPENBOX-bluetooth-->
+                    <command> 														<!--DEBIAN-OPENBOX-bluetooth-->
+                        bt-session 													<!--DEBIAN-OPENBOX-bluetooth-->
+                    </command> 														<!--DEBIAN-OPENBOX-bluetooth-->
+                </action> 															<!--DEBIAN-OPENBOX-bluetooth-->						
+            </item> 																<!--DEBIAN-OPENBOX-bluetooth-->
 			<item label="Network Configuration" icon="/usr/share/icons/openbox-menu/network.png">
 				<action name="Execute">
 					<command>
@@ -349,7 +356,7 @@
 		
         <menu id="info" label="System info" icon="/usr/share/icons/openbox-menu/stats.png">
             <separator label="SYSTEM INFO TOOLS" />
-			
+
 			<item label="System Info Panel">
 				<action name="Execute">
 					<command>
@@ -411,11 +418,5 @@
                 </command>
             </action>
         </item>
-<!-- comment out or remove the preceding "Exit" item,
-and uncomment the following "exit-menu"
-for one-click exit options. -->
-<!--
-        <menu id="exit-menu"></menu>
--->
     </menu>
 </openbox_menu>
