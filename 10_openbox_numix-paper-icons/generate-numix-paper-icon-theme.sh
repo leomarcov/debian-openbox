@@ -6,6 +6,7 @@
 # AUTHOR: Leonardo Marco
 # VERSION: 1.0
 # CREATED: 21.05.2018
+# MODIFIED: 20.04.219
 #===================================================================================
 
 # CHECKS
@@ -15,7 +16,6 @@ install_dir="$install_dir/Numix-Paper/"
 
 numix_dir="$(dirname "$install_dir")/Numix"
 paper_dir="$(dirname "$install_dir")/Paper"
-paperbunsen_dir="$(dirname "$install_dir")/Paper-Bunsen"
 
 if [ ! -d "$numix_dir" ]; then
 	echo "Numix icon theme sould be installed in $numix_dir, but not found"
@@ -53,13 +53,9 @@ if [ -d "$paper_dir" ]; then
 	for f in $(find . -name "terminator.*"); do
 		ln -svf "$(basename $(echo "$f"  | sed 's/terminator/terminal/g'))" "$f" 
 	done	
-fi
-
-if [ -d "$paperbunsen_dir" ]; then
-	echo -e "\n\nGENERATING PAPER-BUNSEN LINKS..." 
-	for f in $(find ../Paper-Bunsen -mindepth 2 -type f); do
-		echo $f | grep xfpm-ac-adapter.png &> /dev/null && continue
-		ln -svf "../../$f" $(echo "$f" | sed 's/..\/Paper-Bunsen\///g' | sed 's/^[0-9]\+x//g') 2> /dev/null
+	# Add xfce4-power-manager-settings icon
+	for f in $(ls ../Paper/*/categories/xfpm-ac-adapter.png); do
+		ln -svf "../../$f" $(echo "$f" | sed 's/..\/Paper\///g' | sed 's/^[0-9]\+x//g' | sed 's/categories/apps/g') 2> /dev/null
 	done
 fi
 
