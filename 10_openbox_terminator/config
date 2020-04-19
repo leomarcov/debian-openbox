@@ -18,7 +18,7 @@
     background_type = transparent
     cursor_color = "#6ab3b3"
     cursor_color_fg = False
-    font = Monospace 11
+    font = DejaVu Sans Mono 11
     foreground_color = "#ecfefe"
     palette = "#2e3436:#b44444:#5ecb8c:#d9c964:#3d6aac:#9a64d9:#64d9d5:#d3d7cf:#babdb6:#ef2929:#73d216:#d9cf8f:#729fcf:#b08fd9:#61e3e3:#d3d7cf"
     scrollback_infinite = True
