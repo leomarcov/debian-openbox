@@ -35,7 +35,9 @@ apt-get install -y s-tui dfc htop
 # Copy cups-session
 cp -v ${base_dir}/cups-session /usr/bin
 chmod a+x /usr/bin/cups-session
-
+# Copy bt-session
+cp -v ${base_dir}/bt-session /usr/bin
+chmod a+x /usr/bin/bt-session
 
 # Copy users config
 echo -e "\e[1mSetting configs to all users...\e[0m"
@@ -65,6 +67,8 @@ for d in /etc/skel /home/*/; do
 	# Copy openbox menu file
 	f="menu.xml"
 	cp -v "$base_dir/$f" "$d" && chown -R $(stat "$d" -c %u:%g) "$d/$f"	
+	# Delete bluetooth item from menu if no BT present
+	dmesg | grep -qi bluetooth || sed -i '/DEBIAN-OPENBOX-bluetooth/Id' "$d/$f"	
 	
 	# Copy fonts.conf
 	d="$d2/fontconfig/";  [ ! -d "$d" ] && mkdir -v "$d" && chown -R $(stat "$(dirname "$d")" -c %u:%g) "$d"
