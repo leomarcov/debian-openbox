@@ -53,7 +53,7 @@ if [ -d "$paper_dir" ]; then
 	for f in $(find . -name "terminator.*"); do
 		ln -svf "$(basename $(echo "$f"  | sed 's/terminator/terminal/g'))" "$f" 
 	done	
-	# Add xfce4-power-manager-settings icon
+	# Add xfce4-power-manager-settings icon from categories directory
 	for f in $(ls ../Paper/*/categories/xfpm-ac-adapter.png); do
 		ln -svf "../../$f" $(echo "$f" | sed 's/..\/Paper\///g' | sed 's/^[0-9]\+x//g' | sed 's/categories/apps/g') 2> /dev/null
 	done
