@@ -45,7 +45,7 @@ for d in $(find ../Numix/ -type d); do
 done
 
 if [ -d "$paper_dir" ]; then
-	echo -e "\nºnGENERATING PAPER LINKS..."
+	echo -e "\n\nGENERATING PAPER LINKS..."
 	for f in $(ls ../Paper/*/apps/* ../Paper/*/panel/*); do
 		ln -svf "../../$f" $(echo "$f" | sed 's/..\/Paper\///g' | sed 's/^[0-9]\+x//g') 2> /dev/null
 	done
