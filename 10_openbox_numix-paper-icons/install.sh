@@ -12,11 +12,12 @@ icon_default="Numix-Paper"
 [ "$(id -u)" -ne 0 ] && { echo "Must run as root" 1>&2; exit 1; }
 
 # Install packages
-echo -e "\e[1mInstalling packages...\e[0m"
+echo -e "\e[1mInstalling Numix packages...\e[0m"
 find /var/cache/apt/pkgcache.bin -mtime 0 &>/dev/null ||  apt-get update  
 apt-get install -y numix-icon-theme
 
 # Download Paper icon theme and install
+echo -e "\e[1mDownloading Paper packages...\e[0m"
 t=$(mktemp -u --suffix=".deb")
 if wget -O "$t" "$paper_url"; then
 	yes | dpkg -i "$t"
@@ -30,13 +31,12 @@ if [ ! -d /usr/share/icons/Numix/ ]; then
 	echo "$(basename $0) ERROR: Numix icon theme is not installed"
 	exit 1
 fi
-
 if [ ! -d /usr/share/icons/Paper/ ]; then
 	echo "$(basename $0) ERROR: Paper icon theme is not installed"
 	exit 1
 fi
 
-echo -e "\e[1mInstalling icon pack...\e[0m"
+echo -e "\e[1mInstalling Numix-Paper icon pack...\e[0m"
 tar -xzvf "$base_dir"/numix-paper-icon-theme.tgz -C /usr/share/icons/	
 
 # Copy users config
