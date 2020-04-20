@@ -30,7 +30,7 @@ fi
 
 echo -e "\nGENERATING $install_dir dirs"
 [ ! -d "$install_dir" ] && mkdir -v "$install_dir"
-[ ! -w /"$install_dir" ] && echo "Can't create $install_dir directory" && exit 1
+[ ! -w "$install_dir" ] && echo "Can't create $install_dir directory" && exit 1
 cp "$(readlink -f "$0")" "$install_dir"
 
 cd "$install_dir"
