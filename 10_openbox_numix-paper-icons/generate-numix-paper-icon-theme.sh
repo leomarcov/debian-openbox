@@ -39,7 +39,7 @@ cp "$numix_dir/index.theme" "$install_dir"
 sed -i "s/^Name *= *.*/Name=Numix-Paper/" "$install_dir/index.theme"
 sed -i "s/^Inherits *= *.*/Inherits=Numix/" "$install_dir/index.theme"
 sed -i "s/^Comment *= *.*/Comment=Theme mix Numix-Paper for BunsenLabs/" "$install_dir/index.theme"
-for d in $(find ../Numix/ -type d); do
+for d in $(find ../Numix/ -mindepth 1  -type d); do
 	[ "$d" == "../Numix" ] && continue
 	mkdir -v $(echo "$d" | sed 's/..\/Numix\///g' ) 
 done
