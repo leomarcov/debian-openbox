@@ -22,7 +22,7 @@ chmod +x "/usr/bin/$f"
 
 # Copy users config
 echo -e "\e[1mSetting configs to all users...\e[0m"
-for d in /etc/skel/  /home/*/; do
+for d in /etc/skel/  /home/*/ /root; do
     [ "$(dirname "$d")" = "/home" ] && ! id "$(basename "$d")" &>/dev/null && continue	# Skip dirs that no are homes
 
 	# Create config folders if no exists
