@@ -21,7 +21,7 @@ cat /proc/cpuinfo | grep -i hypervisor &>/dev/null && virtualmachine="true"
 
 # Copy users config
 echo -e "\e[1mSetting configs to all users...\e[0m"
-for d in /etc/skel/  /home/*/; do
+for d in /etc/skel/  /home/*/ /root; do
     # Skip dirs in /home that not are user home
     [ "$(dirname "$d")" = "/home" ] && ! id "$(basename "$d")" &>/dev/null && continue
 	
