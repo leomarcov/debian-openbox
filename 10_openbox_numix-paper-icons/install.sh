@@ -14,12 +14,19 @@ icon_default="Numix-Paper"
 echo -e "\e[1mInstalling packages...\e[0m"
 find /var/cache/apt/pkgcache.bin -mtime 0 &>/dev/null ||  apt-get update  
 apt-get install -y numix-icon-theme
-(cat "$base_dir"/paper-icon-theme*.aa; cat "$base_dir"/paper-icon-theme*.ab) > /tmp/paper-icon-theme.deb
-dpkg -i /tmp/paper-icon-theme.deb; rm /tmp/paper-icon-theme.deb
-dpkg -i "$base_dir"/bunsen-paper-icon-theme*.deb
+
+# Download Paper icon theme and install
+url="https://snwh.org/paper/download.php?owner=snwh&ppa=ppa&pkg=paper-icon-theme,18.04"
+t=$(mktemp -u --suffix=".deb")
+wget -O "$t" "$url" && yes | dpkg -i "$t"
 
 if [ ! -d /usr/share/icons/Numix/ ]; then
-	echo "$(basename $0) ERROR: Numix theme is not installed"
+	echo "$(basename $0) ERROR: Numix icon theme is not installed"
+	exit 1
+fi
+
+if [ ! -d /usr/share/icons/Paper/ ]; then
+	echo "$(basename $0) ERROR: Paper icon theme is not installed"
 	exit 1
 fi
 
