@@ -21,10 +21,11 @@ echo -e "\e[1mDownloading Paper packages...\e[0m"
 t=$(mktemp -u --suffix=".deb")
 if wget -O "$t" "$paper_url"; then
 	yes | dpkg -i "$t"
+	rm -v "$t"
 else
-		echo "Error downloading Paper icon theme" 1>&2
-		echo "Check paper_url variable in $(readlink -f "$0") and set Paper icon theme URL"
-		exit 1
+	echo "Error downloading Paper icon theme" 1>&2
+	echo "Check paper_url variable in $(readlink -f "$0") and set Paper icon theme URL"
+	exit 1
 fi
 
 if [ ! -d /usr/share/icons/Numix/ ]; then
