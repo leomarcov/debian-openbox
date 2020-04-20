@@ -4,6 +4,7 @@
 # DEFAULT: y
 
 # Config variables
+paper_url="https://snwh.org/paper/download.php?owner=snwh&ppa=ppa&pkg=paper-icon-theme,18.04"
 base_dir="$(dirname "$(readlink -f "$0")")"
 icon_default="Numix-Paper"
 
@@ -16,9 +17,14 @@ find /var/cache/apt/pkgcache.bin -mtime 0 &>/dev/null ||  apt-get update
 apt-get install -y numix-icon-theme
 
 # Download Paper icon theme and install
-url="https://snwh.org/paper/download.php?owner=snwh&ppa=ppa&pkg=paper-icon-theme,18.04"
 t=$(mktemp -u --suffix=".deb")
-wget -O "$t" "$url" && yes | dpkg -i "$t"
+if wget -O "$t" "$paper_url"; then
+	yes | dpkg -i "$t"
+else
+		echo "Error downloading Paper icon theme" 1>&2
+		echo "Check paper_url variable in $(readlink -f "$0") and set Paper icon theme URL"
+		exit 1
+fi
 
 if [ ! -d /usr/share/icons/Numix/ ]; then
 	echo "$(basename $0) ERROR: Numix icon theme is not installed"
