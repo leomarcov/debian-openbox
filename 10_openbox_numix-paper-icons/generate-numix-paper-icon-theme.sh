@@ -56,7 +56,7 @@ if [ -d "$paper_dir" ]; then
 	# Add xfce4-power-manager-settings icon from categories directory
 	for f in $(ls ../Paper/*/categories/xfpm-ac-adapter.png); do
 		ln -svf "../../$f" $(echo "$f" | sed 's/..\/Paper\///g' | sed 's/^[0-9]\+x//g' | sed 's/categories/apps/g') 2> /dev/null
-		ln -svf "xfpm-ac-adapter.png" $(echo "$f" | sed 's/..\/Paper\///g' | sed 's/^[0-9]\+x//g' | sed 's/categories/apps/g' | sed 's/xfpm-ac-adapter-png/xfce4-power-manager-settings.png/g')
+		ln -svf "xfpm-ac-adapter.png" $(echo "$f" | sed 's/..\/Paper\///g' | sed 's/^[0-9]\+x//g' | sed 's/categories/apps/g' | sed 's/xfpm-ac-adapter.png/xfce4-power-manager-settings.png/g')
 	done
 fi
 
