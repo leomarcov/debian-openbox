@@ -37,6 +37,8 @@ if [ ! -d /usr/share/icons/Paper/ ]; then
 fi
 
 echo -e "\e[1mInstalling Numix-Paper icon pack...\e[0m"
+d="/usr/share/icons/$icon_default"
+[ -d "$d" ] && rm -rf "$d"
 tar -xzvf "$base_dir"/numix-paper-icon-theme.tgz -C /usr/share/icons/	
 
 # Copy users config
