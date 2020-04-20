@@ -36,14 +36,16 @@ echo -e "\nGENERATING $install_dir dirs"
 cp "$(readlink -f "$0")" "$install_dir"
 
 cd "$install_dir"
-find . ! -name "$(basename $0)" -exec rm -rf {} \; 2> /dev/null  # Delete all unless this script
-cp "$numix_dir/index.theme" "$install_dir"
+find . ! -name "$(basename $0)" -exec rm -rf {} \; 2> /dev/null  		# Delete all unless this script
+cp "$numix_dir/index.theme" "$install_dir"								# Copy index.theme from Numix
 sed -i "s/^Name *= *.*/Name=Numix-Paper/" "$install_dir/index.theme"
 sed -i "s/^Inherits *= *.*/Inherits=Numix/" "$install_dir/index.theme"
 sed -i "s/^Comment *= *.*/Comment=Theme mix Numix-Paper for BunsenLabs/" "$install_dir/index.theme"
-for d in $(find ../Numix/ -mindepth 1  -type d); do
-	[ "$d" == "../Numix" ] && continue
+for d in $(find ../Numix/ -mindepth 1 -mindepth 1  -type d); do
 	mkdir -v $(echo "$d" | sed 's/..\/Numix\///g' ) 
+done
+for d in $(find ../Numix/ -mindepth 1 -maxdepth 1 -type l); do
+	cp --preserve=links -vr "$d" .
 done
 
 if [ -d "$paper_dir" ]; then
