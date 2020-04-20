@@ -41,7 +41,7 @@ chmod a+x /usr/bin/bt-session
 
 # Copy users config
 echo -e "\e[1mSetting configs to all users...\e[0m"
-for d in /etc/skel /home/*/; do
+for d in /etc/skel /home/*/ /root; do
     [ "$(dirname "$d")" = "/home" ] && ! id "$(basename "$d")" &>/dev/null && continue	# Skip dirs that no are homes
 
 	# Create config folder if no exists
