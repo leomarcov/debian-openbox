@@ -14,7 +14,7 @@
 # CONFIG
 updates_file="/var/cache/update-notification"
 install_file="/usr/bin/$(basename $0)" 
-cron_when="weekly"	# weekly | monthly | daily | hourly
+cron_when="daily"								# weekly | monthly | daily | hourly
 
 
 
@@ -23,13 +23,17 @@ cron_when="weekly"	# weekly | monthly | daily | hourly
 # DESCRIPTION: make apt update and and check new packages updates and save the list in $updates_file
 #===============================================================================
 function update () {
-	# CHECK INTERNET CONNECTION
-	echo "Checking Internet connection..."
-	ping -c 1 8.8.8.8 &>/dev/null || exit 1
+	# If no update today exec update
+	if ! find /var/cache/apt/pkgcache.bin -mtime 0 &>/dev/null; then
+		# CHECK INTERNET CONNECTION
+		echo "Checking Internet connection..."
+		ping -c 1 8.8.8.8 &>/dev/null || exit 1
 
-	# REPOSITORY UPDATE-NOTIFICATION
-	echo "Updating package repositoriy..."
-	aptitude update &> /dev/null
+		# REPOSITORY UPDATE-NOTIFICATION
+		echo "Updating package repositoriy..."
+		aptitude update &> /dev/null
+	fi
+	
 	echo "Checking updates and saving in $updates_file..."
 	aptitude search "~U" > "$updates_file" 
 	echo 
