@@ -19,7 +19,7 @@ systemctl stop pppd-dns.service
 systemctl disable pppd-dns.service
 
 if systemctl status NetworkManager.service &>/dev/null; then
-	#apt-get purge ifupdown
+	#apt-get purge ifupdown; rm -rf /etc/network/*
 	systemctl networking disable
 
 	#apt-get purge network-dispacher
