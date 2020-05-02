@@ -14,8 +14,8 @@
 [plugins]
 [profiles]
   [[default]]
+    background_color = "#111111"
     background_darkness = 1.0
-    background_type = transparent
     cursor_color = "#6ab3b3"
     cursor_color_fg = False
     font = DejaVu Sans Mono 11
