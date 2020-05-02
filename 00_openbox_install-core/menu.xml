@@ -388,7 +388,7 @@
 			<item label="Disks Usage">
 				<action name="Execute">
 					<command>
-						x-terminal-emulator -m -e bash -c 'lsblk -o name,size,type,mountpoint; echo; dfc -f | egrep "^FILESYSTEM|^/dev"; echo; read'
+						x-terminal-emulator -m -e bash -c '{ lsblk -o name,size,type,mountpoint; echo; dfc -f | egrep "^FILESYSTEM|^/dev"; } | less -R'
 					</command>
 				</action>
 			</item>	
