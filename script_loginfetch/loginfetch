@@ -9,7 +9,7 @@
 # VERSION: 1.0
 # CREATED: 2020.05.06
 #
-# ASCII LOGOS COPIED FROM UFETCH PROYECT (Copyright 2018, 2019 Joe Schillinger <me@schil.li>)
+# ASCII LOGOS ADAPTED FROM UFETCH PROYECT (Copyright 2018, 2019 Joe Schillinger <me@schil.li>)
 #===================================================================================
 
 force_distro=""				 # If no empty dont search distro
@@ -17,7 +17,6 @@ force_distro=""				 # If no empty dont search distro
 #### COLORS DEFINITION
 S_R="$(echo -e "\e[0m")"             # Reset all attributes
 S_B="$(echo -e "\e[1m")"             # Style BOLD
-
 C_R="$(echo -e "\e[31m")"            # Color RED
 C_LR="$(echo -e "\e[91m")"           # Color LIGHT RED
 C_G="$(echo -e "\e[32m")"            # Color GREEN
@@ -34,8 +33,6 @@ C_N="$(echo -e "\e[90m")"            # Color GREY
 C_LN="$(echo -e "\e[37m")"           # Color LIGHT GREY
 C_W="$(echo -e "\e[97m")"            # Color WHITE
 C_D="$(echo -e "\e[2m")"             # Color DIM
-
-
 
 
 #### DISTRO LOGOS FUNCTIONS
