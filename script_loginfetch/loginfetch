@@ -311,7 +311,8 @@ info2="${S_R}${S_B}OS${S_R}:        $(cat /etc/*release | grep PRETTY_NAME | cut
 info3="${S_R}${S_B}Kernel${S_R}:    $(uname -r)"
 info4="${S_R}${S_B}CPU${S_R}:      $(cat /proc/cpuinfo | grep "^model name" | cut -f2 -d: | head -1)"
 info5="${S_R}${S_B}Memory${S_R}:    $(free -h | grep "^Mem:" | awk 'BEGIN { OFS=" / " }{ print $3, $2 }') ($(free -h | grep -i swap | awk '{print $2}') swap)"
-info6="${S_R}${S_B}Local IP${S_R}:  $(ip="$(ip -c=never route get 8.8.8.8 | head -1 | awk 'BEGIN { OFS=" (" }{print $3, $5}')"; [ "$ip" ] && echo "$ip)" || echo "not ready")"info7="${S_R}${S_B}Uptime${S_R}:    $(uptime -p | sed 's/up //')"
+info6="${S_R}${S_B}Local IP${S_R}:  $(ip="$(ip -c=never route get 8.8.8.8 | head -1 | awk 'BEGIN { OFS=" (" }{print $3, $5}')"; [ "$ip" ] && echo "$ip)" || echo "not ready")"
+info7="${S_R}${S_B}Uptime${S_R}:    $(uptime -p | sed 's/up //')"
 
 
 # CREATE ISSUE
