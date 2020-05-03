@@ -9,7 +9,7 @@
 # VERSION: 1.0
 # CREATED: 2020.05.06
 #
-# ASCII LOGOS ADAPTED FROM UFETCH PROYECT (Copyright 2018, 2019 Joe Schillinger <me@schil.li>)
+# ASCII LOGOS ADAPTED FROM UFETCH PROYECT: Copyright 2018, 2019 Joe Schillinger <me@schil.li>
 #===================================================================================
 
 force_distro=""				 # If no empty dont search distro
