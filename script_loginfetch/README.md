@@ -7,7 +7,10 @@ TTY login message is boring. This script show cool info message at login based o
 </p>
 
 ## Install
-Exec `install.sh script` to install script, dependences and apply configs. Scripts install and config [Physlock](https://github.com/muennich/physlock), a tty locker called when come back of suspend mode.
+Exec `install.sh script` to install script, dependences and apply configs. This script:
+  * Install loginfetch for generate a `/etc/issue` each time tty login is displayed.
+  * Install and config [Physlock](https://github.com/muennich/physlock), a tty locker called when come back of suspend mode.
+  * Config `tty1` for autoexec startx when login.
 
 &nbsp; 
 ### Manual install
