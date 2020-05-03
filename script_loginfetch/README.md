@@ -1,11 +1,11 @@
-# Neofetch TTY login message
-TTY login message is boring. This script show cool info message at login based on neofetch info.
+# TTY login fetch
+TTY login message is boring. This script show cool info message at login based on ufetch info.
 
 ![image](https://user-images.githubusercontent.com/32820131/40976478-92efc988-68ce-11e8-98ec-f5313a773000.png)
 
 
 ## Install
-Exec `install.sh script` for install script, dependences and apply configs. Scripts install and config [Physlock](https://github.com/muennich/physlock), a tty locker called when come back of suspend mode.
+Exec `install.sh script` to install script, dependences and apply configs. Scripts install and config [Physlock](https://github.com/muennich/physlock), a tty locker called when come back of suspend mode.
 
 &nbsp; 
 ### Manual install
