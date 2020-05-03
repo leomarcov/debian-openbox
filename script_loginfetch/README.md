@@ -1,8 +1,8 @@
 # TTY login fetch
 TTY login message is boring. This script show cool info message at login based on ufetch info.
 
-![image](https://user-images.githubusercontent.com/32820131/40976478-92efc988-68ce-11e8-98ec-f5313a773000.png)
-
+![image](https://user-images.githubusercontent.com/32820131/80919528-ae631400-8d6a-11ea-9898-d51c80ce1250.png)
+![image](https://user-images.githubusercontent.com/32820131/80919527-adca7d80-8d6a-11ea-9e7b-7a7519453d6c.png)
 
 ## Install
 Exec `install.sh script` to install script, dependences and apply configs. Scripts install and config [Physlock](https://github.com/muennich/physlock), a tty locker called when come back of suspend mode.
