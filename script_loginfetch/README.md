@@ -1,5 +1,5 @@
 # TTY login fetch
-TTY login message is boring. This script show cool info message at login based on ufetch info.
+Default TTY login message is boring. This script show info message at login based on ufetch info and the list of available users (red users are locked and users* are sudo users).
 
 <p align="center">
 	<img src="https://user-images.githubusercontent.com/32820131/80919528-ae631400-8d6a-11ea-9898-d51c80ce1250.png">
