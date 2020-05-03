@@ -13,46 +13,45 @@
 #===================================================================================
 
 #### COLORS DEFINITION
-S_R="\e[0m"            	# Reset all attributes
-S_B="\e[1m"             # Style BOLD
-S_D="\e[2m"             # Style DIM
-S_U="\e[4m"            	# Style UNDERLINE
-S_I="\e[7m"             # Style INVERTED
-S_DL="\e[K"             # Style DELETE TO END OF LINE
-C_D="\e[39m"            # Color DEFAULT
-C_R="\e[31m"            # Color RED
-C_BR="\e[1m\e[31m"      # Color BOLD RED
-C_LR="\e[91m"           # Color LIGHT RED
-C_G="\e[32m"            # Color GREEN
-C_BG="\e[1m\e[32m"      # Color BOLD GREEN
-C_LG="\e[92m"           # Color LIGHT GREEN
-C_Y="\e[33m"            # Color YELLOW
-C_BY="\e[1m\e[33m"      # Color BOLD YELLOW
-C_LY="\e[93m"           # Color LIGHT YELLOW
-C_B="\e[34m"            # Color BLUE
-C_BB="\e[1m\e[34m"      # Color BOLD BLUE
-C_LB="\e[94m"           # Color LIGHT BLUE
-C_M="\e[35m"            # Color MAGENTA
-C_BM="\e[1m\e[35m"      # Color BOLD MAGENTA
-C_LM="\e[95m"           # Color LIGHT MAGENTA
-C_C="\e[36m"            # Color CYAN
-C_BC="\e[1m\e[36m"      # Color BOLD CYAN
-C_LC="\e[96m"           # Color LIGHT CYAN
-C_N="\e[90m"            # Color GREY
-C_LN="\e[37m"           # Color LIGHT GREY
+S_R="$(echo -e "\e[0m)")"            # Reset all attributes
+S_B="$(echo -e "\e[1m")"             # Style BOLD
+S_D="$(echo -e "\e[2m")"             # Style DIM
+S_U="$(echo -e "\e[4m")"             # Style UNDERLINE
+S_I="$(echo -e "\e[7m")"             # Style INVERTED
+C_D="$(echo -e "\e[39m")"            # Color DEFAULT
+C_R="$(echo -e "\e[31m")"            # Color RED
+C_BR="$(echo -e "\e[1m\e[31m")"      # Color BOLD RED
+C_LR="$(echo -e "\e[91m")"           # Color LIGHT RED
+C_G="$(echo -e "\e[32m")"            # Color GREEN
+C_BG="$(echo -e "\e[1m\e[32m")"      # Color BOLD GREEN
+C_LG="$(echo -e "\e[92m")"           # Color LIGHT GREEN
+C_Y="$(echo -e "\e[33m")"            # Color YELLOW
+C_BY="$(echo -e "\e[1m\e[33m")"      # Color BOLD YELLOW
+C_LY="$(echo -e "\e[93m")"           # Color LIGHT YELLOW
+C_B="$(echo -e "\e[34m")"            # Color BLUE
+C_BB="$(echo -e "\e[1m\e[34m")"      # Color BOLD BLUE
+C_LB="$(echo -e "\e[94m")"           # Color LIGHT BLUE
+C_M="$(echo -e "\e[35m")"            # Color MAGENTA
+C_BM="$(echo -e "\e[1m\e[35m")"      # Color BOLD MAGENTA
+C_LM="$(echo -e "\e[95m")"           # Color LIGHT MAGENTA
+C_C="$(echo -e "\e[36m")"            # Color CYAN
+C_BC="$(echo -e "\e[1m\e[36m")"      # Color BOLD CYAN
+C_LC="$(echo -e "\e[96m")"           # Color LIGHT CYAN
+C_N="$(echo -e "\e[90m")"            # Color GREY
+C_LN="$(echo -e "\e[37m")"           # Color LIGHT GREY
 
 
 
 #### DISTRO LOGOS FUNCTIONS
 
 function logo_debian() {
-local c0="${S_R}${C_BR}"
-local c1="${S_R}${C_R}"
+local c0="$(echo -e "\e[0m\e[1m\e[31m)")"
+local c0="$(echo -e "\e[0m\e[31m)")"
 
-echo -e "${c0}     _____      ${info1}
-${c0}    /  __ \\\\     ${info2}
+echo "${c0}     _____      ${info1}
+${c0}    /  __ \     ${info2}
 ${c0}   |  /    |    ${info3}
-${c0}   |  ${c1}\\\\___-     ${info4}
+${c0}   |  ${c1}\___-     ${info4}
 ${c1}   -_           ${info5}
 ${c1}     --_        ${info6}
 ${c0}                ${info7}${S_R}"
