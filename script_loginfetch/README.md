@@ -1,7 +1,7 @@
 # TTY login fetch
 TTY login message is boring. This script show cool info message at login based on ufetch info.
 
-<img src="https://user-images.githubusercontent.com/32820131/80919528-ae631400-8d6a-11ea-9898-d51c80ce1250.png" width="100" height="100">
+<img src="https://user-images.githubusercontent.com/32820131/80919528-ae631400-8d6a-11ea-9898-d51c80ce1250.png" width="700" height="400">
 ![image](https://user-images.githubusercontent.com/32820131/80919527-adca7d80-8d6a-11ea-9e7b-7a7519453d6c.png)
 
 ## Install
