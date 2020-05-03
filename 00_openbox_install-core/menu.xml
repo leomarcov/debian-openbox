@@ -216,13 +216,6 @@
         	</menu>	
         	
         	<menu id="autostart" label="Autostarted programs" icon="/usr/share/icons/openbox-menu/startup.png">		
-	            <item label="Show XDG autostarted programs" icon="/usr/share/icons/openbox-menu/terminal.png">
-	                <action name="Execute">
-	                    <command>
-	                        x-terminal-emulator -m -e bash -c "if [ -f "/usr/lib/x86_64-linux-gnu/openbox-xdg-autostart" ]; then /usr/lib/x86_64-linux-gnu/openbox-xdg-autostart --list; else /usr/lib/i386-linux-gnu/openbox-xdg-autostart --list; fi; read"
-	                    </command>
-	                </action>
-	            </item>        		
 	            <item label="Edit Openbox Autostart" icon="/usr/share/icons/openbox-menu/text-editor.png">
 	                <action name="Execute">
 	                    <command>
@@ -230,6 +223,13 @@
 	                    </command>
 	                </action>
 	            </item>
+				<item label="Show XDG autostarted programs" icon="/usr/share/icons/openbox-menu/terminal.png">
+	                <action name="Execute">
+	                    <command>
+	                        x-terminal-emulator -m -e bash -c "if [ -f "/usr/lib/x86_64-linux-gnu/openbox-xdg-autostart" ]; then /usr/lib/x86_64-linux-gnu/openbox-xdg-autostart --list; else /usr/lib/i386-linux-gnu/openbox-xdg-autostart --list; fi; read"
+	                    </command>
+	                </action>
+	            </item>        		
         	</menu>
 
         	<menu id="shortcuts" label="Keyboard and mouse shortcuts" icon="/usr/share/icons/openbox-menu/shortcut.png">		   		
