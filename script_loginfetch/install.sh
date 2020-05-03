@@ -37,11 +37,11 @@ echo '[ ! "$DISPLAY" ] && [ "$(tty)" = "/dev/tty1" ] && PROMPT_COMMAND="startx; 
 # Copy script and config files:
 echo -e "\e[1mInstalling script loginfetch...\e[0m"
 cp -v /etc/issue /etc/issue.old
-[ ! -d "/etc/systemd/system/getty@.service.d/" ] && mkdir -vp "/etc/systemd/system/getty@.service.d/"
 cp -v "$base_dir/loginfetch" /usr/bin/
 chmod -v a+x /usr/bin/loginfetch
 	
-# Config getty to run loginfetch every time tty start:
+# Config getty to run loginfetch every time tty login is displayed:
+[ ! -d "/etc/systemd/system/getty@.service.d/" ] && mkdir -vp "/etc/systemd/system/getty@.service.d/"
 echo '[Service]
 ExecStartPre=-/bin/bash -c "/usr/bin/loginfetch"' | tee "/etc/systemd/system/getty@.service.d/override.conf"
 
