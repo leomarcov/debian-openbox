@@ -12,8 +12,10 @@
 # ASCII LOGOS COPIED FROM UFETCH PROYECT (Copyright 2018, 2019 Joe Schillinger <me@schil.li>)
 #===================================================================================
 
+force_distro=""				 # If no empty dont search distro
+
 #### COLORS DEFINITION
-S_R="$(echo -e "\e[0m")"            # Reset all attributes
+S_R="$(echo -e "\e[0m")"             # Reset all attributes
 S_B="$(echo -e "\e[1m")"             # Style BOLD
 
 C_R="$(echo -e "\e[31m")"            # Color RED
@@ -314,16 +316,22 @@ info7="${S_R}${S_B}Uptime${S_R}:    $(uptime -p | sed 's/up //')"
 
 
 # CREATE ISSUE
-issue="$(clear)${S_R}\l${S_R}"$'\n\n'
+issue="$(clear)${S_R}\l${S_R}"$'\n'
 
-# ADD DISTRO LOG
-distro="linux"
-for d in $(declare -F | sed '/logo_/ s/^.*_//'); do
-	if cat /etc/*release | grep -i "$d" &>/dev/null; then
-		distro="$d"
-		break
-	fi
-done
+# ADD DISTRO LOGO
+if [ "$force_distro" ]; then
+	distro="$force_distro"
+else
+	distro="linux"
+	for d in $(declare -F | sed '/logo_/ s/^.*_//'); do
+		if cat /etc/*release | grep -i "$d" &>/dev/null; then
+			distro="$d"
+			break
+		fi
+	done
+	# If loginfetch is installed set force_distro for performance
+	[[ "$(readlink -f "$0")" == /usr/bin/* ]] && sed -i "s/^force_distro=.*/force_distro=\"$distro\"/g" "$(readlink -f "$0")"
+fi
 
 issue="${issue}$(logo_${distro} | sed 's/\\/\\\\/g')"
 
@@ -339,5 +347,5 @@ for u in $(awk -F: '$3 >= 1000 && $1 != "nobody" {print $1}' /etc/passwd | tac);
 done
 issue="${issue}"$'\n'
 
-echo "$issue" # > /etc/issue
+echo "$issue" > /etc/issue
 
