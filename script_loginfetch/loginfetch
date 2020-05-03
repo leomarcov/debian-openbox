@@ -50,9 +50,9 @@ local c0="${S_R}${C_BR}"
 local c1="${S_R}${C_R}"
 
 echo -e "${c0}     _____      ${info1}
-${c0}    /  __ \\     ${info2}
+${c0}    /  __ \\\\     ${info2}
 ${c0}   |  /    |    ${info3}
-${c0}   |  ${c1}\\___-     ${info4}
+${c0}   |  ${c1}\\\\___-     ${info4}
 ${c1}   -_           ${info5}
 ${c1}     --_        ${info6}
 ${c0}                ${info7}${S_R}"
