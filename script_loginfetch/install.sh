@@ -28,7 +28,6 @@ systemctl enable physlock.service
 # Add physlock as x-locker alternative
 echo -e "\e[1mSetting as default alternative...\e[0m"
 update-alternatives --install /usr/bin/x-locker x-locker $(which physlock) 90
-
 	
 # Config tty1 to autoexec startx
 echo -e "\e[1mSetting tty1 to autostart X...\e[0m"
