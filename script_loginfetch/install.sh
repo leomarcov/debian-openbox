@@ -1,6 +1,6 @@
 #!/bin/bash
-# ACTION: Config Linux login in text mode (tty) with ufetch style and install tty locker (physlock)
-# INFO: Login in tty text mode is faster, light and cool. 
+# ACTION: Config Linux login in text mode (tty) using ufetch style and install a tty locker (physlock)
+# INFO: Login in tty text mode is faster, light and cool
 # INFO: This script config system to login in tty and show a login screen with ufetch info
 # INFO: Additionaly install a tty locker (physlock) for reautenticate users when go back from suspend or lock screen
 # INFO: and config tty1 to autostart X session when user login
