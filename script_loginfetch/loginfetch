@@ -13,40 +13,33 @@
 #===================================================================================
 
 #### COLORS DEFINITION
-S_R="$(echo -e "\e[0m)")"            # Reset all attributes
+S_R="$(echo -e "\e[0m")"            # Reset all attributes
 S_B="$(echo -e "\e[1m")"             # Style BOLD
-S_D="$(echo -e "\e[2m")"             # Style DIM
-S_U="$(echo -e "\e[4m")"             # Style UNDERLINE
-S_I="$(echo -e "\e[7m")"             # Style INVERTED
-C_D="$(echo -e "\e[39m")"            # Color DEFAULT
+
 C_R="$(echo -e "\e[31m")"            # Color RED
-C_BR="$(echo -e "\e[1m\e[31m")"      # Color BOLD RED
 C_LR="$(echo -e "\e[91m")"           # Color LIGHT RED
 C_G="$(echo -e "\e[32m")"            # Color GREEN
-C_BG="$(echo -e "\e[1m\e[32m")"      # Color BOLD GREEN
 C_LG="$(echo -e "\e[92m")"           # Color LIGHT GREEN
 C_Y="$(echo -e "\e[33m")"            # Color YELLOW
-C_BY="$(echo -e "\e[1m\e[33m")"      # Color BOLD YELLOW
 C_LY="$(echo -e "\e[93m")"           # Color LIGHT YELLOW
 C_B="$(echo -e "\e[34m")"            # Color BLUE
-C_BB="$(echo -e "\e[1m\e[34m")"      # Color BOLD BLUE
 C_LB="$(echo -e "\e[94m")"           # Color LIGHT BLUE
 C_M="$(echo -e "\e[35m")"            # Color MAGENTA
-C_BM="$(echo -e "\e[1m\e[35m")"      # Color BOLD MAGENTA
 C_LM="$(echo -e "\e[95m")"           # Color LIGHT MAGENTA
 C_C="$(echo -e "\e[36m")"            # Color CYAN
-C_BC="$(echo -e "\e[1m\e[36m")"      # Color BOLD CYAN
 C_LC="$(echo -e "\e[96m")"           # Color LIGHT CYAN
 C_N="$(echo -e "\e[90m")"            # Color GREY
 C_LN="$(echo -e "\e[37m")"           # Color LIGHT GREY
+C_W="$(echo -e "\e[97m")"            # Color WHITE
+C_D="$(echo -e "\e[2m")"             # Color DIM
+
 
 
 
 #### DISTRO LOGOS FUNCTIONS
-
 function logo_debian() {
-local c0="$(echo -e "\e[0m\e[1m\e[31m)")"
-local c0="$(echo -e "\e[0m\e[31m)")"
+local c0="${S_R}${S_B}${C_R}"
+local c1="${S_R}${C_R}"
 
 echo "${c0}     _____      ${info1}
 ${c0}    /  __ \     ${info2}
@@ -60,30 +53,28 @@ ${c0}                ${info7}${S_R}"
 
 function logo_alphine() {
 local c0="${S_R}${C_B}"
-local c1="${S_R}${C_W}"
 
-echo -e "${c0}     /\ /\         ${info1}
-${c0}    /${c1}/ ${c0}\  \        ${info2}
-${c0}   /${c1}/   ${c0}\  \       ${info3}
-${c0}  /${c1}//    ${c0}\  \      ${info4}
-${c0}  ${c1}//      ${c0}\  \     ${info5}
-${c0}           \  \    ${info6}
-${c0}            \      ${info7}${S_R}"
+echo "${c0}        /\\            ${info1}
+${c0}       /  \\           ${info2}
+${c0}      / /\\ \\  /\\      ${info3}
+${c0}     / /  \\ \\/  \\     ${info4}
+${c0}    / /    \\ \\/\\ \\    ${info5}
+${c0}   / / /|   \\ \\ \\ \\   ${info6}
+${c0}  /_/ /_|    \\_\\ \\_\\  ${info7}${S_R}"
 }
 
 
 function logo_arch() {
-local c0="${S_R}${C_BB}"
+local c0="${S_R}${S_B}${C_B}"
 local c1="${S_R}${C_B}"
 
-echo -e "${c0}        /\         ${info1}
-${c0}       /^^\        ${info2}
-${c0}      /\   \       ${info3}
-${c0}     /  ${c1}__  \      ${info4}
-${c1}    /  (  )  \     ${info5}
-${c1}   / __|  |__\\\\\\    ${info6}
-${c1}  ///        \\\\\\\\\   ${info7}
-${S_R}"
+echo "${c0}        /\        ${info1}
+${c0}       /^^\       ${info2}
+${c0}      /\   \      ${info3}
+${c0}     /  ${c1}__  \     ${info4}
+${c1}    /  (  )  \    ${info5}
+${c1}   / __|  |__\\\\   ${info6}
+${c1}  ///        \\\\\  ${info7}${S_R}"
 }
 
 
@@ -91,60 +82,64 @@ function logo_crux() {
 local c0="${S_R}${C_W}"
 local c1="${S_R}${C_Y}"
 
-echo -e "${c0}      ___     ${info1}
+echo "${c0}      ___     ${info1}
 ${c0}     (${c1}.· ${c0}|    ${info2}
 ${c0}     (${c2}<> ${c0}|    ${info3}
-${c0}    / ${c1}__  ${c0}\\   ${info4}
-${c0}   ( ${c1}/  \\ ${c0}/|  ${info5}
-${c2}  _${c0}/\\ ${c1}__)${c0}/${c2}_${c0})  ${info6}
+${c0}    / ${c1}__  ${c0}\   ${info4}
+${c0}   ( ${c1}/  \ ${c0}/|  ${info5}
+${c2}  _${c0}/\ ${c1}__)${c0}/${c2}_${c0})  ${info6}
 ${c2}  \/${c0}-____${c2}\/   ${info7}${S_R}"
 }
 
 
 function logo_fedora() {
-local c0="${S_R}${C_BB}"
+local c0="${S_R}${C_W}"
+local c1="${S_R}${C_B}"
 
-echo -e "${c0}       _____
-${c0}      /   __/  ${info1}
-${c0}     |  /      ${info2}
-${c0}    _|  |_     ${info3}
-${c0}   |_    _|    ${info4}
-${c0}     |  |      ${info5}
-${c0}   __/  |      ${info6}
-${c0}  /____/       ${info7}${S_R}"
+echo "${c0}        _____
+${c0}       /   __)${c1}\    ${info1}
+${c0}       |  /  ${c1}\ \   ${info2}
+${c1}    __${c0}_|  |_${c1}_/ /   ${info3}
+${c1}   / ${c0}(_    _)${c1}_/    ${info4}
+${c1}  / /  ${c0}|  |        ${info5}
+${c1}  \ \\${c0}__/  |        ${info6}
+${c1}   \\${c0}(_____/        ${info7}${S_R}"
 }
 
+
 function logo_gentoo() {
-local c0="${S_R}${C_BM}"
+local c0="${S_R}${S_B}${C_M}"
 local c1="${S_R}${C_M}"
 
-echo -e "${c0}     .-----.      ${info1}
+echo "${c0}     .-----.      ${info1}
 ${c0}   .\`    _  \`.    ${info2}
 ${c0}   \`.   (${c1}_)   ${c0}\`.  ${info3}
 ${c0}     \`${c1}.        /  ${info4}
 ${c1}    .\`       .\`   ${info5}
 ${c1}   /       .\`     ${info6}
-${c1}   \____.-\`       ${info7}
-${S_R}"
+${c1}   \____.-\`       ${info7}${S_R}"
 }
 
-function logo_linux() {
-local c0="${S_R}${C_W}"
-local c1="${S_R}${C_Y}"
 
-echo -e "${c0}      ___       ${info1}
-${c0}     (${c1}.. ${c0}\      ${info2}
-${c0}     (${c2}<> ${c0}|      ${info3}
-${c0}    /${c1}/  \\ ${c0}\\     ${info4}
-${c0}   ( ${c1}|  | ${c0}/|    ${info5}
-${c2}  _${c0}/\\ ${c1}__)${c0}/${c2}_${c0})    ${info6}
-${c2}  \/${c0}-____${c2}\/     ${info7}${S_R}"
+function logo_linux() {
+local c0="${S_R}${C_D}"
+local c1="${S_R}${C_W}"
+local c2="${S_R}${C_Y}"
+
+echo "${c0}      ___      ${info1}
+${c0}     (${c1}.. ${c0}\     ${info2}
+${c0}     (${c2}<> ${c0}|     ${info3}
+${c0}    /${c1}/  \ ${c0}\    ${info4}
+${c0}   ( ${c1}|  | ${c0}/|   ${info5}
+${c2}  _${c0}/\ ${c1}__)${c0}/${c2}_${c0})   ${info6}
+${c2}  \/${c0}-____${c2}\/${reset}    ${info7}${S_R}"
 } 
+
 
 function logo_manjaro() {
 local c0="${S_R}${C_G}"
 
-echo -e "${c0}  ||||||||| ||||    ${info1}
+echo "${c0}  ||||||||| ||||    ${info1}
 ${c0}  ||||||||| ||||    ${info2}
 ${c0}  ||||      ||||    ${info3}
 ${c0}  |||| |||| ||||    ${info4}
@@ -156,38 +151,38 @@ ${c0}  |||| |||| ||||    ${info7}${S_R}"
 
 function logo_nixos() {
 local c0="${S_R}${C_B}"
-local c1="${S_R}${C_BB}"
+local c1="${S_R}${S_B}${C_B}"
 
-echo -e "${c0}    \\\\\\   ${c1}\\\\\\ //      ${info1}
-${c0}   ==\\\\\\___${c1}\\\\\\/ ${c0}//    ${info2}
-${c1}     //    \\\\\\$(echo -e "${c0}")//     ${info3}
-${c1}  ==//      ${c0}//==    ${info4}
-${c1}   //${c0}\\\\\\$(echo -e "${c1}")____${c0}//       ${info5}
-${c1}  // ${c0}/\\\\\\   ${c1}\\\\\\==     ${info6}
-${c0}    // \\\\\\   ${c1}\\\\\\      ${info7}${S_R}"
+echo "${c0}    \   ${c1}\ //       ${info1}
+${c0}   ==\___${c1}\/ ${c0}//     ${info2}
+${c1}     //    \\${c0}//     ${info3}
+${c1}  ==//      ${c0}//==   ${info4}
+${c1}   //${c0}\\${c1}____${c0}//       ${info5}
+${c1}  // ${c0}/\   ${c1}\==      ${info6}
+${c0}    // \   ${c1}\       ${info7}${S_R}"
 } 
 
 
 function logo_openbsd() {
 local c0="${S_R}${C_Y}"
-local c1="${S_R}${C_BY}"
+local c1="${S_R}${S_B}${C_Y}"
 
-echo -e "${c0}       _____      ${info1}
-${c0}     \-     -/    ${info2}
-${c0}  \_/         \   ${info3}
-${c0}  |        ${c1}O O ${c0}|  ${info4}
-${c0}  |_  ${c2}<   ${c0})  ${c2}3 ${c0})  ${info5}
-${c0}  / \         /   ${info6}
-${c0}     /-_____-\    ${info7}${S_R}"
+echo "${c0}       _____       ${info1}
+${c0}     \-     -/     ${info2}
+${c0}  \_/         \    ${info3}
+${c0}  |        ${c1}O O ${c0}|   ${info4}
+${c0}  |_  ${c2}<   ${c0})  ${c2}3 ${c0})   ${info5}
+${c0}  / \         /    ${info6}
+${c0}     /-_____-\     ${info7}${S_R}"
 } 
 
 
 function logo_raspbian() {
-local c0="${S_R}${C_BG}"
-local c1="${S_R}${C_BR}"
+local c0="${S_R}${C_G}"
+local c1="${S_R}${C_R}"
 
-echo -e "${c0}    __  __      ${info1}
-${c0}   (_\\)(/_)     ${info2}
+echo "${c0}    __  __      ${info1}
+${c0}   (_\)(/_)     ${info2}
 ${c1}   (_(__)_)     ${info3}
 ${c1}  (_(_)(_)_)    ${info4}
 ${c1}   (_(__)_)     ${info5}
@@ -200,13 +195,13 @@ function logo_antergos() {
 local c0="${S_R}${C_B}"
 local c1="${S_R}${C_W}"
 
-echo -e "${c0}       .\`\`\`.        ${info1}
-${c0}      /     \\       ${info2}
-${c0}     /  ${c1}.\`   ${c0}\\      ${info3}
-${c0}    / ${c1}.\` .\` . ${c0}\\     ${info4}
-${c0}   / ${c1}\` .\`.\` .\` ${c0}\\    ${info5}
+echo "${c0}       .\`\`\`.        ${info1}
+${c0}      /     \       ${info2}
+${c0}     /  ${c1}.\`   ${c0}\      ${info3}
+${c0}    / ${c1}.\` .\` . ${c0}\     ${info4}
+${c0}   / ${c1}\` .\`.\` .\` ${c0}\    ${info5}
 ${c0}  |    ${c1}\`.\`  \`   ${c0}|   ${info6}
-${c0}   \\___________/    ${info7}${S_R}"
+${c0}   \___________/    ${info7}${S_R}"
 } 
 
 
@@ -214,11 +209,11 @@ function logo_ubuntu() {
 local c0="${S_R}${C_W}"
 local c1="${S_R}${C_R}"
 
-echo -e "${c1}           _     ${info1}
+echo "${c1}           _     ${info1}
 ${c0}       ---${c1}(_)    ${info2}
-${c1}   _${c0}/  ---  \\    ${info3}
+${c1}   _${c0}/  ---  \    ${info3}
 ${c1}  (_)${c0} |   |      ${info4}
-${c0}    \\  --- ${c1}_${c0}/    ${info5}
+${c0}    \  --- ${c1}_${c0}/    ${info5}
 ${c0}       ---${c1}(_)    ${info6}
 ${c0}                 ${info7}${S_R}"
 } 
@@ -230,59 +225,60 @@ local c1="${S_R}${C_Y}"
 local c2="${S_R}${C_M}"
 local c3="${S_R}${C_B}"
 
-echo -e "${c0}   ____${c1}^${c2}____      ${info1}
-${c0}   |\\  ${c1}|${c2}  /|      ${info2}
-${c0}   | \\ ${c1}|${c2} / |      ${info3}
+echo "${c0}   ____${c1}^${c2}____      ${info1}
+${c0}   |\  ${c1}|${c2}  /|      ${info2}
+${c0}   | \ ${c1}|${c2} / |      ${info3}
 ${c2}  <---- ${c3}---->     ${info4}
-${c3}   | / ${c0}|${c1} \\ |      ${info5}
-${c3}   |/__${c0}|${c1}__\\|      ${info6}
+${c3}   | / ${c0}|${c1} \ |      ${info5}
+${c3}   |/__${c0}|${c1}__\|      ${info6}
 ${c0}       v          ${info7}${S_R}"
 } 
 
 
 function logo_elementary() {
-local c0="${S_R}${C_BB}"
+local c0="${S_R}${S_B}${C_B}"
 local c1="${S_R}${C_B}"
 
-echo -e "${c1}    _______      ${info1}
-${c1}   /  ${c0}___  ${c1}\\     ${info2}
-${c1}  /  ${c0}|  /  /${c1}\\    ${info3}
-${c1}  |${c0}__\\ /  /${c1} |    ${info4}
-${c1}  \\   ${c0}/__/${c1}  /    ${info5}
-${c1}   \\_______/     ${info6}
+echo "${c1}    _______      ${info1}
+${c1}   /  ${c0}___  ${c1}\     ${info2}
+${c1}  /  ${c0}|  /  /${c1}\    ${info3}
+${c1}  |${c0}__\ /  /${c1} |    ${info4}
+${c1}  \   ${c0}/__/${c1}  /    ${info5}
+${c1}   \_______/     ${info6}
 ${c1}                 ${info7}${S_R}"
 } 
 
 function logo_slackware() {
 local c0="${S_R}${C_B}"
 
-echo -e "${c0}     ________     ${info1}
+echo "${c0}     ________     ${info1}
 ${c0}    /  ______|    ${info2}
 ${c0}    | |______     ${info3}
-${c0}    \\______  \\    ${info4}
+${c0}    \______  \    ${info4}
 ${c0}     ______| |    ${info5}
 ${c0}  | |________/    ${info6}
 ${c0}  |____________   ${info7}${S_R}"
 } 
 
 function logo_suse() {
-local c0="${S_R}${C_BG}"
+local c0="${S_R}${C_G}"
+local c1="${S_R}${C_W}"
 
-echo -e "${c0}      _______      ${info1}
-${c0}  -___|   __ \\     ${info2}
-${c0}         / ${c1}.${c0}\\ \\    ${info3}
-${c0}         \\__/ ${c0}|    ${info4}
+echo "${c0}      _______      ${info1}
+${c0}  -___|   ${c1}__${c0}  \     ${info2}
+${c0}        ${c1} / .\ ${c0}\    ${info3}
+${c0}         ${c1}\__/ ${c0}|    ${info4}
 ${c0}       _______|    ${info5}
-${c0}       \\_______    ${info6}
+${c0}       \_______    ${info6}
 ${c0}  --__________/    ${info7}${S_R}"
 } 
 
 
 function logo_void() {
-local c0="${S_R}${C_BG}"
+local c0="${S_R}${S_B}${C_G}"
 local c1="${S_R}${C_G}"
 
-echo -e "${c0}      _______       ${info1}
+echo "${c0}      _______       ${info1}
 ${c1}      ${c0}\_____ \`-     ${info2}
 ${c1}   /\   ${c0}___ \`- \    ${info3}
 ${c1}  | |  ${c0}/   \  | |   ${info4}
@@ -296,13 +292,13 @@ function logo_linuxlite() {
 local c0="${S_R}${C_Y}"
 local c1="${S_R}${C_W}"
 
-echo -e "${c0}     /\\        ${info1}
-${c0}    /  \\       ${info2}
-${c0}   / ${c1}/ ${c0}/       ${info3}
-${c0}  > ${c1}/ ${c0}/        ${info4}
-${c0}  \\ ${c1}\\ ${c0}\\        ${info5}
-${c0}   \\_${c1}\\\\${c0}_\\       ${info6}
-${c1}      \\        ${info7}${S_R}"
+echo "${c0}      /\\        ${info1}
+${c0}     /  \\       ${info2}
+${c0}    / ${c1}/ ${c0}/       ${info3}
+${c0}   > ${c1}/ ${c0}/        ${info4}
+${c0}   \\ ${c1}\\ ${c0}\\        ${info5}
+${c0}    \\_${c1}\\\\${c0}_\\      ${info6}
+${c1}       \\        ${info7}${S_R}"
 } 
 
 
@@ -310,15 +306,15 @@ ${c1}      \\        ${info7}${S_R}"
 # INFO MESSAGES
 info1="${S_R}${S_B}Hostname${S_R}:  $(hostname)"
 info2="${S_R}${S_B}OS${S_R}:        $(cat /etc/*release | grep PRETTY_NAME | cut -f2 -d\") $(uname -m)"
-info3="${S_R}${S_B}Kernel${S_R}:    $(uname -r) -- $(uname -v)"
+info3="${S_R}${S_B}Kernel${S_R}:    $(uname -r)"
 info4="${S_R}${S_B}CPU${S_R}:      $(cat /proc/cpuinfo | grep "^model name" | cut -f2 -d: | head -1)"
-info5="${S_R}${S_B}Memory${S_R}:    $(free -h | grep "^Mem:" | awk 'BEGIN { OFS=" / " }{ print $3, $2 }')"
+info5="${S_R}${S_B}Memory${S_R}:    $(free -h | grep "^Mem:" | awk 'BEGIN { OFS=" / " }{ print $3, $2 }') ($(free -h | grep -i swap | awk '{print $2}') swap)"
 info6="${S_R}${S_B}Local IP${S_R}:  $(ip -c=never route get 8.8.8.8 | head -1 | awk 'BEGIN { OFS=" (" }{print $3, $5}'))"
 info7="${S_R}${S_B}Uptime${S_R}:    $(uptime -p | sed 's/up //')"
 
 
 # CREATE ISSUE
-issue="$(clear)${S_B}${C_N}\l${S_R}\n"
+issue="$(clear)${S_B}${C_N}\l${S_R}"$'\n'
 
 # ADD DISTRO LOG
 distro="linux"
@@ -332,7 +328,7 @@ done
 issue="${issue}$(logo_$distro)"
 
 # DISPLAY SYSTEM USERS
-issue="${issue}\n\n${S_B} Users${S_R}: "
+issue="${issue}"$'\n\n'"${S_B}Users${S_R}: "
 for u in $(awk -F: '$3 >= 1000 && $1 != "nobody" {print $1}' /etc/passwd | tac); do 
 	# Red if lock user:
 	[ "$(passwd -S $u 2>/dev/null | cut -f2 -d" ")" = "L" ] && issue="${issue}${C_LR}"
@@ -341,7 +337,7 @@ for u in $(awk -F: '$3 >= 1000 && $1 != "nobody" {print $1}' /etc/passwd | tac);
 	
 	issue="${issue}$u${S_R}  " 
 done
-issue="${issue}\n"
+issue="${issue}"$'\n'
 
-echo -e "$issue" > /etc/issue
+echo "$issue" > /etc/issue
 
