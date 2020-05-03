@@ -102,7 +102,7 @@ $ ./install -l
  [37]  INSTALL  Install WPS Office Suite (Y)
  [38]  SCRIPT   Install script poweroff_last for auto-poweroff if no users logged in 20 minutes (N)
  [39]  SCRIPT   Install script to control screen brightness (Y)
- [40]  SCRIPT   Config Linux login in text mode (tty) with neofetch style and install tty locker (physlock) (Y)
+ [40]  SCRIPT   Config Linux login in text mode (tty) using ufetch style and install a tty locker (physlock) (Y)
 ```
   
 &nbsp; 
