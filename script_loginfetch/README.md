@@ -26,5 +26,5 @@ chmod -v a+x /usr/bin/loginfetch
 echo '[Service]
 ExecStartPre=-/bin/bash -c "/usr/bin/loginfetch"' | tee "/etc/systemd/system/getty@.service.d/override.conf"
 
-# Recomended: install physlock
+# Recomended: install physlock and config for exec when go back from suspend 
 ```
