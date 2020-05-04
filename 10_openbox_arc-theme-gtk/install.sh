@@ -12,7 +12,7 @@ gtk_default="Arc"
 
 # Install packages
 echo -e "\e[1mInstalling packages...\e[0m"
-find /var/cache/apt/pkgcache.bin -mtime 0 &>/dev/null ||  apt-get update  
+[ "$(find /var/cache/apt/pkgcache.bin -mtime 0 2>/dev/null)" ] || apt-get update  
 apt-get install -y arc-theme
 apt-get install -y gtk3-nocsd		# Force show titlebar in GTK3 new windows
 
