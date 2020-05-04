@@ -2,8 +2,7 @@
 Default TTY login message is boring. This script show info message at login based on ufetch info and the list of available users.
 
 <p align="center">
-	<img src="https://user-images.githubusercontent.com/32820131/80919528-ae631400-8d6a-11ea-9898-d51c80ce1250.png">
-	<img src="https://user-images.githubusercontent.com/32820131/80919527-adca7d80-8d6a-11ea-9e7b-7a7519453d6c.png">
+	<img src="https://user-images.githubusercontent.com/32820131/81015104-5dcce300-8e5e-11ea-9cf6-b3a0a59fa78f.png">
 </p>
 
 ## Install
