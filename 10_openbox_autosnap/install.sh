@@ -14,7 +14,7 @@ comment_mark="#DEBIAN-OPENBOX-autosnap"
 
 # Install packages
 echo -e "\e[1mInstalling packages...\e[0m"
-find /var/cache/apt/pkgcache.bin -mtime 0 &>/dev/null ||  apt-get update 
+[ "$(find /var/cache/apt/pkgcache.bin -mtime 0 2>/dev/null)" ] || apt-get update  
 apt-get -y install xdotool
 
 # Copy autosnap script
