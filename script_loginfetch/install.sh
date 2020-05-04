@@ -32,7 +32,7 @@ update-alternatives --install /usr/bin/x-locker x-locker $(which physlock) 90
 # Config tty1 to autoexec startx
 echo -e "\e[1mSetting tty1 to autostart X...\e[0m"
 sed -i "/$comment_mark/Id" /etc/profile
-echo '[ ! "$DISPLAY" ] && [ "$(tty)" = "/dev/tty1" ] && PROMPT_COMMAND="startx; exit;" '"$comment_mark" >> /etc/profile
+echo '[ ! "$DISPLAY" ] && [ "$(tty)" = "/dev/tty1" ] && PROMPT_COMMAND="startx && exit;" '"$comment_mark" >> /etc/profile
 
 # Copy script and config files:
 echo -e "\e[1mInstalling script loginfetch...\e[0m"
