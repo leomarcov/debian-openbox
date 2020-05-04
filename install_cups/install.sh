@@ -9,7 +9,7 @@
 
 # Install packages
 echo -e "\e[1mInstalling packages...\e[0m"
-find /var/cache/apt/pkgcache.bin -mtime 0 &>/dev/null ||  apt-get update  
+[ "$(find /var/cache/apt/pkgcache.bin -mtime 0 2>/dev/null)" ] || apt-get update  
 apt-get install -y cups
 
 # Add user 1000 to sudo group
