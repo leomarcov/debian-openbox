@@ -13,7 +13,7 @@ icon_default="Numix-Paper"
 
 # Install packages
 echo -e "\e[1mInstalling Numix packages...\e[0m"
-find /var/cache/apt/pkgcache.bin -mtime 0 &>/dev/null ||  apt-get update  
+[ "$(find /var/cache/apt/pkgcache.bin -mtime 0 2>/dev/null)" ] || apt-get update  
 apt-get install -y numix-icon-theme
 
 # Download Paper icon theme and install
