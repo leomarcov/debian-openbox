@@ -14,8 +14,7 @@ border_color = #000000 0
 # ID 2 - panel
 rounded = 0
 border_width = 0
-#background_color = #121B24 75
-background_color = #000000 80
+background_color = #030b0d 100
 border_width = 0
 border_color = 
 
@@ -52,7 +51,7 @@ border_color =
 # ID 6 - active desktop number
 rounded = 0
 border_width = 0
-background_color = #000000 90
+background_color = #000000 100
 border_width = 0
 border_color = 
 
