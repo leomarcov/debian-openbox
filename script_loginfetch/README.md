@@ -1,5 +1,5 @@
 # TTY login fetch
-Default TTY login message is boring. This script show info message at login based on ufetch info and the list of available users.
+Default TTY login message is boring. This script show info message at login based on ufetch style and the list of available users.
 
 <p align="center">
 	<img src="https://user-images.githubusercontent.com/32820131/81015104-5dcce300-8e5e-11ea-9cf6-b3a0a59fa78f.png">
