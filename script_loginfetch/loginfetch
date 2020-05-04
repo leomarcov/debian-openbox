@@ -44,7 +44,7 @@ info_bar="${S_R}${C_D}$(seq -s- 1 $(($(echo "$info_os" | wc -c)-8)) | tr -d "[0-
 info_hostname="${S_R}${S_B}Hostname${S_R}:   $(hostname)"
 info_ip="${S_R}${S_B}Local IP${S_R}:   $(ip="$(ip -c=never route get 8.8.8.8 | head -1 | awk 'BEGIN { OFS=" (" }{print $3, $5}')"; [ "$ip" ] && echo "$ip)" || echo "not ready")"
 info_boottime="${S_R}${S_B}Boot time${S_R}: $(systemd-analyze | head -1 | cut -f2 -d=)($(systemd-analyze | head -1 | egrep -o "loader|firmware|kernel|userspace" | sed -z 's/\n\(.\)/+\1/g'))"
-info_lastlog="${S_R}${S_B}Last log${S_R}:   $(t=($(last -R --time-format iso | egrep -v 'reboot|shutdown|still' | head -1  | awk '{print $1, $3, $6}' | sed 's/+[0-9]\+:[0-9]\+//' | tr "T" " ")); [ "${t[1]}" = "$(date +%Y-%m-%d)" ] && t[1]=""; t[0]="${t[0]} "; echo "${t[*]}")"
+info_lastlog="${S_R}${S_B}Last log${S_R}:   $(t=($(last -R --time-format iso | egrep -v 'reboot|shutdown|still' | head -1  | awk '{print $1, $3, $6}' | sed 's/+[0-9]\+:[0-9]\+//' | tr "T" " ")); [ "${t[1]}" = "$(date +%Y-%m-%d)" ] && unset t[1]; t[0]="${t[0]} "; echo "${t[*]}")"
 info_uptime="${S_R}${S_B}Uptime${S_R}:     $(uptime -p | sed 's/up //')"
 #info_kernel="${S_R}${S_B}Kernel${S_R}:     $(uname -r)"
 #info_cpu="${S_R}${S_B}CPU${S_R}:       $(cat /proc/cpuinfo | grep "^model name" | cut -f2 -d: | head -1)"
