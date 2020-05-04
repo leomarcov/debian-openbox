@@ -13,7 +13,9 @@
 #===================================================================================
 
 #### CONFIG
-force_distro="debian"
+force_distro="debian"				# Use always same distro logo, not search
+mark_sudoers="true"					# Mark sudo users in userlist with *
+mark_locked="true"					# Mark locked users in userlist in red color
 
 #### COLORS DEFINITION
 S_R="$(echo -e "\e[0m")"             # Reset all attributes
@@ -348,9 +350,9 @@ issue="${issue}$(logo_${distro} | sed 's/\\/\\\\/g')"
 issue="${issue}"$'\n\n'"${S_B}Users${S_R}: "
 for u in $(awk -F: '$3 >= 1000 && $1 != "nobody" {print $1}' /etc/passwd | tac); do 
 	# Red if lock user:
-	[ "$(passwd -S $u 2>/dev/null | cut -f2 -d" ")" = "L" ] && issue="${issue}${C_LR}"
+	[ "$mark_locked" = "true" ] && [ "$(passwd -S $u 2>/dev/null | cut -f2 -d" ")" = "L" ] && issue="${issue}${C_LR}"
 	# Add * to sudo users:
-	grep -Po '^sudo.+:\K.*$' /etc/group | grep -w "$u" &>/dev/null && u="${u}*"
+	[ "$mark_sudoers" = "true" ] && grep -Po '^sudo.+:\K.*$' /etc/group | grep -w "$u" &>/dev/null && u="${u}*"
 	
 	issue="${issue}$u${S_R}  " 
 done
