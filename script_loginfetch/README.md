@@ -2,7 +2,7 @@
 This script generate dinamic /etc/issue file with some system info, a logo based on ufetch style and the list of available users.
 
 <p align="center">
-	<img src="https://user-images.githubusercontent.com/32820131/81015104-5dcce300-8e5e-11ea-9cf6-b3a0a59fa78f.png">
+	<img src="https://user-images.githubusercontent.com/32820131/81058996-de77f780-8ecf-11ea-9ec0-aa089c637c8a.png">
 </p>
 
 ## Install
