@@ -18,7 +18,7 @@ The main script `install` can exec all scripts or only a select list:
   * Config Grub for skip menu or protect by password and show messages during boot.
   * Install [**`Numix-Paper icon theme`**](https://github.com/leomarcov/debian-openbox/tree/master/10_openbox_numix-paper-icons), a theme based on Numix and Paper icon packs.
   * Install [**`autosnap Windows for Openbox`**](https://github.com/leomarcov/debian-openbox/tree/master/10_openbox_autosnap), a script for autosnap active windows (half-maximice). 
-  * Install [**`tty loginfetch`**](https://github.com/leomarcov/debian-openbox/blob/master/script_loginfetch/README.md), a tty login based on ufetch info and config tty lock screen with physlock.
+  * Install [**`loginfetch`**](https://github.com/leomarcov/debian-openbox/blob/master/script_loginfetch/README.md), a tty login based on ufetch style and config tty lock screen with physlock.
   * Install [**`update-notification script`**](https://github.com/leomarcov/debian-openbox/tree/master/10_openbox_update-notification) for check and manage repositories updates.
   * Install [**`brightness control script`**](https://github.com/leomarcov/debian-openbox/tree/master/script_brightness-control) for increase/decrease birghtness screen.
   * Install [**`exit menu`**](https://github.com/leomarcov/debian-openbox/tree/master/10_openbox_exit-menu) based on rofi to show power and exit options.
