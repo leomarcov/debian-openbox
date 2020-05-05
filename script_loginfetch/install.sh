@@ -36,6 +36,7 @@ echo '[ ! "$DISPLAY" ] && [ "$(tty)" = "/dev/tty1" ] && PROMPT_COMMAND="startx &
 
 # Copy script and config files:
 echo -e "\e[1mInstalling script loginfetch...\e[0m"
+[ ! -f /etc/issue.net ] && touch /etc/issue.net
 cp -v /etc/issue /etc/issue.old
 cp -v "$base_dir/loginfetch" /usr/bin/
 chmod -v a+x /usr/bin/loginfetch
