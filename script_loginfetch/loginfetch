@@ -13,9 +13,10 @@
 #===================================================================================
 
 #### CONFIG
-force_distro="debian"				# Use always same distro logo, not search
+force_distro="debian"				# Use always same distro logo, not autodetect
 mark_sudoers="false"				# Mark sudo users in userlist with *
 mark_locked="true"					# Mark locked users in userlist in red color
+show_userlist="true"				# Show list of users 
 
 #### COLORS DEFINITION
 S_R="$(echo -e "\e[0m")"             # Reset all attributes
@@ -347,18 +348,20 @@ fi
 issue="${issue}$(logo_${distro} | sed 's/\\/\\\\/g')"
 
 # DISPLAY SYSTEM USERS
-issue="${issue}"$'\n\n'"${S_B}Users${S_R}: "
-for u in $(awk -F: '$3 >= 1000 && $1 != "nobody" {print $1}' /etc/passwd | tac); do 
-	# Red if lock user:
-	if [ "$mark_locked" = "true" ]; then
-		[ "$(passwd -S $u 2>/dev/null | cut -f2 -d" ")" = "L" ] && issue="${issue}${C_LR}"
-	fi
-	# Add * to sudo users:
-	if [ "$mark_sudoers" = "true" ]; then
-		grep -Po '^sudo.+:\K.*$' /etc/group | grep -w "$u" &>/dev/null && u="${u}*"
-	fi
-	issue="${issue}$u${S_R}  " 
-done
+if [ "$show_userlist" = "true" ]; then
+	issue="${issue}"$'\n\n'"${S_B}Users${S_R}: "
+	for u in $(awk -F: '$3 >= 1000 && $1 != "nobody" {print $1}' /etc/passwd | tac); do 
+		# Red if lock user:
+		if [ "$mark_locked" = "true" ]; then
+			[ "$(passwd -S $u 2>/dev/null | cut -f2 -d" ")" = "L" ] && issue="${issue}${C_LR}"
+		fi
+		# Add * to sudo users:
+		if [ "$mark_sudoers" = "true" ]; then
+			grep -Po '^sudo.+:\K.*$' /etc/group | grep -w "$u" &>/dev/null && u="${u}*"
+		fi
+		issue="${issue}$u${S_R}  " 
+	done
+fi
 issue="${issue}"$'\n'
 
 echo "$issue" > /etc/issue
