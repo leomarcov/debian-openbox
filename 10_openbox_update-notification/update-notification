@@ -24,7 +24,7 @@ cron_when="daily"								# weekly | monthly | daily | hourly
 #===============================================================================
 function update () {
 	# If no update today exec update
-	if ! find /var/cache/apt/pkgcache.bin -mtime 0 &>/dev/null; then
+	if ! [ "$(find /var/cache/apt/pkgcache.bin -mtime 0 2>/dev/null)" ]; then
 		# CHECK INTERNET CONNECTION
 		echo "Checking Internet connection..."
 		ping -c 1 8.8.8.8 &>/dev/null || exit 1
