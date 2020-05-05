@@ -6,7 +6,7 @@ This script generate dinamic /etc/issue file with some system info, a logo based
 </p>
 
 ## Install
-Exec `install.sh script` to install script, dependences and apply configs. This script:
+Exec `install.sh` script to install script, dependences and apply configs. This script:
   * Install `loginfetch` script for generate a `/etc/issue` each time tty login is displayed.
   * Config runlevel to `multi-user.target`.
   * Install and config [Physlock](https://github.com/muennich/physlock), a tty locker called when come back of suspend mode.
