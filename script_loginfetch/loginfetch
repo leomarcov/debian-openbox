@@ -14,7 +14,7 @@
 
 #### CONFIG
 force_distro="debian"				# Use always same distro logo, not search
-mark_sudoers="true"					# Mark sudo users in userlist with *
+mark_sudoers="false"				# Mark sudo users in userlist with *
 mark_locked="true"					# Mark locked users in userlist in red color
 
 #### COLORS DEFINITION
