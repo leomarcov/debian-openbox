@@ -1,4 +1,4 @@
-"OPTIONS
+"### OPTIONS ######################################################                                                                                                                                                  
 syntax on                       "Syntax highlight
 set mouse=r                     "Allow copy and paste with mouse
 set clipboard=unnamedplus       "Use system clipboard
@@ -14,13 +14,12 @@ let g:netrw_banner = 0          "Hide header in :Explore mode
 set cursorline                  "Hightlight current line
 set wildmenu                    "Visual autocomplete for command menu
 
-"THEME
+
+"#### THEME #######################################################
 set background=dark             "Background color
-"colorscheme hybrid_material    "Selected color theme
 let g:airline_theme = "hybrid"  "Ariline plugin theme
 "let g:enable_bold_font = 1     "Enable bold in code
-let g:enable_italic_font = 1    "Enable italic in code
-
+let g:enable_italic_font = 1    "Enable italic in code (comments)
 
 " color scheme for 256 and 88 colors
 if (&t_Co == 256 || &t_Co == 88) && !has('gui_running') 
@@ -28,5 +27,32 @@ if (&t_Co == 256 || &t_Co == 88) && !has('gui_running')
 
 " colorscheme for 8 and 16 colors
 else
-  colorscheme apprentice                                                                                                                                                                                             
+  colorscheme apprentice
 endif
+
+"#### STATUSBAR ####################################################
+set laststatus=2
+set noshowmode
+set statusline=
+set statusline+=%#DiffAdd#%{(mode()=='n')?'\ \ NORMAL\ ':''}
+set statusline+=%#DiffChange#%{(mode()=='i')?'\ \ INSERT\ ':''}
+set statusline+=%#DiffDelete#%{(mode()=='r')?'\ \ RPLACE\ ':''}
+set statusline+=%#Cursor#%{(mode()=='v')?'\ \ VISUAL\ ':''}
+"set statusline+=\ %n\                      " buffer number
+set statusline+=%#Visual#                   " colour
+set statusline+=%{&paste?'\ PASTE\ ':''}
+set statusline+=%{&spell?'\ SPELL\ ':''}
+set statusline+=%#CursorIM#                 " colour
+set statusline+=%R                          " readonly flag
+set statusline+=%M                          " modified [+] flag
+set statusline+=%#Cursor#                   " colour
+set statusline+=%#CursorLine#               " colour
+set statusline+=\ %t\                       " short file name
+set statusline+=%=                          " right align
+set statusline+=%#CursorLine#               " colour
+set statusline+=\ %Y\                       " file type
+set statusline+=%#CursorIM#                 " colour
+set statusline+=\ %3l:%-2c\                 " line + column
+set statusline+=%#Cursor#                   " colour
+set statusline+=\ %3p%%\                    " percentage
+
