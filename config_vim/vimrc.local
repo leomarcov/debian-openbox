@@ -1,0 +1,6 @@
+set runtimepath+=/etc/vim/autoload
+
+call plug#begin('/etc/vim/plugged')
+Plug 'drbeco/vimtemplates', { 'do': '/etc/vim/plugged/vppinstall.sh' }
+Plug 'drbeco/vimcolors8', { 'do': '/etc/vim/plugged/vppinstall.sh' }
+call plug#end()
