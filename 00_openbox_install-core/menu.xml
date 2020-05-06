@@ -357,13 +357,6 @@
         <menu id="info" label="System info" icon="/usr/share/icons/openbox-menu/stats.png">
             <separator label="SYSTEM INFO TOOLS" />
             
-			<item label="Hardware info">
-                <action name="Execute">
-                    <command>
-                        x-terminal-emulator -m -e bash -c '{ echo -e "\e[1mHARDWARE INFO\e[0m"; hwinfo --short | egrep "^|^.*:"; } | less -R'
-                    </command>
-                </action>
-            </item> 
 			<item label="System Info Panel">
 				<action name="Execute">
 					<command>
@@ -371,6 +364,13 @@
 					</command>
 				</action>
 			</item>
+			<item label="Hardware info">
+                <action name="Execute">
+                    <command>
+                        x-terminal-emulator -m -e bash -c '{ echo -e "\e[1mHARDWARE INFO\e[0m"; hwinfo --short | egrep "^|^.*:"; } | less -R'
+                    </command>
+                </action>
+            </item> 
 			<item label="Memory Usage">
 				<action name="Execute">
 					<command>
