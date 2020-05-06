@@ -1,4 +1,5 @@
       <mousebind button="Middle" action="Click"> 	<!-- #DEBIAN-OPENBOX-autosnap -->
+		<action name="Focus"/>						<!-- #DEBIAN-OPENBOX-autosnap -->
         <action name="Execute"> 					<!-- #DEBIAN-OPENBOX-autosnap -->
           <command>autosnap</command> 				<!-- #DEBIAN-OPENBOX-autosnap -->
         </action> 									<!-- #DEBIAN-OPENBOX-autosnap -->
