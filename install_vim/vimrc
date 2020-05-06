@@ -1,6 +1,6 @@
 "OPTIONS
 syntax on                       "Syntax highlight
-set mouse=a                     "Allow copy and paste with mouse
+set mouse=r                     "Disable mouse integration
 set clipboard=unnamedplus		"Use system clipboard
 set number                      "Show line numbers
 set hlsearch                    "Hightlight all matches on search
