@@ -13,7 +13,7 @@ comment_mark='"DEBIAN-OPENBOX-vim'
 # Install vim
 echo -e "\e[1mInstalling packages...\e[0m"
 [ "$(find /var/cache/apt/pkgcache.bin -mtime 0 2>/dev/null)" ] || apt-get update  
-apt-get install -y vim vim-nox
+apt-get install -y vim-gtk3x
 
 # Config vim plug for global (all users)
 echo -e "\e[1mInstalling vim plugins for all users in /etc/vim/ ...\e[0m"
@@ -27,7 +27,7 @@ if [ -s "/etc/vim/vimrc.local" ]; then
 else
 	cp -v "$base_dir/vimrc.local" /etc/vim/
 fi
-vim +'PlugInstall --sync' +qa
+vim +'PlugInstall --sync' +qa 		# Download all plugins non-interactively
 
 
 # Copy users config
