@@ -1,6 +1,9 @@
-set runtimepath+=/etc/vim/autoload
+set runtimepath+=/etc/vim/ 																"DEBIAN-OPENBOX-vim
 
-call plug#begin('/etc/vim/plugged')
-Plug 'drbeco/vimtemplates', { 'do': '/etc/vim/plugged/vppinstall.sh' }
-Plug 'drbeco/vimcolors8', { 'do': '/etc/vim/plugged/vppinstall.sh' }
-call plug#end()
+call plug#begin('/etc/vim/plugged') 													"DEBIAN-OPENBOX-vim
+Plug 'kristijanhusak/vim-hybrid-material', { 'do': '/etc/vim/plugged/vppinstall.sh' } 	"DEBIAN-OPENBOX-vim
+Plug 'vim-airline/vim-airline', { 'do': '/etc/vim/plugged/vppinstall.sh' } 				"DEBIAN-OPENBOX-vim
+Plug 'vim-airline/vim-airline-themes', { 'do': '/etc/vim/plugged/vppinstall.sh' } 		"DEBIAN-OPENBOX-vim
+Plug 'w0ng/vim-hybrid', { 'do': '/etc/vim/plugged/vppinstall.sh' } 						"DEBIAN-OPENBOX-vim
+Plug 'jaromero/vim-monokai-refined' 													"DEBIAN-OPENBOX-vim
+call plug#end() 																		"DEBIAN-OPENBOX-vim
