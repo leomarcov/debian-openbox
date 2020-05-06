@@ -61,8 +61,6 @@ $ ./install -a grub
 
 # List all actions:
 $ ./install -l
- NUM	TYPE	DESCRIPTION
-=========================================================================================================
  [1]   INSTALL  Install some basic packages (Y)
  [2]   OPENBOX  Install Openbox WM and essential tools and configs (Y)
  [3]   OPENBOX  Install theme Arc GTK and set as default (Y)
@@ -74,7 +72,7 @@ $ ./install -l
  [9]   OPENBOX  Install clear xfce4-notify theme (Y)
  [10]  OPENBOX  Install icon theme Numix-Paper and set as default icons (Y)
  [11]  OPENBOX  Install rofi launcher and config as default launcher (Y)
- [12]  OPENBOX  Install Terminator terminal and come style configs (Y)
+ [12]  OPENBOX  Install Terminator terminal and configs (Y)
  [13]  OPENBOX  Install Thunar filemanager and some configs (show toolbar and double-click for active items) (Y)
  [14]  OPENBOX  Install tint2 taskbar and config some taskbar/menu themes (Y)
  [15]  OPENBOX  Install script update-notification for check periodically APT updates (Y)
@@ -92,12 +90,12 @@ $ ./install -l
  [27]  CONFIG   Config users home directories permissions to 750 (for current and future users) (Y)
  [28]  CONFIG   Enable CTRL+ALT+BACKSPACE shortcut for kill X server (Y)
  [29]  CONFIG   Install sudo and add user 1000 to sudo group (Y)
- [30]  CONFIG   Config vim with custom configs (Y)
- [31]  INSTALL  Install Atom text editor (N)
- [32]  INSTALL  Install Brave browser, add to repositories and set has default browser (Y)
- [33]  INSTALL  Install CUPS printer system and add user 1000 to lpadmin group (N)
- [34]  INSTALL  Install Google Chrome, add to repositories and set has default browser (Y)
- [35]  INSTALL  Install Sublime Text, add repositories and set as default editor (Y)
+ [30]  INSTALL  Install Atom text editor (N)
+ [31]  INSTALL  Install Brave browser, add to repositories and set has default browser (N)
+ [32]  INSTALL  Install CUPS printer system and add user 1000 to lpadmin group (N)
+ [33]  INSTALL  Install Google Chrome, add to repositories and set has default browser (Y)
+ [34]  INSTALL  Install Sublime Text, add repositories and set as default editor (Y)
+ [35]  INSTALL  Install vim editor, and apply some configs and plugins (Y)
  [36]  INSTALL  Install VirtualBox 6.1 and Extension Pack and add to repositories  (Y)
  [37]  INSTALL  Install WPS Office Suite (Y)
  [38]  SCRIPT   Install script poweroff_last for auto-poweroff if no users logged in 20 minutes (N)
