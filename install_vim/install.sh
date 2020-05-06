@@ -1,10 +1,10 @@
 #!/bin/bash
-# ACTION: Config vim with custom configs
-# INFO: VIM editor has some nice options like show match search, ignore case in search, color scheme, etc.  
+# ACTION: Install vim editor, and apply some configs and plugins
+# INFO: Install vim, plug plugin manager, airline statusbar and hybrid-material colorsheme
 # DEFAULT: y
 
 # Config variables
-base_dir="$(dirname "$(readlink -f "$0")")"
+base_dir="$(dirname "$(readlink -f "$0")")"v
 comment_mark='"DEBIAN-OPENBOX-vim'
 
 # Check root
