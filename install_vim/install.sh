@@ -1,6 +1,6 @@
 #!/bin/bash
 # ACTION: Install vim editor, and apply some configs and plugins
-# INFO: Install vim, plug plugin manager, airline statusbar and hybrid-material colorsheme
+# INFO: Install vim-gtk3, plug plugin manager, airline statusbar and hybrid-material colorsheme
 # DEFAULT: y
 
 # Config variables
