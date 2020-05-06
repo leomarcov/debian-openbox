@@ -15,12 +15,11 @@ set cursorline                  "Hightlight current line
 set wildmenu                    "Visual autocomplete for command menu
 
 "THEME
-"set background=dark             "Background color
-"colorscheme hybrid_material     "Selected color theme
+set background=dark             "Background color
+"colorscheme hybrid_material    "Selected color theme
 let g:airline_theme = "hybrid"  "Ariline plugin theme
 "let g:enable_bold_font = 1     "Enable bold in code
-let g:enable_italic_font = 1    "Enable italic in code (comments)
-
+let g:enable_italic_font = 1    "Enable italic in code
 
 
 " color scheme for 256 and 88 colors
