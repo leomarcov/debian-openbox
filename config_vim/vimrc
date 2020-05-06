@@ -1,6 +1,6 @@
 "OPTIONS
 syntax on                       "Syntax highlight
-set mouse=r                     "Allow copy and paste with mouse
+set mouse=r                     "Enable mouse in all modes
 set number                      "Show line numbers
 set hlsearch                    "Hightlight all matches on search
 set ignorecase                  "Search are case insensitive
@@ -13,7 +13,7 @@ let g:netrw_banner = 0          "Hide header in :Explore mode
 
 "THEME
 set background=dark             "Background color
-colorscheme hybrid_material     "https://github.com/kristijanhusak/vim-hybrid-material
-let g:airline_theme = "hybrid"
+colorscheme hybrid_material     "Selected theme
+let g:airline_theme = "hybrid" 	"Airline plugin theme
 let g:enable_bold_font = 1
 let g:enable_italic_font = 1
