@@ -1,19 +1,22 @@
 "OPTIONS
 syntax on                       "Syntax highlight
-set mouse=r                     "Enable mouse in all modes
+set mouse=a                     "Allow copy and paste with mouse
+set clipboard=unnamedplus		"Use system clipboard
 set number                      "Show line numbers
 set hlsearch                    "Hightlight all matches on search
 set ignorecase                  "Search are case insensitive
 set smartcase                   "Search case sensitive if any caps are used
 set incsearch                   "Show matches highlight when typing
 set tabstop=4                   "Tab=4 spaces
+set showcmd						"Show partial command in status line
 "set autoindent                 "Auto add tabs
 let g:netrw_banner = 0          "Hide header in :Explore mode
- 
+set cursorline 					"Hightlight current line
+set wildmenu					"Visual autocomplete for command menu
 
 "THEME
 set background=dark             "Background color
-colorscheme hybrid_material     "Selected theme
-let g:airline_theme = "hybrid" 	"Airline plugin theme
-let g:enable_bold_font = 1
-let g:enable_italic_font = 1
+colorscheme hybrid_material     "Selected color theme
+let g:airline_theme = "hybrid"	"Ariline plugin theme
+let g:enable_bold_font = 1		"Enable bold in code
+let g:enable_italic_font = 1	"Enable italic in code (comments)
