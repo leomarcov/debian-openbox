@@ -1,10 +1,13 @@
 set runtimepath+=/etc/vim/                  "DEBIAN-OPENBOX-vim
 
 call plug#begin('/etc/vim/plugged')         "DEBIAN-OPENBOX-vim
+
 Plug 'kristijanhusak/vim-hybrid-material'   "DEBIAN-OPENBOX-vim
 Plug 'w0ng/vim-hybrid'                      "DEBIAN-OPENBOX-vim
 Plug 'romainl/Apprentice'                   "DEBIAN-OPENBOX-vim
+Plug 'preservim/nerdcommenter'              "DEBIAN-OPENBOX-vim
 "Plug 'vim-airline/vim-airline'             "DEBIAN-OPENBOX-vim
 "Plug 'vim-airline/vim-airline-themes'      "DEBIAN-OPENBOX-vim
-"Plug 'godlygeek/csapprox'                  "DEBIAN-OPENBOX-vim                                                                                                                                                      
+"Plug 'godlygeek/csapprox'                  "DEBIAN-OPENBOX-vim
+
 call plug#end()                             "DEBIAN-OPENBOX-vim
