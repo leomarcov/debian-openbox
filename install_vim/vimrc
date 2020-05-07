@@ -9,10 +9,10 @@ set smartcase                   "Search case sensitive if any caps are used
 set incsearch                   "Show matches highlight when typing
 set tabstop=4                   "Tab=4 spaces
 set showcmd						"Show partial command in status line
-"set autoindent                 "Auto add tabs
 let g:netrw_banner = 0          "Hide header in :Explore mode
 set cursorline 					"Hightlight current line
 set wildmenu					"Visual autocomplete for command menu
+"set autoindent                 "Auto add tabs
 
 
 "#### THEME #######################################################
