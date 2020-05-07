@@ -7,6 +7,7 @@
 # VERSION: 1.0
 # CREATED: 21.05.2018
 # MODIFIED: 20.04.219
+# LICENSE: GNU General Public License v3.0
 #===================================================================================
 
 shopt -s extglob
