@@ -32,7 +32,7 @@ if (&t_Co == 256 || &t_Co == 88) && !has('gui_running')
 	set statusline+=%#DiffChange#%{(mode()=='i')?'\ \ INSERT\ ':''}
 	set statusline+=%#DiffDelete#%{(mode()=='r')?'\ \ RPLACE\ ':''}
 	set statusline+=%#Cursor#%{(mode()=='v')?'\ \ VISUAL\ ':''}
-	"set statusline+=\ %n\           			" buffer number
+	set statusline+=\ %n\           			" buffer number
 	set statusline+=%#Visual#       			" colour
 	set statusline+=%{&paste?'\ PASTE\ ':''}
 	set statusline+=%{&spell?'\ SPELL\ ':''}
