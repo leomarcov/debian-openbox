@@ -1,4 +1,15 @@
 #!/bin/bash
+#===================================================================================
+# OPENBOX EXIT MENU
+# FILE: obexit
+#
+# DESCRIPTION: Show a exit menu based on rofi launcher. Use UTF8 symbols as icons.
+#
+# AUTHOR: Leonardo Marco
+# VERSION: 1.0
+# CREATED: 05.04.2020 
+# LICENSE: GNU General Public License v3.0
+#===================================================================================
 
 options=" ⏻\tPower off
  🗘\tReboot
