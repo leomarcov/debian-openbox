@@ -9,6 +9,7 @@ Plug 'preservim/nerdcommenter'              "DEBIAN-OPENBOX-vim
 Plug 'jiangmiao/auto-pairs' 				"DEBIAN-OPENBOX-vim                                                                                                                                                          
 Plug 'psliwka/vim-smoothie'                 "DEBIAN-OPENBOX-vim
 
+"Plug 'mhinz/vim-startify'                  "DEBIAN-OPENBOX-vim
 "Plug 'vim-airline/vim-airline'             "DEBIAN-OPENBOX-vim
 "Plug 'vim-airline/vim-airline-themes'      "DEBIAN-OPENBOX-vim
 "Plug 'godlygeek/csapprox'                  "DEBIAN-OPENBOX-vim
