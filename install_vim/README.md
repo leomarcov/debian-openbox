@@ -12,5 +12,5 @@ This script automatize vim install and some configs and plugins:
   
   
 
-<p align="center"><img src="https://user-images.githubusercontent.com/32820131/81017895-a1761b80-8e63-11ea-8cf6-3dc053b5e3a7.png"></p>
+<p align="center"><img src="https://user-images.githubusercontent.com/32820131/81335644-3bc6a100-90a8-11ea-96cb-4097f0a4e620.png"></p>
 
