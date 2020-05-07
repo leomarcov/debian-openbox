@@ -7,12 +7,14 @@ set hlsearch                    "Hightlight all matches on search
 set ignorecase                  "Search are case insensitive
 set smartcase                   "Search case sensitive if any caps are used
 set incsearch                   "Show matches highlight when typing
+set expandtab 					"User apropiate number of spaces in autoindent and indent with <,>
 set tabstop=4                   "Tab=4 spaces
+set shiftwidth=4 				"Number of spaces to use for each step of (auto)indent
+set smartindent                 "Auto add tabs according nested code
 set showcmd						"Show partial command in status line
 let g:netrw_banner = 0          "Hide header in :Explore mode
 set cursorline 					"Hightlight current line
 set wildmenu					"Visual autocomplete for command menu
-"set autoindent                 "Auto add tabs
 
 
 "#### THEME #######################################################
