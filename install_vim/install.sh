@@ -36,8 +36,4 @@ for d in  /etc/skel/  /home/*/ /root/; do
     [ "$(dirname "$d")" = "/home" ] && ! id "$(basename "$d")" &>/dev/null && continue	# Skip dirs that no are homes 
 	
 	cp -v "${base_dir}/vimrc" "$d/.vimrc" && chown -R $(stat "$(dirname "$d/.vimrc")" -c %u:%g) "$d/.vimrc"
-
-	# Create .config/coc folder for coc plugin
-	d="$d/.config/"; [ ! -d "$d" ] && mkdir -v "$d" && chown -R $(stat "$(dirname "$d")" -c %u:%g) "$d"
-	d="$d/coc/"; [ ! -d "$d" ] && mkdir -v "$d" && chown -R $(stat "$(dirname "$d")" -c %u:%g) "$d"
 done
