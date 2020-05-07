@@ -20,6 +20,7 @@ echo -e "\e[1mInstalling vim plugins for all users in /etc/vim/ ...\e[0m"
 mkdir -vp "/etc/vim/autoload"
 curl -fLo /etc/vim/autoload/plug.vim https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 mkdir -p "/etc/vim/plugged/"
+echo -e "\e[1mAdding plugins to /etc/vim/rc.local ...\e[0m"
 if [ -s "/etc/vim/vimrc.local" ]; then
 	f=/etc/vim/vimrc.local
 	sed -i "/${comment_mark}/Id" "$f" 	# Delete all previous lines added
