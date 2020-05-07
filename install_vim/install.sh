@@ -23,7 +23,7 @@ mkdir -p "/etc/vim/plugged/"
 if [ -s "/etc/vim/vimrc.local" ]; then
 	f=/etc/vim/vimrc.local
 	sed -i "/${comment_mark}/Id" "$f" 	# Delete all previous lines added
-	cat "$base_dir/vimrc.local" /etc/vim/vimrc.local > /etc/vim/vimrc.local
+	cat "$base_dir/vimrc.local" /etc/vim/vimrc.local | tee /etc/vim/vimrc.local
 else
 	cp -v "$base_dir/vimrc.local" /etc/vim/
 fi
