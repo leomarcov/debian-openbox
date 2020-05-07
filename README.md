@@ -16,7 +16,7 @@ The main script `install` can exec all scripts or only a select list:
   * Install some user tools: Brave/Chrome browser, SublimeText, Atom, VirtualBox and Extensión Pack, sudo,nomacs image viewer, WPS Office and others.
   * Config prompt,  path, aliases and home directories permissions.
   * Config Grub for skip menu or protect by password and show messages during boot.
-  * Install [**`vim`**])(ttps://github.com/leomarcov/debian-openbox/tree/master/install_vim) and some plugins and themes.
+  * Install [**`vim`**](ttps://github.com/leomarcov/debian-openbox/tree/master/install_vim) and some plugins and themes.
   * Install [**`Numix-Paper icon theme`**](https://github.com/leomarcov/debian-openbox/tree/master/10_openbox_numix-paper-icons), a theme based on Numix and Paper icon packs.
   * Install [**`autosnap Windows for Openbox`**](https://github.com/leomarcov/debian-openbox/tree/master/10_openbox_autosnap), a script for autosnap active windows (half-maximice). 
   * Install [**`loginfetch`**](https://github.com/leomarcov/debian-openbox/blob/master/script_loginfetch/README.md), a tty login based on ufetch style and config tty lock screen with physlock.
