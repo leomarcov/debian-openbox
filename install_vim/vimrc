@@ -16,6 +16,9 @@ let g:netrw_banner = 0          "Hide header in :Explore mode
 set cursorline 					"Hightlight current line
 set wildmenu					"Visual autocomplete for command menu
 
+"### PLUGINS OPTIONS                                                                                                                                                                                            
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif   "Autoclose NERDTree if is last window
+
 
 "#### THEME #######################################################
 set background=dark             "Background color
