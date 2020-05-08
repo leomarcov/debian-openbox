@@ -5,6 +5,7 @@ This script automatize vim install and some configs and plugins:
   * Copy `.vimrc` with custom vim config to all current users (and new users).
   * Config [vim-hybrid-material](https://github.com/kristijanhusak/vim-hybrid-material) as default theme for 256 colors terms and [Apprentice](https://github.com/romainl/Apprentice) for 8 colors.
   * Install some interesting plugins (can be customized in `vimrc.local` file):
+    * [NERDTreee](https://github.com/preservim/nerdtree)
     * [Auto Pairs](https://github.com/jiangmiao/auto-pairs)
 	* [NERD Commenter](https://github.com/preservim/nerdcommenter)
 	* [vim-smoothie](https://github.com/psliwka/vim-smoothie)
