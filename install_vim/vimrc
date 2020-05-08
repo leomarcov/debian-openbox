@@ -1,6 +1,6 @@
 "### OPTIONS ######################################################
 syntax on                       "Syntax highlight
-set mouse=r                     "Allow copy and paste with mouse
+set mouse=a                    "Allow copy and paste with mouse
 set clipboard=unnamedplus		"Use system clipboard
 set number                      "Show line numbers
 set hlsearch                    "Hightlight all matches on search
@@ -17,16 +17,17 @@ set cursorline 					"Hightlight current line
 set wildmenu					"Visual autocomplete for command menu
 
 
+
 "#### THEME #######################################################
 set background=dark             "Background color
 "let g:enable_bold_font = 1		"Enable bold in code
 let g:enable_italic_font = 1	"Enable italic in code (comments)
 
-"### THEME IN 256 AND 88 COLORS
-if (&t_Co == 256 || &t_Co == 88) && !has('gui_running') 
+"THEME IN 256 AND 88 COLORS
+if (&t_Co == 256 || &t_Co == 88) && !has('gui_running')
 	colorscheme hybrid_material
-	"set termguicolors				
-"### THEME IN 8 AND 16 COLORS
+	"set termguicolors
+"THEME IN 8 AND 16 COLORS
 else
   colorscheme apprentice
 endif
@@ -34,6 +35,8 @@ endif
 
 "### PLUGINS OPTIONS ##############################################
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif   "Autoclose NERDTree if is last window
+let g:better_whitespace_ctermcolor='darkgrey'   "Whitespaces color
+
 
 "#### STATUSBAR ###############################################
 if (&t_Co == 256 || &t_Co == 88) && !has('gui_running')
