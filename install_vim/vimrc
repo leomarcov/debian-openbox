@@ -16,9 +16,6 @@ let g:netrw_banner = 0          "Hide header in :Explore mode
 set cursorline 					"Hightlight current line
 set wildmenu					"Visual autocomplete for command menu
 
-"### PLUGINS OPTIONS                                                                                                                                                                                            
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif   "Autoclose NERDTree if is last window
-
 
 "#### THEME #######################################################
 set background=dark             "Background color
@@ -29,8 +26,17 @@ let g:enable_italic_font = 1	"Enable italic in code (comments)
 if (&t_Co == 256 || &t_Co == 88) && !has('gui_running') 
 	colorscheme hybrid_material
 	"set termguicolors				
+"### THEME IN 8 AND 16 COLORS
+else
+  colorscheme apprentice
+endif
 
-	"#### STATUSBAR ###############################################
+
+"### PLUGINS OPTIONS ##############################################
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif   "Autoclose NERDTree if is last window
+
+"#### STATUSBAR ###############################################
+if (&t_Co == 256 || &t_Co == 88) && !has('gui_running')
 	set laststatus=2
 	set noshowmode
 	set statusline=
@@ -56,12 +62,4 @@ if (&t_Co == 256 || &t_Co == 88) && !has('gui_running')
 	set statusline+=%#Cursor#       			" colour
 	set statusline+=\ %3p%%\                	" percentage
 	"##############################################################
-
-
-"### THEME IN 8 AND 16 COLORS
-else
-  colorscheme apprentice
 endif
-
-
-
