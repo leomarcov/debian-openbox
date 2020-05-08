@@ -8,6 +8,7 @@ This script automatize vim install and some configs and plugins:
     * [Auto Pairs](https://github.com/jiangmiao/auto-pairs)
 	* [NERD Commenter](https://github.com/preservim/nerdcommenter)
 	* [vim-smoothie](https://github.com/psliwka/vim-smoothie)
+	* [fzf](https://github.com/junegunn/fzf.vim)
 	* [Conquer of Completion](https://github.com/neoclide/coc.nvim)
   
   
