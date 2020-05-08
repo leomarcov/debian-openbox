@@ -17,7 +17,7 @@ Plug 'psliwka/vim-smoothie'                 		"DEBIAN-OPENBOX-vim
 Plug 'neoclide/coc.nvim', {'branch': 'release'}		"DEBIAN-OPENBOX-vim
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } } "DEBIAN-OPENBOX-vim
 Plug 'junegunn/fzf.vim' 							"DEBIAN-OPENBOX-vim
-
+Plug 'ntpeters/vim-better-whitespace' 				"DEBIAN-OPENBOX-vim
 
 "DISABLED
 "Plug 'mhinz/vim-startify'                  		"DEBIAN-OPENBOX-vim
