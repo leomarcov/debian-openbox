@@ -35,7 +35,9 @@ endif
 
 "### PLUGINS OPTIONS ##############################################
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif   "Autoclose NERDTree if is last window
-let g:better_whitespace_ctermcolor='darkgrey'   "Whitespaces color
+let g:better_whitespace_ctermcolor='darkgrey'       "Better-whitespace color in cterm
+let g:better_whitespace_guicolor='darkgrey'         "Better-whitespace color in gui
+
 
 
 "#### STATUSBAR ###############################################
