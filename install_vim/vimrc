@@ -26,7 +26,7 @@ let g:enable_italic_font = 1	"Enable italic in code (comments)
 "THEME IN 256 AND 88 COLORS
 if (&t_Co == 256 || &t_Co == 88) && !has('gui_running')
 	colorscheme hybrid_material
-	"set termguicolors
+	set termguicolors
 "THEME IN 8 AND 16 COLORS
 else
   colorscheme apprentice
