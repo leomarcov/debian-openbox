@@ -1,4 +1,4 @@
-# VIM install script
+# VIM install custom script
 This script automatize vim install and some configs and plugins:
   * Install `vim-gtk3` package (with clipboard support)
   * Install [Plug](https://github.com/junegunn/vim-plug) to manage vim plugins and config it for install plugins in `/etc/vim` (availables for all users).
