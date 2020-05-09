@@ -6,11 +6,12 @@ This script automatize vim install and some configs and plugins:
   * Config [vim-hybrid-material](https://github.com/kristijanhusak/vim-hybrid-material) as default theme for 256 colors terms and [Apprentice](https://github.com/romainl/Apprentice) for 8 colors.
   * Install some interesting plugins (can be customized in `vimrc.local` file):
     * [NERDTreee](https://github.com/preservim/nerdtree)
-    * [Auto Pairs](https://github.com/jiangmiao/auto-pairs)
 	* [NERD Commenter](https://github.com/preservim/nerdcommenter)
+	* [Auto Pairs](https://github.com/jiangmiao/auto-pairs)
 	* [vim-smoothie](https://github.com/psliwka/vim-smoothie)
 	* [fzf](https://github.com/junegunn/fzf.vim)
 	* [Conquer of Completion](https://github.com/neoclide/coc.nvim)
+	* [Vim Better Whitespace](https://github.com/ntpeters/vim-better-whitespace)
   
   
 &nbsp; 
