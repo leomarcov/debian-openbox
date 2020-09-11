@@ -1,2 +1,2 @@
 #!/bin/bash
-. ~/.profile
+[ -r ~/.profile ] && . ~/.profile
