@@ -15,4 +15,5 @@ for d in  /home/*/  /etc/skel/  /root; do
 	[ "$(dirname "$d")" = "/home" ] && ! id "$(basename "$d")" &>/dev/null && continue	# Skip dirs that no are homes 
     
 	cp -v "$base_dir/profile" "$d/.profile"
+	cp -v "$base_dir/xsessionrc" "$d/.xsessionrc"
 done
