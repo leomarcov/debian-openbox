@@ -31,6 +31,13 @@ The main script `install` can exec all scripts or only a select list:
 &nbsp; 
 ## Install
   * Install Debian 10 netinstall (better don't install `Debian desktop environment`, install only `standard system utilities`).
+  * Connect to Internet. If you need to connect to WIFI network in CLI you can do:
+  ```
+  ip a                                            # To get your wlan interface name, mine is wlp5s0
+  iwlist wlp5s0 scan | egrep "Address|ESSID"      # To get available wifi networks
+  wpa_supplicant -B -i wlp5s0 -c <(wpa_passphrase YOUR-SSID YOUR-PASS)  # To authenticate in your wifi network
+  dhclient -v wlp5s0                              # To get DHCP IP
+  ```
   * Clone or download this project: `git clone https://github.com/leomarcov/debian-openbox`
   * Exec `install` script and select scripts you want to install.
   
