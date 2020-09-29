@@ -50,7 +50,7 @@ if [ "$1" = "-I" ]; then
     fi
 
 # OPEN BT ADMIN
-elif systemctl status bluetooth.service&>/dev/null; then
+elif systemctl status bluetooth.service &>/dev/null && which blueman-manager &>/dev/null; then
     blueman-manager
     exit
 
