@@ -12,7 +12,6 @@ Plug 'arcticicestudio/nord-vim' 					"DEBIAN-OPENBOX-vim
 "PLUGINS
 Plug 'preservim/nerdtree' 							"DEBIAN-OPENBOX-vim
 Plug 'preservim/nerdcommenter'              		"DEBIAN-OPENBOX-vim
-Plug 'jiangmiao/auto-pairs' 						"DEBIAN-OPENBOX-vim
 Plug 'psliwka/vim-smoothie'                 		"DEBIAN-OPENBOX-vim
 Plug 'neoclide/coc.nvim', {'branch': 'release'}		"DEBIAN-OPENBOX-vim
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } } "DEBIAN-OPENBOX-vim
@@ -20,6 +19,7 @@ Plug 'junegunn/fzf.vim' 							"DEBIAN-OPENBOX-vim
 Plug 'ntpeters/vim-better-whitespace' 				"DEBIAN-OPENBOX-vim
 
 "DISABLED
+"Plug 'jiangmiao/auto-pairs' 						"DEBIAN-OPENBOX-vim
 "Plug 'mhinz/vim-startify'                  		"DEBIAN-OPENBOX-vim
 "Plug 'vim-airline/vim-airline'             		"DEBIAN-OPENBOX-vim
 "Plug 'vim-airline/vim-airline-themes'      		"DEBIAN-OPENBOX-vim
