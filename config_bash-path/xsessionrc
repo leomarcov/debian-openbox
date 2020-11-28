@@ -1,2 +1,2 @@
 #!/bin/bash
-[ -r ~/.profile ] && . ~/.profile
+[ "$XDG_SESSION_TYPE" != "tty" ] && [ -r ~/.profile ] && . ~/.profile
