@@ -367,7 +367,7 @@
 			<item label="Hardware info">
                 <action name="Execute">
                     <command>
-                        x-terminal-emulator -m -e bash -c '{ echo -e "\e[1mHARDWARE INFO\e[0m"; hwinfo --short | egrep "^|^.*:"; } | less -R'
+                        x-terminal-emulator -m -e bash -c '{ echo -e "\e[1mHARDWARE INFO: hwinfo\e[0m"; hwinfo --short; echo -e "\n\n\e[1mHARDWARE INFO: inxi\e[0m"; inxi -F; echo; read; }'
                     </command>
                 </action>
             </item> 
@@ -388,7 +388,7 @@
 			<item label="Disks Usage">
 				<action name="Execute">
 					<command>
-						x-terminal-emulator -m -e bash -c '{ lsblk -o name,size,type,mountpoint; echo; dfc -f | egrep "^FILESYSTEM|^/dev"; } | less -R'
+						x-terminal-emulator -m -e bash -c '{ echo -e "\e[1mHARDWARE INFO: lsblk\e[0m"; lsblk -o name,size,type,mountpoint; echo -e "\n\n\e[1mHARDWARE INFO: dfc\e[0m"; dfc -f; read; }'
 					</command>
 				</action>
 			</item>	
