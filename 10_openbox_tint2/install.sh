@@ -48,6 +48,6 @@ chmod a+x "/usr/bin/$f"
 
 # Remove tint2 defualt themes
 echo -e "\e[1mRemoving tint2 default themes e[0m"
-for f in in $(dpkg -L tint2 | grep tint2rc); do
+for f in $(dpkg -L tint2 | grep tint2rc); do
 	sudo rm "$f"
 done
