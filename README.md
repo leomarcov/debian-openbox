@@ -31,7 +31,7 @@ The main script `install` can exec all scripts or only a select list:
 &nbsp; 
 ## Install
   * Install Debian 10 netinstall. Its recommended don't install `Debian desktop environment`, install only `standard system utilities`.
-<img align="center" width="600" src="https://user-images.githubusercontent.com/32820131/101158317-d467d400-362b-11eb-8759-9d3beb40a20c.png">
+<img align="center" width="700" src="https://user-images.githubusercontent.com/32820131/101158317-d467d400-362b-11eb-8759-9d3beb40a20c.png">
   
   * Connect to Internet. If you need to connect to WIFI network in CLI you can do:
   ```
