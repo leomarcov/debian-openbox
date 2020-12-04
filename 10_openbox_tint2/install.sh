@@ -30,13 +30,13 @@ for d in /etc/skel/  /home/*/ /root; do
 	d="$d/tint2/";  [ ! -d "$d" ] && mkdir -v "$d" && chown -R $(stat "$(dirname "$d")" -c %u:%g) "$d"
 	
 	# Copy all tint2 configs
-	touch "$d/each .tint file here is autoloaded"
+	touch "$d/each .tint2rc file here is autoloaded"
 	cp -v "$base_dir/"*.tint_ "$d" && chown $(stat "$(dirname "$d")" -c %u:%g) "$d"/*.tint_
 	
 	[ "$laptop" ] && [ ! "$virtualmachine" ] && tint_version="_laptop"
 	
 	# Config .tints to autoload
-	mv "$d/taskbar${tint_version}.tint_" "$d/taskbar${tint_version}.tint"
+	mv "$d/taskbar${tint_version}.tint2rc_" "$d/taskbar${tint_version}.tint2rc"
 	mv "$d/menu.tint_" "$d/menu.tint"
 done
 
