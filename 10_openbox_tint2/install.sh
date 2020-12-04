@@ -31,13 +31,13 @@ for d in /etc/skel/  /home/*/ /root; do
 	
 	# Copy all tint2 configs
 	touch "$d/each .tint2rc file here is autoloaded"
-	cp -v "$base_dir/"*.tint_ "$d" && chown $(stat "$(dirname "$d")" -c %u:%g) "$d"/*.tint_
+	cp -v "$base_dir/"*.tint2rc_ "$d" && chown $(stat "$(dirname "$d")" -c %u:%g) "$d"/*.tint2rc_
 	
 	[ "$laptop" ] && [ ! "$virtualmachine" ] && tint_version="_laptop"
 	
 	# Config .tints to autoload
 	mv "$d/taskbar${tint_version}.tint2rc_" "$d/taskbar${tint_version}.tint2rc"
-	mv "$d/menu.tint_" "$d/menu.tint"
+	mv "$d/menu.tint2rx_" "$d/menu.tint2rc"
 done
 
 # Copy tint2-session
@@ -45,3 +45,9 @@ echo -e "\e[1mCopying tint2-session..\e[0m"
 f="tint2-session"
 cp -v "$base_dir/$f" /usr/bin
 chmod a+x "/usr/bin/$f"
+
+# Remove tint2 defualt themes
+echo -e "\e[1mRemoving tint2 default themes e[0m"
+for f in in $(dpkg -L tint2 | grep tint2rc); do
+	sudo rm "$f"
+done
