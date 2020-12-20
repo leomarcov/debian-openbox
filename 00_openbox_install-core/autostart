@@ -14,7 +14,6 @@
 
 #### START SETTINGS  #################################################################################
 [ -d ~/.screenlayout ] && "$(ls ~/.screenlayout/*.sh | head -1)"	# Exec first script screenlayout found
-nitrogen --restore													# Set wallpaper
 
 xset r rate 250 25													# Set keyboard settings to 250ms delay and 25cps (characters per second)
 xcape -e "Super_L=Control_L|Tab" 									# Alias for: Super key (win) = Control_Left+Tab
@@ -28,9 +27,10 @@ if [ -f /sys/module/battery/initstate ] || [ -d /proc/acpi/battery/BAT0 ]; then
 fi
 
 #### START APPLICATIONS ###############################################################################
-/usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 &	# GNOME PolicyKit authentication
-compton &															# Start compositor
+nitrogen --restore &												# Set wallpaper
 tint2-session &														# Start tint2
+compton &															# Start compositor
 (sleep 2; conky-session) &											# Start Conky
 pnmixer &															# Start volume control
 xfce4-clipman &														# Start clipboard manager
+/usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 &	# GNOME PolicyKit authentication
