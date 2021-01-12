@@ -51,4 +51,5 @@ rm -rf "$t"
 echo -e "\e[1mFixing Virtualbox GTK settings...\e[0m"
 apt-get install -y qt5-style-plugins
 echo "export QT_QPA_PLATFORMTHEME=gtk2" >> /etc/environment
+echo "export QT_STYLE_OVERRIDE=fusion" >> /etc/environment
 
