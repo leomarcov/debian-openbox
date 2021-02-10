@@ -37,7 +37,7 @@ for d in /etc/skel/  /home/*/ /root; do
 	
 	# Config .tints to autoload
 	mv "$d/taskbar${tint_version}.tint2rc_" "$d/taskbar${tint_version}.tint2rc"
-	mv "$d/menu.tint2rx_" "$d/menu.tint2rc"
+	mv "$d/menu.tint2rc_" "$d/menu.tint2rc"
 done
 
 # Copy tint2-session
