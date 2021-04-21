@@ -3,7 +3,7 @@ syntax on                       "Syntax highlight
 "set mouse=a                     "Allow copy and paste with mouse
 set mouse=
 set clipboard=unnamedplus		"Use system clipboard
-set number                      "Show line numbers
+"set number                      "Show line numbers
 set hlsearch                    "Hightlight all matches on search
 set ignorecase                  "Search are case insensitive
 set smartcase                   "Search case sensitive if any caps are used
