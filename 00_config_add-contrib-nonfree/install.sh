@@ -16,7 +16,6 @@ IFS=$'\n'
 for l in $deb_lines_contrib; do
 	sed -i "s\\^$l$\\$l contrib\\" /etc/apt/sources.list
 done
-)
 
 # Add non-free
 for l in $deb_lines_nonfree; do
