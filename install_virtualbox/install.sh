@@ -5,7 +5,7 @@
 
 # Config variables
 vb_package="virtualbox-6.1"
-ep_url="https://download.virtualbox.org/virtualbox/6.1.4/Oracle_VM_VirtualBox_Extension_Pack-6.1.4.vbox-extpack"
+ep_url="https://download.virtualbox.org/virtualbox/6.1.26/Oracle_VM_VirtualBox_Extension_Pack-6.1.26.vbox-extpack"
 main_distro="$(cat /etc/apt/sources.list | grep ^deb | awk '{print $3}' | head -1)"
 
 # Check root
