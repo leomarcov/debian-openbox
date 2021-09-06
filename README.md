@@ -13,7 +13,7 @@ The main script `install` can exec all scripts or only a select list:
   * Install Openbox and dependences.
   * Install and config essential Openbox tools: Tint2, Rofi, Terminator, Thunar, volume control, gsimplecal, etc.
   * Config a basic themes and styles for Openbox, Gtk, fonts, icon pack, wallpapers, exit menu.
-  * Install some user tools: Brave/Chrome browser, SublimeText, Atom, VirtualBox and Extensión Pack, sudo,nomacs image viewer, WPS Office and others.
+  * Install some user tools: Chrome browser, SublimeText, Atom, VirtualBox and Extensión Pack, sudo,nomacs image viewer, WPS Office and others.
   * Config prompt,  path, aliases and home directories permissions.
   * Config Grub for skip menu or protect by password and show messages during boot.
   * Install [**`vim`**](https://github.com/leomarcov/debian-openbox/tree/master/install_vim) and some plugins and themes.
@@ -102,16 +102,15 @@ $ ./install -l
  [28]  CONFIG   Enable CTRL+ALT+BACKSPACE shortcut for kill X server (Y)
  [29]  CONFIG   Install sudo and add user 1000 to sudo group (Y)
  [30]  INSTALL  Install Atom text editor (N)
- [31]  INSTALL  Install Brave browser, add to repositories and set has default browser (N)
- [32]  INSTALL  Install CUPS printer system and add user 1000 to lpadmin group (N)
- [33]  INSTALL  Install Google Chrome, add to repositories and set has default browser (Y)
- [34]  INSTALL  Install Sublime Text, add repositories and set as default editor (Y)
- [35]  INSTALL  Install vim editor, and apply some configs and plugins (Y)
- [36]  INSTALL  Install VirtualBox 6.1 and Extension Pack and add to repositories  (Y)
- [37]  INSTALL  Install WPS Office Suite (Y)
- [38]  SCRIPT   Install script poweroff_last for auto-poweroff if no users logged in 20 minutes (N)
- [39]  SCRIPT   Install script to control screen brightness (Y)
- [40]  SCRIPT   Config Linux login in text mode (tty) using ufetch style and install a tty locker (physlock) (Y)
+ [31]  INSTALL  Install CUPS printer system and add user 1000 to lpadmin group (N)
+ [32]  INSTALL  Install Google Chrome, add to repositories and set has default browser (Y)
+ [33]  INSTALL  Install Sublime Text, add repositories and set as default editor (Y)
+ [34]  INSTALL  Install vim editor, and apply some configs and plugins (Y)
+ [35]  INSTALL  Install VirtualBox 6.1 and Extension Pack and add to repositories  (Y)
+ [36]  INSTALL  Install WPS Office Suite (Y)
+ [37]  SCRIPT   Install script poweroff_last for auto-poweroff if no users logged in 20 minutes (N)
+ [38]  SCRIPT   Install script to control screen brightness (Y)
+ [39]  SCRIPT   Config Linux login in text mode (tty) using ufetch style and install a tty locker (physlock) (Y)
 ```
   
 &nbsp; 
