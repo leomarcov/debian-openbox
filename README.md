@@ -1,4 +1,4 @@
-# Openbox script collection for Debian 10 
+# Openbox script collection for Debian 11
 <img align="left"  src="https://user-images.githubusercontent.com/32820131/79635263-47d9d580-8170-11ea-87b1-943144be83d7.png" width="90"> Openbox is a beautiful and lightweight window manager, but tediuos to install and config a full usable environment. This script collection automatize **Openbox** installation and essentials tools and apply configurations, styles and themes. You can install all scripts from bare Debian netinstall to config full environment or **exec only some scripts** you are interested. Each folder has a particular action script for install pacakges, add scripts, apply configs or install some themes or styles.
 
 The main script `install` can exec all scripts or only a select list:
@@ -30,7 +30,7 @@ The main script `install` can exec all scripts or only a select list:
 
 &nbsp; 
 ## Install
-  * Install Debian 10 netinstall. Its recommended don't install `Debian desktop environment`, install only `standard system utilities`.
+  * Install Debian 10/11 using netinstall image. Its recommended don't install `Debian desktop environment`, install only `standard system utilities`.
 <img align="center" width="700" src="https://user-images.githubusercontent.com/32820131/101158317-d467d400-362b-11eb-8759-9d3beb40a20c.png">
   
   * Connect to Internet. If you need to connect to WIFI network in CLI you can do:
