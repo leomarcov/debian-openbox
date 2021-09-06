@@ -136,4 +136,4 @@ The script can be easily customized. Each `install.sh` script placed in a subdir
 ## Contact
 My name is Leonardo Marco. I'm sysadmin teacher in [CIFP Carlos III](https://cifpcarlos3.es/), Cartagena, Murcia (Spain).
 
-You can email me for suggestions, contributions, labadmin help or share your feelings: labadmin@leonardomarco.com
+You can email me for suggestions, contributions, debian-openbox script help or share your feelings: labadmin@leonardomarco.com
