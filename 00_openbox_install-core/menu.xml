@@ -90,14 +90,7 @@
                             x-text-editor ~/.config/openbox/menu.xml
                         </command>
                     </action>
-                </item>
-                <item label="GUI Menu Editor" icon="/usr/share/icons/openbox-menu/menu.png">
-                    <action name="Execute">
-                        <command>
-                            obmenu
-                        </command>
-                    </action>
-                </item>	        		
+                </item>      		
                 <item label="Hide/show icons in menu" icon="/usr/share/icons/openbox-menu/menu-icons.png">
                     <action name="Execute">
                         <command>
