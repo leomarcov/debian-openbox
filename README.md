@@ -40,6 +40,7 @@ The main script `install` can exec all scripts or only a select list:
   wpa_supplicant -B -i wlp5s0 -c <(wpa_passphrase YOUR-SSID YOUR-PASS)  # To authenticate in your wifi network
   dhclient -v wlp5s0                              # To get DHCP IP
   ```
+  * Install git: `apt install git`
   * Clone or download this project: `git clone https://github.com/leomarcov/debian-openbox`
   * Exec `install` script and select scripts you want to install.
   
