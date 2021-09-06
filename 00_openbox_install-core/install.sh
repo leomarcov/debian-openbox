@@ -20,9 +20,6 @@ echo -e "\e[1mCopying themes and tools...\e[0m"
 tar -xzvf "$base_dir"/openbox_theme.tgz -C /usr/share/themes/
 cp -rv "$base_dir/openbox-menu" /usr/share/icons/
 
-# Copy obamenu
-cp -v "$base_dir/obamenu" /usr/bin
-
 # Install help docs
 d="help"
 cp -rv "$base_dir/$d" "/usr/share/doc/openbox/"
