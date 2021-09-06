@@ -83,12 +83,12 @@ function change_brightness() {
 
 function check_bldir () {
 	[ ! -d "$bl_dir" ] && bl_dir=$(ls /sys/class/backlight)
-	if [ ! -d "$bl_dir" ]; then	
-		echo "ERROR: $bl_dir dont exist"
+	if [ "$(echo "$bl_dir" | wc -l)" -gt 1 ]; then
+		echo "ERROR: too many directories in /sys/class/backlight"
 		echo "Please edit $0 and config bl_dir variable with brightness directory"
 		exit 1
-	elif [ "$(echo "$bl_dir" | wc -l)" -gt 1 ]; then
-		echo "ERROR: too many directories in /sys/class/backlight"
+	elif [ ! -d "$bl_dir" ]; then	
+		echo "ERROR: directory $bl_dir dont exist"
 		echo "Please edit $0 and config bl_dir variable with brightness directory"
 		exit 1
 	fi
