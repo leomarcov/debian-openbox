@@ -15,7 +15,7 @@
 bl_step=3										# Percent steps of inc/dec
 bl_min=3										# Minium percent brightness
 bl_default="30"									# Default percent
-bl_dir="/sys/class/backlight/intel_backlight/"	# Dir for control backlight
+bl_dir=""	# Dir for control backlight
 install_path="/usr/bin/brightness"				# Installation dir
 
 #=== FUNCTION ==================================================================
@@ -82,8 +82,13 @@ function change_brightness() {
 }
 
 function check_bldir () {
-	if [ ! -d "$bl_dir" ]; then
+	[ ! -d "$bl_dir" ] && bl_dir=$(ls /sys/class/backlight)
+	if [ ! -d "$bl_dir" ]; then	
 		echo "ERROR: $bl_dir dont exist"
+		echo "Please edit $0 and config bl_dir variable with brightness directory"
+		exit 1
+	elif [ "$(echo "$bl_dir" | wc -l)" -gt 1 ]; then
+		echo "ERROR: too many directories in /sys/class/backlight"
 		echo "Please edit $0 and config bl_dir variable with brightness directory"
 		exit 1
 	fi
