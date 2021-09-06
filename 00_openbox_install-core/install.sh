@@ -14,7 +14,6 @@ echo -e "\e[1mInstalling packages...\e[0m"
 [ "$(find /var/cache/apt/pkgcache.bin -mtime 0 2>/dev/null)" ] || apt-get update  
 apt-get install -y openbox obconf xinit lxappearance compton xfce4-screenshooter xfce4-clipman xfce4-power-manager arandr gsimplecal xcape gparted file-roller xautomation yad inxi
 apt-get install -y network-manager network-manager-gnome 
-# apt-get install -y obmenu libexo-1-0 python-xdg     # Debian 11 errors
 
 echo -e "\e[1mCopying themes and tools...\e[0m"
 # Copy theme
