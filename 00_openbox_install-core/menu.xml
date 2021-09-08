@@ -401,13 +401,30 @@
 			</item>	
         </menu>
 
-        <item label="Shortcuts keys" icon="/usr/share/icons/openbox-menu/shortcut.png">
-            <action name="Execute">
-                <command>
-                    yad --text-info --window-icon=keyboard --button="Close" --borders=20 --title="Shortcuts and mouse bindings" --width=700 --height=700 --fontname="Monospace" --filename="/usr/share/doc/openbox/help/shortcuts.txt"
-                </command>
-            </action>
-        </item>		
+        <menu id="help" label="Help" icon="/usr/share/icons/openbox-menu/help2.png">
+        	<separator label="HELP AND TIPS" />
+	        <item label="Debian-Openbox Script GitHub" icon="/usr/share/icons/openbox-menu/github.png">
+	            <action name="Execute">
+	                <command>
+	                    x-www-browser "https://github.com/leomarcov/debian-openbox#readme"
+	                </command>
+	            </action>
+	        </item>	
+	        <item label="Welcome tips" icon="/usr/share/icons/openbox-menu/tip.png">
+	            <action name="Execute">
+	                <command>
+	                    welcome
+	                </command>
+	            </action>
+	        </item>	
+	        <item label="Shortcuts keys" icon="/usr/share/icons/openbox-menu/shortcut.png">
+	            <action name="Execute">
+	                <command>
+	                    yad --text-info --window-icon=keyboard --button="Close" --borders=20 --title="Shortcuts and mouse bindings" --width=700 --height=700 --fontname="Monospace" --filename="/usr/share/doc/openbox/help/shortcuts.txt"
+	                </command>
+	            </action>
+	        </item>		
+		</menu>
 		
         <separator/>
 
