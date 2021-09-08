@@ -1,14 +1,14 @@
 #!/bin/bash
 #===================================================================================
-# FILE: ob-welcome
+# FILE: welcome
 # DESCRIPTION: show yad dialog with Openbox welcome text
-# AUTHOR: Leonardo Marco                                                                                       
+# AUTHOR: Leonardo Marco 
 # VERSION: 1.0
 # CREATED: 2021.09.21
 # LICENSE: GNU General Public License v3.0
 #===================================================================================
 
-welcome_link=~/.config/openbox/ob-welcome
+welcome_link=~/.config/openbox/welcome
 
 
 # Spanish welcome text
@@ -79,9 +79,9 @@ output=$(yad --form --button=gtk-ok --center --undecorated --fixed --borders=30 
 
 # Delete simbolic link if not show next time is checked
 if [ "$output" = "FALSE" ]; then
-	rm ~/.config/openbox/ob-welcome &>/dev/null
+	rm ~/.config/openbox/welcome &>/dev/null
 else
-	ln -s /usr/bin/ob-welcome "$welcome_link" &>/dev/null
+	ln -s /usr/bin/welcome "$welcome_link" &>/dev/null
 fi
 
 
