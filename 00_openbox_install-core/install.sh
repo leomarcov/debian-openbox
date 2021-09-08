@@ -38,6 +38,7 @@ chmod a+x /usr/bin/bt-session
 # Copy welcome
 cp -v ${base_dir}/welcome /usr/bin
 chmod a+x /usr/bin/welcome
+cp -v ${base_dir}/welcome.desktop /user/share/applications/
 
 # Copy users config
 echo -e "\e[1mSetting configs to all users...\e[0m"
