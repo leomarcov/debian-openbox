@@ -1,4 +1,4 @@
-#!/bin/bash                                                                                                                                                                                                          
+#!/bin/bash
 #===================================================================================
 # FILE: ob-welcome
 # DESCRIPTION: show yad dialog with Openbox welcome text
@@ -7,6 +7,9 @@
 # CREATED: 2021.09.21
 # LICENSE: GNU General Public License v3.0
 #===================================================================================
+
+welcome_link=~/.config/openbox/ob-welcome
+
 
 # Spanish welcome text
 text_es='<big><b>BIENVENIDO A DEBIAN-OPENBOX SCRIPT!</b></big>
@@ -24,18 +27,19 @@ text_es='<big><b>BIENVENIDO A DEBIAN-OPENBOX SCRIPT!</b></big>
    • <tt>WIN+flechas</tt>
    • <tt>WIN+[0-9]</tt>
 
-<b> Buscar programas</b>            <tt>WIN</tt>
-<b> Mover ventanas</b>              <tt>ALT+clic izquierdo</tt> (y arrastrar)
-<b> Cambiar tamaño ventanas</b>     <tt>ALT+clic derecho</tt> (y arrastrar)
-<b> Ventana siempre encima</b>      <tt>WIN+0</tt>
-<b> Matar entorno gráfico</b>       <tt>CTRL+ALT+RETROCESO</tt>
+<b> Buscar programas</b> 			<tt>WIN</tt>
+<b> Mover ventanas</b> 				<tt>ALT+clic izquierdo</tt> (y arrastrar)
+<b> Cambiar tamaño ventanas</b>		<tt>ALT+clic derecho</tt> (y arrastrar)
+<b> Ventana siempre encima</b> 		<tt>WIN+0</tt>
+<b> Matar entorno gráfico</b> 		<tt>CTRL+ALT+RETROCESO</tt>
 
-<b> Abrir un terminal</b>               <tt>WIN+t</tt>
-<b> Abrir el gestor de ficheros</b>     <tt>WIN+f</tt>
-<b> Abrir el navegador web</b>      <tt>WIN+w</tt>
-<b> Abrir el editor</b>             <tt>WIN+e</tt>
+<b> Abrir un terminal</b>				<tt>WIN+t</tt>
+<b> Abrir el gestor de ficheros</b>		<tt>WIN+f</tt>
+<b> Abrir el navegador web</b>		<tt>WIN+w</tt>
+<b> Abrir el editor</b>				<tt>WIN+e</tt>
 '
-field_es="No volver a mostrar"
+field_es="Mostrar este mensaje al inicio"
+
 
 # English welcome text
 text_en='<big><b>WELCOME TO DEBIAN-OPENBOX SCRIPT!</b></big>
@@ -53,18 +57,18 @@ text_en='<big><b>WELCOME TO DEBIAN-OPENBOX SCRIPT!</b></big>
    • <tt>WIN+arrows</tt>
    • <tt>WIN+[0-9]</tt>
    
-<b> Search commands</b>     <tt>WIN</tt>
-<b> Move windows</b>            <tt>ALT+left click</tt> (and drag)
-<b> Resize windows</b>          <tt>ALT+right click</tt> (and drag)
-<b> Window always on top</b>        <tt>WIN+0</tt>
-<b> Kill X server</b>               <tt>CTRL+ALT+BACKSPACE</tt>
+<b> Search commands</b>		<tt>WIN</tt>
+<b> Move windows</b>			<tt>ALT+left click</tt> (and drag)
+<b> Resize windows</b>			<tt>ALT+right click</tt> (and drag)
+<b> Window always on top</b>		<tt>WIN+0</tt>
+<b> Kill X server</b>				<tt>CTRL+ALT+BACKSPACE</tt>
 
-<b> Open terminal</b>           <tt>WIN+t</tt>
-<b> Open file manager</b>       <tt>WIN+f</tt>
-<b> Open web browser</b>        <tt>WIN+w</tt>
-<b> Open editor</b>             <tt>WIN+e</tt>
+<b> Open terminal</b>			<tt>WIN+t</tt>
+<b> Open file manager</b>		<tt>WIN+f</tt>
+<b> Open web browser</b>		<tt>WIN+w</tt>
+<b> Open editor</b>				<tt>WIN+e</tt>
 '
-field_en="Do not show next time"
+field_en="Show this message on startup"
 
 # Get current language
 lang="en"
@@ -73,7 +77,13 @@ eval text="\$text_$lang"
 eval field="\$field_$lang"
 
 # Show yad dialog
-output=$(yad --form --button=gtk-ok --center --undecorated --fixed --borders=30 --window-icon=nautilus --text="$text" --field="$field:CHK" --separator=""  --image=debian-logo)
+output=$(yad --form --button=gtk-ok --center --undecorated --fixed --borders=30 --window-icon=nautilus --text="$text" --field="$field:CHK" $([ -s "$welcome_link" ] && echo true || echo false) --separator=""  --image=debian-logo)
 
 # Delete simbolic link if not show next time is checked
-[ "$output" = "TRUE" ] && rm ~/.config/openbox/ob-welcome
+if [ "$output" = "FALSE" ]; then
+	rm ~/.config/openbox/ob-welcome &>/dev/null
+else
+	ln -s /usr/bin/ob-welcome "$welcome_link" &>/dev/null
+fi
+
+
