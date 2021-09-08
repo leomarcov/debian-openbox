@@ -18,7 +18,7 @@ text_es='<big><b>BIENVENIDO A DEBIAN-OPENBOX SCRIPT!</b></big>
 <b> ¿Como abrir el menú de inicio?</b>
    • Clic derecho en el escritorio o la barra de tareas
    • Clic derecho en el borde izquierdo de la pantalla (aunque hayan ventanas maximizadas)
-<b> ¿Como puedo salir?</b>
+<b> ¿Como puedo salir/apagar?</b>
    • <tt>Menú de inicio > Exit</tt>
    • <tt>WIN+x</tt>
 <b> ¿Cómo maximizo y ajusto ventanas?</b> 
@@ -47,7 +47,7 @@ text_en='<big><b>WELCOME TO DEBIAN-OPENBOX SCRIPT!</b></big>
  <b> How to open main menu?</b>
    • Right click on desktop and taskbar
    • Right click on left screen border (even if there are maximized windows)
-<b> How to exit?</b>
+<b> How to exit/power off?</b>
    • <tt>Main menu > Exit</tt>
    • <tt>WIN+x</tt>
 <b> How to snap Windows?</b>
