@@ -10,7 +10,6 @@
 
 welcome_link=~/.config/openbox/welcome
 
-
 # Spanish welcome text
 text_es='<big><b>BIENVENIDO A DEBIAN-OPENBOX SCRIPT!</b></big>
  Un entorno de escritorio ligero y minimalista sobre Debian! Aquí tienes algunos <b>tips</b>:
