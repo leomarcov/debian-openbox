@@ -35,6 +35,9 @@ chmod a+x /usr/bin/cups-session
 # Copy bt-session
 cp -v ${base_dir}/bt-session /usr/bin
 chmod a+x /usr/bin/bt-session
+# Copy ob-welcome
+cp -v ${base_dir}/ob-welcome /usr/bin
+chmod a+x /usr/bin/ob-welcome
 
 # Copy users config
 echo -e "\e[1mSetting configs to all users...\e[0m"
@@ -66,11 +69,14 @@ for d in /etc/skel /home/*/ /root; do
 	cp -v "$base_dir/$f" "$d" && chown -R $(stat "$d" -c %u:%g) "$d/$f"	
 	# Delete bluetooth item from menu if no BT present
 	dmesg | grep -qi bluetooth || sed -i '/DEBIAN-OPENBOX-bluetooth/Id' "$d/$f"	
+	# Create welcome link
+	ln -s /usr/bin/ob-welcome "$d/ob-welcome"
 	
 	# Copy fonts.conf
 	d="$d2/fontconfig/";  [ ! -d "$d" ] && mkdir -v "$d" && chown -R $(stat "$(dirname "$d")" -c %u:%g) "$d"
 	f="fonts.conf"
-	cp -v "$base_dir/$f" "$d" && chown -R $(stat "$d" -c %u:%g) "$d/$f"	
+	cp -v "$base_dir/$f" "$d" && chown -R $(stat "$d" -c %u:%g) "$d/$f"
+
 done
 
 
