@@ -16,8 +16,7 @@ text_es='<big><b>BIENVENIDO A DEBIAN-OPENBOX SCRIPT!</b></big>
  Un entorno de escritorio ligero y minimalista sobre Debian! Aquí tienes algunos <b>tips</b>:
 
 <b> ¿Como abrir el menú de inicio?</b>
-   • Clic derecho en el escritorio
-   • Clic derecho en la barra de tareas
+   • Clic derecho en el escritorio o la barra de tareas
    • Clic derecho en el borde izquierdo de la pantalla (aunque hayan ventanas maximizadas)
 <b> ¿Como puedo salir?</b>
    • <tt>Menú de inicio > Exit</tt>
@@ -46,8 +45,7 @@ text_en='<big><b>WELCOME TO DEBIAN-OPENBOX SCRIPT!</b></big>
  A lightweight and minimal desktop on Debian!. There are some <b>tips</b>:
 
  <b> How to open main menu?</b>
-   • Right click on desktop
-   • Right click on taskbar
+   • Right click on desktop and taskbar
    • Right click on left screen border (even if there are maximized windows)
 <b> How to exit?</b>
    • <tt>Main menu > Exit</tt>
