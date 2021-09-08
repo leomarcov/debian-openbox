@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=Welcome tips message                                                                                                                                                                                        
+Type=Application
+Exec=welcome
+Icon=debian-logo
+Keywords=welcome,tips,help
