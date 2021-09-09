@@ -424,6 +424,27 @@
 	                </command>
 	            </action>
 	        </item>		
+	        <item label="Debian Documentatcion" icon="/usr/share/icons/openbox-menu/debian.png">
+	            <action name="Execute">
+	                <command>
+	                    x-www-browser "https://www.debian.org/doc"
+	                </command>
+	            </action>
+	        </item>	
+	        <item label="Debian Handbook" icon="/usr/share/icons/openbox-menu/debian.png">
+	            <action name="Execute">
+	                <command>
+	                    x-www-browser "https://www.debian-handbook.info/browse/stable"
+	                </command>
+	            </action>
+	        </item>		
+	        <item label="Debian Reference" icon="/usr/share/icons/openbox-menu/debian.png">
+	            <action name="Execute">
+	                <command>
+	                    x-www-browser "https://www.debian.org/doc/manuals/debian-reference/"
+	                </command>
+	            </action>
+	        </item>				
 		</menu>
 		
         <separator/>
