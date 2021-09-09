@@ -424,6 +424,9 @@
 	                </command>
 	            </action>
 	        </item>		
+			
+	        <separator label="DEBIAN HELP" />
+
 	        <item label="Debian Documentatcion" icon="/usr/share/icons/openbox-menu/debian.png">
 	            <action name="Execute">
 	                <command>
