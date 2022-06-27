@@ -21,8 +21,11 @@ for d in /etc/skel/  /home/*/ /root; do
 
 	# Create config folders if no exists
 	d="$d/.config/"; [ ! -d "$d" ] && mkdir -v "$d" && chown -R $(stat "$(dirname "$d")" -c %u:%g) "$d"
-	d="$d/terminator/"; [ ! -d "$d" ] && mkdir -v "$d" && chown -R $(stat "$(dirname "$d")" -c %u:%g) "$d"
 	
+	f="helpers.rc"
+	cp -v "$base_dir/$f" "$d/xfce4/" && chown -R $(stat "$(dirname "$d")" -c %u:%g) "$d/$f"
+	
+	d="$d/terminator/"; [ ! -d "$d" ] && mkdir -v "$d" && chown -R $(stat "$(dirname "$d")" -c %u:%g) "$d"
 	f="config"
 	cp -v "$base_dir/$f" "$d/" && chown -R $(stat "$(dirname "$d")" -c %u:%g) "$d/$f"
 done
