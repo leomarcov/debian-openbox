@@ -7,7 +7,6 @@
 vb_package="virtualbox-7.0"
 ep_url="https://download.virtualbox.org/virtualbox/7.0.8/Oracle_VM_VirtualBox_Extension_Pack-7.0.8.vbox-extpack"
 main_distro="$(cat /etc/apt/sources.list | grep ^deb | awk '{print $3}' | head -1)"
-[ "$main_distro" = "bookworm" ] && main_distro="bullseye"	# bullseye while bookworm not exists in virtualbox repository, delete this line when exists
 
 # Check root
 [ "$(id -u)" -ne 0 ] && { echo "Must run as root" 1>&2; exit 1; }
