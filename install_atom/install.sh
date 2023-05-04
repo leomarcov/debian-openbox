@@ -1,19 +1,19 @@
 #!/bin/bash
-# ACTION: Install Atom text editor
+# ACTION: Install Atom text editor and add to repositories
 # INFO: Atom is text editor oriented to using in programming languages
 # DEFAULT: n
 
 # Check root
 [ "$(id -u)" -ne 0 ] && { echo "Must run as root" 1>&2; exit 1; }
 
-# Copy users config
-echo -e "\e[1mDownloading Atom package...\e[0m"
-atom_url="https://atom.io/download/deb"
-t=$(mktemp -d)
-wget -P "$t" "$atom_url"  
-if [ $? -eq 0 ]; then
-	yes | dpkg -i "$t/"*
-	echo -e "\e[1mInstalling packages...\e[0m"
-	apt-get install -f -y 
-fi 
-rm -rf "$t"
+# Install repositories and update
+if ! grep -R "AtomEditor" /etc/apt/ &> /dev/null; then
+	echo -e "\e[1mConfiguring repositories...\e[0m"
+	echo "deb [arch=amd64 signed-by=/usr/share/keyrings/atomeditor-keyring.gpg] https://packagecloud.io/AtomEditor/atom/any/ any main" | tee /etc/apt/sources.list.d/atom.list
+	wget -qO - https://packagecloud.io/AtomEditor/atom/gpgkey | sudo gpg --dearmor -o /usr/share/keyrings/atomeditor-keyring.gpg
+	apt-get update
+fi
+
+# Install package
+echo -e "\e[1mInstalling packages...\e[0m"
+apt-get -y install atom || exit 1
