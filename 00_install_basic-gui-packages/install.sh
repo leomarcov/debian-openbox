@@ -1,7 +1,7 @@
 #!/bin/bash
-# ACTION: Install some basic packages
-# INFO: Debian netinstall comes with few list of installed packages
-# INFO: Some basic packages are: vim vlc zip unzip gmtp mtp-tools mailutils traceroute acl gnupg2 synaptic galternatives mlocate evince apt-transport-https curl
+# ACTION: Install some basic GUI packages
+# INFO: Debian netinstall comes with few list of GUI installed packages
+# INFO: Some basic packages are: vlc gmtp mtp-tools synaptic galternatives evince
 # DEFAULT: y
 
 # Check root
@@ -10,6 +10,6 @@
 # Install free packages
 echo -e "\e[1mInstalling packages...\e[0m"
 [ "$(find /var/cache/apt/pkgcache.bin -mtime 0 2>/dev/null)" ] || apt-get update  
-apt-get install -y vim vlc zip unzip gmtp mtp-tools mailutils traceroute acl gnupg2 synaptic galternatives mlocate evince apt-transport-https curl rar unrar ntfs-3g
+apt-get install -y vlc gmtp mtp-tools synaptic galternatives evince
 apt-get install -y firmware-linux-nonfree
   
