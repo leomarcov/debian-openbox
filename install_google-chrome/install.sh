@@ -10,8 +10,8 @@
 # Install repositories and update
 if ! grep -R "dl.google.com/linux/chrome/deb/" /etc/apt/ &> /dev/null; then
 	echo -e "\e[1mConfiguring repositories...\e[0m"
-	echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google-chrome.list
-	wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - 
+	wget -qO - https://dl-ssl.google.com/linux/linux_signing_key.pub | gpg --dearmor -o /usr/share/keyrings/googlechrome-keyring.gpg
+	echo "deb [arch=amd64 signed-by=/usr/share/keyrings/googlechrome-keyring.gpg] http://dl.google.com/linux/chrome/deb/ stable main" | tee /etc/apt/sources.list.d/googlechrome.list
 	apt-get update
 fi
 
