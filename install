@@ -61,7 +61,7 @@ C_LN="\e[37m"           # Color LIGHT GREY
 
 
 #=== FUNCTION ======================================================================
-# NAME: stederr_red
+# NAME: stderr_red
 # DESCRIPTION: Show stederr in red color permanently
 #===================================================================================
 function stderr_red() {
