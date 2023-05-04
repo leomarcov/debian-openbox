@@ -16,7 +16,7 @@ for l in $deb_lines_contrib; do
 done
 
 # Add non-free section
-deb_lines_nonfree="$(egrep '^(deb|deb-src) (http://deb.debian.org/debian/|http://security.debian.org/debian-security)' /etc/apt/sources.list | grep -v non-free)"
+deb_lines_nonfree="$(egrep '^(deb|deb-src) (http://deb.debian.org/debian/|http://security.debian.org/debian-security)' /etc/apt/sources.list | grep -v "non-free[[:blank:]]")"
 for l in $deb_lines_nonfree; do
 	sed -i "s\\^$l$\\$l non-free\\" /etc/apt/sources.list
 done

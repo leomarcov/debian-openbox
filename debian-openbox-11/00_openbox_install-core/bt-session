@@ -1,0 +1,60 @@
+#!/bin/bash
+# Script for open blueman manager and install it if not installed
+# If BT is running open blueman-manager
+# If BT is not installed installl BT and open manager
+
+# NO BT INSTALLED
+if [ "$1" = "-I" ]; then
+    # INSTALL BT
+    if ! dpkg -l blueman &>/dev/null || ! dpkg -l bluez &>/dev/null | grep -q "^ii"; then
+        # Install package
+		clear
+		echo
+		echo "  INSTALL BLUETOOTH SUPPORT"
+		echo "  ------------------------"
+        echo "  Bluetooth support is not installed"
+		echo
+        while true; do
+            read -p "  Install Bluetooth? (Y/n) " q;
+
+            [ "${q,,}" = "n" ] && exit
+            ([ ! "$q" ] || [ "${q,,}" = "y" ]) && break
+        done
+        echo
+        sudo apt-get install -y bluez blueman || exit 1
+
+        # Adduser to bluetooth
+		clear
+		echo	
+		echo "  SELECT USERS FOR ADMIN BLUETOOTH"
+		echo "  -------------------------------"
+        echo "  Users must allow to bluetooth group in order to admin Bluetooth"
+		echo
+        read -p "  Users (space separated): " ul
+        for u in $ul; do
+            sudo adduser $u bluetooth
+        done
+
+        # Open bt manager
+        echo
+        read -p "Press enter to open bluetooth manager"
+        blueman-manager
+
+    # START BT
+    else
+        echo "Bluetooth is installed but not running"
+        read -p "Press enter to try to start bluetooth"
+        sudo systemctl start bluetooth.service
+        sleep 1
+        systemctl status bluetooth&>/dev/null && blueman-manager
+    fi
+
+# OPEN BT ADMIN
+elif systemctl status bluetooth.service &>/dev/null && which blueman-manager &>/dev/null; then
+    blueman-manager
+    exit
+
+# CALL TO INSTALL BT
+else
+    x-terminal-emulator -e "$(readlink -f "$0")" -I
+fi

@@ -281,12 +281,14 @@ function load_scripts() {
 # DESCRIPTION: check if current OS distro is compatible with this install script
 #
 # EXIT CODE
-#	0	IS compatible
-#	1	IS NOT compamtible
+#	0	IS Debian 12 compatible 
+#	1	IS Debian 11 compatible
+#	>1	IS NOT compatible 
 #===================================================================================
 function check_os_version() {
-	cat /etc/*release | grep -i debian &>/dev/null || return 1
-	cat /etc/*release | egrep -i "buster|stretch" &>/dev/null || return 1
+	cat /etc/*release | grep -iq debian || return 2 
+	cat /etc/*release | egrep -iq "buster|stretch" && return 1 
+	cat /etc/*release | egrep -iq "bookworm" || return 3 
 	return 0
 }
 
@@ -337,8 +339,11 @@ function main() {
 		[ "$(id -u)" -ne 0 ] && error_info "Administrative privileges needed" 1
 
 		# Check debian version
-		if ! check_os_version; then
-			echo "Seems you are not running Debian Buster distro"
+		check_os_version; c=$?
+		if [ "$c" -eq 1 ]; then
+			"${base_dir}/debian-openbox-11/install" "$@"
+		elif [ "$c" -gt 1 ]; then
+			echo "Seems you are not running Debian 12 Bookworm distro"
 			echo "Some actions may fail. Cross your fingers and press enter..."
 			read
 		fi

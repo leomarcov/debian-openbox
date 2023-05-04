@@ -1,0 +1,450 @@
+#!/bin/bash
+#===================================================================================
+# WIFI MANAGER CLI
+# FILE: wifi-manager
+#
+# DESCRIPTION: a simple wifi manager CLI
+#
+# AUTHOR: Leonardo Marco
+# VERSION: 1.0
+# CREATED: 2020.03.29
+#===================================================================================
+
+#=== GLOBAL VARIABLES DEFINITION ===============================================
+dependences="iwgetid iwlist wpa_supplicant wpa_cli dhclient ip"		# script dependences
+wpa_config="/etc/wpa_supplicant/wpa_supplicant.conf"						# wpa_supplicant file config to use
+unset daemon_enabled														# Empty if not wpa-cli daemon controlled is enabled
+unset iface																	# iface to use
+unset scan_out																# Raw output of scan command
+unset n_networks
+unset addresses
+unset channels
+unset essids
+unset qualities
+unset keys
+declare -A id_networks
+
+
+
+
+
+function wpacli_isstored {
+	local ssid="$1"
+	wpa_cli -i "$iface" list_networks 2>/dev/null | grep "^[0-9][[:blank:]]" | cut -f2 | grep "^${ssid}$" &>/dev/null
+	return $?
+}
+
+function daemon_getid {
+	local ssid="$1"
+	wpa_cli -i $iface list_networks | grep "^[0-9][[:blank:]]" | cut -f1-2 | grep "[[:blank:]]${ssid}$" | cut -f1
+}
+
+
+function wpacli_addnetwork {
+	echo hola
+}
+
+
+#=== FUNCTION ==================================================================
+# NAME: print_signal_bar
+# DESCRIPTION: prints a wifi singal bar from a signal value like 33/70
+# PARAM1: signal like 33/70
+#===============================================================================
+function print_signal_bar {
+    local a=$(echo "$1" | cut -f1 -d "/")
+    local b=$(echo "$1" | cut -f2 -d "/")
+	local p=$((a*100/b))	# Percent
+	
+	if [ "$p" -le 12 ]; then
+		echo "$p%  ____" 
+	elif [ "$p" -le 37 ]; then
+		echo "$p%  ▂___"
+	elif [ "$p" -le 62 ]; then
+		echo "$p%  ▂▄__"
+	elif [ "$p" -le 85 ]; then
+		echo "$p%  ▂▄▆_"
+	elif [ "$p" -le 100 ]; then
+		echo "$p%$([ "$p" -lt 100 ] && echo " ") ▂▄▆█"
+	else
+		echo "ERROR"
+	fi
+}
+
+
+#=== FUNCTION ==================================================================
+# NAME: scan
+# DESCRIPTION: scan visible wifi networks ssid and fill arrays: address, channels, qualities, keys and essids
+#===============================================================================
+function scan {
+    IFS2="$IFS"; IFS=$'\n'
+
+    [ ! "$(ip link show $iface up)" ] && ip link set dev $iface up
+	
+    echo -e "\e[1mScaning interface $iface...\e[0m"
+    scan_out="$(iwlist $iface scan)"
+    local scan="$(echo "$scan_out" | egrep "Address|ESSID|Quality|Channel|Encryption key")"
+	
+    addresses=($(echo "$scan" | grep Address: | egrep -o "([0-9A-F]{2}:)+[0-9A-F]{2}"))
+    channels=($(echo "$scan" | grep Channel: | cut -f2 -d:))
+    qualities=($(echo "$scan" | grep Quality | egrep -o "[0-9]+/[0-9]+"))
+    keys=($(echo "$scan" | grep "Encryption key" | cut -f 2 -d:))
+    essids=($(echo "$scan" | grep ESSID | cut -f2 -d:))
+    n_networks="${#addresses[*]}"
+
+    # Loop scaned networks for complete empty ssids and sotred array
+    for n in $(seq 0 $((n_networks-1))); do
+    	local addr="${addresses[$n]}"
+        local ssid="${essids[$n]}"
+        ssid="$(echo "$ssid" | cut -f2 -d\")"
+        [ ! "$ssid" ] && ssid="$addr"
+        essids[$n]="$ssid"
+
+        # Get saved networks from daemon
+        if [ "$daemon_enabled" ]; then
+        	wpacli_isstored "$ssid" && stored[$n]="*"
+        	id_networks["$ssid"]=$(daemon_getid "$ssid")
+    	fi
+    done
+    IFS="$IFS2"
+}
+
+
+#=== FUNCTION ==================================================================
+# NAME: list
+# DESCRIPTION: print the list of scanned SSIDS and show in columns
+#===============================================================================
+function list {
+    (
+    IFS=$'\n'
+    echo -e "\e[1mNUM␟  SIGNAL␟SSID␟CHANNEL␟ENCRYPT␟SAVED\e[0m"
+    for n in $(seq 0 $((n_networks-1))); do
+		local addr="${addresses[$n]}"
+        local ssid="${essids[$n]}"
+        local channel="${channels[$n]}"
+        local quality="${qualities[$n]}"
+        quality="$(print_signal_bar $quality)"
+        local key="${keys[$n]}"
+       	local saved="${stored[$n]}"
+
+       	local ssid_current="$(get_connected-ssid)"
+		[ "$ssid" = "$ssid_current" ] && echo -en "\e[32m\e[1m"
+        echo -e "[$((n+1))]␟$quality␟$ssid␟$channel␟$key␟$saved"
+		[ "$ssid" = "$ssid_current" ] && echo -en "\e[0m"
+    done
+    echo
+    ) | column -t -s "␟"
+}
+
+
+#=== FUNCTION ==================================================================
+# NAME: disconnect
+# DESCRIPTION: disconnect current wifi connection and down wlan iface
+#===============================================================================
+function disconnect {
+	echo -e "\n\e[1mDisconnecting $iface interface\e[0m"
+	if [ "$daemon_enabled" ]; then
+		wpa_cli -i "$iface" disconnect
+	else
+		killall wpa_supplicant
+	fi
+
+	dhclient -v -r "$iface"
+	ip link set dev "$iface" down	
+}
+
+
+function get_connected-ssid {
+	iwgetid $iface | cut -f2 -d: | cut -f2 -d\"
+}
+
+
+#=== FUNCTION ==================================================================
+# NAME: show_status
+# DESCRIPTION: show current status
+#===============================================================================
+function show_status {
+	echo
+
+	echo -e "WPA DAEMON CLI \e[1m\e[32mENABLED\e[0m\n" || echo -e "wpa_cli   \e[1m\e[31mDISABLED\e[0m\n"	
+	if [ "$daemon_enabled" ]; then
+		wpa_cli -i "$iface" status | egrep  --color=auto -e ^ -e "^ip_address" -e "^ssid" -e "^wpa_state"
+	else 
+		iwgetid "$iface"
+		echo
+		ip -c a show dev $iface
+	fi
+}
+
+
+function show_info {
+	local n="$((${1}-1))"
+	local a="${addresses[$n]}"
+	echo "$scan_out" | sed -n "/Address: ${a}/,/Address/p" | head -n -1 | grep -v "Unknown" | egrep --color -e "^" -e "Address|ESSID|Quality|Channel|Encryption key"
+}
+
+
+
+function connect_no-saved {
+	local ssid="$1"
+	local pass="$2"
+
+	echo -e "\n\e[1mConnecting to $ssid\e[0m"
+	wpa_supplicant -B -i "$iface" -c <(wpa_passphrase "$ssid" "$pass")
+
+	echo -e "\n\e[1mGetting DHCP address\e[0m"
+	dhclient -v "$iface"
+}
+
+
+
+
+
+
+#=== FUNCTION ==================================================================
+# NAME: connect
+# DESCRIPTION: connect to ssid and ask for password
+# PARAM1: ssid to connect
+#===============================================================================
+function connect {
+	local n="$((${1}-1))"
+	local ssid="${essids[$n]}"
+	local saved="${stored[$n]}"
+	local dn="${id_networks["$ssid"]}"
+
+	# If connected first disconnect
+	[ "$(get_connected-ssid )" ] && disconnect
+	
+	# CONNECT SAVED NETWORK
+	if [ "$saved" ]; then
+		echo -e "\n\e[1mConnecting to saved $ssid ($dn)\e[0m"
+		wpa_cli -i "$iface" select_network "$dn"|| return
+
+	# CONNECT DAEMON-NOTSAVED
+	elif [ "$daemon_enabled" ]; then
+		# Read password
+		local pass
+		while [ ! "$pass" ]; do read -p "$ssid password: " pass; done
+
+		echo -e "\n\e[1mConnecting to $ssid\e[0m"
+		local nN="$(wpa_cli -i "$iface" add_network)"
+		wpa_cli -i "$iface" set_network "$nn" ssid \""$ssid"\" || return 1
+		wpa_cli -i "$iface" set_network "$nn" pass \""$pass"\" || return 1
+		wpa_cli -i "$iface" select_network "$nn" || return 1
+
+		# Save password?
+		unset q
+		while [ "${q,,}" != "n" ]  && [ "${q,,}" != "y" ]; do read -p "Save network? (y/n): " q; done
+		if [ "${q,,}" = "y" ]; then
+			wpa_cli -i "$iface" save_config
+		fi
+
+	# CONNECT NOTDAEMON
+	else
+		wpa_supplicant -B -i "$iface" -c <(wpa_passphrase "$ssid" "$pass")
+	fi
+
+	# DHCP 
+	echo -e "\n\e[1mGetting DHCP address\e[0m"
+	dhclient -v "$iface" || return 1
+}
+
+
+
+
+#=== FUNCTION ==================================================================
+# NAME: init_wpa-daemon 
+# DESCRIPTION: checks wpa_supplicant daemon is enabled and start it and checks if wpa_cli is enabled
+#===============================================================================
+function init_wpa-daemon {
+	pgrep wpa_supplicant &>/dev/null || wpa_supplicant -B -i "$iface" -c "$wpa_config"
+	sleep 0.1
+
+	wpa_cli -h >/dev/null && daemon_enabled=1 || daemon_enabled=""
+}
+
+
+
+#=== FUNCTION ==================================================================
+# NAME: check_dependences
+# DESCRIPTION: checks for script dependences and exit if not found any
+#===============================================================================
+function check_dependences {
+	local deps_err=""
+	
+	for d in $dependences; do
+		! which "$d" &>/dev/null && deps_err="$deps_err${deps_err:+" "}$d"
+	done
+	
+	[ "$deps_err" ] && error_msg "Missing dependences: $deps_err\nPlease, solve dependences and try it again" 1
+	
+	return 0
+}
+
+
+
+#=== FUNCTION ==================================================================
+# NAME: help
+# DESCRIPTION: checks for script dependences and exit if not found any
+#===============================================================================
+function help {
+	echo "Usage $(basename $0) [-h] [-i iface]"
+	exit $1
+}
+
+
+#=== FUNCTION ==================================================================
+# NAME: error
+# DESCRIPTION: show error message and exit
+# PARAM1: msg
+# PARAM2: exit code 
+#===============================================================================
+function error_msg {
+	local msg="$1"
+	local ecode="$2"
+
+	echo -e "$msg" 1>&2
+	[ "$ecode" ] && exit "$ecode"
+}
+
+
+
+
+function get_network_id {
+	local n="$1"
+
+	# If n number and in range
+	if [ "$n" -le ${#addresses[*]} ]&>/dev/null && [ "$n" -ge 1 ]; then
+		echo "$n"
+		return 0
+	fi
+
+	# Search for n by ssid
+	local ssid="$n"
+	local IFS=$'\n'
+	n="$(echo "${essids[*]}" | grep "^${ssid}$" -n | cut -f1 -d:)"
+	if [ "$n" ]; then
+		echo "$n"
+		return 0
+	fi
+
+	return 1
+}
+
+
+
+#=== FUNCTION ==================================================================
+# NAME: main function
+# DESCRIPTION: start function
+#===============================================================================
+function main {
+	# PARAMETERS
+	while getopts ":hi:s:" p; do
+		case $p in
+			h) 	help 0									;;
+			i) 	iface="$OPTARG" 						;;
+			s)	pssid=1; ssid="$OPTARG"				;;
+			\?) error_msg "Unknow option: -$OPTARG" 1	;;
+		esac
+	done
+
+
+	# CHECK DEPENDENCES
+	check_dependences
+	[ "$USER" != root ] && error_msg "Must exec with root privileges" 1
+	
+	# SET GLOBAL VARIABLES VALUES
+	if [ "$iface" ]; then
+		ip a show dev "$iface" >/dev/null || exit 1
+	else 
+    	iface="$(iw dev | awk '$1=="Interface"{print $2}' | head -1)"
+    fi
+	
+
+	# SELECT ACTION
+	action="scan"
+	while true; do 
+		case "${action,,}" in
+			l|list) 
+				clear
+				list
+				echo
+			;;
+			""|r|rescan|scan)
+				init_wpa-daemon 
+				clear
+				scan
+				list
+				echo
+			;;
+			d|disconnect) 
+				disconnect
+				echo
+			;;
+			s|status)
+				show_status
+				echo
+			;;
+			c*|connect)
+				n="$(echo "$action" | awk '{print $2}')"
+				if ! n="$(get_network_id "$n")"; then
+					error_msg "Invalid network id!"
+					continue
+				fi
+				
+				connect "$n"
+				echo
+			;;
+			i*|info*)
+				n="$(echo "$action" | awk '{print $2}')"
+				if ! n="$(get_network_id "$n")"; then
+					error_msg "Invalid network id!"
+					continue
+				fi				
+
+				show_info "$n"
+				echo
+			;; 
+			h|help)
+				echo -e "  \e[1mc\e[0monnect n\t\tConnect to network"
+				echo -e "  \e[1md\e[0misconnect\t\tDisconnect"
+				echo -e "  \e[1mr\e[0mescan\t\tRescan available wifi networks"
+				echo -e "  \e[1ms\e[0mtatus\t\tShow current status connection"
+				echo -e "  \e[1mi\e[0mnfo n\t\tShow network info"
+				echo
+				unset action
+			;;
+			q|quit|exit)
+				exit 0
+			;;
+			*) echo "Invalid option!"
+			;;
+		esac
+
+		echo -en "\e[1mAction (h for help)\e[0m: "; read action
+	done
+
+}
+
+main "$@"
+
+
+
+##############3
+
+	# SHOW LIST AND SELECT NETWORK
+	if [ ! "$pssid" ]; then
+	    unset n_selected
+	    while [ ! "$n_selected" ]; do
+	        clear
+	        scan
+	        [ ${#addresses[*]} -eq 0 ] && { sleep 1; continue; }
+	        list
+			while ! ([ "$n_selected" -le ${#addresses[*]} ]&>/dev/null && [ "$n_selected" -ge 1 ]&>/dev/null); do
+				echo
+	        	read -p "Select network: " n_selected
+				[ ! "$n_selected" ] && break
+			done
+	    done
+	    local ssid="${essids[$((n_selected-1))]}"
+	fi
+

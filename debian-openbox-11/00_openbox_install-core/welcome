@@ -1,0 +1,86 @@
+#!/bin/bash
+#===================================================================================
+# FILE: welcome
+# DESCRIPTION: show yad dialog with Openbox welcome text
+# AUTHOR: Leonardo Marco 
+# VERSION: 1.0
+# CREATED: 2021.09.21
+# LICENSE: GNU General Public License v3.0
+#===================================================================================
+
+welcome_link=~/.config/openbox/welcome
+
+# Spanish welcome text
+text_es='<big><b>BIENVENIDO A DEBIAN-OPENBOX SCRIPT!</b></big>
+ Un entorno de escritorio ligero y minimalista en Debian! Aquí tienes algunos <b>tips</b>:
+
+<b> ¿Como abrir el menú de inicio?</b>
+   • Clic derecho en el escritorio o la barra de tareas
+   • Clic derecho en el borde izquierdo de la pantalla (aunque hayan ventanas maximizadas)
+<b> ¿Como puedo salir/apagar?</b>
+   • <tt>Menú de inicio > Exit</tt>
+   • <tt>WIN+x</tt>
+<b> ¿Cómo maximizo y ajusto ventanas?</b> 
+   • Clic central en la barra de título dentro de la región a ajustar
+   • <tt>WIN+flechas</tt>
+   • <tt>WIN+[0-9]</tt>
+
+<b> Buscar programas</b> 			<tt>WIN</tt>
+<b> Mover ventanas</b> 				<tt>ALT+clic izquierdo</tt> (y arrastrar)
+<b> Cambiar tamaño ventanas</b>		<tt>ALT+clic derecho</tt> (y arrastrar)
+<b> Ventana siempre encima</b> 		<tt>WIN+0</tt>
+<b> Matar entorno gráfico</b> 		<tt>CTRL+ALT+RETROCESO</tt>
+
+<b> Abrir un terminal</b>				<tt>WIN+t</tt>
+<b> Abrir el gestor de ficheros</b>		<tt>WIN+f</tt>
+<b> Abrir el navegador web</b>		<tt>WIN+w</tt>
+<b> Abrir el editor</b>				<tt>WIN+e</tt>
+'
+field_es="Mostrar este mensaje al inicio"
+
+
+# English welcome text
+text_en='<big><b>WELCOME TO DEBIAN-OPENBOX SCRIPT!</b></big>
+ A lightweight and minimal desktop on Debian!. There are some <b>tips</b>:
+
+ <b> How to open main menu?</b>
+   • Right click on desktop and taskbar
+   • Right click on left screen border (even if there are maximized windows)
+<b> How to exit/power off?</b>
+   • <tt>Main menu > Exit</tt>
+   • <tt>WIN+x</tt>
+<b> How to snap Windows?</b>
+   • Middle clic on title bar
+   • <tt>WIN+arrows</tt>
+   • <tt>WIN+[0-9]</tt>
+   
+<b> Search commands</b>		<tt>WIN</tt>
+<b> Move windows</b>			<tt>ALT+left click</tt> (and drag)
+<b> Resize windows</b>			<tt>ALT+right click</tt> (and drag)
+<b> Window always on top</b>		<tt>WIN+0</tt>
+<b> Kill X server</b>				<tt>CTRL+ALT+BACKSPACE</tt>
+
+<b> Open terminal</b>			<tt>WIN+t</tt>
+<b> Open file manager</b>		<tt>WIN+f</tt>
+<b> Open web browser</b>		<tt>WIN+w</tt>
+<b> Open editor</b>				<tt>WIN+e</tt>
+'
+field_en="Show this message on startup"
+
+# Get current language
+lang="en"
+[ "$(echo $LANG | cut -f1 -d_)" = "es" ] && lang="es"
+eval text="\$text_$lang"
+eval field="\$field_$lang"
+
+# Show yad dialog
+output=$(yad --form --button=gtk-ok --center --undecorated --fixed --borders=30 --window-icon=nautilus --text="$text" --field="$field:CHK" $([ -s "$welcome_link" ] && echo true || echo false) --separator=""  --image=debian-logo)
+
+# Delete simbolic link if not show next time is checked
+if [ "$output" = "FALSE" ]; then
+	rm ~/.config/openbox/welcome &>/dev/null
+else
+	ln -s /usr/bin/welcome "$welcome_link" &>/dev/null
+fi
+
+

@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Name=Suspend
+Type=Application
+Comment=Suspend system
+Terminal=true
+Exec=systemctl suspend
+Icon=suspend
+Categories=Power;
+GenericName=Suspend system
+Keywords=power;suspend
