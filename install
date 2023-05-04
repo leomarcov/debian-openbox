@@ -60,6 +60,23 @@ C_N="\e[90m"            # Color GREY
 C_LN="\e[37m"           # Color LIGHT GREY
 
 
+#=== FUNCTION ======================================================================
+# NAME: stederr_red
+# DESCRIPTION: Show stederr in red color permanently
+#===================================================================================
+function stederr_red() {
+	exec 9>&2
+	exec 8> >(
+	    while IFS='' read -r line || [ -n "$line" ]; do
+	       echo -e "\033[31m${line}\033[0m"
+	    done
+	)
+	function undirect(){ exec 2>&9; }
+	function redirect(){ exec 2>&8; }
+	trap "redirect;" DEBUG
+	PROMPT_COMMAND='undirect;'
+}
+
 
 
 #=== FUNCTION ======================================================================
@@ -364,6 +381,7 @@ function main() {
 	
 	# EXEC ACTIONS
 	else
+		stderr_red
 		[ "${#actions_sel[*]}" -gt 1 ] && list_actions
 		exec_actions
 	fi
