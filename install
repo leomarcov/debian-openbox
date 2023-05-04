@@ -286,7 +286,7 @@ function load_scripts() {
 #===================================================================================
 function check_os_version() {
 	cat /etc/*release | grep -i debian &>/dev/null || return 1
-	cat /etc/*release | egrep -i "buster|stretch" &>/dev/null | return 1
+	cat /etc/*release | egrep -i "buster|stretch" &>/dev/null || return 1
 	return 0
 }
 
