@@ -9,7 +9,7 @@
 # Install repositories and update
 if ! grep -R "download.sublimetext.com" /etc/apt/ &> /dev/null; then
 	echo -e "\e[1mConfiguring repositories...\e[0m"
-	wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | gpg --dearmor -o /usr/share/keyrings/sublimetext-keyring.gpg
+	wget -qO - "https://download.sublimetext.com/sublimehq-pub.gpg" | gpg --dearmor --yes -o /usr/share/keyrings/sublimetext-keyring.gpg
 	echo "deb [arch=amd64 signed-by=/usr/share/keyrings/sublimetext-keyring.gpg] https://download.sublimetext.com/ apt/stable/" | tee /etc/apt/sources.list.d/sublimetext.list
 	apt-get update
 fi
