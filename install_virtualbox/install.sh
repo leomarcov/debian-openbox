@@ -14,9 +14,8 @@ main_distro="$(cat /etc/apt/sources.list | grep ^deb | awk '{print $3}' | head -
 # Install repositories and update
 if ! grep -R "download.virtualbox.org" /etc/apt/ &> /dev/null; then
 	echo -e "\e[1mConfiguring repositories...\e[0m"	
-	echo "deb http://download.virtualbox.org/virtualbox/debian $main_distro contrib" > /etc/apt/sources.list.d/virtualbox.list
-	wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | apt-key add -
-	wget -q https://www.virtualbox.org/download/oracle_vbox.asc -O- | apt-key add -
+	wget -qO - "https://www.virtualbox.org/download/oracle_vbox_2016.asc" | gpg --dearmor --yes -o /usr/share/keyrings/virtualbox-keyring.gpg
+	echo "deb [arch=amd64 signed-by=/usr/share/keyrings/virtualbox-keyring.gpg] http://download.virtualbox.org/virtualbox/debian $main_distro contrib" | tee /etc/apt/sources.list.d/virtualbox.list
 	apt-get update	
 fi
 
