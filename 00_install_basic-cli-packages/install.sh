@@ -1,6 +1,6 @@
 #!/bin/bash
 # ACTION: Install some basic CLI packages
-# INFO: Debian netinstall comes with few list of installed packages
+# INFO: Debian netinstall comes with few list of CLI installed packages
 # INFO: Some basic packages are: vim zip unzip gmtp mtp-tools mailutils traceroute acl gnupg2 mlocate apt-transport-https curl rar unrar ntfs-3g
 # DEFAULT: y
 
