@@ -9,8 +9,8 @@
 # Install repositories and update
 if ! grep -R "AtomEditor" /etc/apt/ &> /dev/null; then
 	echo -e "\e[1mConfiguring repositories...\e[0m"
-	echo "deb [arch=amd64 signed-by=/usr/share/keyrings/atomeditor-keyring.gpg] https://packagecloud.io/AtomEditor/atom/any/ any main" | tee /etc/apt/sources.list.d/atom.list
 	wget -qO - https://packagecloud.io/AtomEditor/atom/gpgkey | gpg --dearmor -o /usr/share/keyrings/atomeditor-keyring.gpg
+	echo "deb [arch=amd64 signed-by=/usr/share/keyrings/atomeditor-keyring.gpg] https://packagecloud.io/AtomEditor/atom/any/ any main" | tee /etc/apt/sources.list.d/atom.list
 	apt-get update
 fi
 
