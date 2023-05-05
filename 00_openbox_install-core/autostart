@@ -27,7 +27,6 @@ if [ -f /sys/module/battery/initstate ] || [ -d /proc/acpi/battery/BAT0 ]; then
 fi
 
 #### START APPLICATIONS ###############################################################################
-nitrogen --restore &												# Set wallpaper
 tint2-session &														# Start tint2
 compton &															# Start compositor
 (sleep 2; conky-session) &											# Start Conky
@@ -35,4 +34,5 @@ pnmixer &															# Start volume control
 xfce4-clipman &														# Start clipboard manager
 /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 &	# GNOME PolicyKit authentication
 ~/.config/openbox/welcome &											# Show Openbox welcome
+nitrogen --restore &												# Set wallpaper
 
