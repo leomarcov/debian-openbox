@@ -33,6 +33,6 @@ compton &															# Start compositor
 pnmixer &															# Start volume control
 xfce4-clipman &														# Start clipboard manager
 /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 &	# GNOME PolicyKit authentication
-~/.config/openbox/welcome &											# Show Openbox welcome
 nitrogen --restore &												# Set wallpaper
+~/.config/openbox/welcome &											# Show Openbox welcome
 
