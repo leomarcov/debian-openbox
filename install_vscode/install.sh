@@ -9,7 +9,7 @@
 # Install repositories and update
 if ! grep -R "vscode" /etc/apt/ &> /dev/null; then
 	echo -e "\e[1mConfiguring repositories...\e[0m"
-	wget -qO - "https://packages.microsoft.com/keys/microsoft.as" | gpg --dearmor --yes -o /usr/share/keyrings/vscode-keyring.gpg
+	wget -qO - "https://packages.microsoft.com/keys/microsoft.asc" | gpg --dearmor --yes -o /usr/share/keyrings/vscode-keyring.gpg
 	echo "deb [arch=amd64 signed-by=/usr/share/keyrings/vscode-keyring.gpg] http://packages.microsoft.com/repos/vscode stable main" | tee /etc/apt/sources.list.d/vscode.list
 	apt-get update
 fi
