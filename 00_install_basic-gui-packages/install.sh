@@ -10,6 +10,6 @@
 # Install free packages
 echo -e "\e[1mInstalling packages...\e[0m"
 [ "$(find /var/cache/apt/pkgcache.bin -mtime 0 2>/dev/null)" ] || apt-get update  
-apt-get install -y vlc gmtp mtp-tools synaptic galternatives evince
+apt-get install -y vlc gmtp synaptic galternatives evince
 apt-get install -y firmware-linux-nonfree
   
