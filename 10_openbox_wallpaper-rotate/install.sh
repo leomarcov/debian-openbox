@@ -22,6 +22,3 @@ f="wallpaper-rotate"
 cp -v "${base_dir}/$f" /etc/cron.daily/
 chmod a+x "/etc/cron.daily/$f"
 
-# Exec now rotation
-echo -e "\e[1mExecuting rotation..\e[0m"
-"/etc/cron.daily/$f"
