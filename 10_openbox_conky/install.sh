@@ -1,7 +1,7 @@
 #!/bin/bash
 # ACTION: Install Conky and add basic sysinfo-shortcuts panel
 # INFO: Conky is a system monitor that allow configure desktop panels and personalice info and styles
-# DEFAULT: y
+# DEFAULT: n
 
 # Config variables
 base_dir="$(dirname "$(readlink -f "$0")")"
