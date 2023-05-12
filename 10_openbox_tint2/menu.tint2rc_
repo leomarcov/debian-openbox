@@ -107,17 +107,6 @@ execp_tooltip =
 execp_lclick_command = x-text-editor
 
 
-execp = new
-execp_command = echo "WPS Office"
-execp_interval = 0
-execp_background_id = 2
-execp_font = Droid Sans 11
-execp_font_color = #FFFFFF 90
-execp_centered = 1
-execp_padding = 20 0 0
-execp_tooltip = 
-execp_lclick_command = wps
-
 
 
 separator = new
@@ -169,10 +158,5 @@ separator_style = line
 separator_color = #FFFFFF 30
 separator_padding = 0
 
-separator = new
-separator_background_id = 1
-separator_size = 1
-separator_style = line
-separator_color = #FFFFFF 30
-separator_padding = 0
+
 
