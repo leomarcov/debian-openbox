@@ -13,7 +13,6 @@ Plug 'arcticicestudio/nord-vim' 					"DEBIAN-OPENBOX-vim
 Plug 'preservim/nerdtree' 							"DEBIAN-OPENBOX-vim
 Plug 'preservim/nerdcommenter'              		"DEBIAN-OPENBOX-vim
 Plug 'psliwka/vim-smoothie'                 		"DEBIAN-OPENBOX-vim
-Plug 'neoclide/coc.nvim', {'branch': 'release'}		"DEBIAN-OPENBOX-vim
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } } "DEBIAN-OPENBOX-vim
 Plug 'junegunn/fzf.vim' 							"DEBIAN-OPENBOX-vim
 Plug 'ntpeters/vim-better-whitespace' 				"DEBIAN-OPENBOX-vim
@@ -24,5 +23,6 @@ Plug 'ntpeters/vim-better-whitespace' 				"DEBIAN-OPENBOX-vim
 "Plug 'vim-airline/vim-airline'             		"DEBIAN-OPENBOX-vim
 "Plug 'vim-airline/vim-airline-themes'      		"DEBIAN-OPENBOX-vim
 "Plug 'godlygeek/csapprox'                  		"DEBIAN-OPENBOX-vim
+"Plug 'neoclide/coc.nvim', {'branch': 'release'}	"DEBIAN-OPENBOX-vim
 
 call plug#end()                             		"DEBIAN-OPENBOX-vim
