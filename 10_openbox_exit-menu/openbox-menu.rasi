@@ -43,6 +43,7 @@
     background-color: @background;
     border:           0;
     padding:          20;
+	anchor:			  center;
 }
 #mainbox {
     border:  0;
