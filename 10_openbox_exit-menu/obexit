@@ -22,7 +22,7 @@ if [ $# -eq 0 ]; then
     echo -e "$options"
 
 elif [ "$1" = "show" ]; then
-    rofi -theme openbox-menu -show Action -modi "Action:$(readlink -f "$0")" -lines 6
+    rofi -theme openbox-menu -show Action -modi "Action:$(readlink -f "$0")" -no-fixed-num-lines
 
 else
     case "$@" in
