@@ -20,11 +20,7 @@ for f in /home/*/.config/openbox/rc.xml /etc/skel/.config/openbox/rc.xml; do
 done
 
 for d in  /etc/skel/  /home/*/; do
-  df="${d}/.config/flameshot/"
+	df="${d}/.config/flameshot/"
 	[ ! -d "$df" ] && mkdir "$df"
-	echo "[General]
-disabledTrayIcon=true" > "$df/flameshot.ini"
-	u=$(basename "$d")
-	[ "$u" = "skel" ] && continue
-	chown -R ${u}:${u} "$df"
+	cp -v "$base_dir/flameshot.ini" "$df" && chown -R $(stat "$(dirname "$df/.vimrc")" -c %u:%g) "$df"
 done
