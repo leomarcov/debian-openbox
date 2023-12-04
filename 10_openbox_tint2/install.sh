@@ -15,7 +15,7 @@ echo -e "\e[1mInstalling packages...\e[0m"
 apt-get install -y tint2
 
 # Check if laptop or virtualmachine
-[ -f /sys/module/battery/initstate ] || [ -d /proc/acpi/battery/BAT0 ] && laptop="true"
+[ -d /proc/acpi/battery/BAT0 ] && laptop="true"
 # Check if virtualmachine:
 cat /proc/cpuinfo | grep -i hypervisor &>/dev/null && virtualmachine="true"
 
