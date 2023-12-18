@@ -1,7 +1,6 @@
 "### OPTIONS ######################################################
 syntax on                       "Syntax highlight
-"set mouse=a                     "Allow copy and paste with mouse
-set mouse=
+set mouse-=a                    "Allow visual select with mouse
 set clipboard=unnamedplus		"Use system clipboard
 "set number                      "Show line numbers
 set hlsearch                    "Hightlight all matches on search
