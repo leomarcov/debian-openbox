@@ -20,7 +20,7 @@ for d in /home/*  /etc/skel/  /root; do
 	
 	# Create starship config directory and copy config
 	mkdir -p "$d/.config/starship"
-	cp -v "./starship.toml" "$d/.config/starship"
+	cp -v "${base_dir}/starship.toml" "$d/.config/starship"
 
 	# Delete previous lines added
 	sed -i "/$comment_mark/Id" "$d/.bashrc" 2> /dev/null
