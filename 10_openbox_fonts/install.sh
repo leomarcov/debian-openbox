@@ -11,7 +11,7 @@ base_dir="$(dirname "$(readlink -f "$0")")"
 
 # Install packages
 echo -e "\e[1mInstalling packages...\e[0m"
-su nobody -c 'paru -Sy ttf-droid cantarell-fonts ttf-liberation ttf-inconsolata --noconfirm'
+su installer -c 'paru -Sy ttf-droid cantarell-fonts ttf-liberation ttf-inconsolata --noconfirm'
 
 # Copy fonts
 echo -e "\e[1mCopying fonts...\e[0m"

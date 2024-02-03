@@ -11,7 +11,7 @@ main_distro="$(cat /etc/apt/sources.list | grep ^deb | awk '{print $3}' | head -
 [ "$(id -u)" -ne 0 ] && { echo "Must run as root" 1>&2; exit 1; }
 
 # Install repositories and update
-su nobody -c 'paru -Sy virtualbox virtualbox-host-dkms virtualbox-guest-iso linux-headers'
+su installer -c 'paru -Sy virtualbox virtualbox-host-dkms virtualbox-guest-iso linux-headers'
 
 # Install packages
 echo -e "\e[1mInstalling packages...\e[0m"
@@ -41,7 +41,7 @@ rm -rf "$t"
 
 # Fix Virtualbox not load gtk theme
 echo -e "\e[1mFixing Virtualbox GTK settings...\e[0m"
-su nobody -c 'paru -Sy qt5-styleplugins'
+su installer -c 'paru -Sy qt5-styleplugins'
 echo "export QT_QPA_PLATFORMTHEME=gtk2" >> /etc/environment
 echo "export QT_STYLE_OVERRIDE=fusion" >> /etc/environment
 

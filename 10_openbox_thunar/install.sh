@@ -12,7 +12,7 @@ base_dir="$(dirname "$(readlink -f "$0")")"
 # Install packages
 echo -e "\e[1mInstalling packages...\e[0m"
 [ "$(find /var/cache/apt/pkgcache.bin -mtime 0 2>/dev/null)" ] || apt-get update
-su nobody -c 'paru -Sy thunar thunar-archive-plugin thunar-media-tags-plugin catfish gvfs gvfs-goa gvfs-google gvfs-gphoto2 gvfs-mtp gvfs-nfs gvfs-smb --noconfirm'
+su installer -c 'paru -Sy thunar thunar-archive-plugin thunar-media-tags-plugin catfish gvfs gvfs-goa gvfs-google gvfs-gphoto2 gvfs-mtp gvfs-nfs gvfs-smb --noconfirm'
 
 # Copy users config
 echo -e "\e[1mSetting configs to all users...\e[0m"

@@ -8,6 +8,6 @@
 
 # Install package
 echo -e "\e[1mInstalling packages...\e[0m"
-su nobody -c'paru -Sy visual-studio-code-bin --noconfirm'
+su installer -c'paru -Sy visual-studio-code-bin --noconfirm'
 
 

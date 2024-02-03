@@ -11,7 +11,7 @@ base_dir="$(dirname "$(readlink -f "$0")")"
 
 # Install packages
 echo -e "\e[1mInstalling packages...\e[0m"
-su nobody -c 'paru -Sy openbox obconf xinit lxappearance compton xfce4-screenshooter xfce4-clipman xfce4-power-manager xfce4-settings arandr gsimplecal xcape gparted file-roller xautomation yad inxi networkmanager network-manager-applet --noconfirm'
+su installer -c 'paru -Sy openbox obconf xinit lxappearance compton xfce4-screenshooter xfce4-clipman xfce4-power-manager xfce4-settings arandr gsimplecal xcape gparted file-roller xautomation yad inxi networkmanager network-manager-applet --noconfirm'
 
 echo -e "\e[1mCopying themes and tools...\e[0m"
 # Copy theme
@@ -25,7 +25,7 @@ cp -rv "$base_dir/$d" "/usr/share/doc/openbox/"
 # Install system info dependences
 #wget -P /usr/bin "https://raw.githubusercontent.com/pixelb/ps_mem/master/ps_mem.py" && chmod a+x /usr/bin/ps_mem.py
 #wget -P /usr/bin "https://raw.githubusercontent.com/aristocratos/bashtop/master/bashtop" && chmod a+x /usr/bin/bashtop
-su nobody -c 'paru -Sy s-tui dfc btop hwinfo --noconfirm'
+su installer -c 'paru -Sy s-tui dfc btop hwinfo --noconfirm'
 
 # Copy cups-session
 cp -v ${base_dir}/cups-session /usr/bin

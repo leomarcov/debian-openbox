@@ -13,7 +13,7 @@ rofi_command="rofi -show drun"
 
 # Install packages
 echo -e "\e[1mInstalling packages...\e[0m"
-su nobody -c 'paru -Sy rofi --noconfirm'
+su installer -c 'paru -Sy rofi --noconfirm'
 
 
 # Config rofi theme and run mode for all users

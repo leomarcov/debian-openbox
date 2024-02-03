@@ -28,7 +28,7 @@ fi
 # Install nitrogen
 if ! which nitrogen &>/dev/null; then
 	echo -e "\e[1mInstalling packages...\e[0m"
-	su nobody -c 'paru -Sy nitrogen --noconfirm'
+	su installer -c 'paru -Sy nitrogen --noconfirm'
 fi
 
 # Copy users config

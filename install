@@ -377,13 +377,15 @@ function main() {
 		stderr_red
 
 		# Enable temporarily 'nobody' user
-		echo "nobody ALL=(ALL) NOPASSWD: ALL" >>/etc/sudoers
+		useradd -mg users -s /bin/bash installer
+		echo "installer ALL=(ALL) NOPASSWD: ALL" >>/etc/sudoers
 
 		[ "${#actions_sel[*]}" -gt 1 ] && list_actions
 		exec_actions
 
 		# Disable nobody user
-		sed '/nobody/d' -i /etc/sudoers
+		rm -rf /home/installer
+		userdel installer
 	fi
 	echo
 }

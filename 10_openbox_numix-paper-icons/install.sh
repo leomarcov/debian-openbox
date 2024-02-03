@@ -12,10 +12,10 @@ icon_default="Numix-Paper"
 
 # Install packages
 echo -e "\e[1mInstalling Numix packages...\e[0m"
-su nobody -c 'paru -Sy numix-gtk-theme --noconfirm'
+su installer -c 'paru -Sy numix-gtk-theme --noconfirm'
 
 echo -e "\e[1mInstalling Paper packages...\e[0m"
-su nobody -c 'paru -Sy paper-icon-theme --noconfirm'
+su installer -c 'paru -Sy paper-icon-theme --noconfirm'
 
 if [ ! -d /usr/share/icons/Numix/ ]; then
 	echo "$(basename $0) ERROR: Numix icon theme is not installed"

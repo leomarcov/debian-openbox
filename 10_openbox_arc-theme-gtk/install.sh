@@ -12,7 +12,7 @@ gtk_default="Arc"
 
 # Install packages
 echo -e "\e[1mInstalling packages...\e[0m"
-su nobody -c 'paru -Sy arc-gtk-theme gtk3-nocsd-git --noconfirm'
+su installer -c 'paru -Sy arc-gtk-theme gtk3-nocsd-git --noconfirm'
 
 # Change accent color blue (#5294e2) for grey:
 find /usr/share/themes/Arc -type f -exec sed -i 's/#5294e2/#b3bcc6/g' {} \;

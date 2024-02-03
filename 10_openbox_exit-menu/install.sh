@@ -11,7 +11,7 @@ base_dir="$(dirname "$(readlink -f "$0")")"
 
 # Install fonts-noto for utf-8 symbols
 echo -e "\e[1mInstalling dependences...\e[0m"
-su nobody -c 'paru -Sy fonts-noto --noconfirm'
+su installer -c 'paru -Sy fonts-noto --noconfirm'
 
 # Copy obexit script
 echo -e "\e[1mCopying script...\e[0m"

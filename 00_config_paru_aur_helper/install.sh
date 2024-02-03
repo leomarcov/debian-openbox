@@ -15,7 +15,7 @@
 
 	chown 'nobody:nobody' paru-bin -R
     pushd paru-bin
-    su nobody -c 'makepkg -sirc --noconfirm'
+    su installer -c 'makepkg -sirc --noconfirm'
 )
 
 

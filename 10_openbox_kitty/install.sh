@@ -11,7 +11,7 @@ base_dir="$(dirname "$(readlink -f "$0")")"
 
 # Install packages
 echo -e "\e[1mInstalling packages...\e[0m"
-su nobody -c 'paru -Sy kitty --noconfirm'
+su installer -c 'paru -Sy kitty --noconfirm'
 
 # Copy users config
 # echo -e "\e[1mSetting configs to all users...\e[0m"

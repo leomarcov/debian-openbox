@@ -11,7 +11,7 @@ base_dir="$(dirname "$(readlink -f "$0")")"
 
 # Install packages
 echo -e "\e[1mInstalling packages...\e[0m"
-su nobody -c 'paru -Sy tint2 --noconfirm'
+su installer -c 'paru -Sy tint2 --noconfirm'
 
 # Check if laptop or virtualmachine
 [ -d /proc/acpi/battery/BAT0 ] && laptop="true"

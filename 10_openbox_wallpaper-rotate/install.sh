@@ -12,7 +12,7 @@ base_dir="$(dirname "$(readlink -f "$0")")"
 # Install dependences
 if ! which cronie &>/dev/null; then
 	echo -e "\e[1mInstalling packages...\e[0m"
-	su nobody -c 'paru -Sy cronie --noconfirm'
+	su installer -c 'paru -Sy cronie --noconfirm'
 fi
 
 # Copy rotate script in cron.daily dir

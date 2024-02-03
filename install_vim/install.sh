@@ -12,7 +12,7 @@ comment_mark='"DEBIAN-OPENBOX-vim'
 
 # Install vim
 echo -e "\e[1mInstalling packages...\e[0m"
-su nobody -c 'paru -Sy vim nodejs'
+su installer -c 'paru -Sy vim nodejs'
 
 # Config vim plug for global (all users)
 echo -e "\e[1mInstalling vim plugins for all users in /etc/vim/ ...\e[0m"

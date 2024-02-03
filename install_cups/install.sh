@@ -9,7 +9,7 @@
 
 # Install packages
 echo -e "\e[1mInstalling packages...\e[0m"
-su nobody -c 'paru -Sy cups --noconfirm'
+su installer -c 'paru -Sy cups --noconfirm'
 
 # Add user 1000 to sudo group
 echo -e "\e[1mAdding users to group lpadmin...\e[0m"

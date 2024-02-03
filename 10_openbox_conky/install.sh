@@ -11,7 +11,7 @@ base_dir="$(dirname "$(readlink -f "$0")")"
 
 # Install packages
 echo -e "\e[1mInstalling packages...\e[0m"
-su nobody -c 'paru -Sy conky --noconfirm'
+su installer -c 'paru -Sy conky --noconfirm'
 
 echo -e "\e[1mCopying conky-session...\e[0m"
 f="conky-session"
