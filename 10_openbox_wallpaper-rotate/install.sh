@@ -10,10 +10,9 @@ base_dir="$(dirname "$(readlink -f "$0")")"
 [ "$(id -u)" -ne 0 ] && { echo "Must run as root" 1>&2; exit 1; }
 
 # Install dependences
-if ! which anacron &>/dev/null; then
+if ! which cronie &>/dev/null; then
 	echo -e "\e[1mInstalling packages...\e[0m"
-	[ "$(find /var/cache/apt/pkgcache.bin -mtime 0 2>/dev/null)" ] || apt-get update  
-	apt-get -y install anacron
+	paru -Sy cronie --noconfirm
 fi
 
 # Copy rotate script in cron.daily dir

@@ -5,7 +5,7 @@
 
 # Config variables
 base_dir="$(dirname "$(readlink -f "$0")")"
-comment_mark="#DEBIAN-OPENBOX-rofi"
+comment_mark="#ARCHLINUX-OPENBOX-rofi"
 rofi_command="rofi -show drun"
 
 # Check root
@@ -13,8 +13,7 @@ rofi_command="rofi -show drun"
 
 # Install packages
 echo -e "\e[1mInstalling packages...\e[0m"
-[ "$(find /var/cache/apt/pkgcache.bin -mtime 0 2>/dev/null)" ] || apt-get update  
-apt-get install -y rofi
+paru -Sy rofi --noconfirm
 
 
 # Config rofi theme and run mode for all users

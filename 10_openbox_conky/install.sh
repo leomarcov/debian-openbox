@@ -11,8 +11,7 @@ base_dir="$(dirname "$(readlink -f "$0")")"
 
 # Install packages
 echo -e "\e[1mInstalling packages...\e[0m"
-[ "$(find /var/cache/apt/pkgcache.bin -mtime 0 2>/dev/null)" ] || apt-get update  
-apt-get install -y conky
+paru -Sy conky --noconfirm
 
 echo -e "\e[1mCopying conky-session...\e[0m"
 f="conky-session"

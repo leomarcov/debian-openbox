@@ -1,5 +1,5 @@
-# Openbox script collection for Debian 11/12
-<img align="left"  src="https://user-images.githubusercontent.com/32820131/79635263-47d9d580-8170-11ea-87b1-943144be83d7.png" width="90"> Openbox is a beautiful and lightweight window manager, but tediuos to install and config a full usable environment. This script collection automatize **Openbox** installation and essentials tools and apply configurations, styles and themes. You can install all scripts from bare Debian netinstall to config full environment or **exec only some scripts** you are interested. Each folder has a particular action script for install pacakges, add scripts, apply configs or install some themes or styles.
+# Openbox script collection for Archlinux
+<img align="left"  src="https://user-images.githubusercontent.com/32820131/79635263-47d9d580-8170-11ea-87b1-943144be83d7.png" width="90"> Openbox is a beautiful and lightweight window manager, but tediuos to install and config a full usable environment. This script collection automatize **Openbox** installation and essentials tools and apply configurations, styles and themes. You can install all scripts from an Archlinux minimal installation to config full environment or **exec only some scripts** you are interested. Each folder has a particular action script for install pacakges, add scripts, apply configs or install some themes or styles.
 
 The main script `install` can exec all scripts or only a select list:
   * `install`: exec all scripts interactively.
@@ -30,18 +30,17 @@ The main script `install` can exec all scripts or only a select list:
 
 &nbsp; 
 ## Install
-  * Install Debian 10/11/12 using netinstall image. Its recommended don't install `Debian desktop environment`, install only `standard system utilities`.
-<img align="center" width="700" src="https://user-images.githubusercontent.com/32820131/101158317-d467d400-362b-11eb-8759-9d3beb40a20c.png">
+  * Install a minimal Archlinux (either manually or using [archinstall](https://github.com/archlinux/archinstall)).
   
   * Connect to Internet. If you need to connect to WIFI network in CLI you can do:
   ```
-  ip a                                            # To get your wlan interface name, mine is wlp5s0
+  ip a                                            # To get your wlan interface name, for example wlp5s0
   iwlist wlp5s0 scan | egrep "Address|ESSID"      # To get available wifi networks
   wpa_supplicant -B -i wlp5s0 -c <(wpa_passphrase YOUR-SSID YOUR-PASS)  # To authenticate in your wifi network
   dhclient -v wlp5s0                              # To get DHCP IP
   ```
-  * Install git: `apt install git`
-  * Clone or download this project: `git clone https://github.com/leomarcov/debian-openbox`
+  * Install git: `pacman -S git`
+  * Clone or download this project: `git clone https://github.com/ESPGranEdu/archlinux-openbox`
   * Exec `install` script and select scripts you want to install.
   
 ```
@@ -72,7 +71,7 @@ $ ./install -a grub
 
 # List all actions:
 $ ./install -l
- [1]   CONFIG   Add Debian repositories contrib and non-free (Y)
+ [1]   CONFIG   Add Archlinux multilib repositories (Y)
  [2]   INSTALL  Install some basic packages (Y)
  [3]   OPENBOX  Install Openbox WM and essential tools and configs (Y)
  [4]   OPENBOX  Install theme Arc GTK and set as default (Y)
@@ -136,4 +135,4 @@ The script can be easily customized. Each `install.sh` script placed in a subdir
 ## Contact
 My name is Leonardo Marco. I'm sysadmin teacher in [CIFP Carlos III](https://cifpcarlos3.es/), Cartagena, Murcia (Spain).
 
-You can email me for suggestions, contributions, debian-openbox script help or share your feelings: labadmin@leonardomarco.com
+You can email me for suggestions, contributions, archlinux-openbox script help or share your feelings: [raplhwigum@gmail.com](mailto://raplhwigum@gmail.com)

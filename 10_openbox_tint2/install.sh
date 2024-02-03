@@ -11,8 +11,7 @@ base_dir="$(dirname "$(readlink -f "$0")")"
 
 # Install packages
 echo -e "\e[1mInstalling packages...\e[0m"
-[ "$(find /var/cache/apt/pkgcache.bin -mtime 0 2>/dev/null)" ] || apt-get update  
-apt-get install -y tint2
+paru -Sy tint2 --noconfirm
 
 # Check if laptop or virtualmachine
 [ -d /proc/acpi/battery/BAT0 ] && laptop="true"

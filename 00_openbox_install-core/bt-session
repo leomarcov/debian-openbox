@@ -6,7 +6,7 @@
 # NO BT INSTALLED
 if [ "$1" = "-I" ]; then
     # INSTALL BT
-    if ! dpkg -l blueman &>/dev/null || ! dpkg -l bluez &>/dev/null | grep -q "^ii"; then
+    if ! paru -Qq blueman &>/dev/null || ! paru -Qq bluez &>/dev/null | grep -q "^ii"; then
         # Install package
 		clear
 		echo
@@ -21,7 +21,7 @@ if [ "$1" = "-I" ]; then
             ([ ! "$q" ] || [ "${q,,}" = "y" ]) && break
         done
         echo
-        sudo apt-get install -y bluez blueman || exit 1
+        sudo paru -Sy bluez blueman --noconfirm || exit 1
 
         # Adduser to bluetooth
 		clear
@@ -32,7 +32,7 @@ if [ "$1" = "-I" ]; then
 		echo
         read -p "  Users (space separated): " ul
         for u in $ul; do
-            sudo adduser $u bluetooth
+            sudo gpasswd -a $u bluetooth
         done
 
         # Open bt manager

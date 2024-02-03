@@ -8,7 +8,7 @@
 
 # Config variables
 base_dir="$(dirname "$(readlink -f "$0")")"
-comment_mark="#DEBIAN-OPENBOX-loginfetch"
+comment_mark="#ARCHLINUX-OPENBOX-loginfetch"
 
 # Check root
 [ "$(id -u)" -ne 0 ] && { echo "Must run as root" 1>&2; exit 1; }
@@ -18,16 +18,11 @@ systemctl set-default multi-user.target
 
 # Install physlock
 echo -e "\e[1mInstalling locker packages...\e[0m"
-[ "$(find /var/cache/apt/pkgcache.bin -mtime 0 2>/dev/null)" ] || apt-get update  
-apt-get -y install physlock 
+paru -Sy physlock --noconfirm
 	
 # Config physlock for start after suspend
 cp "$base_dir"/physlock.service /etc/systemd/system/
 systemctl enable physlock.service
-
-# Add physlock as x-locker alternative
-echo -e "\e[1mSetting as default alternative...\e[0m"
-update-alternatives --install /usr/bin/x-locker x-locker $(which physlock) 90
 	
 # Config tty1 to autoexec startx
 echo -e "\e[1mSetting tty1 to autostart X...\e[0m"

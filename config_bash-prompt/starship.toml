@@ -1,0 +1,24 @@
+add_newline = false
+
+[character]       # El nombre del módulo que se está configurando es "character"
+success_symbol = "[➜](bold green)"     # El segmento "success_symbol" es reemplazado por "➜" con el color "bold green"
+error_symbol   = "[✗](bold red) "
+
+[username]
+style_user = "bold green"
+style_root = "bold red"
+format = "[$user]($style)@"
+show_always = true
+disabled = false
+
+[hostname]
+ssh_only = false
+format ="[$hostname](bold cyan) ➜ "
+disabled = false
+
+[directory]
+style = "bold yellow"
+format = "[$path]($style) "
+
+[package]
+disabled = true

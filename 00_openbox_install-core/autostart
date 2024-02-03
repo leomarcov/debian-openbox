@@ -20,7 +20,7 @@ xcape -e "Super_L=Control_L|Tab" 									# Alias for: Super key (win) = Control
 [ -f ~/.Xmodmap ] && xmodmap ~/.Xmodmap &							# Load xmodmap keys mapping
 
 
-# Touchpad settings
+# Touchpad settings (only laptops)
 if [ -d /proc/acpi/battery/BAT0 ]; then
 	synclient VertEdgeScroll=1 HorizEdgeScroll=1 TapButton1=1 2>/dev/null	# Configure touchpad
 	syndaemon -i .5 -K -t -R -d & 											# Disable touchpad while typing

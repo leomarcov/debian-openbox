@@ -11,9 +11,7 @@ base_dir="$(dirname "$(readlink -f "$0")")"
 
 # Install packages
 echo -e "\e[1mInstalling packages...\e[0m"
-[ "$(find /var/cache/apt/pkgcache.bin -mtime 0 2>/dev/null)" ] || apt-get update  
-apt-get install -y openbox obconf xinit lxappearance compton xfce4-screenshooter xfce4-clipman xfce4-power-manager xfce4-settings arandr gsimplecal xcape gparted file-roller xautomation yad inxi
-apt-get install -y network-manager network-manager-gnome 
+paru -Sy openbox obconf xinit lxappearance compton xfce4-screenshooter xfce4-clipman xfce4-power-manager xfce4-settings arandr gsimplecal xcape gparted file-roller xautomation yad inxi networkmanager network-manager-applet --noconfirm
 
 echo -e "\e[1mCopying themes and tools...\e[0m"
 # Copy theme
@@ -25,9 +23,9 @@ d="help"
 cp -rv "$base_dir/$d" "/usr/share/doc/openbox/"
 
 # Install system info dependences
-wget -P /usr/bin "https://raw.githubusercontent.com/pixelb/ps_mem/master/ps_mem.py" && chmod a+x /usr/bin/ps_mem.py
-wget -P /usr/bin "https://raw.githubusercontent.com/aristocratos/bashtop/master/bashtop" && chmod a+x /usr/bin/bashtop
-apt-get install -y s-tui dfc htop hwinfo
+#wget -P /usr/bin "https://raw.githubusercontent.com/pixelb/ps_mem/master/ps_mem.py" && chmod a+x /usr/bin/ps_mem.py
+#wget -P /usr/bin "https://raw.githubusercontent.com/aristocratos/bashtop/master/bashtop" && chmod a+x /usr/bin/bashtop
+paru -Sy s-tui dfc btop hwinfo --noconfirm
 
 # Copy cups-session
 cp -v ${base_dir}/cups-session /usr/bin
@@ -79,8 +77,3 @@ for d in /etc/skel /home/*/ /root; do
 	cp -v "$base_dir/$f" "$d" && chown -R $(stat "$d" -c %u:%g) "$d/$f"
 
 done
-
-
-# Set as default
-echo -e "\e[1mSetting as default alternative...\e[0m"
-update-alternatives --set x-session-manager /usr/bin/openbox-session

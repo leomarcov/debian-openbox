@@ -12,9 +12,7 @@ gtk_default="Arc"
 
 # Install packages
 echo -e "\e[1mInstalling packages...\e[0m"
-[ "$(find /var/cache/apt/pkgcache.bin -mtime 0 2>/dev/null)" ] || apt-get update  
-apt-get install -y arc-theme
-apt-get install -y gtk3-nocsd		# Force show titlebar in GTK3 new windows
+apt-get install -y arc-gtk-theme gtk3-nocsd-git
 
 # Change accent color blue (#5294e2) for grey:
 find /usr/share/themes/Arc -type f -exec sed -i 's/#5294e2/#b3bcc6/g' {} \;   

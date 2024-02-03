@@ -11,8 +11,7 @@ base_dir="$(dirname "$(readlink -f "$0")")"
 
 # Install packages
 echo -e "\e[1mInstalling packages...\e[0m"
-[ "$(find /var/cache/apt/pkgcache.bin -mtime 0 2>/dev/null)" ] || apt-get update  
-apt-get install -y libnotify-bin xfce4-notifyd
+paru -Sy libnotify xfce4-notifyd --noconfirm
 
 # Create theme
 echo -e "\e[1mCopying theme...\e[0m"

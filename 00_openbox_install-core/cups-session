@@ -21,7 +21,7 @@ if [ "$1" = "-I" ]; then
             ([ ! "$q" ] || [ "${q,,}" = "y" ]) && break
         done
         echo
-        sudo apt-get install -y cups || exit 1
+        sudo pacman -Sy cups --noconfirm || exit 1
 
         # Adduser to lpadmin    
 		clear

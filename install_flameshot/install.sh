@@ -11,7 +11,7 @@ comment_mark='"DEBIAN-OPENBOX-vim'
 [ "$(id -u)" -ne 0 ] && { echo "Must run as root" 1>&2; exit 1; }
 
 # Install flameshot
-apt-get -y install flameshot
+paru -Sy flameshot --noconfirm
 
 # Copy users config
 echo -e "\e[1mSetting configs to all users...\e[0m"

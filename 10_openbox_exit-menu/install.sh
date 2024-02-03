@@ -11,8 +11,7 @@ base_dir="$(dirname "$(readlink -f "$0")")"
 
 # Install fonts-noto for utf-8 symbols
 echo -e "\e[1mInstalling dependences...\e[0m"
-[ "$(find /var/cache/apt/pkgcache.bin -mtime 0 2>/dev/null)" ] || apt-get update  
-apt-get install -y fonts-noto
+paru -Sy fonts-noto --noconfirm
 
 # Copy obexit script
 echo -e "\e[1mCopying script...\e[0m"

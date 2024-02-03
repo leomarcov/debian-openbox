@@ -12,7 +12,7 @@ base_dir="$(dirname "$(readlink -f "$0")")"
 # Install packages
 echo -e "\e[1mInstalling packages...\e[0m"
 [ "$(find /var/cache/apt/pkgcache.bin -mtime 0 2>/dev/null)" ] || apt-get update  
-apt-get install -y thunar thunar-archive-plugin thunar-media-tags-plugin catfish gvfs gvfs-fuse gvfs-backends
+paru -Sy thunar thunar-archive-plugin thunar-media-tags-plugin catfish gvfs gvfs-goa gvfs-google gvfs-gphoto2 gvfs-mtp gvfs-nfs gvfs-smb --noconfirm
 
 # Copy users config
 echo -e "\e[1mSetting configs to all users...\e[0m"
@@ -28,7 +28,3 @@ for d in /etc/skel/  /home/*/ /root; do
 	f="thunar.xml"
 	cp -v "$base_dir/$f" "$d" && chown -R $(stat "$(dirname "$d")" -c %u:%g) "$d/$f"
 done
-
-# Set alternatives
-echo -e "\e[1mSetting as default alternative...\e[0m"
-update-alternatives --install /usr/bin/x-file-manager x-file-manager /usr/bin/thunar 90

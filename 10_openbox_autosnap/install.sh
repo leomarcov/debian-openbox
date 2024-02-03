@@ -7,15 +7,14 @@
 
 # Config variables
 base_dir="$(dirname "$(readlink -f "$0")")"
-comment_mark="#DEBIAN-OPENBOX-autosnap"
+comment_mark="#ARCHLINUX-OPENBOX-autosnap"
 
 # Check root
 [ "$(id -u)" -ne 0 ] && { echo "Must run as root" 1>&2; exit 1; }
 
 # Install packages
 echo -e "\e[1mInstalling packages...\e[0m"
-[ "$(find /var/cache/apt/pkgcache.bin -mtime 0 2>/dev/null)" ] || apt-get update  
-apt-get -y install xdotool
+paru -Sy install xdotool --noconfirm
 
 # Copy autosnap script
 echo -e "\e[1mCopying sript...\e[0m"
