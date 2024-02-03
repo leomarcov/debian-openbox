@@ -47,6 +47,6 @@ chmod a+x "/usr/bin/$f"
 
 # Remove tint2 defualt themes
 echo -e "\e[1mRemoving tint2 default themes e[0m"
-for f in $(dpkg -L tint2 | grep tint2rc); do
+for f in $(pacman -Ql tint2 | cut -d" " -f2 | grep tint2rc); do
 	rm "$f"
 done
