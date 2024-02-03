@@ -86,7 +86,7 @@ function stderr_red() {
 function help() {
 	echo -e "Exec a set of scripts
 Usage: $(basename $0) [-l] [-a <actions>] [-y] [-d] [-h]
-   ${S_B}-l${S_R}\t\tOnly list actions 
+   ${S_B}-l${S_R}\t\tOnly list actions
    ${S_B}-a <actions>${S_R}\tFilter selected actions by number range or text pattern (comma separated)
    ${S_B}-y${S_R}\t\tAuto-answer yes to all actions
    ${S_B}-d${S_R}\t\tAuto-answer default to all actions
@@ -119,7 +119,7 @@ function get_action_type() {
 	local dirname="$1"
 	# No type (no char _ in dirname)
 	echo "$dirname" | grep -q "_" || return
-	
+
 	type="$(echo "$dirname" | cut -f1 -d "_")"
 	[ "$type" -eq "$type" ] &>/dev/null && type="$(echo "$dirname" | cut -f2 -d "_")"
 	echo "$type"
@@ -152,9 +152,9 @@ function list_actions() {
 		local path="${script_paths[$naction]}"
 		local action="${script_actions[$naction]}"
 		local info="${script_infos[$naction]}"
-		local default="${script_defaults[$naction]^^}"		
+		local default="${script_defaults[$naction]^^}"
 		[ "$show_type" != "0" ] && local type="$(get_action_type "$(basename "$(dirname "$path")")")"
-		
+
 		echo -e " [${S_B}$naction${S_R}]\t${S_D}${type^^}${S_R}\t$action ($default)"
 	done | column -t -s $'\t'
 }
@@ -180,11 +180,11 @@ function exec_actions() {
 		local path="${script_paths[$naction]}"
 		local action="${script_actions[$naction]}"
 		local info="${script_infos[$naction]}"
-		local default="${script_defaults[$naction],,}"		
+		local default="${script_defaults[$naction],,}"
 		[ "$show_categories" != "0" ] && local type="$(get_action_type "$(basename "$(dirname "$path")")")"
 		[ "$type" ] && type="[${S_D}${type^^}${S_R}]"
 
-		# Show action 
+		# Show action
 		[ "${default,,}" = "y" ] && q="(Y/n)?" || q="(y/N))?"
 		[ "$info" ] && echo
 		echo -en "${C_Y}${info}\n${S_R}[${S_B}$naction${S_R}] ${type} ${action}${S_R} $q "
@@ -194,9 +194,9 @@ function exec_actions() {
 			allyes) 	q="y"; echo	"$q"					;;
 			default) 	q="$default"; echo "$q"				;;
 			*)	 		read q; q="${q,,}"; q="${q:0:1}"	;;
-		esac	
+		esac
 
-		# Exec action	
+		# Exec action
 		[ "$q" != "n" ] && [ "$q" != "y" ] && q="$default"
 		if [ "${q,,}" != "n" ]; then
 			bash "$path"
@@ -228,14 +228,14 @@ function expand_actions() {
 	else
 		local IFS=$'\n\t '
 		for a in $(echo "$actions" | tr "," " "); do
-			# Is text 
+			# Is text
 			if echo "$a" | grep "[a-zA-Z]" &>/dev/null; then
-				actions_sel="${actions_sel} $(list_actions all | 
-sed "s,\x1B\[[0-9;]*[a-zA-Z],,g" | tail -n +2 | grep $([ "$a" = "${a,,}" ]&& echo -i) "$a" | sed 's/^ *\[\|\]//g' | cut -f1 -d" " | tr $'\n' " ")"				
+				actions_sel="${actions_sel} $(list_actions all |
+sed "s,\x1B\[[0-9;]*[a-zA-Z],,g" | tail -n +2 | grep $([ "$a" = "${a,,}" ]&& echo -i) "$a" | sed 's/^ *\[\|\]//g' | cut -f1 -d" " | tr $'\n' " ")"
 			# Is a range
 			elif echo "$a" | grep -E "[0-9]"*-"[0-9]" &>/dev/null; then
 				actions_sel="${actions_sel} $(eval echo {$(echo $a|sed "s/-/../")})"
-			# Is a number 
+			# Is a number
 			elif [ "$a" -eq 0 ] &>/dev/null; [ $? -le 1 ]; then
 				actions_sel="${actions_sel} $a"
 			fi
@@ -298,12 +298,12 @@ function load_scripts() {
 # DESCRIPTION: check if current OS distro is compatible with this install script
 #
 # EXIT CODE
-#	0	IS Debian 10/11/12 compatible 
-#	1	IS NOT compatible 
+#	0	IS Debian 10/11/12 compatible
+#	1	IS NOT compatible
 #===================================================================================
 function check_os_version() {
-	cat /etc/*release | grep -iq debian || return 1 
-	cat /etc/*release | egrep -iq "buster|stretch|bookworm" || return 1 
+	cat /etc/*release | grep -iq debian || return 1
+	cat /etc/*release | egrep -iq "buster|stretch|bookworm" || return 1
 	return 0
 }
 
@@ -318,7 +318,7 @@ function check_os_version() {
 #===================================================================================
 function error_info() {
 	local msg="$1"
-	local code="$2" 
+	local code="$2"
 	echo -e "$msg" 1>&2
 	[ "$code" ] && [ "$code" -ne 0 ] &>/dev/null && exit $code
 }
@@ -338,12 +338,12 @@ function main() {
 		l)	list="true"			;;
 		y)	yes="allyes"		;;
 		d)	yes="default"		;;
-		a)	actions="$OPTARG"	;;	
+		a)	actions="$OPTARG"	;;
 		esac
 	done
-	
+
 	# HELP MODE
-	if [ "$help" ]; then 
+	if [ "$help" ]; then
 		help
 		exit 0
 	fi
@@ -354,7 +354,7 @@ function main() {
 		[ "$(id -u)" -ne 0 ] && error_info "Administrative privileges needed" 1
 
 		# Check debian version
-		if ! check_os_version; then		
+		if ! check_os_version; then
 			echo "Seems you are not running Debian compatible distro"
 			echo "Some actions may fail. Cross your fingers and press enter..."
 			read
@@ -364,32 +364,29 @@ function main() {
 	# LOAD SCRIPTS
 	load_scripts
 	[ "$nscripts" -eq 0 ] && error_info "No scripts found in ${base_dir}!" 1
-	
-	# EXPAND ACTIONS
-	expand_actions "$actions" 
-	[ ${#actions_sel[*]} -eq 0 ] && error_info "No actions to exec!" 1
 
-	# Enable 'nobody' while installing programs
-	chsh nobody -s /bin/bash &>/dev/null
-	gpasswd -a nobody root
-	gpasswd -a nobody wheel
+	# EXPAND ACTIONS
+	expand_actions "$actions"
+	[ ${#actions_sel[*]} -eq 0 ] && error_info "No actions to exec!" 1
 
 	# ONLY LIST ACTIONS
 	if [ "$list" ]; then
 		list_actions
-	
+
 	# EXEC ACTIONS
 	else
 		stderr_red
+
+		# Enable temporarily 'nobody' user
+		echo "nobody ALL=(ALL) NOPASSWD: ALL" >>/etc/sudoers
+
 		[ "${#actions_sel[*]}" -gt 1 ] && list_actions
 		exec_actions
+
+		# Disable nobody user
+		sed '/nobody/d' -i /etc/sudoers
 	fi
 	echo
-
-	# Remove 'nobody' permissions
-	chsh nobody -s /usr/bin/nologin
-	gpasswd -d nobody root
-	gpasswd -d nobody wheel
 }
 
 main "$@"
