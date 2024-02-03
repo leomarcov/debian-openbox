@@ -14,7 +14,7 @@ comment_mark="#ARCHLINUX-OPENBOX-autosnap"
 
 # Install packages
 echo -e "\e[1mInstalling packages...\e[0m"
-su nobody -c 'paru -Sy install xdotool --noconfirm'
+su nobody -c 'paru -Sy xdotool --noconfirm'
 
 # Copy autosnap script
 echo -e "\e[1mCopying sript...\e[0m"
