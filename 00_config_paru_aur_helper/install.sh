@@ -13,6 +13,7 @@
     pacman -Sy git base-devel --noconfirm
     git clone https://aur.archlinux.org/paru-bin
 
+	chown 'nobody:nobody' paru-bin -R
     pushd paru-bin
     su nobody -c 'makepkg -sirc --noconfirm'
 )
