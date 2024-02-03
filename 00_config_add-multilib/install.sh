@@ -9,7 +9,7 @@
 
 (
 	# Uncomment "multilib" repo
-	sed -i "90,91 s/#//" -i /etc/pacman.conf
+	sed -i "/\[multilib\]/I, +1 s/^#/" -i /etc/pacman.conf
 )
 
 
