@@ -369,6 +369,10 @@ function main() {
 	expand_actions "$actions" 
 	[ ${#actions_sel[*]} -eq 0 ] && error_info "No actions to exec!" 1
 
+	# Enable 'nobody' while installing programs
+	chsh nobody -s /bin/bash &>/dev/null
+	gpasswd -a nobody root
+	gpasswd -a nobody wheel
 
 	# ONLY LIST ACTIONS
 	if [ "$list" ]; then
@@ -381,6 +385,11 @@ function main() {
 		exec_actions
 	fi
 	echo
+
+	# Remove 'nobody' permissions
+	chsh nobody -s /usr/bin/nologin
+	gpasswd -d nobody root
+	gpasswd -d nobody wheel
 }
 
 main "$@"
