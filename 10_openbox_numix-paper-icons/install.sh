@@ -12,10 +12,10 @@ icon_default="Numix-Paper"
 
 # Install packages
 echo -e "\e[1mInstalling Numix packages...\e[0m"
-paru -Sy numix-gtk-theme --noconfirm
+su nobody -c 'paru -Sy numix-gtk-theme --noconfirm'
 
 echo -e "\e[1mInstalling Paper packages...\e[0m"
-paru -Sy paper-icon-theme --noconfirm
+su nobody -c 'paru -Sy paper-icon-theme --noconfirm'
 
 if [ ! -d /usr/share/icons/Numix/ ]; then
 	echo "$(basename $0) ERROR: Numix icon theme is not installed"
@@ -29,7 +29,7 @@ fi
 echo -e "\e[1mInstalling Numix-Paper icon pack...\e[0m"
 d="/usr/share/icons/$icon_default"
 [ -d "$d" ] && rm -rf "$d"
-tar -xzvf "$base_dir"/numix-paper-icon-theme.tgz -C /usr/share/icons/	
+tar -xzvf "$base_dir"/numix-paper-icon-theme.tgz -C /usr/share/icons/
 
 # Copy users config
 echo -e "\e[1mSetting configs to all users...\e[0m"
@@ -39,7 +39,7 @@ for d in  /etc/skel/  /home/*/ /root; do
 
 	f="$d/.gtkrc-2.0"
 	[ ! -f "$f" ] && cp -v "$base_dir/gtkrc-2.0" "$d/.gtkrc-2.0" && chown -R $(stat "$(dirname "$d")" -c %u:%g) "$f"
-	sed -i 's/^gtk-icon-theme-name *= *.*/gtk-icon-theme-name="'"$icon_default"'"/' "$f"		
+	sed -i 's/^gtk-icon-theme-name *= *.*/gtk-icon-theme-name="'"$icon_default"'"/' "$f"
 
 	# Create config folders if no exists
 	d="$d/.config/"; [ ! -d "$d" ] && mkdir -v "$d" && chown -R $(stat "$(dirname "$d")" -c %u:%g) "$d"

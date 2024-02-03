@@ -14,7 +14,7 @@
     git clone https://aur.archlinux.org/paru-bin
 
     pushd paru-bin
-    makepkg -sirc --noconfirm
+    su nobody -c 'makepkg -sirc --noconfirm'
 )
 
 

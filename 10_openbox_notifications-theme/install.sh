@@ -11,7 +11,7 @@ base_dir="$(dirname "$(readlink -f "$0")")"
 
 # Install packages
 echo -e "\e[1mInstalling packages...\e[0m"
-paru -Sy libnotify xfce4-notifyd --noconfirm
+su nobody -c 'paru -Sy libnotify xfce4-notifyd --noconfirm'
 
 # Create theme
 echo -e "\e[1mCopying theme...\e[0m"
@@ -23,13 +23,13 @@ echo -e "\e[1mSetting configs to all users...\e[0m"
 for d in  /etc/skel/  /home/*/ ; do
     # Skip dirs in /home that not are user home
     [ "$(dirname "$d")" = "/home" ] && ! id "$(basename "$d")" &>/dev/null && continue
-	
+
 	# Create config folders if no exists
 	d="$d/.config/"; [ ! -d "$d" ] && mkdir -v "$d" && chown -R $(stat "$(dirname "$d")" -c %u:%g) "$d"
-	d="$d/xfce4/";  [ ! -d "$d" ] && mkdir -v "$d" && chown -R $(stat "$(dirname "$d")" -c %u:%g) "$d"	
-	d="$d/xfconf/";  [ ! -d "$d" ] && mkdir -v "$d" && chown -R $(stat "$(dirname "$d")" -c %u:%g) "$d"	
-	d="$d/xfce-perchannel-xml/";  [ ! -d "$d" ] && mkdir -v "$d" && chown -R $(stat "$(dirname "$d")" -c %u:%g) "$d"	
-	
+	d="$d/xfce4/";  [ ! -d "$d" ] && mkdir -v "$d" && chown -R $(stat "$(dirname "$d")" -c %u:%g) "$d"
+	d="$d/xfconf/";  [ ! -d "$d" ] && mkdir -v "$d" && chown -R $(stat "$(dirname "$d")" -c %u:%g) "$d"
+	d="$d/xfce-perchannel-xml/";  [ ! -d "$d" ] && mkdir -v "$d" && chown -R $(stat "$(dirname "$d")" -c %u:%g) "$d"
+
 	f="xfce4-notifyd.xml"
 	if [ ! -f "$d/$f" ]; then
 		cp -v "$base_dir/$f" "$d" && chown -R $(stat "$(dirname "$d")" -c %u:%g) "$d/$f"

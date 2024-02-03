@@ -11,7 +11,7 @@ base_dir="$(dirname "$(readlink -f "$0")")"
 
 # Install packages
 echo -e "\e[1mInstalling packages...\e[0m"
-paru -Sy pnmixer pavucontrol --noconfirm
+su nobody -c 'paru -Sy pnmixer pavucontrol --noconfirm'
 
 # Copy users config
 echo -e "\e[1mSetting configs to all users...\e[0m"

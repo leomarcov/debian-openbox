@@ -6,7 +6,7 @@
 # Check Root
 [[ "$(id -u)" ]]
 # Install reflector
-paru -Sy  reflector --noconfirm
+su nobody -c 'paru -Sy reflector --noconfirm'
 
 # Generate and save new mirrorlist
 (

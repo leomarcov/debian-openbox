@@ -9,4 +9,4 @@
 
 # Install free packages
 echo -e "\e[1mInstalling packages...\e[0m"
-paru -Sy vlc evince --noconfirm
+su nobody -c 'paru -Sy vlc evince --noconfirm'

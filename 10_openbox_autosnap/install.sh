@@ -14,22 +14,22 @@ comment_mark="#ARCHLINUX-OPENBOX-autosnap"
 
 # Install packages
 echo -e "\e[1mInstalling packages...\e[0m"
-paru -Sy install xdotool --noconfirm
+su nobody -c 'paru -Sy install xdotool --noconfirm'
 
 # Copy autosnap script
 echo -e "\e[1mCopying sript...\e[0m"
 cp -v "$base_dir/autosnap" /usr/bin/
-chmod +x /usr/bin/autosnap 
+chmod +x /usr/bin/autosnap
 
 # Copy users config
 echo -e "\e[1mSetting configs to all users...\e[0m"
 for d in /etc/skel/  /home/*/; do
     [ "$(dirname "$d")" = "/home" ] && ! id "$(basename "$d")" &>/dev/null && continue	# Skip dirs that no are homes
-	
+
 	f="$d/.config/openbox/rc.xml"
 	# Skip if Openbox no rc.xml found
 	[ ! -f "$f" ] && continue
-	
+
 	# Delete all previous lines added
 	sed -i "/${comment_mark}/Id" "$f"
 

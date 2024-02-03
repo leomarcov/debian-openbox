@@ -11,7 +11,7 @@ base_dir="$(dirname "$(readlink -f "$0")")"
 
 # Install packages
 echo -e "\e[1mInstalling packages...\e[0m"
-paru -Sy openbox obconf xinit lxappearance compton xfce4-screenshooter xfce4-clipman xfce4-power-manager xfce4-settings arandr gsimplecal xcape gparted file-roller xautomation yad inxi networkmanager network-manager-applet --noconfirm
+su nobody -c 'paru -Sy openbox obconf xinit lxappearance compton xfce4-screenshooter xfce4-clipman xfce4-power-manager xfce4-settings arandr gsimplecal xcape gparted file-roller xautomation yad inxi networkmanager network-manager-applet --noconfirm'
 
 echo -e "\e[1mCopying themes and tools...\e[0m"
 # Copy theme
@@ -25,7 +25,7 @@ cp -rv "$base_dir/$d" "/usr/share/doc/openbox/"
 # Install system info dependences
 #wget -P /usr/bin "https://raw.githubusercontent.com/pixelb/ps_mem/master/ps_mem.py" && chmod a+x /usr/bin/ps_mem.py
 #wget -P /usr/bin "https://raw.githubusercontent.com/aristocratos/bashtop/master/bashtop" && chmod a+x /usr/bin/bashtop
-paru -Sy s-tui dfc btop hwinfo --noconfirm
+su nobody -c 'paru -Sy s-tui dfc btop hwinfo --noconfirm'
 
 # Copy cups-session
 cp -v ${base_dir}/cups-session /usr/bin
@@ -45,14 +45,14 @@ for d in /etc/skel /home/*/ /root; do
 
 	# Create config folder if no exists
 	d="$d/.config/"; [ ! -d "$d" ] && mkdir -v "$d" && chown -R $(stat "$(dirname "$d")" -c %u:%g) "$d"
-	
+
 	# Copy compton file
 	f="compton.conf"
-	cp -v "$base_dir/$f" "$d" && chown -R $(stat "$d" -c %u:%g) "$d/$f"	
+	cp -v "$base_dir/$f" "$d" && chown -R $(stat "$d" -c %u:%g) "$d/$f"
 	# Copy mimeapps.list file
 	f="mimeapps.list"
-	cp -v "$base_dir/$f" "$d" && chown -R $(stat "$d" -c %u:%g) "$d/$f"	
-	
+	cp -v "$base_dir/$f" "$d" && chown -R $(stat "$d" -c %u:%g) "$d/$f"
+
 	# Create config folders if no exists
 	d2="$d"
 	d="$d/openbox/";  [ ! -d "$d" ] && mkdir -v "$d" && chown -R $(stat "$(dirname "$d")" -c %u:%g) "$d"
@@ -65,12 +65,12 @@ for d in /etc/skel /home/*/ /root; do
 	cp -v "$base_dir/$f" "$d" && chown -R $(stat "$d" -c %u:%g) "$d/$f"
 	# Copy openbox menu file
 	f="menu.xml"
-	cp -v "$base_dir/$f" "$d" && chown -R $(stat "$d" -c %u:%g) "$d/$f"	
+	cp -v "$base_dir/$f" "$d" && chown -R $(stat "$d" -c %u:%g) "$d/$f"
 	# Delete bluetooth item from menu if no BT present
-	dmesg | grep -qi bluetooth || sed -i '/DEBIAN-OPENBOX-bluetooth/Id' "$d/$f"	
+	dmesg | grep -qi bluetooth || sed -i '/DEBIAN-OPENBOX-bluetooth/Id' "$d/$f"
 	# Create welcome link
 	ln -s /usr/bin/welcome "$d/welcome"
-	
+
 	# Copy fonts.conf
 	d="$d2/fontconfig/";  [ ! -d "$d" ] && mkdir -v "$d" && chown -R $(stat "$(dirname "$d")" -c %u:%g) "$d"
 	f="fonts.conf"

@@ -9,5 +9,5 @@
 
 # Install free packages
 echo -e "\e[1mInstalling packages...\e[0m"
-paru -Sy vim zip unzip rar unrar mtp-tools mailutils traceroute acl gnupg2 mlocate apt-transport-https curl ntfs-3g wgetlinux-firmware linux-headers --noconfirm
-  
+su nobody -c 'paru -Sy vim zip unzip rar unrar mtp-tools mailutils traceroute acl gnupg2 mlocate apt-transport-https curl ntfs-3g wgetlinux-firmware linux-headers --noconfirm'
+

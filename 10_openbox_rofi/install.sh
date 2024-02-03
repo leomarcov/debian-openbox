@@ -13,13 +13,13 @@ rofi_command="rofi -show drun"
 
 # Install packages
 echo -e "\e[1mInstalling packages...\e[0m"
-paru -Sy rofi --noconfirm
+su nobody -c 'paru -Sy rofi --noconfirm'
 
 
 # Config rofi theme and run mode for all users
 echo -e "\e[1mSetting configs to all users...\e[0m"
 for d in /etc/skel/  /home/*/ /root; do
-    [ "$(dirname "$d")" = "/home" ] && ! id "$(basename "$d")" &>/dev/null && continue	# Skip dirs that no are homes 
+    [ "$(dirname "$d")" = "/home" ] && ! id "$(basename "$d")" &>/dev/null && continue	# Skip dirs that no are homes
 
 	# Create config folders if no exists
 	d2="$d"
@@ -29,14 +29,14 @@ for d in /etc/skel/  /home/*/ /root; do
 	# Copy theme
 	f="config.rasi"
 	cp -v "$base_dir/$f" "$d/" && chown -R $(stat "$(dirname "$d")" -c %u:%g) "$d/$f"
-	
+
 	d="$d2/.config/openbox/"
 	f="$d/rc.xml"
-	
+
 	# Edit rc.xml config
 	sed -i "/${comment_mark}/d" "$f"		# Delete lines added previously
 	sed -i "/<keyboard>/a<keybind key=\"C-Tab\"><action name=\"Execute\"><command>${rofi_command}<\/command><\/action><\/keybind>     <\!-- #${comment_mark} -->" "$f"	# Add ctrl+tab shortkey
-	
+
 	# Set as runas in menu:
 	#f="$d/menu.xml"
 	#sed -i "/<item label=\"Run Program\">/,/<\/item>/d" "$f"	# Delte current Run program entry

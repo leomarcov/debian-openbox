@@ -9,10 +9,9 @@
 
 # Install packages
 echo -e "\e[1mInstalling packages...\e[0m"
-[ "$(find /var/cache/apt/pkgcache.bin -mtime 0 2>/dev/null)" ] || apt-get update  
-apt-get install -y cups
+su nobody -c 'paru -Sy cups --noconfirm'
 
 # Add user 1000 to sudo group
 echo -e "\e[1mAdding users to group lpadmin...\e[0m"
 user=$(cat /etc/passwd | cut -f 1,3 -d: | grep :1000$ | cut -f1 -d:)
-[ "$user" ] && adduser "$user" lpadmin
+[ "$user" ] && gpasswd -a "$user" lpadmin
