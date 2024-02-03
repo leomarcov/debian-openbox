@@ -13,10 +13,10 @@
 #===================================================================================
 
 #### CONFIG
-force_distro="debian"				# Use always same distro logo, not autodetect
+force_distro="arch"				# Use always same distro logo, not autodetect
 mark_sudoers="false"				# Mark sudo users in userlist with *
 mark_locked="true"					# Mark locked users in userlist in red color
-show_userlist="true"				# Show list of users 
+show_userlist="true"				# Show list of users
 
 #### COLORS DEFINITION
 S_R="$(echo -e "\e[0m")"             # Reset all attributes
@@ -30,39 +30,7 @@ C_LY="$(echo -e "\e[93m")"           # Color LIGHT YELLOW
 C_B="$(echo -e "\e[34m")"            # Color BLUE
 C_LB="$(echo -e "\e[94m")"           # Color LIGHT BLUE
 C_M="$(echo -e "\e[35m")"            # Color MAGENTA
-C_LM="$(echo -e "\e[95m")"           # Color LIGHT MAGENTA
-C_C="$(echo -e "\e[36m")"            # Color CYAN
-C_LC="$(echo -e "\e[96m")"           # Color LIGHT CYAN
-C_N="$(echo -e "\e[90m")"            # Color GREY
-C_LN="$(echo -e "\e[37m")"           # Color LIGHT GREY
-C_W="$(echo -e "\e[97m")"            # Color WHITE
-C_D="$(echo -e "\e[2m")"             # Color DIM
-
-
-#### INFO MESSAGES
-info_os="${S_R}${S_B}$(cat /etc/*release | grep PRETTY_NAME | cut -f2 -d\") $(uname -m)"
-info_bar="${S_R}${C_D}$(seq -s- 1 $(($(echo "$info_os" | wc -c)-8)) | tr -d "[0-9]")"
-info_hostname="${S_R}${S_B}Hostname${S_R}:   $(hostname)"
-info_ip="${S_R}${S_B}Local IP${S_R}:   $(t=($(ip -c=never route get 8.8.8.8 | head -1 |  egrep -o "dev [0-9a-z]+|src [0-9\.]+" | cut -f2 -d" " | sort)); [ ! "$t" ] && echo "network not ready" || echo "${t[0]} (${t[1]})")"
-info_boottime="${S_R}${S_B}Boot time${S_R}: $(systemd-analyze | head -1 | cut -f2 -d=)($(systemd-analyze | head -1 | egrep -o "loader|firmware|kernel|userspace" | sed -z 's/\n\(.\)/+\1/g'))"
-info_lastlog="${S_R}${S_B}Last log${S_R}:   $(t=($(last -R --time-format iso | egrep -v 'reboot|shutdown|still' | head -1  | awk '{print $1, $3, $6}' | sed 's/+[0-9]\+:[0-9]\+//' | tr "T" " ")); [ "${t[1]}" = "$(date +%Y-%m-%d)" ] && unset t[1]; t[0]="${t[0]} "; echo "${t[*]}")"
-info_uptime="${S_R}${S_B}Uptime${S_R}:     $(uptime -p | sed 's/up //')"
-#info_kernel="${S_R}${S_B}Kernel${S_R}:     $(uname -r)"
-#info_cpu="${S_R}${S_B}CPU${S_R}:       $(cat /proc/cpuinfo | grep "^model name" | cut -f2 -d: | head -1)"
-#info_mem="${S_R}${S_B}Memory${S_R}:     $(free -h | grep "^Mem:" | awk 'BEGIN { OFS=" / " }{ print $3, $2 }') ($(free -h | grep -i swap | awk '{print $2}') swap)"
-#info_wm="${S_R}${S_B}WM${S_R}:         $(basename $(update-alternatives --list x-window-manager) | sed 's/^\(.\)/\U\1/')"
-
-info1="$info_os"
-info2="$info_bar"
-info3="$info_hostname"
-info4="$info_ip"
-info5="$info_boottime"
-info6="$info_lastlog"
-info7="$info_uptime"
-
-
-#### DISTRO LOGOS FUNCTIONS
-function logo_debian() {
+C_LM="$(echo -e "\e[95m")"           # Color LIGHT MAGENTlogo_debian() {
 local c0="${S_R}${S_B}${C_R}"
 local c1="${S_R}${C_R}"
 
@@ -158,7 +126,7 @@ ${c0}     /${c1}/  \ ${c0}\      ${info4}
 ${c0}    ( ${c1}|  | ${c0}/|     ${info5}
 ${c2}   _${c0}/\ ${c1}__)${c0}/${c2}_${c0})     ${info6}
 ${c2}   \/${c0}-____${c2}\/${reset}      ${info7}${S_R}"
-} 
+}
 
 
 function logo_manjaro() {
@@ -171,7 +139,7 @@ ${c0}  |||| |||| ||||    ${info4}
 ${c0}  |||| |||| ||||    ${info5}
 ${c0}  |||| |||| ||||    ${info6}
 ${c0}  |||| |||| ||||    ${info7}${S_R}"
-} 
+}
 
 
 function logo_nixos() {
@@ -185,7 +153,7 @@ ${c1}  ==//      ${c0}//==   ${info4}
 ${c1}   //${c0}\\${c1}____${c0}//       ${info5}
 ${c1}  // ${c0}/\   ${c1}\==      ${info6}
 ${c0}    // \   ${c1}\       ${info7}${S_R}"
-} 
+}
 
 
 function logo_openbsd() {
@@ -199,7 +167,7 @@ ${c0}  |        ${c1}O O ${c0}|   ${info4}
 ${c0}  |_  ${c2}<   ${c0})  ${c2}3 ${c0})   ${info5}
 ${c0}  / \         /    ${info6}
 ${c0}     /-_____-\     ${info7}${S_R}"
-} 
+}
 
 
 function logo_raspbian() {
@@ -213,7 +181,7 @@ ${c1}  (_(_)(_)_)    ${info4}
 ${c1}   (_(__)_)     ${info5}
 ${c1}     (__)       ${info6}
 ${c1}                ${info7}${S_R}"
-} 
+}
 
 
 function logo_antergos() {
@@ -227,7 +195,7 @@ ${c0}    / ${c1}.\` .\` . ${c0}\     ${info4}
 ${c0}   / ${c1}\` .\`.\` .\` ${c0}\    ${info5}
 ${c0}  |    ${c1}\`.\`  \`   ${c0}|   ${info6}
 ${c0}   \___________/    ${info7}${S_R}"
-} 
+}
 
 
 function logo_ubuntu() {
@@ -241,7 +209,7 @@ ${c1}  (_)${c0} |   |      ${info4}
 ${c0}    \  --- ${c1}_${c0}/    ${info5}
 ${c0}       ---${c1}(_)    ${info6}
 ${c0}                 ${info7}${S_R}"
-} 
+}
 
 
 function logo_centos() {
@@ -257,7 +225,7 @@ ${c2}  <---- ${c3}---->     ${info4}
 ${c3}   | / ${c0}|${c1} \ |      ${info5}
 ${c3}   |/__${c0}|${c1}__\|      ${info6}
 ${c0}       v          ${info7}${S_R}"
-} 
+}
 
 
 function logo_elementary() {
@@ -271,7 +239,7 @@ ${c1}  |${c0}__\ /  /${c1} |    ${info4}
 ${c1}  \   ${c0}/__/${c1}  /    ${info5}
 ${c1}   \_______/     ${info6}
 ${c1}                 ${info7}${S_R}"
-} 
+}
 
 function logo_slackware() {
 local c0="${S_R}${C_B}"
@@ -283,7 +251,7 @@ ${c0}    \______  \    ${info4}
 ${c0}     ______| |    ${info5}
 ${c0}  | |________/    ${info6}
 ${c0}  |____________   ${info7}${S_R}"
-} 
+}
 
 function logo_suse() {
 local c0="${S_R}${C_LG}"
@@ -296,7 +264,7 @@ ${c0}         ${c1}\__/ ${c0}|    ${info4}
 ${c0}       _______|    ${info5}
 ${c0}       \_______    ${info6}
 ${c0}  --__________/    ${info7}${S_R}"
-} 
+}
 
 
 function logo_void() {
@@ -310,7 +278,7 @@ ${c1}  | |  ${c0}/   \  | |   ${info4}
 ${c1}  | |  ${c0}\___/  | |   ${info5}
 ${c1}   \ \`-_____  ${c0}\/    ${info6}
 ${c1}    \`-______\       ${info7}${S_R}"
-} 
+}
 
 
 function logo_linuxlite() {
@@ -324,7 +292,7 @@ ${c0}   > ${c1}/ ${c0}/        ${info4}
 ${c0}   \ ${c1}\ ${c0}\        ${info5}
 ${c0}    \_${c1}\\\\${c0}_\      ${info6}
 ${c1}       \        ${info7}${S_R}"
-} 
+}
 
 
 # CREATE ISSUE
@@ -350,7 +318,7 @@ issue="${issue}$(logo_${distro} | sed 's/\\/\\\\/g')"
 # DISPLAY SYSTEM USERS
 if [ "$show_userlist" = "true" ]; then
 	issue="${issue}"$'\n\n'"${S_B}Users${S_R}: "
-	for u in $(awk -F: '$3 >= 1000 && $1 != "nobody" {print $1}' /etc/passwd | tac); do 
+	for u in $(awk -F: '$3 >= 1000 && $1 != "nobody" {print $1}' /etc/passwd | tac); do
 		# Red if lock user:
 		if [ "$mark_locked" = "true" ]; then
 			[ "$(passwd -S $u 2>/dev/null | cut -f2 -d" ")" = "L" ] && issue="${issue}${C_LR}"
@@ -359,7 +327,7 @@ if [ "$show_userlist" = "true" ]; then
 		if [ "$mark_sudoers" = "true" ]; then
 			grep -Po '^sudo.+:\K.*$' /etc/group | grep -w "$u" &>/dev/null && u="${u}*"
 		fi
-		issue="${issue}$u${S_R}  " 
+		issue="${issue}$u${S_R}  "
 	done
 fi
 issue="${issue}"$'\n'
