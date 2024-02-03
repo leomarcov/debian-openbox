@@ -1,11 +1,10 @@
 #!/bin/bash
 # ACTION: Configure pacman to be more colorfull
-# INFO: Also it configures some usefull configs
+# INFO: This will pacman to be more colorfull and some settings
 # DEFAULT: y
 
 # Check root
 [ "$(id -u)" -ne 0 ] && { echo "Must run as root" 1>&2; exit 1; }
-
 
 (
 	sed -i '
