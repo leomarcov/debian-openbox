@@ -302,8 +302,7 @@ function load_scripts() {
 #	1	IS NOT compatible
 #===================================================================================
 function check_os_version() {
-	cat /etc/*release | grep -iq debian || return 1
-	cat /etc/*release | egrep -iq "buster|stretch|bookworm" || return 1
+	cat /etc/*release | grep -iq "arch linux" || return 1
 	return 0
 }
 
