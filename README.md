@@ -131,7 +131,7 @@ The script can be easily customized. Each `install.sh` script placed in a subdir
 
 &nbsp;  
 ## Lincense
-[GPLv3](LICENSE)
+Debian-Openbox license is [GPLv3](LICENSE)
 
 ## Contact
 My name is Leonardo Marco. I'm sysadmin teacher in [CIFP Carlos III](https://cifpcarlos3.es/), Cartagena, Murcia (Spain).
