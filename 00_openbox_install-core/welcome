@@ -29,11 +29,11 @@ text_es='<big><b>BIENVENIDO A DEBIAN-OPENBOX SCRIPT!</b></big>
 <b> Mover ventanas</b> 				<tt>ALT+clic izquierdo</tt> (y arrastrar)
 <b> Cambiar tamaño ventanas</b>		<tt>ALT+clic derecho</tt> (y arrastrar)
 <b> Ventana siempre encima</b> 		<tt>WIN+0</tt>
-<b> Matar entorno gráfico</b> 			<tt><tt>CTRL+ALT+RETROCESO</tt>
+<b> Matar entorno gráfico     </b> 			<tt>CTRL+ALT+RETROCESO</tt>
 
 <b> Abrir un terminal</b>				<tt>WIN+t</tt>
 <b> Abrir el gestor de ficheros</b>		<tt>WIN+f</tt>
-<b> Abrir el navegador web</b>			<tt><tt>WIN+w</tt>
+<b> Abrir el navegador web     </b>			<tt>WIN+w</tt>
 <b> Abrir el editor</b>				<tt>WIN+e</tt>
 '
 field_es="Mostrar este mensaje al inicio"
