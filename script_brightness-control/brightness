@@ -82,7 +82,7 @@ function change_brightness() {
 }
 
 function check_bldir () {
-	[ ! -d "$bl_dir" ] && bl_dir=$(ls /sys/class/backlight)
+	[ ! -d "$bl_dir" ] && bl_dir="/sys/class/backlight/$(ls /sys/class/backlight)"
 	if [ "$(echo "$bl_dir" | wc -l)" -gt 1 ]; then
 		echo "ERROR: too many directories in /sys/class/backlight"
 		echo "Please edit $0 and config bl_dir variable with brightness directory"
