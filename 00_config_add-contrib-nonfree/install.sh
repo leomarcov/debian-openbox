@@ -1,6 +1,6 @@
 #!/bin/bash
-# ACTION: Add Debian repositories contrib and non-free
-# INFO: Contrib and non-free repositories are not enabled by default in Debian install
+# ACTION: Add Debian repositories contrib, non-free and non-free-firmware
+# INFO: Contrib, non-free and non-free-firmware repositories are not enabled by default in Debian install
 # DEFAULT: y
 
 # Check root
@@ -22,6 +22,12 @@ for l in $deb_lines_nonfree; do
 done
 )
 
+# Add non-free-firmware section
+deb_lines_nonfree="$(egrep '^(deb|deb-src) (http://deb.debian.org/debian/|http://security.debian.org/debian-security)' /etc/apt/sources.list | grep -v "non-free-firmware[[:blank:]]")"
+for l in $deb_lines_nonfree; do
+	sed -i "s\\^$l$\\$l non-free-firmware\\" /etc/apt/sources.list
+done
+)
 
 # Update and install packages
 apt-get update  
