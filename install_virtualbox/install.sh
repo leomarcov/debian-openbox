@@ -1,11 +1,11 @@
 #!/bin/bash
-# ACTION: Install VirtualBox 7.0 and Extension Pack and add to repositories 
+# ACTION: Install VirtualBox 7.2 and Extension Pack and add to repositories 
 # INFO: VirtualBox is a free opensource hosted hypervisor
 # DEFAULT: y
 
 # Config variables
-vb_package="virtualbox-7.0"
-ep_url="https://download.virtualbox.org/virtualbox/7.0.8/Oracle_VM_VirtualBox_Extension_Pack-7.0.8.vbox-extpack"
+vb_package="virtualbox-7.2"
+ep_url="https://download.virtualbox.org/virtualbox/7.2.6/Oracle_VM_VirtualBox_Extension_Pack-7.2.6.vbox-extpack"
 main_distro="$(cat /etc/apt/sources.list | grep ^deb | awk '{print $3}' | head -1)"
 
 # Check root
