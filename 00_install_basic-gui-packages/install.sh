@@ -1,7 +1,7 @@
 #!/bin/bash
 # ACTION: Install some basic GUI packages
 # INFO: Debian netinstall comes with few list of GUI installed packages
-# INFO: Some basic packages are: vlc gmtp mtp-tools synaptic galternatives evince
+# INFO: Some basic packages are: vlc gmtp mtp-tools synaptic galternatives evince firmware-linux-nonfree
 # DEFAULT: y
 
 # Check root
