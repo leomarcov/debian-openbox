@@ -9,13 +9,13 @@ comment_mark="#DEBIAN-OPENBOX"
 # Check root
 [ "$(id -u)" -ne 0 ] && { echo "Must run as root" 1>&2; exit 1; }
 
-# Ask for password
+# Ask for username and password
 echo -n "Enter GRUB username: " ; read guser
-echo -n "Enter password for $guser user: " ; read gpass
 if [[ "$guser" != ^[a-zA-Z0-9_-]+$ ]]; then
 	echo "Username must math ^[a-zA-Z0-9_-]+$"
 	exit 1
 fi
+echo -n "Enter password for $guser user: " ; read gpass
 if [ ! "$gpass" ]; then
 	echo "Password can't be empty"
 	exit 1
