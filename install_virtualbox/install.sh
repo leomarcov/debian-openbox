@@ -11,7 +11,7 @@ if ! grep -R "download.virtualbox.org" /etc/apt/ &> /dev/null; then
 	main_distro="$(cat /etc/apt/sources.list | grep ^deb | awk '{print $3}' | head -1)"
 	echo -e "\e[1mConfiguring repositories...\e[0m"	
 	wget -qO - "https://www.virtualbox.org/download/oracle_vbox_2016.asc" | gpg --dearmor --yes -o /usr/share/keyrings/virtualbox-keyring.gpg
-	echo "deb [arch=amd64 signed-by=/usr/share/keyrings/virtualbox-keyring.gpg] http://download.virtualbox.org/virtualbox/debian $main_distro contrib" | tee /etc/apt/sources.list.d/virtualbox.list
+	echo "deb [arch=amd64 signed-by=/usr/share/keyrings/virtualbox-keyring.gpg] https://download.virtualbox.org/virtualbox/debian $main_distro contrib" | tee /etc/apt/sources.list.d/virtualbox.list
 	apt-get update	
 fi
 
@@ -38,7 +38,7 @@ if ! which vboxmanage &> /dev/null; then
 fi
 
 # Install extension pack
-vb_version=$(vboxmanage --version | grep -Eo "^[0-9]\.[0-9]+\.[0-9]+")
+vb_version=$(vboxmanage --version | grep -Eo "^[0-9]+\.[0-9]+\.[0-9]+")
 ep_url="https://download.virtualbox.org/virtualbox/${vb_version}/Oracle_VM_VirtualBox_Extension_Pack-${vb_version}.vbox-extpack"
 
 echo -e "\n\e[1mDownloading and installing Extension Pack ${vb_version} ...\e[0m"
