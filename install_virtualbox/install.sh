@@ -23,7 +23,7 @@ echo -e "\e[1mInstalling ${vb_package} packages...\e[0m"
 apt-get install -y linux-headers-$(uname -r) "$vb_package" || exit 1
 
 # Add VirtualBox in OpenBox menu:
-echo -e "\e[1mAdding Openbox menu entry...\e[0m"
+echo -e "\n\e[1mAdding Openbox menu entry...\e[0m"
 for d in /etc/skel/  /home/*/ ; do
 	f="$d/.config/openbox/menu.xml"
 	[ ! -f "$f" ] && continue
@@ -41,15 +41,9 @@ fi
 vb_version=$(vboxmanage --version | grep -Eo "^[0-9]\.[0-9]+\.[0-9]+")
 ep_url="https://download.virtualbox.org/virtualbox/${vb_version}/Oracle_VM_VirtualBox_Extension_Pack-${vb_version}.vbox-extpack"
 
-echo -e "\e[1mDownloading and installing Extension Pack ${vb_version} ...\e[0m"
+echo -e "\n\e[1mDownloading and installing Extension Pack ${vb_version} ...\e[0m"
 t=$(mktemp -d)
 wget -P "$t" "$ep_url"  
 [ $? -eq 0 ] && yes | vboxmanage extpack install --replace "$t"/*extpack 
 rm -rf "$t"
-
-# Fix Virtualbox not load gtk theme
-echo -e "\e[1mFixing Virtualbox GTK settings...\e[0m"
-apt-get install -y qt5-style-plugins
-echo "export QT_QPA_PLATFORMTHEME=gtk2" >> /etc/environment
-echo "export QT_STYLE_OVERRIDE=fusion" >> /etc/environment
 
