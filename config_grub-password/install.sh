@@ -11,7 +11,7 @@ comment_mark="#DEBIAN-OPENBOX"
 
 # Ask for username and password
 echo -n "Enter GRUB username: " ; read guser
-if [[ "$guser" != ^[a-zA-Z0-9_-]+$ ]]; then
+if [[ ! "$guser" =~ ^[a-zA-Z0-9_-]+$ ]]; then
 	echo "Username must math ^[a-zA-Z0-9_-]+$"
 	exit 1
 fi
