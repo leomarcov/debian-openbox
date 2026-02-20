@@ -2,7 +2,7 @@
 # ACTION: Install script to control screen brightness
 # INFO: Script birghtness allow increment and decrement screen brightness
 # INFO: Is used in tint2 taskbar config for inc/dec brightness with mouse wheel
-# DEFAULT: y
+# DEFAULT: n
 
 # Check root
 [ "$(id -u)" -ne 0 ] && { echo "Must run as root" 1>&2; exit 1; }
