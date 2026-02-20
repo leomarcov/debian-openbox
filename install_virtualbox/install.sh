@@ -16,9 +16,9 @@ if ! grep -R "download.virtualbox.org" /etc/apt/ &> /dev/null; then
 fi
 
 # Install packages
-echo -e "\e[1mInstalling packages...\e[0m"
-vb_package=$(apt-cache search virtualbox | grep "^virtualbox-[0-9]" | cut -f1 -d" " | sort -n | tail -1)
-[ ! "$vb_package ] || { echo "VirtualBox package not found"; exit 1; }
+vb_package=$(apt-cache pkgnames | grep '^virtualbox-[0-9]' | sort -V | tail -1)
+echo -e "\e[1mInstalling ${vb_package} packages...\e[0m"
+[ ! "$vb_package" ] || { echo "VirtualBox package not found"; exit 1; }
 [ "$(find /var/cache/apt/pkgcache.bin -mtime 0 2>/dev/null)" ] || apt-get update  
 apt-get install -y linux-headers-$(uname -r) "$vb_package" || exit 1
 
@@ -41,7 +41,7 @@ fi
 vb_version=$(vboxmanage --version | grep -Eo "^[0-9]\.[0-9]+\.[0-9]+")
 ep_url="https://download.virtualbox.org/virtualbox/${vb_version}/Oracle_VM_VirtualBox_Extension_Pack-${vb_version}.vbox-extpack"
 
-echo -e "\e[1mDownloading and installing Extension pack..\e[0m"
+echo -e "\e[1mDownloading and installing Extension Pack ${vb_version} ...\e[0m"
 t=$(mktemp -d)
 wget -P "$t" "$ep_url"  
 [ $? -eq 0 ] && yes | vboxmanage extpack install --replace "$t"/*extpack 
