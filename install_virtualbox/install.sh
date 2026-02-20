@@ -18,7 +18,7 @@ fi
 # Install packages
 vb_package=$(apt-cache pkgnames | grep '^virtualbox-[0-9]' | sort -V | tail -1)
 echo -e "\e[1mInstalling ${vb_package} packages...\e[0m"
-[ ! "$vb_package" ] || { echo "VirtualBox package not found"; exit 1; }
+[ ! "$vb_package" ] && { echo "VirtualBox package not found"; exit 1; }
 [ "$(find /var/cache/apt/pkgcache.bin -mtime 0 2>/dev/null)" ] || apt-get update  
 apt-get install -y linux-headers-$(uname -r) "$vb_package" || exit 1
 
