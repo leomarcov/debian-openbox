@@ -10,18 +10,19 @@ comment_mark="#DEBIAN-OPENBOX"
 [ "$(id -u)" -ne 0 ] && { echo "Must run as root" 1>&2; exit 1; }
 
 # Ask for password
-echo -n "Enter password for admin user: " ; read pass
+echo -n "Enter GRUB username: " ; read guser
+echo -n "Enter password for $guser user: " ; read gpass
 if [ ! "$pass" ]; then
 	echo "Password can't be empty"
 	exit 1
 fi
 
-# Config admin user and password
+# Config user and password
 echo -e "\e[1mSetting GRUB config...\e[0m"
 pbkdf2_pass="$(echo -e "$pass\n$pass"| grub-mkpasswd-pbkdf2  | grep "grub.pbkdf2.*" -o)"
 sed -i "/${comment_mark}/Id" /etc/grub.d/40_custom
-echo 'set superusers="admin"    '"$comment_mark"'
-password_pbkdf2 admin '"$pbkdf2_pass   $comment_mark" | tee -a /etc/grub.d/40_custom 
+echo 'set superusers="$guser"    '"$comment_mark"'
+password_pbkdf2 "$gpass" '"$pbkdf2_pass   $comment_mark" | tee -a /etc/grub.d/40_custom 
 
 # Config others users for select entry
 for f in /etc/grub.d/*; do 
