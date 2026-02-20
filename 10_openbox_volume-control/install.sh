@@ -1,5 +1,5 @@
 #!/bin/bash
-# ACTION: Install pnmixer and pavucontrol volume control
+# ACTION: Install pipewire, pavucontrol and volumeicon for volume control
 # INFO: Openbox dont include tools for manage sound devices
 # DEFAULT: y
 
@@ -12,7 +12,7 @@ base_dir="$(dirname "$(readlink -f "$0")")"
 # Install packages
 echo -e "\e[1mInstalling packages...\e[0m"
 [ "$(find /var/cache/apt/pkgcache.bin -mtime 0 2>/dev/null)" ] || apt-get update  
-apt-get install -y pnmixer pavucontrol
+apt-get install -y pipewire-audio wireplumber pavucontrol volumeicon-alsa 
 
 # Copy users config
 echo -e "\e[1mSetting configs to all users...\e[0m"
@@ -21,15 +21,10 @@ for d in /etc/skel /home/*/ /root; do
 
 	# Create config folders if no exists
 	d="$d/.config/"; [ ! -d "$d" ] && mkdir -v "$d" && chown -R $(stat "$(dirname "$d")" -c %u:%g) "$d"
-	d="$d/pnmixer/";  [ ! -d "$d" ] && mkdir -v "$d" && chown -R $(stat "$(dirname "$d")" -c %u:%g) "$d"
+	d="$d/volumeicon/";  [ ! -d "$d" ] && mkdir -v "$d" && chown -R $(stat "$(dirname "$d")" -c %u:%g) "$d"
 
-	# Set theme icon
-	f="$d/config"
-	if [ ! -f "$f" ]; then
-		echo -e "[PNMixer]\nSystemTheme=true\nVolumeControlCommand=pavucontrol" > "$f" && chown -R $(stat "$(dirname "$d")" -c %u:%g) "$f"
-	else
-		sed -i 's/SystemTheme=.*/SystemTheme=true/' "$f"
-	fi
+	# Copy volumeicon config file
+	cp -v "$base_dir/volumeicon" "$d" && chown $(stat "$(dirname "$d")" -c %u:%g) "$d"/volumeicon
 done
 
 
