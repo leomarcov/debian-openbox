@@ -10,7 +10,7 @@ comment_mark="#DEBIAN-OPENBOX"
 [ "$(id -u)" -ne 0 ] && { echo "Must run as root" 1>&2; exit 1; }
 
 # Ask for password
-read -p "Enter password for admin user: " pass
+echo -n "Enter password for admin user: " ; read pass
 if [ ! "$pass" ]; then
 	echo "Password can't be empty"
 	exit 1
