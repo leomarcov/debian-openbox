@@ -25,6 +25,7 @@ if [ "$(systemd-detect-virt)" = "oracle" ]; then
 	wget -P "$t" "$ga_url"
 	7z x "$t"/* -o"$t" &>/dev/null
 	bash "$t/VBoxLinuxAdditions.run"
+	rm -rf "$t"
 fi
 
 echo -e "\e[1mCopying themes and tools...\e[0m"
