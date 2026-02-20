@@ -15,6 +15,18 @@ echo -e "\e[1mInstalling packages...\e[0m"
 apt-get install -y openbox obconf xinit lxappearance compton xfce4-screenshooter xfce4-clipman xfce4-power-manager xfce4-settings arandr gsimplecal xcape gparted file-roller xautomation yad inxi dbus-x11 xdg-user-dirs xdg-utils
 apt-get install -y network-manager network-manager-gnome 
 
+# Install Guest Additions
+if [ "$(systemd-detect-virt)" = "oracle" ]; then
+    echo -e "\e[1mVirtualBox guest detected. Installing Guest Additions...\e[0m"
+	apt install -y build-essential dkms linux-headers-$(uname -r) wget p7zip-full
+	vb_version=$(wget -qO- https://download.virtualbox.org/virtualbox/LATEST.TXT)
+	t=$(mktemp -d)
+	ga_url="https://download.virtualbox.org/virtualbox/${vb_version}/VBoxGuestAdditions_${vb_version}.iso"
+	wget -P "$t" "$ga_url"
+	7z x "$t"/* -o"$t" &>/dev/null
+	bash "$t/VBoxLinuxAdditions.run"
+fi
+
 echo -e "\e[1mCopying themes and tools...\e[0m"
 # Copy theme
 tar -xzvf "$base_dir"/openbox_theme.tgz -C /usr/share/themes/
