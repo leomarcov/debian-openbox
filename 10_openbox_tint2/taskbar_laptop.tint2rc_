@@ -57,9 +57,9 @@ border_color =
 
 #-------------------------------------
 # Panel
-#autohide = 0
+autohide = 0
 #strut_policy = follow_size
-autohide = 1					
+#autohide = 1					
 strut_policy = minimun			
 
 panel_monitor = 1
