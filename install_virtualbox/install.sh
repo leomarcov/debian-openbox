@@ -1,5 +1,5 @@
 #!/bin/bash
-# ACTION: Install VirtualBox 7.2 and Extension Pack and add to repositories 
+# ACTION: Install VirtualBoxand Extension Pack from VirtualBox Official Repositories
 # INFO: VirtualBox is a free opensource hosted hypervisor
 # DEFAULT: y
 
