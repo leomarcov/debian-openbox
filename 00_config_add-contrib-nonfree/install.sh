@@ -9,22 +9,21 @@
 
 (
 # Add contrib section
-deb_lines_contrib="$(egrep '^(deb|deb-src) (http://deb.debian.org/debian/|http://security.debian.org/debian-security)' /etc/apt/sources.list | grep -v contrib)"
+deb_lines="$(egrep '^(deb|deb-src) (http://deb.debian.org/debian/|http://security.debian.org/debian-security)' /etc/apt/sources.list | grep -v contrib)"
 IFS=$'\n'
-for l in $deb_lines_contrib; do
+for l in $deb_lines; do
 	sed -i "s\\^$l$\\$l contrib\\" /etc/apt/sources.list
 done
 
 # Add non-free section
-deb_lines_nonfree="$(egrep '^(deb|deb-src) (http://deb.debian.org/debian/|http://security.debian.org/debian-security)' /etc/apt/sources.list | grep -v "non-free[[:blank:]]")"
-for l in $deb_lines_nonfree; do
+deb_lines="$(egrep '^(deb|deb-src) (http://deb.debian.org/debian/|http://security.debian.org/debian-security)' /etc/apt/sources.list | grep -v "non-free[[:blank:]]")"
+for l in $deb_lines; do
 	sed -i "s\\^$l$\\$l non-free\\" /etc/apt/sources.list
 done
-)
 
 # Add non-free-firmware section
-deb_lines_nonfree="$(egrep '^(deb|deb-src) (http://deb.debian.org/debian/|http://security.debian.org/debian-security)' /etc/apt/sources.list | grep -v "non-free-firmware[[:blank:]]")"
-for l in $deb_lines_nonfree; do
+deb_lines="$(egrep '^(deb|deb-src) (http://deb.debian.org/debian/|http://security.debian.org/debian-security)' /etc/apt/sources.list | grep -v "non-free-firmware[[:blank:]]")"
+for l in $deb_lines; do
 	sed -i "s\\^$l$\\$l non-free-firmware\\" /etc/apt/sources.list
 done
 )
