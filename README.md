@@ -107,7 +107,7 @@ $ ./install -l
  [31]  INSTALL  Install Google Chrome, add to repositories and set has default browser (Y)
  [32]  INSTALL  Install Sublime Text, add repositories and set as default editor (Y)
  [33]  INSTALL  Install vim editor, and apply some configs and plugins (Y)
- [34]  INSTALL  Install VirtualBox and Extension Pack from VirtualBox Official Repositories (Y)
+ [34]  INSTALL  Install VirtualBox and Extension Pack from VirtualBox official repositories (Y)
  [35]  INSTALL  Install Visual Studio Code and add repositories (N)
  [36]  SCRIPT   Install script poweroff_last for auto-poweroff if no users logged in 20 minutes (N)
  [37]  SCRIPT   Install script to control screen brightness (Y)
