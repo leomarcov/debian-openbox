@@ -12,14 +12,18 @@ comment_mark="#DEBIAN-OPENBOX"
 # Ask for password
 echo -n "Enter GRUB username: " ; read guser
 echo -n "Enter password for $guser user: " ; read gpass
-if [ ! "$pass" ]; then
+if [[ "$guser" != ^[a-zA-Z0-9_-]+$ ]]; then
+	echo "Username must math ^[a-zA-Z0-9_-]+$"
+	exit 1
+fi
+if [ ! "$gpass" ]; then
 	echo "Password can't be empty"
 	exit 1
 fi
 
 # Config user and password
 echo -e "\e[1mSetting GRUB config...\e[0m"
-pbkdf2_pass="$(echo -e "$pass\n$pass"| grub-mkpasswd-pbkdf2  | grep "grub.pbkdf2.*" -o)"
+pbkdf2_pass="$(echo -e "$gpass\n$gpass"| grub-mkpasswd-pbkdf2  | grep "grub.pbkdf2.*" -o)"
 sed -i "/${comment_mark}/Id" /etc/grub.d/40_custom
 echo 'set superusers="$guser"    '"$comment_mark"'
 password_pbkdf2 "$gpass" '"$pbkdf2_pass   $comment_mark" | tee -a /etc/grub.d/40_custom 
