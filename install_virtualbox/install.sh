@@ -40,7 +40,7 @@ fi
 # Install extension pack
 echo -e "\n\e[1mDownloading and installing Extension Pack ${vb_version} ...\e[0m"
 vb_version=$(vboxmanage --version | grep -Eo "^[0-9]+\.[0-9]+\.[0-9]+")
-ep_url="https://download.virtualbox.org/virtualbox/${vb_version}/Oracle_VM_VirtualBox_Extension_Pack-${vb_version}.vbox-extpack"
+ep_url="https://download.virtualbox.org/virtualbox/${vb_version}/Oracle_VirtualBox_Extension_Pack-${vb_version}.vbox-extpack"
 t=$(mktemp -d)
 wget -P "$t" "$ep_url"  
 [ $? -eq 0 ] && yes | vboxmanage extpack install --replace "$t"/*extpack 
