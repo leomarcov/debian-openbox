@@ -29,8 +29,7 @@ fi
 #### START APPLICATIONS ###############################################################################
 tint2-session &														# Start tint2
 compton &															# Start compositor
-(sleep 2; conky-session) &											# Start Conky
-pnmixer &															# Start volume control
+volumeicon &														# Start volume control
 xfce4-clipman &														# Start clipboard manager
 /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 &	# GNOME PolicyKit authentication
 nitrogen --restore &												# Set wallpaper
