@@ -25,8 +25,8 @@ fi
 echo -e "\e[1mSetting GRUB config...\e[0m"
 pbkdf2_pass="$(echo -e "$gpass\n$gpass"| grub-mkpasswd-pbkdf2  | grep "grub.pbkdf2.*" -o)"
 sed -i "/${comment_mark}/Id" /etc/grub.d/40_custom
-echo 'set superusers="$guser"    '"$comment_mark"'
-password_pbkdf2 "$gpass" '"$pbkdf2_pass   $comment_mark" | tee -a /etc/grub.d/40_custom 
+echo "set superusers=\"$guser\"    $comment_mark
+password_pbkdf2 $guser $pbkdf2_pass   $comment_mark" | tee -a /etc/grub.d/40_custom 
 
 # Config others users for select entry
 for f in /etc/grub.d/*; do 
