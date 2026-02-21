@@ -14,6 +14,7 @@ echo -e "\e[1mInstalling packages...\e[0m"
 [ "$(find /var/cache/apt/pkgcache.bin -mtime 0 2>/dev/null)" ] || apt-get update  
 apt-get install -y openbox obconf xinit lxappearance compton xfce4-screenshooter xfce4-clipman xfce4-power-manager xfce4-settings arandr gsimplecal xcape gparted file-roller xautomation yad inxi dbus-x11 xdg-user-dirs xdg-utils
 apt-get install -y network-manager network-manager-gnome 
+dpkg -P gnome-keyring
 
 # Install Guest Additions
 if [ "$(systemd-detect-virt)" = "oracle" ]; then
