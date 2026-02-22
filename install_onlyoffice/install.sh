@@ -17,4 +17,4 @@ fi
 
 # Install package
 echo -e "\e[1mInstalling packages...\e[0m"
-apt-get install sublime-text || exit 1
+apt-get -y install onlyoffice-desktopeditors || exit 1
