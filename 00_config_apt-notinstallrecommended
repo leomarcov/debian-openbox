@@ -1,7 +1,0 @@
-#!/bin/bash
-# ACTION: Config APT to not install recommended packaged
-# INFO: APT install by default recommended packages
-# DEFAULT: y
-
-echo -e "\e[1mCreating file /etc/apt/apt.conf.d/99norecommend...\e[0m"
-echo 'APT::Install-Recommends "false";' > /etc/apt/apt.conf.d/99norecommend
