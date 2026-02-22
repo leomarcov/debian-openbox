@@ -16,12 +16,12 @@ The main script `install` can exec all scripts or only a select list:
   * Install some user tools: Chrome browser, SublimeText, VirtualBox and Extensión Pack, sudo, image viewer and others.
   * Config prompt,  path, aliases and home directories permissions.
   * Config Grub for skip menu or protect by password and show messages during boot.
-  * Install [**`vim`**](https://github.com/leomarcov/debian-openbox/tree/master/install_vim) and some plugins and themes.
+  * Install [**`vim`**](https://github.com/leomarcov/debian-openbox/tree/master/50_install_vim) and some plugins and themes.
   * Install [**`Numix-Paper icon theme`**](https://github.com/leomarcov/debian-openbox/tree/master/10_openbox_numix-paper-icons), a theme based on Numix and Paper icon packs.
   * Install [**`autosnap Windows for Openbox`**](https://github.com/leomarcov/debian-openbox/tree/master/10_openbox_autosnap), a script for autosnap active windows (half-maximice). 
-  * Install [**`loginfetch`**](https://github.com/leomarcov/debian-openbox/blob/master/script_loginfetch/README.md), a tty login based on ufetch style and config tty lock screen with physlock.
+  * Install [**`loginfetch`**](https://github.com/leomarcov/debian-openbox/tree/master/30_script_loginfetch), a tty login based on ufetch style and config tty lock screen with physlock.
   * Install [**`update-notification script`**](https://github.com/leomarcov/debian-openbox/tree/master/10_openbox_update-notification) for check and manage repositories updates.
-  * Install [**`brightness control script`**](https://github.com/leomarcov/debian-openbox/tree/master/script_brightness-control) for increase/decrease birghtness screen.
+  * Install [**`brightness control script`**](https://github.com/leomarcov/debian-openbox/tree/master/30_script_brightness-control) for increase/decrease birghtness screen.
   * Install [**`exit menu`**](https://github.com/leomarcov/debian-openbox/tree/master/10_openbox_exit-menu) based on rofi to show power and exit options.
 
 <img align="center" width="450" src="https://user-images.githubusercontent.com/32820131/79147593-764c5f00-7dc4-11ea-9ca2-f2569260928f.png"> <img align="center" width="450" src="https://user-images.githubusercontent.com/32820131/79147594-76e4f580-7dc4-11ea-9f2c-56376bd9e6fa.png">
