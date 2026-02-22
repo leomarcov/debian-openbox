@@ -16,19 +16,6 @@ apt-get install -y openbox obconf xinit lxappearance compton xfce4-screenshooter
 apt-get install -y network-manager network-manager-gnome 
 dpkg -P gnome-keyring
 
-# Install Guest Additions
-if [ "$(systemd-detect-virt)" = "oracle" ]; then
-	vb_version=$(wget -qO- https://download.virtualbox.org/virtualbox/LATEST.TXT)
-	echo -e "\e[1mVirtualBox guest detected. Installing Guest Additions ${vb_version} ...\e[0m"
-	apt-get install -y build-essential dkms linux-headers-$(uname -r) wget p7zip-full
-	t=$(mktemp -d)
-	ga_url="https://download.virtualbox.org/virtualbox/${vb_version}/VBoxGuestAdditions_${vb_version}.iso"
-	wget -P "$t" "$ga_url"
-	7z x "$t"/* -o"$t" &>/dev/null
-	bash "$t/VBoxLinuxAdditions.run"
-	rm -rf "$t"
-fi
-
 echo -e "\e[1mCopying themes and tools...\e[0m"
 # Copy theme
 tar -xzvf "$base_dir"/openbox_theme.tgz -C /usr/share/themes/
