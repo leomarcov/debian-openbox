@@ -1,5 +1,5 @@
 #!/bin/bash
-# ACTION: Install VirtualBox and Extension Pack and add to repositories
+# ACTION: Install VirtualBox and Extension Pack from Oracle and add to repositories
 # INFO: VirtualBox is a free opensource hosted hypervisor
 # DEFAULT: y
 
