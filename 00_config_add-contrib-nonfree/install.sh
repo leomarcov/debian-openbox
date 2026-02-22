@@ -7,7 +7,7 @@
 [ "$(id -u)" -ne 0 ] && { echo "Must run as root" 1>&2; exit 1; }
 
 
-(
+echo -e "\e[1mAdding APT repositories contrig, non-free and non-free-firmware...\e[0m"
 # Add contrib section
 deb_lines="$(egrep '^(deb|deb-src) (http://deb.debian.org/debian/|http://security.debian.org/debian-security)' /etc/apt/sources.list |  egrep -Ev "contrib([[:space:]]|$)")"
 IFS=$'\n'
@@ -26,9 +26,9 @@ deb_lines="$(egrep '^(deb|deb-src) (http://deb.debian.org/debian/|http://securit
 for l in $deb_lines; do
 	sed -i "s\\^$l$\\$l non-free-firmware\\" /etc/apt/sources.list
 done
-)
 
 # Config APT to not install recommended packages
+echo -e "\e[1mConfiguring APT to not install recommendes packages...\e[0m"
 echo 'APT::Install-Recommends "false";' > /etc/apt/apt.conf.d/99norecommends
 
 # Update and install packages
