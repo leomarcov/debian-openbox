@@ -13,7 +13,7 @@ The main script `install` can exec all scripts or only a select list:
   * Install Openbox and dependences.
   * Install and config essential Openbox tools: Tint2, Rofi, Terminator, Thunar, volume control, gsimplecal, etc.
   * Config a basic themes and styles for Openbox, Gtk, fonts, icon pack, wallpapers, exit menu.
-  * Install some user tools: Chrome browser, SublimeText, VirtualBox and Extensión Pack, sudo,nomacs image viewer and others.
+  * Install some user tools: Chrome browser, SublimeText, VirtualBox and Extensión Pack, sudo, image viewer and others.
   * Config prompt,  path, aliases and home directories permissions.
   * Config Grub for skip menu or protect by password and show messages during boot.
   * Install [**`vim`**](https://github.com/leomarcov/debian-openbox/tree/master/install_vim) and some plugins and themes.
