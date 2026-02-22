@@ -1,5 +1,5 @@
 #!/bin/bash
-# ACTION: Add Debian repositories contrib, non-free and non-free-firmware and config APT to no install recommended packages
+# ACTION: Add Debian repositories contrib, non-free and non-free-firmware
 # INFO: Contrib, non-free and non-free-firmware repositories are not enabled by default in Debian install
 # DEFAULT: y
 
@@ -26,10 +26,6 @@ deb_lines="$(egrep '^(deb|deb-src) (http://deb.debian.org/debian/|http://securit
 for l in $deb_lines; do
 	sed -i "s\\^$l$\\$l non-free-firmware\\" /etc/apt/sources.list
 done
-
-# Config APT to not install recommended packages
-echo -e "\e[1mConfiguring APT to not install recommendes packages...\e[0m"
-echo 'APT::Install-Recommends "false";' > /etc/apt/apt.conf.d/99norecommends
 
 # Update and install packages
 apt-get update  
