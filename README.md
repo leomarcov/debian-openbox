@@ -126,7 +126,7 @@ The script can be easily customized. Each `install.sh` script placed in a subdir
   # INFO: Optional additional info
   # DEFAULT: y
   
-  scripts commands to do action
+  script commands to do action
   
   ```
 
