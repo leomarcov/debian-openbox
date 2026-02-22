@@ -3,5 +3,10 @@
 # INFO: APT stores a lot of unnecesary files and packages
 # DEFAULT: y
 
-apt-get -y autoremove
+
+if [ "$(systemd-detect-virt)" = "oracle" ]; then
+    apt purge -y firmware-realtek firmware-atheros firmware-mediatek firmware-misc-nonfree
+fi
+
+apt-get -y autoremove --purge
 apt-get clean
