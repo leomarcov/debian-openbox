@@ -5,9 +5,17 @@
 
 
 # Uninstall unnecesary packages
-apt-get -y purge gnome-keyring modemmanager
+apt-get purge -y gnome-keyring modemmanager yelp xdg-desktop-portal-gnome  geoclue-2.0 popularity-contest tasksel installation-report
+apt-get purge -y fonts-noto-cjk fonts-noto-extra
 
-
+# Clean documentation
+echo 'path-exclude=/usr/share/doc/*
+path-exclude=/usr/share/man/*
+path-exclude=/usr/share/locale/*
+path-include=/usr/share/locale/es*
+path-include=/usr/share/locale/en*' > /etc/dpkg/dpkg.cfg.d/01_nodoc
+dpkg -l | awk '/^ii/{print $2}' | xargs apt-get install --reinstall -y
+ 
 # Uninstall unnecesary VirtualBox guest packages
 if [ "$(systemd-detect-virt)" = "oracle" ]; then
     apt purge -y firmware-realtek firmware-atheros firmware-mediatek firmware-misc-nonfree firmware-amd-graphics
