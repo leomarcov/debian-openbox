@@ -6,6 +6,11 @@
 # Check root
 [ "$(id -u)" -ne 0 ] && { echo "Must run as root" 1>&2; exit 1; }
 
+echo 'path-exclude=/usr/share/doc/*
+path-exclude=/usr/share/man/*
+path-exclude=/usr/share/locale/*
+path-include=/usr/share/locale/es*
+path-include=/usr/share/locale/en*' > /etc/dpkg/dpkg.cfg.d/01_nodoc
 
 echo -e "\e[1mAdding APT repositories contrig, non-free and non-free-firmware...\e[0m"
 # Add contrib section
