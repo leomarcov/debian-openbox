@@ -1,5 +1,5 @@
 #!/bin/bash
-# ACTION: Remove unnecesary packages and clean autoremove and .deb packages
+# ACTION: Remove unnecesary packages and saved .deb files
 # INFO: APT stores a lot of unnecesary files and packages
 # DEFAULT: n
 
