@@ -108,7 +108,7 @@ $ ./install -l
  [32]  INSTALL  Install CUPS printer system and add user 1000 to lpadmin group (N)
  [33]  INSTALL  Install Flameshot screen shooter (Y)
  [34]  INSTALL  Install Google Chrome, add to repositories and set has default browser (Y)
- [35]  INSTALL  Install ONLYOFFICE package and add to repositories (N)
+ [35]  INSTALL  Install OnlyOffice package and add to repositories (N)
  [36]  INSTALL  Install Sublime Text, add repositories and set as default editor (Y)
  [37]  INSTALL  Install vim editor, and apply some configs and plugins (Y)
  [38]  INSTALL  Install VirtualBox Guest Additions from Oracle (N)
