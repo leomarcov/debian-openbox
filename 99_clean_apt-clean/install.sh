@@ -8,7 +8,7 @@
 echo -e "\e[1mUninstalling unnecesary packages...\e[0m"
 apt-get purge -y gnome-keyring modemmanager yelp xdg-desktop-portal-gnome geoclue-2.0 popularity-contest tasksel installation-report
 apt-get purge -y fonts-noto-cjk fonts-noto-extra fonts-noto-ui-extra fonts-noto-unhinted fonts-freefont-ttf 
-apt-get purge -y gvfs*
+apt-get purge -y gvfs* exim4*
 apt-get purge -y xfce4-settings xfce4-helpers
 apt-get purge -y brasero-common cdrdao
 apt-get purge -y debian-reference-es debian-faq doc-debian
