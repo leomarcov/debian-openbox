@@ -12,7 +12,7 @@ base_dir="$(dirname "$(readlink -f "$0")")"
 # Install packages
 echo -e "\e[1mInstalling packages...\e[0m"
 [ "$(find /var/cache/apt/pkgcache.bin -mtime 0 2>/dev/null)" ] || apt-get update  
-apt-get install -y fonts-droid-fallback fonts-cantarell fonts-liberation fonts-opensymbol fonts-noto-core fonts-noto-mono fonts-inconsolata
+apt-get install -y fonts-droid-fallback fonts-cantarell fonts-liberation fonts-opensymbol fonts-dejavu-core fonts-noto-color-emoji fontconfig 
 
 # Copy fonts
 echo -e "\e[1mCopying fonts...\e[0m"
