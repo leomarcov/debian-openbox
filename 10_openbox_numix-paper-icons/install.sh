@@ -13,7 +13,7 @@ icon_default="Numix-Paper"
 # Install packages
 echo -e "\e[1mInstalling Numix packages...\e[0m"
 # apt-get install -y numix-icon-theme
-dpkg -yi "${base_dir}/numix-icon-theme_0~20230220-1_all.deb"
+dpkg -i "${base_dir}/numix-icon-theme_0~20230220-1_all.deb"
 
 
 echo -e "\e[1mInstalling Paper packages...\e[0m"
