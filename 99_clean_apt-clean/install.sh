@@ -13,7 +13,7 @@ apt-get purge -y xfce4-settings xfce4-helpers
 apt-get purge -y brasero-common cdrdao
 apt-get purge -y debian-reference-es debian-faq doc-debian
 apt-get purge -y build-essential gcc g++ make dpkg-dev fakeroot
-apt-get purge -y purge nodejs nodejs-doc node-*
+apt-get purge -y purge nodejs* node-*
 apt-get purge -y purge sane-utils sane-airscan
  
 # Uninstall unnecesary VirtualBox guest packagesevin	
