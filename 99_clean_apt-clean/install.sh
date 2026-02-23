@@ -1,7 +1,7 @@
 #!/bin/bash
 # ACTION: Remove unnecesary packages and saved .deb files
 # INFO: APT install some unnecesary recommended packages and stores lots of .deb files
-# DEFAULT: n
+# DEFAULT: y
 
 
 # Uninstall unnecesary packages
