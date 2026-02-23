@@ -73,11 +73,11 @@ $ ./install -a grub
 # List all actions:
 $ ./install -l
  NUM	TYPE	DESCRIPTION
-==========================================================================
+=======================================================================================================================
  [1]   CONFIG   Add Debian repositories contrib, non-free and non-free-firmware (Y)
  [2]   INSTALL  Install some basic CLI packages (Y)
- [3]   INSTALL  Install some basic GUI packages (Y)
- [4]   OPENBOX  Install Openbox WM and essential tools and configs (Y)
+ [3]   OPENBOX  Install Openbox WM and essential tools and configs (Y)
+ [4]   INSTALL  Install some basic GUI packages (Y)
  [5]   OPENBOX  Install theme Arc GTK and set as default (Y)
  [6]   OPENBOX  Install script autosnap for half-maximize windows with mouse middle click in titlebar (Y)
  [7]   OPENBOX  Install script obexit with exit-power menu based on rofi (Y)
@@ -102,16 +102,20 @@ $ ./install -l
  [26]  CONFIG   Config users home directories permissions to 750 (for current and future users) (Y)
  [27]  CONFIG   Enable CTRL+ALT+BACKSPACE shortcut for kill X server (Y)
  [28]  CONFIG   Install sudo and add user 1000 to sudo group (Y)
- [29]  INSTALL  Install CUPS printer system and add user 1000 to lpadmin group (N)
- [30]  INSTALL  Install Flameshot screen shooter (Y)
- [31]  INSTALL  Install Google Chrome, add to repositories and set has default browser (Y)
- [32]  INSTALL  Install Sublime Text, add repositories and set as default editor (Y)
- [33]  INSTALL  Install vim editor, and apply some configs and plugins (Y)
- [34]  INSTALL  Install VirtualBox and Extension Pack from VirtualBox official repositories (Y)
- [35]  INSTALL  Install Visual Studio Code and add repositories (N)
- [36]  SCRIPT   Install script poweroff_last for auto-poweroff if no users logged in 20 minutes (N)
- [37]  SCRIPT   Install script to control screen brightness (Y)
- [38]  SCRIPT   Config Linux login in text mode (tty) using ufetch style and install a tty locker (physlock) (Y)
+ [29]  SCRIPT   Install script poweroff_last for auto-poweroff if no users logged in 20 minutes (N)
+ [30]  SCRIPT   Install script to control screen brightness (N)
+ [31]  SCRIPT   Config Linux login in text mode (tty) using ufetch style and install a tty locker (physlock) (Y)
+ [32]  INSTALL  Install CUPS printer system and add user 1000 to lpadmin group (N)
+ [33]  INSTALL  Install Flameshot screen shooter (Y)
+ [34]  INSTALL  Install Google Chrome, add to repositories and set has default browser (Y)
+ [35]  INSTALL  Install ONLYOFFICE package and add to repositories (N)
+ [36]  INSTALL  Install Sublime Text, add repositories and set as default editor (Y)
+ [37]  INSTALL  Install vim editor, and apply some configs and plugins (Y)
+ [38]  INSTALL  Install VirtualBox Guest Additions from Oracle (N)
+ [39]  INSTALL  Install VirtualBox and Extension Pack from Oracle and add to repositories (Y)
+ [40]  INSTALL  Install Visual Studio Code and add repositories (N)
+ [41]  CLEAN    Remove unnecesary packages and saved .deb files (Y)
+
 
 ```
   
