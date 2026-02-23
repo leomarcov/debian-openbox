@@ -30,6 +30,7 @@ cp -rv "$base_dir/$d" "/usr/share/doc/openbox/"
 
 # Install system info dependences
 wget -P /usr/bin "https://raw.githubusercontent.com/pixelb/ps_mem/master/ps_mem.py" && chmod a+x /usr/bin/ps_mem.py
+sed -i 's/#\!\/usr\/bin\/env python/#\!\/usr\/bin\/env python3/g' /usr/bin/ps_mem.py
 wget -P /usr/bin "https://raw.githubusercontent.com/aristocratos/bashtop/master/bashtop" && chmod a+x /usr/bin/bashtop
 apt-get install -y s-tui dfc htop hwinfo
 
