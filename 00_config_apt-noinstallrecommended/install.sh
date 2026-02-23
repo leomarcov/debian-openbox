@@ -1,7 +1,7 @@
 #!/bin/bash
 # ACTION: Config APT to not autoinstall recommended packages
 # INFO: APT install by default recommended packages for each apt install
-# DEFAULT: n
+# DEFAULT: y
 
 # Check root
 [ "$(id -u)" -ne 0 ] && { echo "Must run as root" 1>&2; exit 1; }
