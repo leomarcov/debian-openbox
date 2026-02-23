@@ -12,10 +12,12 @@ icon_default="Numix-Paper"
 
 # Install packages
 echo -e "\e[1mInstalling Numix packages...\e[0m"
-[ "$(find /var/cache/apt/pkgcache.bin -mtime 0 2>/dev/null)" ] || apt-get update  
-apt-get install -y numix-icon-theme
+# apt-get install -y numix-icon-theme
+dpkg -yi "${base_dir}/numix-icon-theme_0~20230220-1_all.deb"
+
 
 echo -e "\e[1mInstalling Paper packages...\e[0m"
+[ "$(find /var/cache/apt/pkgcache.bin -mtime 0 2>/dev/null)" ] || apt-get update 
 apt-get install -y paper-icon-theme
 
 if [ ! -d /usr/share/icons/Numix/ ]; then
