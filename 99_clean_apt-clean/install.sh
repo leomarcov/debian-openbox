@@ -13,7 +13,7 @@ apt-get purge -y fonts-noto-cjk fonts-noto-extra
 # Uninstall unnecesary VirtualBox guest packages
 if [ "$(systemd-detect-virt)" = "oracle" ]; then
 	echo -e "\e[1mUninstalling unnecesary firmware packages for VirtualBox guest...\e[0m"
-    apt purge -y firmware-realtek firmware-atheros firmware-mediatek firmware-misc-nonfree firmware-amd-graphics
+    apt-get purge -y firmware-realtek firmware-atheros firmware-mediatek firmware-misc-nonfree firmware-amd-graphics
 fi
 
 # APT autoremove and clean
