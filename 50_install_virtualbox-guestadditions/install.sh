@@ -1,6 +1,6 @@
 #!/bin/bash
-# ACTION: Install VirtualBox Gust Additions from Oracle
-# INFO: VirtualBox Gust Additions is a bundle of device drivers and system applications installed inside a virtual machine to improve performance, graphics, and usability.
+# ACTION: Install VirtualBox Guest Additions from Oracle
+# INFO: VirtualBox Guest Additions is a bundle of device drivers and system applications installed inside a virtual machine to improve performance, graphics, and usability.
 # DEFAULT: n
 
 # Check system run on VirtualBox VM
