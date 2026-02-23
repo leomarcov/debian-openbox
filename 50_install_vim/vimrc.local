@@ -23,6 +23,5 @@ Plug 'ntpeters/vim-better-whitespace' 				"DEBIAN-OPENBOX-vim
 "Plug 'vim-airline/vim-airline'             		"DEBIAN-OPENBOX-vim
 "Plug 'vim-airline/vim-airline-themes'      		"DEBIAN-OPENBOX-vim
 "Plug 'godlygeek/csapprox'                  		"DEBIAN-OPENBOX-vim
-"Plug 'neoclide/coc.nvim', {'branch': 'release'}	"DEBIAN-OPENBOX-vim
 
 call plug#end()                             		"DEBIAN-OPENBOX-vim
