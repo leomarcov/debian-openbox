@@ -54,7 +54,7 @@ text_en='<big><b>WELCOME TO DEBIAN-OPENBOX SCRIPT!</b></big>
    • <tt>WIN+arrows</tt>
    • <tt>WIN+[0-9]</tt>
    
-<b> Search commands</b>		<tt>WIN</tt>
+<b> Search commands</b>			<tt>WIN</tt>
 <b> Move windows</b>			<tt>ALT+left click</tt> (and drag)
 <b> Resize windows</b>			<tt>ALT+right click</tt> (and drag)
 <b> Window always on top</b>		<tt>WIN+0</tt>
