@@ -1,6 +1,6 @@
 #!/bin/bash
-# ACTION: Install ONLYOFFICE package and add to repositories
-# INFO: ONLYOFFICE offers a secure online office suite highly compatible with MS Office formats
+# ACTION: Install OnlyOffice package and add to repositories
+# INFO: OnlyOffice offers a secure online office suite highly compatible with MS Office formats
 # DEFAULT: n
 
 
