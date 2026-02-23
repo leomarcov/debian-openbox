@@ -17,6 +17,7 @@ apt-get install -y xserver-xorg xserver-xorg-core xinit xauth x11-common x11-uti
 apt-get install -y xdg-utils xdg-user-dirs xdg-desktop-portal xdg-desktop-portal-gtk shared-mime-info desktop-file-utils
 apt-get install -y openbox obconf lxappearance compton xfce4-clipman xfce4-power-manager xfce4-settings arandr gsimplecal xcape gparted file-roller xautomation yad inxi
 apt-get install -y network-manager network-manager-applet wpasupplicant wireless-regdb
+systemctl disable NetworkManager-wait-online.service
 
 echo -e "\e[1mCopying themes and tools...\e[0m"
 # Copy theme
