@@ -8,7 +8,17 @@
 echo -e "\e[1mUninstalling unnecesary packages...\e[0m"
 apt-get purge -y gnome-keyring modemmanager yelp xdg-desktop-portal-gnome  geoclue-2.0 popularity-contest tasksel installation-report
 apt-get purge -y fonts-noto-cjk fonts-noto-extra
-
+apt-get purge -y exim4* mailutils
+apt-get purge -y gnome-desktop3-data gnome-themes-extra gnome-icon-theme gcr gcr4
+apt-get purge -y gvfs*
+apt-get purge -y xfce4-settings xfce4-helpers xfce4-power-manager*
+apt-get purge -y network-manager-gnome nm-connection-editor
+apt-get purge -y brasero-common cdrdao
+apt-get purge -y debian-reference-es debian-faq doc-debian
+apt-get purge -y build-essential gcc g++ make dpkg-dev fakeroot
+apt-get purge -y purge nodejs nodejs-doc node-*
+apt-get purge -y purge sane-utils sane-airscan
+apt-get purge -y fonts-noto-ui-extra fonts-noto-unhinted fonts-freefont-ttf fonts-droid-fallback
  
 # Uninstall unnecesary VirtualBox guest packages
 if [ "$(systemd-detect-virt)" = "oracle" ]; then
