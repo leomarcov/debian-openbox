@@ -21,7 +21,9 @@ apt-get purge -y ${pkg_list}
 # Uninstall unnecesary VirtualBox guest packagesevin	
 if [ "$(systemd-detect-virt)" = "oracle" ]; then
 	echo -e "\e[1mUninstalling unnecesary firmware packages for VirtualBox guest...\e[0m"
-    apt-get purge -y firmware-*
+	pkg_list="${pkg_list} firmware-*"
+	pkg_list=$(set -f; dpkg -l $pkg_list 2>/dev/null | awk '/^ii/{print$2}')	 # Clean pkg_list with only installed packages
+	apt-get purge -y ${pkg_list}
 fi
 
 # APT autoremove and clean
