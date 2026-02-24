@@ -19,7 +19,7 @@ apt-get purge -y purge sane-utils sane-airscan
 # Uninstall unnecesary VirtualBox guest packagesevin	
 if [ "$(systemd-detect-virt)" = "oracle" ]; then
 	echo -e "\e[1mUninstalling unnecesary firmware packages for VirtualBox guest...\e[0m"
-    apt-get purge -y firmware-realtek firmware-atheros firmware-mediatek firmware-misc-nonfree firmware-amd-graphics
+    apt-get purge -y firmware-*
 fi
 
 # APT autoremove and clean
