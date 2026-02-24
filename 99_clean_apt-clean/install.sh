@@ -16,14 +16,13 @@ pkg_list="${pkg_list} build-essential gcc g++ make dpkg-dev fakeroot"
 pkg_list="${pkg_list} nodejs* node-*"
 pkg_list="${pkg_list} sane-utils sane-airscan libsane*"
 pkg_list=$(set -f; dpkg -l $pkg_list 2>/dev/null | awk '/^ii/{print$2}')	 # Clean pkg_list with only installed packages
-apt-get purge -y ${pkg_list}
+apt-get purge -y $(set -f; dpkg -l $pkg_list 2>/dev/null | awk '/^ii/{print$2}')
 
 # Uninstall unnecesary VirtualBox guest packagesevin	
 if [ "$(systemd-detect-virt)" = "oracle" ]; then
 	echo -e "\e[1mUninstalling unnecesary firmware packages for VirtualBox guest...\e[0m"
 	pkg_list="${pkg_list} firmware-*"
-	pkg_list=$(set -f; dpkg -l $pkg_list 2>/dev/null | awk '/^ii/{print$2}')	 # Clean pkg_list with only installed packages
-	apt-get purge -y ${pkg_list}
+	apt-get purge -y $(set -f; dpkg -l $pkg_list 2>/dev/null | awk '/^ii/{print$2}')
 fi
 
 # APT autoremove and clean
