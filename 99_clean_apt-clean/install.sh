@@ -51,8 +51,7 @@ else
         gpu_pkgs="xserver-xorg-video-amdgpu firmware-amd-graphics"
     elif echo "$gpu" | grep -qi nvidia; then
         dpkg -l | grep -q '^ii  nvidia-driver'
-		[ $? -eq 0 ] && keep_pkgs="nvidia-driver firmware-misc-nonfree" || keep_pkgs="xserver-xorg-video-nouveau firmware-misc-nonfree"            
-        gpu_pkgs="nvidia-driver firmware-misc-nonfree"
+		[ $? -eq 0 ] && gpu_pkgs="nvidia-driver firmware-misc-nonfree" || gpu_pkgs="xserver-xorg-video-nouveau firmware-misc-nonfree"            
     else
         gpu_pkgs="xserver-xorg-video-fbdev"
     fi
