@@ -5,7 +5,7 @@
 
 # Check system run on VirtualBox VM
 if [ "$(systemd-detect-virt)" != "oracle" ]; then
-  echo "Current system not running on VirtualBox guest VM" 1>&2
+  echo "ERROR: Current system not running on VirtualBox guest VM" 1>&2
   exit 1
 fi
 
