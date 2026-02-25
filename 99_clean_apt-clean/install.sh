@@ -41,7 +41,7 @@ if systemd-detect-virt -q; then
         oracle) 	gpu_pkgs=""							    ;;
         vmware) 	gpu_pkgs="xserver-xorg-video-vmware" 	;;
         qemu|kvm)   gpu_pkgs="xserver-xorg-video-qxl"    	;;
-	        *)          gpu_pkgs="xserver-xorg-video-fbdev" ;;
+		*)      	gpu_pkgs="xserver-xorg-video-fbdev" 	;;
     esac
 else
 	gpu="$(lspci -nn | grep -Ei 'vga|3d|display')"
