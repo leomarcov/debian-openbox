@@ -38,10 +38,10 @@ unset pkg_list
 if systemd-detect-virt -q; then
     virt=$(systemd-detect-virt)
     case "$virt" in
-        oracle) 	gpu_pkgs="xserver-xorg-video-vbox"    ;;
-        vmware) 	gpu_pkgs="xserver-xorg-video-vmware" ;;
-        qemu|kvm)   gpu_pkgs="xserver-xorg-video-qxl"    ;;
-        *)          gpu_pkgs="xserver-xorg-video-fbdev"  ;;
+        oracle) 	gpu_pkgs=""							    ;;
+        vmware) 	gpu_pkgs="xserver-xorg-video-vmware" 	;;
+        qemu|kvm)   gpu_pkgs="xserver-xorg-video-qxl"    	;;
+	        *)          gpu_pkgs="xserver-xorg-video-fbdev" ;;
     esac
 else
 	gpu="$(lspci -nn | grep -Ei 'vga|3d|display')"
