@@ -29,8 +29,8 @@ apt-get -y autoremove --purge
 apt-get clean
 
 echo -e "\e[1mAccording your neededs you may be to install:\e[0m
-* gvfs: 
-* exim4: 
-* avahi: 
-* build-essential gcc g++ make dpkg-dev: "
+* gvfs: graphic access to smb, ftp, mtp, trash, automount USB, etc
+* exim4: mail server
+* avahi: mDNS to detect local hostnames
+* build-essential gcc g++ make dpkg-dev: basic dev tools"
 
