@@ -36,7 +36,7 @@ echo -e "\n\e[1mCleaning packages and .deb files...\e[0m"
 apt-get -y autoremove --purge
 apt-get clean
 
-echo -e "\e[1m\nAccording your neededs you may be to install:\e[0m
+echo -e "\e[1m\nAccording your neededs you may need to install:\e[0m
 * \e[1mgvfs\e[0m: graphic access to automount USB, smb, ftp, mtp, trash, etc
 * \e[1mexim4\e[0m: mail server
 * \e[1mavahi\e[0m: mDNS to detect local hostnames
