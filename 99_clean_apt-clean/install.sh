@@ -31,6 +31,34 @@ for p in $(dpkg -l 'linux-image-[0-9]*' | awk '/^ii/{print $2}'); do
 done
 apt-get purge -y $(set -f; dpkg -l $pkg_list 2>/dev/null | awk '/^ii/{print$2}')
 
+
+# Uninstall graphics drivers
+echo -e "\n\e[1mUninstalling unused graphics drivers...\e[0m"
+unset pkg_list
+if systemd-detect-virt -q; then
+    virt=$(systemd-detect-virt)
+    case "$virt" in
+        oracle) 	gpu_pkgs="xserver-xorg-video-vbox"    ;;
+        vmware) 	gpu_pkgs="xserver-xorg-video-vmware" ;;
+        qemu|kvm)   gpu_pkgs="xserver-xorg-video-qxl"    ;;
+        *)          gpu_pkgs="xserver-xorg-video-fbdev"  ;;
+    esac
+else
+	gpu="$(lspci -nn | grep -Ei 'vga|3d|display')"
+    if echo "$gpu" | grep -qi intel; then
+        gpu_pkgs="xserver-xorg-video-intel firmware-misc-nonfree"
+    elif echo "$gpu" | grep -qi amd; then
+        gpu_pkgs="xserver-xorg-video-amdgpu firmware-amd-graphics"
+    elif echo "$gpu" | grep -qi nvidia; then
+        dpkg -l | grep -q '^ii  nvidia-driver'
+		[ $? -eq 0 ] && keep_pkgs="nvidia-driver firmware-misc-nonfree" || keep_pkgs="xserver-xorg-video-nouveau firmware-misc-nonfree"            
+        gpu_pkgs="nvidia-driver firmware-misc-nonfree"
+    else
+        gpu_pkgs="xserver-xorg-video-fbdev"
+    fi
+fi
+
+
 # APT autoremove and clean
 echo -e "\n\e[1mCleaning packages and .deb files...\e[0m"
 apt-get -y autoremove --purge
