@@ -28,7 +28,7 @@ echo -e "\e[1mCleaning packages and .deb files...\e[0m"
 apt-get -y autoremove --purge
 apt-get clean
 
-echo -e "\e[1mAccording your neededs you may be to install:\e[0m
+echo -e "\e[1m\nAccording your neededs you may be to install:\e[0m
 * gvfs: graphic access to smb, ftp, mtp, trash, automount USB, etc
 * exim4: mail server
 * avahi: mDNS to detect local hostnames
