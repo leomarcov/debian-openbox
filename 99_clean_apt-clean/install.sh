@@ -38,8 +38,8 @@ apt-get -y autoremove --purge
 apt-get clean
 
 echo -e "\e[1m\nAccording your neededs you may be to install:\e[0m
-* gvfs: graphic access to automount USB, smb, ftp, mtp, trash, etc
-* exim4: mail server
-* avahi: mDNS to detect local hostnames
-* build-essential gcc g++ make dpkg-dev: basic dev tools"
+* \e[1mgvfs\e[0m: graphic access to automount USB, smb, ftp, mtp, trash, etc
+* \e[1mexim4\e[0m: mail server
+* \e[1mavahi\e[0m: mDNS to detect local hostnames
+* \e[1mbuild-essential gcc g++ make dpkg-dev\e[0m: basic dev tools"
 
