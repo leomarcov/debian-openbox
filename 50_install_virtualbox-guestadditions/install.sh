@@ -11,7 +11,7 @@ fi
 
 vb_version=$(wget -qO- https://download.virtualbox.org/virtualbox/LATEST.TXT)
 echo -e "\e[1mVirtualBox guest detected. Installing Guest Additions ${vb_version} ...\e[0m"
-apt-get install -y build-essential dkms linux-headers-$(uname -r) wget p7zip-full
+apt-get install -y build-essential dkms linux-headers-$(uname -r) wget
 t=$(mktemp -d)
 ga_url="https://download.virtualbox.org/virtualbox/${vb_version}/VBoxGuestAdditions_${vb_version}.iso"
 wget -P "$t" "$ga_url"
