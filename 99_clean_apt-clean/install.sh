@@ -6,15 +6,14 @@
 
 # Uninstall unnecesary packages
 echo -e "\e[1mUninstalling unnecesary packages...\e[0m"
-pkg_list="gnome-keyring modemmanager yelp xdg-desktop-portal-gnome geoclue-2.0 popularity-contest tasksel* installation-report ipp-usb colord gstreamer-bad gstreamer-ugly"
+pkg_list="gnome-keyring modemmanager* xdg-desktop-portal-gnome geoclue-2.0 popularity-contest tasksel* installation-report ipp-usb colord gstreamer* usb-modeswitch* libnss-mdns"
 pkg_list="${pkg_list} fonts-noto-cjk fonts-noto-extra fonts-noto-ui-extra fonts-noto-unhinted fonts-freefont-ttf "
 pkg_list="${pkg_list} gvfs* exim4* avahi*"
-pkg_list="${pkg_list} xfce4-settings xfce4-helpers"
-pkg_list="${pkg_list} brasero-common cdrdao"
-pkg_list="${pkg_list} debian-reference* debian-faq doc-debian"
+pkg_list="${pkg_list} brasero* cdrdao* libgphoto2* libburn* libisofs*"
+pkg_list="${pkg_list} debian-reference* debian-faq* doc-debian* docbook-xml sgml-data yelp*"
 pkg_list="${pkg_list} build-essential gcc g++ make dpkg-dev fakeroot"
 pkg_list="${pkg_list} nodejs* node-*"
-pkg_list="${pkg_list} sane-utils sane-airscan libsane*"
+pkg_list="${pkg_list} sane-utils sane-airscan libsane* libgphoto2*"
 apt-get purge -y $(set -f; dpkg -l $pkg_list 2>/dev/null | awk '/^ii/{print$2}')
 
 # Uninstall unnecesary VirtualBox guest packagesevin	
@@ -28,3 +27,10 @@ fi
 echo -e "\e[1mCleaning packages and .deb files...\e[0m"
 apt-get -y autoremove --purge
 apt-get clean
+
+echo -e "\e[1mAccording your neededs you may be to install:\e[0m
+* gvfs: 
+* exim4: 
+* avahi: 
+* build-essential gcc g++ make dpkg-dev: "
+
