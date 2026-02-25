@@ -25,7 +25,7 @@ echo -e "\n\e[1mInstalling graphics drivers...\e[0m"
 if systemd-detect-virt -q; then
     virt=$(systemd-detect-virt)
     case "$virt" in
-        oracle) 	gpu_pkgs="xserver-xorg-video-vbox"    ;;
+        oracle) 	gpu_pkgs=""    						 ;;
         vmware) 	gpu_pkgs="xserver-xorg-video-vmware" ;;
         qemu|kvm)   gpu_pkgs="xserver-xorg-video-qxl"    ;;
         *)          gpu_pkgs="xserver-xorg-video-fbdev"  ;;
