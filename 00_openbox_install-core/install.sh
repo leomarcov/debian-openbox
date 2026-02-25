@@ -33,8 +33,8 @@ if systemd-detect-virt -q; then
 else
 	gpu="$(lspci -nn | grep -Ei 'vga|3d|display')"
     if echo "$gpu" | grep -qi intel; then
-        gpu_pkgs="xserver-xorg-video-intel firmware-misc-nonfree"
-    elif echo "$gpu" | grep -qi amd; then
+        gpu_pkgs="xserver-xorg-video-intel firmware-intel-graphics"
+    elif echo "$gpu" | grep -Eqi "amd|radeon"; then
         gpu_pkgs="xserver-xorg-video-amdgpu firmware-amd-graphics"
     elif echo "$gpu" | grep -qi nvidia; then
         dpkg -l | grep -q '^ii  nvidia-driver'
