@@ -5,7 +5,7 @@
 
 
 # Uninstall unnecesary packages
-echo -e "\e[1mUninstalling unnecesary packages...\e[0m"
+echo -e "\n\e[1mUninstalling unnecesary packages...\e[0m"
 pkg_list="gnome-keyring modemmanager* xdg-desktop-portal-gnome geoclue-2.0 popularity-contest tasksel* installation-report ipp-usb colord gstreamer* usb-modeswitch* libnss-mdns cdrdao"
 pkg_list="${pkg_list} fonts-noto-cjk fonts-noto-extra fonts-noto-ui-extra fonts-noto-unhinted fonts-freefont-ttf"
 pkg_list="${pkg_list} gvfs* exim4* avahi*"
@@ -17,13 +17,13 @@ apt-get purge -y $(set -f; dpkg -l $pkg_list 2>/dev/null | awk '/^ii/{print$2}')
 
 # Uninstall unnecesary VirtualBox GUEST packages
 if [ "$(systemd-detect-virt)" = "oracle" ]; then
-	echo -e "\e[1mUninstalling unnecesary firmware packages for VirtualBox guest...\e[0m"
+	echo -e "\n\e[1mUninstalling unnecesary firmware packages for VirtualBox guest...\e[0m"
 	pkg_list="firmware-*"
 	apt-get purge -y $(set -f; dpkg -l $pkg_list 2>/dev/null | awk '/^ii/{print$2}')
 fi
 
 # Uninstall old kernels
-echo -e "\e[1mUninstalling old kernels and headers...\e[0m"
+echo -e "\n\e[1mUninstalling old kernels and headers...\e[0m"
 pkg_list="linux-headers* linux-kbuild*"
 for p in $(dpkg -l 'linux-image-[0-9]*' | awk '/^ii/{print $2}'); do
 	v="${p#linux-image-}"
@@ -32,7 +32,7 @@ done
 apt-get purge -y $(set -f; dpkg -l $pkg_list 2>/dev/null | awk '/^ii/{print$2}')
 
 # APT autoremove and clean
-echo -e "\e[1mCleaning packages and .deb files...\e[0m"
+echo -e "\n\e[1mCleaning packages and .deb files...\e[0m"
 apt-get -y autoremove --purge
 apt-get clean
 
