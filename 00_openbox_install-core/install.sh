@@ -14,7 +14,7 @@ echo -e "\e[1mInstalling packages...\e[0m"
 [ "$(find /var/cache/apt/pkgcache.bin -mtime 0 2>/dev/null)" ] || apt-get update
 
 apt-get install -y xserver-xorg xserver-xorg-core xserver-xorg-input-libinput xinit xauth x11-common x11-utils x11-xserver-utils x11-xkb-utils xkb-data xterm dbus dbus-x11 dbus-user-session polkitd ukui-polkit
-apt-get install -y xdg-utils xdg-user-dirs xdg-desktop-portal xdg-desktop-portal-gtk shared-mime-info desktop-file-utils
+apt-get install -y xdg-utils xdg-user-dirs xdg-desktop-portal xdg-desktop-portal-gtk xdg-dbus-proxy shared-mime-info desktop-file-utils
 apt-get install -y openbox obconf lxappearance compton xfce4-clipman xfce4-power-manager upower xfce4-settings arandr gsimplecal xcape file-roller xautomation yad inxi
 apt-get install -y libcanberra-gtk3-0 adwaita-icon-theme gtk-update-icon-cache gsettings-desktop-schemas
 apt-get install -y network-manager network-manager-applet wpasupplicant wireless-regdb
