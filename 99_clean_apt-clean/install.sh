@@ -6,12 +6,12 @@
 
 # Uninstall unnecesary packages
 echo -e "\e[1mUninstalling unnecesary packages...\e[0m"
-pkg_list="gnome-keyring modemmanager yelp xdg-desktop-portal-gnome geoclue-2.0 popularity-contest tasksel installation-report"
+pkg_list="gnome-keyring modemmanager yelp xdg-desktop-portal-gnome geoclue-2.0 popularity-contest tasksel* installation-report ipp-usb colord gstreamer-bad gstreamer-ugly"
 pkg_list="${pkg_list} fonts-noto-cjk fonts-noto-extra fonts-noto-ui-extra fonts-noto-unhinted fonts-freefont-ttf "
 pkg_list="${pkg_list} exim4*"
 pkg_list="${pkg_list} xfce4-settings xfce4-helpers"
 pkg_list="${pkg_list} brasero-common cdrdao"
-pkg_list="${pkg_list} debian-reference-es debian-faq doc-debian"
+pkg_list="${pkg_list} debian-reference* debian-faq doc-debian"
 pkg_list="${pkg_list} build-essential gcc g++ make dpkg-dev fakeroot"
 pkg_list="${pkg_list} nodejs* node-*"
 pkg_list="${pkg_list} sane-utils sane-airscan libsane*"
