@@ -41,21 +41,25 @@ if systemd-detect-virt -q; then
         oracle) 	gpu_pkgs=""							    ;;
         vmware) 	gpu_pkgs="xserver-xorg-video-vmware" 	;;
         qemu|kvm)   gpu_pkgs="xserver-xorg-video-qxl"    	;;
-		*)      	gpu_pkgs="xserver-xorg-video-fbdev" 	;;
+		*)      	gpu_pkgs=""							 	;;
     esac
 else
 	gpu="$(lspci -nn | grep -Ei 'vga|3d|display')"
     if echo "$gpu" | grep -qi intel; then
-        gpu_pkgs="xserver-xorg-video-intel firmware-misc-nonfree"
+        gpu_pkgs="xserver-xorg-video-intel firmware-intel-graphics"
     elif echo "$gpu" | grep -qi amd; then
         gpu_pkgs="xserver-xorg-video-amdgpu firmware-amd-graphics"
     elif echo "$gpu" | grep -qi nvidia; then
         dpkg -l | grep -q '^ii  nvidia-driver'
 		[ $? -eq 0 ] && gpu_pkgs="nvidia-driver firmware-misc-nonfree" || gpu_pkgs="xserver-xorg-video-nouveau firmware-misc-nonfree"            
-    else
-        gpu_pkgs="xserver-xorg-video-fbdev"
     fi
 fi
+unset pkg_list
+for p in $(dpkg -l 'xserver-xorg-video-*' | awk '/^ii/{print $2}') $(dpkg -l 'firmware-*graphics' | awk '/^ii/{print $2}'); do
+	echo "$gpu_pkgs" | grep -qw "$p" || pkg_list="${pkg_list} ${p}"
+done
+echo "$pkg_list"
+apt-get purge -y $(set -f; dpkg -l $pkg_list 2>/dev/null | awk '/^ii/{print$2}')
 
 
 # APT autoremove and clean
