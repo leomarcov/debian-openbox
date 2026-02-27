@@ -8,7 +8,7 @@
 echo -e "\n\e[1mUninstalling unnecesary packages...\e[0m"
 pkg_list="gnome-keyring modemmanager* xdg-desktop-portal-gnome geoclue-2.0 popularity-contest tasksel* installation-report ipp-usb colord usb-modeswitch* libnss-mdns cdrdao"
 pkg_list="${pkg_list} fonts-noto-cjk fonts-noto-extra fonts-noto-ui-extra fonts-noto-unhinted fonts-freefont-ttf"
-pkg_list="${pkg_list} gvfs* exim4* avahi*"
+pkg_list="${pkg_list} exim4* avahi*"
 pkg_list="${pkg_list} debian-reference* debian-faq* doc-debian* docbook-xml sgml-data yelp*"
 pkg_list="${pkg_list} build-essential gcc g++ make dpkg-dev fakeroot"
 pkg_list="${pkg_list} nodejs* node-*"
@@ -68,7 +68,6 @@ apt-get -y autoremove --purge
 apt-get clean
 
 echo -e "\e[1m\nAccording your neededs you may need to install:\e[0m
-* \e[1mgvfs\e[0m: graphic access to automount USB, smb, ftp, mtp, trash, etc
 * \e[1mexim4\e[0m: mail server
 * \e[1mavahi\e[0m: mDNS to detect local hostnames
 * \e[1mbuild-essential gcc g++ make dpkg-dev\e[0m: basic dev tools"
