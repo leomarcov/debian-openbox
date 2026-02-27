@@ -6,7 +6,7 @@
 
 # Uninstall unnecesary packages
 echo -e "\n\e[1mUninstalling unnecesary packages...\e[0m"
-pkg_list="gnome-keyring modemmanager* xdg-desktop-portal-gnome geoclue-2.0 popularity-contest tasksel* installation-report ipp-usb colord gstreamer* usb-modeswitch* libnss-mdns cdrdao"
+pkg_list="gnome-keyring modemmanager* xdg-desktop-portal-gnome geoclue-2.0 popularity-contest tasksel* installation-report ipp-usb colord usb-modeswitch* libnss-mdns cdrdao"
 pkg_list="${pkg_list} fonts-noto-cjk fonts-noto-extra fonts-noto-ui-extra fonts-noto-unhinted fonts-freefont-ttf"
 pkg_list="${pkg_list} gvfs* exim4* avahi*"
 pkg_list="${pkg_list} debian-reference* debian-faq* doc-debian* docbook-xml sgml-data yelp*"
