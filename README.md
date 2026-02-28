@@ -73,7 +73,7 @@ $ ./install -a grub
 # List all actions:
 $ ./install -l
  NUM	TYPE	DESCRIPTION
-=======================================================================================================================
+==========================================================================
  [1]   CONFIG   Add Debian repositories contrib, non-free and non-free-firmware (Y)
  [2]   INSTALL  Install some basic CLI packages (Y)
  [3]   OPENBOX  Install Openbox WM and essential tools and configs (Y)
@@ -97,26 +97,25 @@ $ ./install -l
  [21]  CONFIG   Config modified .profile file with new path (sbin for all users) and color definitions (Y)
  [22]  CONFIG   Config new bash prompt (Y)
  [23]  CONFIG   Config system for show text messages during boot time (Y)
- [24]  CONFIG   Config GRUB with password protection for prevent users edit entries (N)
- [25]  CONFIG   Config GRUB for skip menu (timeout=0) (N)
- [26]  CONFIG   Config users home directories permissions to 750 (for current and future users) (Y)
- [27]  CONFIG   Enable CTRL+ALT+BACKSPACE shortcut for kill X server (Y)
- [28]  CONFIG   Install sudo and add user 1000 to sudo group (Y)
- [29]  SCRIPT   Install script poweroff_last for auto-poweroff if no users logged in 20 minutes (N)
- [30]  SCRIPT   Install script to control screen brightness (N)
- [31]  SCRIPT   Config Linux login in text mode (tty) using ufetch style and install a tty locker (physlock) (Y)
- [32]  INSTALL  Install CUPS printer system and add user 1000 to lpadmin group (N)
- [33]  INSTALL  Install Flameshot screen shooter (Y)
- [34]  INSTALL  Install Google Chrome, add to repositories and set has default browser (Y)
- [35]  INSTALL  Install OnlyOffice package and add to repositories (N)
- [36]  INSTALL  Install Sublime Text, add repositories and set as default editor (Y)
- [37]  INSTALL  Install vim editor, and apply some configs and plugins (Y)
- [38]  INSTALL  Install VirtualBox Guest Additions from Oracle (N)
- [39]  INSTALL  Install VirtualBox and Extension Pack from Oracle and add to repositories (Y)
- [40]  INSTALL  Install Visual Studio Code and add repositories (N)
- [41]  CLEAN    Remove unnecesary packages and saved .deb files (Y)
-
-
+ [24]  CONFIG   Config GRUB for disable recovery and UEFI entreis (N)
+ [25]  CONFIG   Config GRUB with password protection for prevent users edit entries (N)
+ [26]  CONFIG   Config GRUB for skip menu (timeout=0) (N)
+ [27]  CONFIG   Config users home directories permissions to 750 (for current and future users) (Y)
+ [28]  CONFIG   Enable CTRL+ALT+BACKSPACE shortcut for kill X server (Y)
+ [29]  CONFIG   Install sudo and add user 1000 to sudo group (Y)
+ [30]  SCRIPT   Install script poweroff_last for auto-poweroff if no users logged in 20 minutes (N)
+ [31]  SCRIPT   Install script to control screen brightness (N)
+ [32]  SCRIPT   Config Linux login in text mode (tty) using ufetch style and install a tty locker (physlock) (Y)
+ [33]  INSTALL  Install CUPS printer system and add user 1000 to lpadmin group (N)
+ [34]  INSTALL  Install Flameshot screen shooter (Y)
+ [35]  INSTALL  Install Google Chrome, add to repositories and set has default browser (Y)
+ [36]  INSTALL  Install OnlyOffice package and add to repositories (N)
+ [37]  INSTALL  Install Sublime Text, add repositories and set as default editor (Y)
+ [38]  INSTALL  Install vim editor, and apply some configs and plugins (Y)
+ [39]  INSTALL  Install VirtualBox Guest Additions from Oracle (N)
+ [40]  INSTALL  Install VirtualBox and Extension Pack from Oracle and add to repositories (N)
+ [41]  INSTALL  Install Visual Studio Code and add repositories (N)
+ [42]  CLEAN    Remove unnecesary packages and saved .deb files (N)
 ```
   
 &nbsp; 
