@@ -36,7 +36,7 @@ function update () {
 	fi
 	
 	echo "Checking updates and saving in $updates_file..."
-	aptitude search "~U" > "$updates_file" 
+	aptitude search '~U !~ahold' > "$updates_file" 
 	echo 
 
 	# No updates
