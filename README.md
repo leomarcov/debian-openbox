@@ -3,10 +3,10 @@
 
 The main script `install` can exec all scripts or only a select list:
   * `install`: exec all scripts interactively.
-  * `install -l`:			list all scripts.
-  * `install -d`:			install all scripts with default option Y.
-  * `install -a 5,8-12`:	exec selected scripts.
-  * `install -a grub`: 		exec all actions with `grub` in description.
+  * `install -l`: list all scripts.
+  * `install -d`: install all scripts with default option Y.
+  * `install -a 5,8-12`: exec selected scripts.
+  * `install -a grub`: exec all actions with `grub` in description.
 
 &nbsp; 
 ## Main features
@@ -48,11 +48,11 @@ The main script `install` can exec all scripts or only a select list:
 $ ./install -h
 Exec a set of scripts
 Usage: install [-l] [-a <actions>] [-y] [-d] [-h]
-   -l		Only list actions 
+   -l			Only list actions 
    -a <actions>	Filter selected actions by number range or text pattern (comma separated)
-   -y		Auto-answer yes to all actions
-   -d		Auto-answer default to all actions
-   -h		Show this help
+   -y			Auto-answer yes to all actions
+   -d			Auto-answer default to all actions
+   -h			Show this help
 
 
 # Exec all actions interactively:
