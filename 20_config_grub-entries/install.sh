@@ -18,6 +18,9 @@ done
 # Add lines
 cat "$base_dir/grub.conf" >> /etc/default/grub
 
+# Disable UEFI firmware
+chmod -x /etc/grub.d/30_uefi-firmware
+
 # Update grub
 echo -e "\e[1mUpdating GRUB...\e[0m"
 update-grub
