@@ -34,7 +34,7 @@ function try_poweroff() {
 
 
 function install() {
-	if ! last  -0min &> /dev/null; then
+	if ! last -s $(date -d "0 minutes ago" "+%Y%m%d%H%M%S") &> /dev/null; then
 		echo "Ummm... seems last comand no support  parameter. Neewer last command version is needed."
 		exit 1
 	fi
