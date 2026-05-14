@@ -10,7 +10,7 @@ install_path="/usr/bin/autopoweroff"     # Installation dir
 
 
 function try_poweroff() {
-	if ! last -s -0min &> /dev/null; then
+	if ! last -s $(date -d "0 minutes ago" "+%Y%m%d%H%M%S") &> /dev/null; then
 		echo "Ummm... seems last comand no support -s parameter. Neewer last command version is needed."
 		exit 1
 	fi
@@ -21,7 +21,7 @@ function try_poweroff() {
 	[ "$(who | wc -l)" -gt 0 ] && exit 
 
 	# Exit if someone was logged in past $mins minutes
-	[ $(last -s -${mins}min | grep -Ev 'reboot|wtmp|^$' | wc -l) -gt 0 ] && exit
+	[ $(last -s $(date -d "${mins} minutes ago" "+%Y%m%d%H%M%S") | grep -Ev 'reboot|wtmp|^$' | wc -l) -gt 0 ] && exit
 	# Exit if system boot not was almost in $mins
 	[ "$(($(cat /proc/uptime | awk '{printf "%0.f", $1}')/60))" -gt "$mins" ]
 	[ $? -ne 0 ] && exit
@@ -34,8 +34,8 @@ function try_poweroff() {
 
 
 function install() {
-	if ! last -s -0min &> /dev/null; then
-		echo "Ummm... seems last comand no support -s parameter. Neewer last command version is needed."
+	if ! last  -0min &> /dev/null; then
+		echo "Ummm... seems last comand no support  parameter. Neewer last command version is needed."
 		exit 1
 	fi
 
