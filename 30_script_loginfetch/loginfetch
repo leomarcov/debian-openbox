@@ -48,6 +48,8 @@ info_ip="${S_R}${S_B}Local IP${S_R}:   $(t=($(ip -c=never route get 8.8.8.8 | he
 ip=($(ip -c=never route get 8.8.8.8 2>/dev/null| head -1 |  egrep -o "dev [0-9a-z]+|src [0-9\.]+" | cut -f2 -d" " | sort))
 dev="${ip[1]}"
 [ ! "$ip" ] && mac="network not ready" || mac=$(ip -c=never a show dev "$dev" | grep "ether" | awk '{print $2}')
+ip="${ip[0]}"; [ ! "$ip" ] && ip="network not ready"
+
 info_ip="${S_R}${S_B}Local IP${S_R}:   $ip"
 info_mac="${S_R}${S_B}MAC${S_R}:        $mac"
 info_boottime="${S_R}${S_B}Boot time${S_R}: $(systemd-analyze | head -1 | cut -f2 -d=)($(systemd-analyze | head -1 | egrep -o "loader|firmware|kernel|userspace" | sed -z 's/\n\(.\)/+\1/g'))"
